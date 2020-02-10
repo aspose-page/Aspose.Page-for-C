@@ -1,0 +1,9 @@
+bin/
+lib/
+Debug/
+.vs/
+* Out*
+*_out_*
+*_out*
+* out*
+*.ldb
