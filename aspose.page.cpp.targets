@@ -1,0 +1,42 @@
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Condition="'$(Force-Enable-aspose-page-cpp)' == '' And (('$(PlatformToolset)' != 'v140' And '$(PlatformToolset)' != 'v141' And '$(PlatformToolset)' != 'v142') Or ('$(Platform)' != 'x64' And '$(Platform)' != 'Win32') Or '$(ApplicationType)' != '')">
+    <Disable-aspose-page-cpp>true</Disable-aspose-page-cpp>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Force-Disable-aspose-page-cpp)' != ''">
+    <Disable-aspose-page-cpp>true</Disable-aspose-page-cpp>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Disable-aspose-page-cpp)' != 'true'">
+    <ClCompile>
+      <PreprocessorDefinitions>DISABLE_EXTERNAL_REFCOUNT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <ClCompile>
+      <AdditionalIncludeDirectories>$(MSBuildThisFileDirectory)include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile>
+      <DisableSpecificWarnings>4003;4018;4244;4250;4251;4267;4275;4290;4584;4996;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(MSBuildThisFileDirectory)lib\Aspose.Page.Cpp_vc14x64.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(MSBuildThisFileDirectory)lib\Aspose.Page.Cpp_vc14x64d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(MSBuildThisFileDirectory)lib\Aspose.Page.Cpp_vc14x86.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(MSBuildThisFileDirectory)lib\Aspose.Page.Cpp_vc14x86d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <StackReserveSize>10485760</StackReserveSize>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64' And '$(Disable-aspose-pdf-cpp)' == ''">
+    <ReferenceCopyLocalPaths Include="$(MSBuildThisFileDirectory)lib\Aspose.Page.Cpp_vc14x64.dll" />
+  </ItemGroup>
+  <ItemGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64' And '$(Disable-aspose-pdf-cpp)' == ''">
+    <ReferenceCopyLocalPaths Include="$(MSBuildThisFileDirectory)lib\Aspose.Page.Cpp_vc14x64d.dll" />
+  </ItemGroup>
+  <ItemGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32' And '$(Disable-aspose-pdf-cpp)' == ''">
+    <ReferenceCopyLocalPaths Include="$(MSBuildThisFileDirectory)lib\Aspose.Page.Cpp_vc14x86.dll" />
+  </ItemGroup>
+  <ItemGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32' And '$(Disable-aspose-pdf-cpp)' == ''">
+    <ReferenceCopyLocalPaths Include="$(MSBuildThisFileDirectory)lib\Aspose.Page.Cpp_vc14x86d.dll" />
+  </ItemGroup>
+  <Target Name="PlatformCheck" BeforeTargets="PrepareForBuild">
+    <Error Condition="!$(PlatformToolset.Contains('v14'))" Text="Aspose.Pdf for C++ Library error: Only 'v14x' toolset is supported." />
+    <Error Condition="'$(Platform)' != 'x64' And '$(Platform)' != 'Win32'" Text="Aspose.Pdf for C++ Library error: Only 'x64' and 'Win32' platform is supported." />
+  </Target>
+</Project>
