@@ -1,26 +1,51 @@
 ﻿#pragma once
+// Copyright (c) 2001-2022 Aspose Pty Ltd. All Rights Reserved.
 
 #include <system/enum_helpers.h>
-#include <cstdint>
 
 #include "Aspose.Page.Cpp/xps/src_xps/XpsModel/XpsBrushes/XpsTilingBrush.h"
+#include "Aspose.Page.Cpp/aspose_page_api_defs.h"
 
-namespace Aspose { namespace Page { namespace Xps { namespace XpsModel { class XpsBrush; } } } }
-namespace Aspose { namespace Page { namespace Xps { namespace XpsModel { class XpsElement; } } } }
-namespace Aspose { namespace Page { namespace Xps { namespace XpsModel { class XpsVisual; } } } }
-namespace Aspose { namespace Page { namespace Xps { namespace XpsModel { template<typename> class XpsProperty; } } } }
-namespace Aspose { namespace Page { namespace Xps { namespace XpsModel { class XpsContext; } } } }
-namespace Aspose { namespace Page { namespace Xps { class XpsDocumentVisitor; } } }
-namespace Aspose { namespace Page { namespace Xps { namespace XpsModel { class XpsCanvas; } } } }
-namespace Aspose { namespace Page { namespace Xps { namespace XpsModel { class XpsPath; } } } }
-namespace Aspose { namespace Page { namespace Xps { namespace XpsModel { class XpsGlyphs; } } } }
-namespace Aspose { namespace Page { namespace Xps { namespace XpsModel { enum class RegistrationType; } } } }
+namespace Aspose
+{
+namespace Page
+{
+namespace XPS
+{
+class XpsDocumentVisitor;
+namespace XpsModel
+{
+enum class RegistrationType;
+template <typename> class XpsArray;
+class XpsBrush;
+class XpsContentElement;
+class XpsContext;
+class XpsElement;
+class XpsObject;
+template <typename> class XpsProperty;
+class XpsPropertyValueManager;
+class XpsVisual;
+} // namespace XpsModel
+} // namespace XPS
+} // namespace Page
+} // namespace Aspose
+namespace System
+{
+namespace Drawing
+{
+class RectangleF;
+} // namespace Drawing
+namespace Xml
+{
+class XmlElement;
+} // namespace Xml
+} // namespace System
 
 namespace Aspose {
 
 namespace Page {
 
-namespace Xps {
+namespace XPS {
 
 namespace XpsModel {
 
@@ -28,40 +53,32 @@ namespace XpsModel {
 /// Class incapsulating VisualBrush property element features.
 /// This element is used to fill a region with a drawing.
 /// </summary>
-class XpsVisualBrush FINAL : public Aspose::Page::Xps::XpsModel::XpsTilingBrush
+class ASPOSE_PAGE_SHARED_CLASS XpsVisualBrush final : public Aspose::Page::XPS::XpsModel::XpsTilingBrush
 {
     typedef XpsVisualBrush ThisType;
-    typedef Aspose::Page::Xps::XpsModel::XpsTilingBrush BaseType;
+    typedef Aspose::Page::XPS::XpsModel::XpsTilingBrush BaseType;
     
     typedef ::System::BaseTypesInfo<BaseType> ThisTypeBaseTypesInfo;
     ASPOSE_PAGE_SHARED_RTTI_INFO_DECL();
     
-    FRIEND_FUNCTION_System_MakeObject;
-    friend class Aspose::Page::Xps::XpsModel::XpsBrush;
-    friend class Aspose::Page::Xps::XpsModel::XpsElement;
+    template<typename FT0> friend class Aspose::Page::XPS::XpsModel::XpsArray;
+    friend class Aspose::Page::XPS::XpsModel::XpsBrush;
+    friend class Aspose::Page::XPS::XpsModel::XpsPropertyValueManager;
+    friend class Aspose::Page::XPS::XpsModel::XpsElement;
+    template<typename FT0> friend class Aspose::Page::XPS::XpsModel::XpsProperty;
     
 public:
 
     /// <summary>
     /// Returns/sets a Path, Glyphs, or Canvas element used to draw the brush’s source content. 
     /// </summary>
-    ASPOSE_PAGE_SHARED_API System::SharedPtr<XpsElement> get_Visual();
+    ASPOSE_PAGE_SHARED_API System::SharedPtr<XpsContentElement> get_Visual();
     
     /// <summary>
-    /// Sets <paramref name="canvas"/> as Visual element of visual brush.
+    /// Sets <paramref name="visual"></paramref> as Visual element of visual brush.
     /// </summary>
-    /// <param name="canvas">Canvas element.</param>
-    ASPOSE_PAGE_SHARED_API void SetVisual(System::SharedPtr<XpsCanvas> canvas);
-    /// <summary>
-    /// Sets <paramref name="path"/> as Visual element of visual brush.
-    /// </summary>
-    /// <param name="path">Path element.</param>
-    ASPOSE_PAGE_SHARED_API void SetVisual(System::SharedPtr<XpsPath> path);
-    /// <summary>
-    /// Sets <paramref name="glyphs"/> as Visual element of visual brush.
-    /// </summary>
-    /// <param name="glyphs">Glyphs element.</param>
-    ASPOSE_PAGE_SHARED_API void SetVisual(System::SharedPtr<XpsGlyphs> glyphs);
+    /// <param name="visual">The element.</param>
+    ASPOSE_PAGE_SHARED_API void SetVisual(System::SharedPtr<XpsContentElement> visual);
     /// <summary>
     /// Clones this visual brush.
     /// </summary>
@@ -70,20 +87,34 @@ public:
     
 protected:
 
-    XpsVisualBrush(System::SharedPtr<XpsContext> context, System::SharedPtr<XpsElement> visualElement, System::Drawing::RectangleF viewbox, System::Drawing::RectangleF viewport);
+    XpsVisualBrush(System::SharedPtr<XpsContext> context, System::SharedPtr<XpsContentElement> visualElement, System::Drawing::RectangleF viewbox, System::Drawing::RectangleF viewport);
+    
+    MEMBER_FUNCTION_MAKE_OBJECT_DECLARATION(XpsVisualBrush, CODEPORTING_ARGS(System::SharedPtr<XpsContext> context, System::SharedPtr<XpsContentElement> visualElement, System::Drawing::RectangleF viewbox, System::Drawing::RectangleF viewport));
+    
     XpsVisualBrush(System::SharedPtr<XpsContext> context);
+    
+    MEMBER_FUNCTION_MAKE_OBJECT_DECLARATION(XpsVisualBrush, CODEPORTING_ARGS(System::SharedPtr<XpsContext> context));
+    
     XpsVisualBrush(System::SharedPtr<System::Xml::XmlElement> element, System::SharedPtr<XpsContext> context);
     
-    virtual ASPOSE_PAGE_SHARED_API void Initialize(System::SharedPtr<System::Xml::XmlElement> element);
-    virtual ASPOSE_PAGE_SHARED_API void Accept(System::SharedPtr<XpsDocumentVisitor> visitor);
-    virtual ASPOSE_PAGE_SHARED_API void AcceptProperties(System::SharedPtr<XpsDocumentVisitor> visitor);
-    virtual ASPOSE_PAGE_SHARED_API void Validate();
-    virtual ASPOSE_PAGE_SHARED_API void ForceRegisterForPreprocessingPV(bool add = true);
-    virtual ASPOSE_PAGE_SHARED_API void RegisterForPreprocessingPV(System::SharedPtr<XpsElement> element, RegistrationType regType, bool add = true);
-    virtual ASPOSE_PAGE_SHARED_API System::SharedPtr<XpsElement> Clone(bool deep, System::SharedPtr<XpsContext> context, System::SharedPtr<XpsElement> parent, int32_t index);
-    virtual ASPOSE_PAGE_SHARED_API void CopyPropertyValues(System::SharedPtr<XpsElement> element);
-    virtual ASPOSE_PAGE_SHARED_API void ClonePropertyValues(System::SharedPtr<XpsElement> element);
-    ASPOSE_PAGE_SHARED_API System::Object::shared_members_type GetSharedMembers() override;
+    MEMBER_FUNCTION_MAKE_OBJECT_DECLARATION(XpsVisualBrush, CODEPORTING_ARGS(System::SharedPtr<System::Xml::XmlElement> element, System::SharedPtr<XpsContext> context));
+    ASPOSE_PAGE_SHARED_API void Initialize(System::SharedPtr<System::Xml::XmlElement> element) override;
+    ASPOSE_PAGE_SHARED_API void Accept(System::SharedPtr<XpsDocumentVisitor> visitor) override;
+    ASPOSE_PAGE_SHARED_API void AcceptProperties(System::SharedPtr<XpsDocumentVisitor> visitor) override;
+    ASPOSE_PAGE_SHARED_API void Validate() override;
+    ASPOSE_PAGE_SHARED_API void ForceRegisterForPreprocessingPV(bool add = true) override;
+    ASPOSE_PAGE_SHARED_API void RegisterForPreprocessingPV(System::SharedPtr<XpsElement> element, RegistrationType regType, bool add = true) override;
+    ASPOSE_PAGE_SHARED_API System::SharedPtr<XpsObject> Clone(bool deep, System::SharedPtr<XpsContext> context) override;
+    ASPOSE_PAGE_SHARED_API void CopyPropertyValues(System::SharedPtr<XpsObject> obj) override;
+    ASPOSE_PAGE_SHARED_API void ClonePropertyValues(System::SharedPtr<XpsObject> obj) override;
+    ASPOSE_PAGE_SHARED_API void Dispose() override;
+    
+    virtual ASPOSE_PAGE_SHARED_API ~XpsVisualBrush();
+    
+    #ifdef ASPOSE_GET_SHARED_MEMBERS
+    ASPOSE_PAGE_SHARED_API System::Object::shared_members_type GetSharedMembers() const override;
+    #endif
+    
     
 private:
 
@@ -94,14 +125,14 @@ private:
     /// <summary>
     /// Returns/sets a Path, Glyphs, or Canvas element used to draw the brush’s source content. 
     /// </summary>
-    ASPOSE_PAGE_SHARED_API void set_Visual(System::SharedPtr<XpsElement> value);
+    ASPOSE_PAGE_SHARED_API void set_Visual(System::SharedPtr<XpsContentElement> value);
     
-    void ValidateVisual(System::SharedPtr<XpsElement> value);
+    void ValidateVisual(System::SharedPtr<XpsContentElement> value);
     
 };
 
 } // namespace XpsModel
-} // namespace Xps
+} // namespace XPS
 } // namespace Page
 } // namespace Aspose
 

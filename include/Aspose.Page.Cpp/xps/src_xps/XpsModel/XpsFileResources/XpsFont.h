@@ -1,62 +1,109 @@
 ﻿#pragma once
-
-#include <drawing/font_style.h>
+// Copyright (c) 2001-2022 Aspose Pty Ltd. All Rights Reserved.
 
 #include "Aspose.Page.Cpp/xps/src_xps/XpsModel/XpsFileResources/XpsFileResource.h"
+#include "Aspose.Page.Cpp/aspose_page_api_defs.h"
 
-namespace Aspose { namespace Page { namespace Xps { namespace Presentation { class XpsPresenter; } } } }
-namespace Aspose { namespace Page { namespace Xps { namespace Presentation { namespace Aps { class ApsConverter; } } } } }
-namespace Aspose { namespace Page { namespace Xps { namespace Presentation { namespace Xps { class XpsSerializationContext; } } } } }
-namespace Aspose { namespace Page { namespace Xps { namespace Presentation { namespace Xps { class XpsSerializationContextBase; } } } } }
-namespace Aspose { namespace Page { namespace Xps { namespace XpsModel { class XpsElement; } } } }
-namespace Aspose { namespace Page { namespace Xps { namespace XpsModel { class XpsGlyphs; } } } }
-namespace Aspose { namespace Page { namespace Xps { namespace Tests { class GlyphsToImageTests; } } } }
-namespace Aspose { namespace Page { namespace Xps { namespace Tests { class GlyphsToApsTests; } } } }
-namespace Aspose { namespace TrueType { class TTFont; } }
-namespace Aspose { namespace Page { namespace Xps { namespace XpsModel { class XpsContext; } } } }
-namespace Aspose { namespace Foundation { class BigEndianBinaryReader; } }
-namespace Aspose { namespace TrueType { class TTFontNames; } }
+namespace Aspose
+{
+namespace Foundation
+{
+class BigEndianBinaryReader;
+} // namespace Foundation
+namespace Page
+{
+namespace XPS
+{
+namespace Presentation
+{
+namespace Aps
+{
+class ApsConverter;
+} // namespace Aps
+namespace Xps
+{
+class XpsSerializationContext;
+class XpsSerializationContextBase;
+} // namespace Xps
+class XpsPresenter;
+} // namespace Presentation
+namespace Tests
+{
+class GlyphsToApsTests;
+class GlyphsToImageTests;
+} // namespace Tests
+namespace XpsModel
+{
+class XpsContext;
+class XpsElement;
+class XpsGlyphs;
+} // namespace XpsModel
+} // namespace XPS
+} // namespace Page
+namespace TrueType
+{
+class TTFont;
+class TTFontNames;
+} // namespace TrueType
+} // namespace Aspose
+namespace System
+{
+namespace Drawing
+{
+enum class FontStyle;
+} // namespace Drawing
+namespace IO
+{
+class Stream;
+} // namespace IO
+} // namespace System
 
 namespace Aspose {
 
 namespace Page {
 
-namespace Xps {
+namespace XPS {
 
 namespace XpsModel {
 
 /// <summary>
 /// Class incapsulating a TrueType font resource.
 /// </summary>
-class XpsFont FINAL : public Aspose::Page::Xps::XpsModel::XpsFileResource
+class ASPOSE_PAGE_SHARED_CLASS XpsFont final : public Aspose::Page::XPS::XpsModel::XpsFileResource
 {
     typedef XpsFont ThisType;
-    typedef Aspose::Page::Xps::XpsModel::XpsFileResource BaseType;
+    typedef Aspose::Page::XPS::XpsModel::XpsFileResource BaseType;
     
     typedef ::System::BaseTypesInfo<BaseType> ThisTypeBaseTypesInfo;
     ASPOSE_PAGE_SHARED_RTTI_INFO_DECL();
     
-    FRIEND_FUNCTION_System_MakeObject;
-    friend class Aspose::Page::Xps::Presentation::XpsPresenter;
-    friend class Aspose::Page::Xps::Presentation::Aps::ApsConverter;
-    friend class Aspose::Page::Xps::Presentation::Xps::XpsSerializationContext;
-    friend class Aspose::Page::Xps::Presentation::Xps::XpsSerializationContextBase;
-    friend class Aspose::Page::Xps::XpsModel::XpsElement;
-    friend class Aspose::Page::Xps::XpsModel::XpsFileResource;
-    friend class Aspose::Page::Xps::XpsModel::XpsGlyphs;
-    friend class Aspose::Page::Xps::Tests::GlyphsToImageTests;
-    friend class Aspose::Page::Xps::Tests::GlyphsToApsTests;
+    friend class Aspose::Page::XPS::Presentation::XpsPresenter;
+    friend class Aspose::Page::XPS::Presentation::Aps::ApsConverter;
+    friend class Aspose::Page::XPS::Presentation::Xps::XpsSerializationContext;
+    friend class Aspose::Page::XPS::Presentation::Xps::XpsSerializationContextBase;
+    friend class Aspose::Page::XPS::XpsModel::XpsElement;
+    friend class Aspose::Page::XPS::XpsModel::XpsFileResource;
+    friend class Aspose::Page::XPS::XpsModel::XpsGlyphs;
+    friend class Aspose::Page::XPS::Tests::GlyphsToImageTests;
+    friend class Aspose::Page::XPS::Tests::GlyphsToApsTests;
     
 protected:
 
-    System::SharedPtr<Aspose::TrueType::TTFont> get_Font();
-    virtual ASPOSE_PAGE_SHARED_API System::String get_DefaultNamePrefix();
-    virtual ASPOSE_PAGE_SHARED_API System::String get_Extension();
+    System::SharedPtr<Aspose::TrueType::TTFont> get_Font() const;
+    ASPOSE_PAGE_SHARED_API System::String get_DefaultNamePrefix() override;
+    ASPOSE_PAGE_SHARED_API System::String get_Extension() override;
     
-    virtual ASPOSE_PAGE_SHARED_API void Load();
+    ASPOSE_PAGE_SHARED_API void LoadExternal() override;
     static System::SharedPtr<XpsFont> Create(System::SharedPtr<XpsContext> context, System::String fontFamily, System::Drawing::FontStyle fontStyle);
     static System::SharedPtr<XpsFont> Create(System::SharedPtr<XpsContext> context, System::SharedPtr<System::IO::Stream> stream, System::String path, bool isExternal = false);
-    ASPOSE_PAGE_SHARED_API System::Object::shared_members_type GetSharedMembers() override;
+    ASPOSE_PAGE_SHARED_API System::SharedPtr<XpsFileResource> Clone(System::SharedPtr<XpsContext> context) override;
+    
+    virtual ASPOSE_PAGE_SHARED_API ~XpsFont();
+    
+    #ifdef ASPOSE_GET_SHARED_MEMBERS
+    ASPOSE_PAGE_SHARED_API System::Object::shared_members_type GetSharedMembers() const override;
+    #endif
+    
     
 private:
 
@@ -65,8 +112,16 @@ private:
     System::SharedPtr<Aspose::TrueType::TTFont> _ttFont;
     
     XpsFont(System::SharedPtr<XpsContext> context, System::String fontFamily, System::Drawing::FontStyle fontStyle);
+    
+    MEMBER_FUNCTION_MAKE_OBJECT_DECLARATION(XpsFont, CODEPORTING_ARGS(System::SharedPtr<XpsContext> context, System::String fontFamily, System::Drawing::FontStyle fontStyle));
+    
     XpsFont(System::SharedPtr<XpsContext> context, System::SharedPtr<System::IO::Stream> stream, bool isExternal = false);
     
+    MEMBER_FUNCTION_MAKE_OBJECT_DECLARATION(XpsFont, CODEPORTING_ARGS(System::SharedPtr<XpsContext> context, System::SharedPtr<System::IO::Stream> stream, bool isExternal = false));
+    
+    XpsFont(System::SharedPtr<XpsContext> context, System::SharedPtr<XpsFont> font);
+    
+    MEMBER_FUNCTION_MAKE_OBJECT_DECLARATION(XpsFont, CODEPORTING_ARGS(System::SharedPtr<XpsContext> context, System::SharedPtr<XpsFont> font));
     static void LoadFont(System::SharedPtr<XpsFont> font, System::String path);
     static System::SharedPtr<Aspose::TrueType::TTFont> GetFont(System::SharedPtr<System::IO::Stream> stream, System::String fontUri);
     static void DeobfuscateFont(System::SharedPtr<System::IO::Stream> obfuscatedStream, System::String fontUri, System::SharedPtr<System::IO::Stream> deobfuscatedStream);
@@ -83,7 +138,7 @@ private:
 };
 
 } // namespace XpsModel
-} // namespace Xps
+} // namespace XPS
 } // namespace Page
 } // namespace Aspose
 

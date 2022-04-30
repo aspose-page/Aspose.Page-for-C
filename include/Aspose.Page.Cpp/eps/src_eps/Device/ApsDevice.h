@@ -1,24 +1,90 @@
 ﻿#pragma once
+// Copyright (c) 2001-2022 Aspose Pty Ltd. All Rights Reserved.
 //using System.ComponentModel;
 //using System.Windows.Forms;
 
-#include <system/io/stream.h>
 #include <system/guid.h>
-#include <system/collections/stack.h>
-#include <system/collections/list.h>
-#include <drawing/imaging/image_format.h>
-#include <drawing/imaging/image_codec_info.h>
 
 #include "Aspose.Page.Cpp/IMultiPageDevice.h"
 #include "Aspose.Page.Cpp/Device.h"
+#include "Aspose.Page.Cpp/aspose_page_api_defs.h"
 
-namespace Aspose { namespace Page { namespace EPS { namespace Device { class ImageDevice; } } } }
-namespace Aspose { namespace Foundation { namespace Drawing { class DrMatrix; } } }
-namespace Aspose { namespace Page { namespace EPS { namespace GraphicsIO { namespace Font { namespace Encoding { class CharTable; } } } } } }
-namespace Aspose { namespace Rendering { class ApsPage; } }
-namespace Aspose { namespace Rendering { class ApsCanvas; } }
-namespace Aspose { namespace Rendering { class ApsNode; } }
-namespace Aspose { namespace Page { class ITrFont; } }
+namespace Aspose
+{
+namespace Foundation
+{
+namespace Drawing
+{
+class DrMatrix;
+} // namespace Drawing
+} // namespace Foundation
+namespace Page
+{
+namespace EPS
+{
+namespace Device
+{
+class ImageDevice;
+} // namespace Device
+namespace GraphicsIO
+{
+namespace Font
+{
+namespace Encoding
+{
+class CharTable;
+} // namespace Encoding
+} // namespace Font
+} // namespace GraphicsIO
+} // namespace EPS
+class ITrFont;
+} // namespace Page
+namespace Rendering
+{
+class ApsCanvas;
+class ApsNode;
+class ApsPage;
+} // namespace Rendering
+} // namespace Aspose
+namespace System
+{
+namespace Collections
+{
+namespace Generic
+{
+template <typename, typename> class Dictionary;
+template <typename> class List;
+template <typename> class Stack;
+} // namespace Generic
+} // namespace Collections
+namespace Drawing
+{
+class Bitmap;
+class Brush;
+class Color;
+namespace Drawing2D
+{
+enum class DashCap;
+class GraphicsPath;
+class LinearGradientBrush;
+enum class LineCap;
+enum class LineJoin;
+class Matrix;
+} // namespace Drawing2D
+namespace Imaging
+{
+class ImageCodecInfo;
+class ImageFormat;
+} // namespace Imaging
+class Size;
+class SolidBrush;
+class TextureBrush;
+} // namespace Drawing
+namespace IO
+{
+class Stream;
+} // namespace IO
+} // namespace System
 
 namespace Aspose {
 
@@ -42,7 +108,7 @@ class NamespaceDoc : public System::Object
     
 };
 
-class ApsDevice : public Aspose::Page::Device, public Aspose::Page::IMultiPageDevice
+class ASPOSE_PAGE_SHARED_CLASS ApsDevice : public Aspose::Page::Device, public Aspose::Page::IMultiPageDevice
 {
     typedef ApsDevice ThisType;
     typedef Aspose::Page::Device BaseType;
@@ -51,7 +117,6 @@ class ApsDevice : public Aspose::Page::Device, public Aspose::Page::IMultiPageDe
     typedef ::System::BaseTypesInfo<BaseType, BaseType1> ThisTypeBaseTypesInfo;
     ASPOSE_PAGE_SHARED_RTTI_INFO_DECL();
     
-    FRIEND_FUNCTION_System_MakeObject;
     friend class Aspose::Page::EPS::Device::ImageDevice;
     
 public:
@@ -72,9 +137,9 @@ public:
     /// <summary>
     /// Specifies a size of the page.
     /// </summary>
-    virtual ASPOSE_PAGE_SHARED_API void set_Size(System::Drawing::Size value);
-    virtual ASPOSE_PAGE_SHARED_API bool get_IsDirectRGB();
-    virtual ASPOSE_PAGE_SHARED_API int32_t get_CurrentPageNumber();
+    ASPOSE_PAGE_SHARED_API void set_Size(System::Drawing::Size value) override;
+    ASPOSE_PAGE_SHARED_API bool get_IsDirectRGB() override;
+    ASPOSE_PAGE_SHARED_API int32_t get_CurrentPageNumber() override;
     /// <summary>
     /// Draws frame and banner around a string. The method calculates and returns
     ///  the point to which the text curser should be set before drawing the string. 
@@ -122,73 +187,73 @@ public:
                 path.AddRectangle(new RectangleF(x, y, width, height));
                 Clip(path);
             }*/
-    virtual ASPOSE_PAGE_SHARED_API void set_Font(System::SharedPtr<ITrFont> value);
-    ASPOSE_PAGE_SHARED_API System::SharedPtr<System::Collections::Generic::List<System::SharedPtr<Aspose::Rendering::ApsPage>>> get_Pages();
+    ASPOSE_PAGE_SHARED_API void set_Font(System::SharedPtr<ITrFont> value) override;
+    ASPOSE_PAGE_SHARED_API System::SharedPtr<System::Collections::Generic::List<System::SharedPtr<Aspose::Rendering::ApsPage>>> get_Pages() const;
     
     ASPOSE_PAGE_SHARED_API ApsDevice();
     ASPOSE_PAGE_SHARED_API ApsDevice(System::Drawing::Size pageSize);
     
-    virtual ASPOSE_PAGE_SHARED_API void ReNew();
-    virtual ASPOSE_PAGE_SHARED_API void StartDocument();
-    virtual ASPOSE_PAGE_SHARED_API void EndDocument();
+    ASPOSE_PAGE_SHARED_API void ReNew() override;
+    ASPOSE_PAGE_SHARED_API void StartDocument() override;
+    ASPOSE_PAGE_SHARED_API void EndDocument() override;
     /// <summary>
     /// Disposes of the graphics context. If on creation restoreOnDispose was true,
     /// writeGraphicsRestore() will be called.
     /// </summary>
-    virtual ASPOSE_PAGE_SHARED_API void Dispose();
-    virtual ASPOSE_PAGE_SHARED_API void Reset();
-    virtual ASPOSE_PAGE_SHARED_API void InitPageNumbers();
-    virtual ASPOSE_PAGE_SHARED_API bool OpenPage(System::String title);
-    virtual ASPOSE_PAGE_SHARED_API bool OpenPage(float width, float height);
-    virtual ASPOSE_PAGE_SHARED_API void ClosePage();
-    virtual ASPOSE_PAGE_SHARED_API void UpdatePageParameters(System::SharedPtr<IMultiPageDevice> device);
-    virtual ASPOSE_PAGE_SHARED_API System::SharedPtr<Aspose::Page::Device> Create();
-    virtual ASPOSE_PAGE_SHARED_API void InitClip();
-    virtual ASPOSE_PAGE_SHARED_API void Draw(System::SharedPtr<System::Drawing::Drawing2D::GraphicsPath> s);
-    virtual ASPOSE_PAGE_SHARED_API void Fill(System::SharedPtr<System::Drawing::Drawing2D::GraphicsPath> s);
-    virtual ASPOSE_PAGE_SHARED_API void DrawImage(System::SharedPtr<System::Drawing::Bitmap> image, System::SharedPtr<System::Drawing::Drawing2D::Matrix> transform, System::Drawing::Color bkg);
-    virtual ASPOSE_PAGE_SHARED_API void DrawString(System::String str, double x, double y);
+    ASPOSE_PAGE_SHARED_API void Dispose() override;
+    ASPOSE_PAGE_SHARED_API void Reset() override;
+    ASPOSE_PAGE_SHARED_API void InitPageNumbers() override;
+    ASPOSE_PAGE_SHARED_API bool OpenPage(System::String title) override;
+    ASPOSE_PAGE_SHARED_API bool OpenPage(float width, float height) override;
+    ASPOSE_PAGE_SHARED_API void ClosePage() override;
+    ASPOSE_PAGE_SHARED_API void UpdatePageParameters(System::SharedPtr<IMultiPageDevice> device) override;
+    ASPOSE_PAGE_SHARED_API System::SharedPtr<Aspose::Page::Device> Create() override;
+    ASPOSE_PAGE_SHARED_API void InitClip() override;
+    ASPOSE_PAGE_SHARED_API void Draw(System::SharedPtr<System::Drawing::Drawing2D::GraphicsPath> s) override;
+    ASPOSE_PAGE_SHARED_API void Fill(System::SharedPtr<System::Drawing::Drawing2D::GraphicsPath> s) override;
+    ASPOSE_PAGE_SHARED_API void DrawImage(System::SharedPtr<System::Drawing::Bitmap> image, System::SharedPtr<System::Drawing::Drawing2D::Matrix> transform, System::Drawing::Color bkg) override;
+    ASPOSE_PAGE_SHARED_API void DrawString(System::String str, double x, double y) override;
     /// <summary>
     /// Get the current transform.
     /// </summary>
     /// <returns> current transform </returns>
     /// <summary>
-    virtual ASPOSE_PAGE_SHARED_API System::SharedPtr<System::Drawing::Drawing2D::Matrix> GetTransform();
-    virtual ASPOSE_PAGE_SHARED_API void SetTransform(System::SharedPtr<System::Drawing::Drawing2D::Matrix> transform);
+    ASPOSE_PAGE_SHARED_API System::SharedPtr<System::Drawing::Drawing2D::Matrix> GetTransform() override;
+    ASPOSE_PAGE_SHARED_API void SetTransform(System::SharedPtr<System::Drawing::Drawing2D::Matrix> transform) override;
     /// <summary>
     /// Transforms the current transform. Calls writeTransform(Transform)
     /// </summary>
     /// <param name="transform"> to be applied </param>
-    virtual ASPOSE_PAGE_SHARED_API void Transform(System::SharedPtr<System::Drawing::Drawing2D::Matrix> transform);
+    ASPOSE_PAGE_SHARED_API void Transform(System::SharedPtr<System::Drawing::Drawing2D::Matrix> transform) override;
     /// <summary>
     /// Translates the current transform. Calls writeTransform(Transform)
     /// </summary>
     /// <param name="x">, y amount by which to translate </param>
-    virtual ASPOSE_PAGE_SHARED_API void Translate(double x, double y);
+    ASPOSE_PAGE_SHARED_API void Translate(double x, double y) override;
     /// <summary>
     /// Rotate the current transform over the Z-axis. Calls writeTransform(Transform).
     /// Rotating with a positive angle theta rotates points on the positive x axis
     /// toward the positive y axis.
     /// </summary>
     /// <param name="theta"> radians over which to rotate </param>
-    virtual ASPOSE_PAGE_SHARED_API void Rotate(double theta);
+    ASPOSE_PAGE_SHARED_API void Rotate(double theta) override;
     /// <summary>
     /// Scales the current transform. Calls writeTransform(Transform).
     /// </summary>
     /// <param name="sx">, sy amount used for scaling </param>
-    virtual ASPOSE_PAGE_SHARED_API void Scale(double sx, double sy);
+    ASPOSE_PAGE_SHARED_API void Scale(double sx, double sy) override;
     /// <summary>
     /// Shears the current transform. Calls writeTransform(Transform).
     /// </summary>
     /// <param name="shx">, shy amount for shearing </param>
-    virtual ASPOSE_PAGE_SHARED_API void Shear(double shx, double shy);
+    ASPOSE_PAGE_SHARED_API void Shear(double shx, double shy) override;
     /// <summary>
     /// Clips shape. PS only allows to intersect the currentClip so this calls clip(Shape).
     /// </summary>
     /// <param name="shape"> used for clipping </param>
-    virtual ASPOSE_PAGE_SHARED_API void SetClip(System::SharedPtr<System::Drawing::Drawing2D::GraphicsPath> path);
-    virtual ASPOSE_PAGE_SHARED_API void WriteComment(System::String comment);
-    virtual ASPOSE_PAGE_SHARED_API System::String ToString();
+    ASPOSE_PAGE_SHARED_API void SetClip(System::SharedPtr<System::Drawing::Drawing2D::GraphicsPath> path) override;
+    ASPOSE_PAGE_SHARED_API void WriteComment(System::String comment) override;
+    ASPOSE_PAGE_SHARED_API System::String ToString() const override;
     
 protected:
 
@@ -197,13 +262,15 @@ protected:
     System::SharedPtr<Aspose::Page::EPS::GraphicsIO::Font::Encoding::CharTable> currentCharTable;
     int32_t currentPageNumber;
     
-    System::String get_WarningMessage();
+    ASPOSE_PAGE_SHARED_API System::String get_WarningMessage();
     
     /// <summary>
     /// Cloneconstructor </summary>
-    ApsDevice(System::SharedPtr<ApsDevice> device, bool doRestoreOnDispose);
+    ASPOSE_PAGE_SHARED_API ApsDevice(System::SharedPtr<ApsDevice> device, bool doRestoreOnDispose);
     
-    virtual ASPOSE_PAGE_SHARED_API void WriteBackground();
+    ASPOSE_PAGE_SHARED_API MEMBER_FUNCTION_MAKE_OBJECT_DECLARATION(ApsDevice, CODEPORTING_ARGS(System::SharedPtr<ApsDevice> device, bool doRestoreOnDispose));
+    ASPOSE_PAGE_SHARED_API void WriteBackground() override;
+    static System::SharedPtr<System::Drawing::Drawing2D::Matrix> DrMatrixToMatrix(System::SharedPtr<Aspose::Foundation::Drawing::DrMatrix> m);
     virtual ASPOSE_PAGE_SHARED_API System::SharedPtr<Aspose::Page::Device> Copy();
     virtual ASPOSE_PAGE_SHARED_API System::SharedPtr<Aspose::Page::Device> Create(double x, double y, double width, double height);
     virtual ASPOSE_PAGE_SHARED_API void WriteGraphicsSave();
@@ -220,22 +287,28 @@ protected:
     /// <param name="shape"> used for clipping </param>
     virtual ASPOSE_PAGE_SHARED_API void Clip(System::SharedPtr<System::Drawing::Drawing2D::GraphicsPath> s);
     virtual ASPOSE_PAGE_SHARED_API void WriteClip(System::SharedPtr<System::Drawing::Drawing2D::GraphicsPath> s);
-    virtual ASPOSE_PAGE_SHARED_API void WriteWidth(float width);
-    virtual ASPOSE_PAGE_SHARED_API void WriteCap(System::Drawing::Drawing2D::LineCap cap);
-    virtual ASPOSE_PAGE_SHARED_API void WriteJoin(System::Drawing::Drawing2D::LineJoin join);
-    virtual ASPOSE_PAGE_SHARED_API void WriteMiterLimit(float limit);
-    virtual ASPOSE_PAGE_SHARED_API void WriteDash(System::ArrayPtr<double> dash, double phase, System::Drawing::Drawing2D::DashCap dashCap);
-    virtual ASPOSE_PAGE_SHARED_API void WritePaint(System::SharedPtr<System::Drawing::SolidBrush> c);
-    virtual ASPOSE_PAGE_SHARED_API void WritePaint(System::SharedPtr<System::Drawing::Drawing2D::LinearGradientBrush> c);
-    virtual ASPOSE_PAGE_SHARED_API void WritePaint(System::SharedPtr<System::Drawing::TextureBrush> c);
-    virtual ASPOSE_PAGE_SHARED_API void WritePaint(System::SharedPtr<System::Drawing::Brush> paint);
+    ASPOSE_PAGE_SHARED_API void WriteWidth(float width) override;
+    ASPOSE_PAGE_SHARED_API void WriteCap(System::Drawing::Drawing2D::LineCap cap) override;
+    ASPOSE_PAGE_SHARED_API void WriteJoin(System::Drawing::Drawing2D::LineJoin join) override;
+    ASPOSE_PAGE_SHARED_API void WriteMiterLimit(float limit) override;
+    ASPOSE_PAGE_SHARED_API void WriteDash(System::ArrayPtr<double> dash, double phase, System::Drawing::Drawing2D::DashCap dashCap) override;
+    ASPOSE_PAGE_SHARED_API void WritePaint(System::SharedPtr<System::Drawing::SolidBrush> c) override;
+    ASPOSE_PAGE_SHARED_API void WritePaint(System::SharedPtr<System::Drawing::Drawing2D::LinearGradientBrush> c) override;
+    ASPOSE_PAGE_SHARED_API void WritePaint(System::SharedPtr<System::Drawing::TextureBrush> c) override;
+    ASPOSE_PAGE_SHARED_API void WritePaint(System::SharedPtr<System::Drawing::Brush> paint) override;
     /// <summary>
     /// Writes out a warning, by default to System.err.
     /// </summary>
     /// <param name="warning"> to be written </param>
-    virtual ASPOSE_PAGE_SHARED_API void WriteWarning(System::String warning);
-    virtual ASPOSE_PAGE_SHARED_API void WriteString(System::SharedPtr<ITrFont> font, System::String str);
-    ASPOSE_PAGE_SHARED_API System::Object::shared_members_type GetSharedMembers() override;
+    ASPOSE_PAGE_SHARED_API void WriteWarning(System::String warning) override;
+    ASPOSE_PAGE_SHARED_API void WriteString(System::SharedPtr<ITrFont> font, System::String str) override;
+    
+    virtual ASPOSE_PAGE_SHARED_API ~ApsDevice();
+    
+    #ifdef ASPOSE_GET_SHARED_MEMBERS
+    ASPOSE_PAGE_SHARED_API System::Object::shared_members_type GetSharedMembers() const override;
+    #endif
+    
     
 private:
 
@@ -261,11 +334,11 @@ private:
     static struct __StaticConstructor__ { __StaticConstructor__(); } s_constructor__;
     
     void Init();
-    static System::SharedPtr<System::Drawing::Drawing2D::Matrix> DrMatrixToMatrix(System::SharedPtr<Aspose::Foundation::Drawing::DrMatrix> m);
     void SetEvaluationWarning();
     System::SharedPtr<System::Drawing::Drawing2D::GraphicsPath> TransformShape(System::SharedPtr<System::Drawing::Drawing2D::Matrix> at, System::SharedPtr<System::Drawing::Drawing2D::GraphicsPath> s);
     System::SharedPtr<System::Drawing::Drawing2D::GraphicsPath> TransformShape(System::SharedPtr<System::Drawing::Drawing2D::GraphicsPath> s);
     System::SharedPtr<System::Drawing::Drawing2D::GraphicsPath> UntransformShape(System::SharedPtr<System::Drawing::Drawing2D::GraphicsPath> s);
+    System::String ToString_NonConst();
     /// <summary>
     /// See the comment of VectorGraphicsUtitlies1. </summary>
     ///  <seealso cref= VectorGraphicsUtitlies1#showCharacterCodes </seealso>

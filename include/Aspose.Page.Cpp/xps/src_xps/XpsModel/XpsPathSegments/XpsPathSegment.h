@@ -1,46 +1,77 @@
 ﻿#pragma once
+// Copyright (c) 2001-2022 Aspose Pty Ltd. All Rights Reserved.
 
-#include "Aspose.Page.Cpp/xps/src_xps/XpsModel/XpsElement.h"
+#include "Aspose.Page.Cpp/xps/src_xps/XpsModel/XpsObject.h"
+#include "Aspose.Page.Cpp/aspose_page_api_defs.h"
 
-namespace Aspose { namespace Page { namespace Xps { namespace Presentation { namespace Xps { class XpsPageWriter; } } } } }
-namespace Aspose { namespace Page { namespace Xps { namespace XpsModel { class XpsPathFigure; } } } }
-namespace Aspose { namespace Page { namespace Xps { namespace XpsModel { class XpsArcSegment; } } } }
-namespace Aspose { namespace Page { namespace Xps { namespace XpsModel { class XpsPathPolySegment; } } } }
-namespace Aspose { namespace Page { namespace Xps { class XpsUtils; } } }
-namespace Aspose { namespace Page { namespace Xps { namespace XpsModel { class XpsContext; } } } }
+namespace Aspose
+{
+namespace Page
+{
+namespace XPS
+{
+namespace Presentation
+{
+namespace Xps
+{
+class XpsPageWriter;
+} // namespace Xps
+} // namespace Presentation
+namespace XpsModel
+{
+class XpsArcSegment;
+template <typename> class XpsArray;
+class XpsContext;
+class XpsPathPolySegment;
+} // namespace XpsModel
+class XpsUtils;
+} // namespace XPS
+} // namespace Page
+} // namespace Aspose
+namespace System
+{
+namespace Drawing
+{
+class PointF;
+} // namespace Drawing
+class String;
+namespace Xml
+{
+class XmlElement;
+} // namespace Xml
+} // namespace System
 
 namespace Aspose {
 
 namespace Page {
 
-namespace Xps {
+namespace XPS {
 
 namespace XpsModel {
 
 /// <summary>
 /// Class incapsulating common features of all path segment elements.
 /// </summary>
-class XpsPathSegment : public Aspose::Page::Xps::XpsModel::XpsElement
+class ASPOSE_PAGE_SHARED_CLASS XpsPathSegment : public Aspose::Page::XPS::XpsModel::XpsObject
 {
     typedef XpsPathSegment ThisType;
-    typedef Aspose::Page::Xps::XpsModel::XpsElement BaseType;
+    typedef Aspose::Page::XPS::XpsModel::XpsObject BaseType;
     
     typedef ::System::BaseTypesInfo<BaseType> ThisTypeBaseTypesInfo;
     ASPOSE_PAGE_SHARED_RTTI_INFO_DECL();
     
-    FRIEND_FUNCTION_System_MakeObject;
-    friend class Aspose::Page::Xps::Presentation::Xps::XpsPageWriter;
-    friend class Aspose::Page::Xps::XpsModel::XpsPathFigure;
-    friend class Aspose::Page::Xps::XpsModel::XpsArcSegment;
-    friend class Aspose::Page::Xps::XpsModel::XpsPathPolySegment;
-    friend class Aspose::Page::Xps::XpsUtils;
+    friend class Aspose::Page::XPS::Presentation::Xps::XpsPageWriter;
+    friend class Aspose::Page::XPS::XpsModel::XpsArcSegment;
+    friend class Aspose::Page::XPS::XpsModel::XpsPathPolySegment;
+    friend class Aspose::Page::XPS::XpsUtils;
+    template<typename FT0> friend class Aspose::Page::XPS::XpsModel::XpsArray;
     
 public:
 
     /// <summary>
     /// Returns/sets the value specifying whether the stroke for this segment of the path is drawn.
     /// </summary>
-    ASPOSE_PAGE_SHARED_API bool get_IsStroked();
+    ASPOSE_PAGE_SHARED_API bool get_IsStroked() const;
     /// <summary>
     /// Returns/sets the value specifying whether the stroke for this segment of the path is drawn.
     /// </summary>
@@ -48,14 +79,14 @@ public:
     
 protected:
 
-    bool get_IsRelative();
+    bool get_IsRelative() const;
     void set_IsRelative(bool value);
     
     XpsPathSegment(System::SharedPtr<XpsContext> context, bool isStroked = true);
     
-    virtual ASPOSE_PAGE_SHARED_API void Initialize(System::SharedPtr<System::Xml::XmlElement> element);
+    ASPOSE_PAGE_SHARED_API void Initialize(System::SharedPtr<System::Xml::XmlElement> element) override;
     virtual System::String Abbreviate(System::String abbrChar, System::Drawing::PointF& endPoint) = 0;
-    virtual ASPOSE_PAGE_SHARED_API void CopySimplePropertyValues(System::SharedPtr<XpsElement> element);
+    ASPOSE_PAGE_SHARED_API void CopySimplePropertyValues(System::SharedPtr<XpsObject> obj) override;
     
 private:
 
@@ -65,7 +96,7 @@ private:
 };
 
 } // namespace XpsModel
-} // namespace Xps
+} // namespace XPS
 } // namespace Page
 } // namespace Aspose
 

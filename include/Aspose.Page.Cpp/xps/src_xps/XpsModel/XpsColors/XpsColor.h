@@ -1,36 +1,65 @@
 ﻿#pragma once
+// Copyright (c) 2001-2022 Aspose Pty Ltd. All Rights Reserved.
 
-#include <system/text/regularexpressions/regex.h>
-#include <system/string.h>
-#include <system/shared_ptr.h>
-#include <system/object.h>
 #include <system/array.h>
-#include <drawing/color.h>
 #include <cstdint>
 
 #include "Aspose.Page.Cpp/aspose_page_api_defs.h"
 
-namespace Aspose { namespace Page { namespace Xps { namespace Presentation { namespace Xps { class XpsPageWriter; } } } } }
-namespace Aspose { namespace Page { namespace Xps { namespace XpsModel { class XpsBrush; } } } }
-namespace Aspose { namespace Page { namespace Xps { namespace XpsModel { class XpsGradientBrush; } } } }
-namespace Aspose { namespace Page { namespace Xps { namespace XpsModel { class XpsGradientStop; } } } }
-namespace Aspose { namespace Page { namespace Xps { namespace XpsModel { class XpsSolidColorBrush; } } } }
-namespace Aspose { namespace Page { namespace Xps { namespace XpsModel { class XpsRgbColor; } } } }
-namespace System { class ObjectExt; }
-namespace Aspose { namespace Page { namespace Xps { namespace XpsModel { class XpsContext; } } } }
+namespace Aspose
+{
+namespace Page
+{
+namespace XPS
+{
+namespace Presentation
+{
+namespace Xps
+{
+class XpsPageWriter;
+} // namespace Xps
+} // namespace Presentation
+namespace XpsModel
+{
+class XpsBrush;
+class XpsContext;
+class XpsGradientBrush;
+class XpsGradientStop;
+class XpsIccBasedColor;
+class XpsRgbColor;
+class XpsSolidColorBrush;
+} // namespace XpsModel
+} // namespace XPS
+} // namespace Page
+} // namespace Aspose
+namespace System
+{
+namespace Drawing
+{
+class Color;
+} // namespace Drawing
+class ObjectExt;
+namespace Text
+{
+namespace RegularExpressions
+{
+class Regex;
+} // namespace RegularExpressions
+} // namespace Text
+} // namespace System
 
 namespace Aspose {
 
 namespace Page {
 
-namespace Xps {
+namespace XPS {
 
 namespace XpsModel {
 
 /// <summary>
 /// The base class incapsulating common color features.
 /// </summary>
-class XpsColor : public System::Object
+class ASPOSE_PAGE_SHARED_CLASS XpsColor : public System::Object
 {
     typedef XpsColor ThisType;
     typedef System::Object BaseType;
@@ -38,13 +67,13 @@ class XpsColor : public System::Object
     typedef ::System::BaseTypesInfo<BaseType> ThisTypeBaseTypesInfo;
     ASPOSE_PAGE_SHARED_RTTI_INFO_DECL();
     
-    FRIEND_FUNCTION_System_MakeObject;
-    friend class Aspose::Page::Xps::Presentation::Xps::XpsPageWriter;
-    friend class Aspose::Page::Xps::XpsModel::XpsBrush;
-    friend class Aspose::Page::Xps::XpsModel::XpsGradientBrush;
-    friend class Aspose::Page::Xps::XpsModel::XpsGradientStop;
-    friend class Aspose::Page::Xps::XpsModel::XpsSolidColorBrush;
-    friend class Aspose::Page::Xps::XpsModel::XpsRgbColor;
+    friend class Aspose::Page::XPS::Presentation::Xps::XpsPageWriter;
+    friend class Aspose::Page::XPS::XpsModel::XpsBrush;
+    friend class Aspose::Page::XPS::XpsModel::XpsGradientBrush;
+    friend class Aspose::Page::XPS::XpsModel::XpsGradientStop;
+    friend class Aspose::Page::XPS::XpsModel::XpsSolidColorBrush;
+    friend class Aspose::Page::XPS::XpsModel::XpsIccBasedColor;
+    friend class Aspose::Page::XPS::XpsModel::XpsRgbColor;
     friend class System::ObjectExt;
     
 public:
@@ -52,8 +81,9 @@ public:
     /// <summary>
     /// Convenience method for getting .NET native representation of any color/
     /// </summary>
-    /// <returns><see cref="System::Drawing::Color"/> structure</returns>
+    /// <returns><see cref="System::Drawing::Color"></see> structure</returns>
     virtual ASPOSE_PAGE_SHARED_API System::Drawing::Color ToColor() = 0;
+    System::String ToString() const override = 0;
     
 protected:
 
@@ -61,11 +91,15 @@ protected:
     
     XpsColor();
     
-    virtual System::String ToString() = 0;
     static System::SharedPtr<XpsColor> CreateColor(System::SharedPtr<XpsContext> context, System::String colorStr);
     static int32_t To255(double val);
     virtual System::SharedPtr<XpsColor> Clone() = 0;
-    ASPOSE_PAGE_SHARED_API System::Object::shared_members_type GetSharedMembers() override;
+    void Assert();
+    virtual ASPOSE_PAGE_SHARED_API void Dispose();
+    #ifdef ASPOSE_GET_SHARED_MEMBERS
+    ASPOSE_PAGE_SHARED_API System::Object::shared_members_type GetSharedMembers() const override;
+    #endif
+    
     
 private:
 
@@ -74,6 +108,7 @@ private:
     static System::SharedPtr<System::Text::RegularExpressions::Regex> RgbColor;
     static System::SharedPtr<System::Text::RegularExpressions::Regex> SrgbColor;
     static System::SharedPtr<System::Text::RegularExpressions::Regex> IccBasedColor;
+    bool _isDisposed;
     
     static bool TryGetRgbColor(System::String colorStr, System::SharedPtr<XpsColor>& color);
     static bool TryGetSrgbColor(System::String colorStr, System::SharedPtr<XpsColor>& color);
@@ -83,7 +118,7 @@ private:
 };
 
 } // namespace XpsModel
-} // namespace Xps
+} // namespace XPS
 } // namespace Page
 } // namespace Aspose
 

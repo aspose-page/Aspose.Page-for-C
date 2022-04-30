@@ -1,20 +1,37 @@
 ﻿#pragma once
+// Copyright (c) 2001-2022 Aspose Pty Ltd. All Rights Reserved.
 
-#include <system/string.h>
-#include <system/shared_ptr.h>
-#include <system/object.h>
-#include <system/collections/ienumerator.h>
+#include <system/details/pointer_collection_helpers.h>
 #include <system/collections/dictionary.h>
 #include <system/array.h>
-#include <drawing/size.h>
-#include <drawing/rectangle_f.h>
-#include <drawing/rectangle.h>
-#include <drawing/color.h>
 #include <cstdint>
 
 #include "Aspose.Page.Cpp/aspose_page_api_defs.h"
 
-namespace Aspose { namespace Page { class Margins; } }
+namespace Aspose
+{
+namespace Page
+{
+class Margins;
+} // namespace Page
+} // namespace Aspose
+namespace System
+{
+namespace Collections
+{
+namespace Generic
+{
+template <typename> class IEnumerator;
+} // namespace Generic
+} // namespace Collections
+namespace Drawing
+{
+class Color;
+class Rectangle;
+class RectangleF;
+class Size;
+} // namespace Drawing
+} // namespace System
 
 namespace Aspose {
 
@@ -25,7 +42,7 @@ namespace Page {
 /// returned. It also allows the hookup of two default property objects
 /// to be searched if this property object does not contain the property.    
 /// </summary>
-class UserProperties : public System::Collections::Generic::Dictionary<System::String, System::SharedPtr<System::Object>>
+class ASPOSE_PAGE_SHARED_CLASS UserProperties : public System::Collections::Generic::Dictionary<System::String, System::SharedPtr<System::Object>>
 {
     typedef UserProperties ThisType;
     typedef System::Collections::Generic::Dictionary<System::String, System::SharedPtr<System::Object>> BaseType;
@@ -334,12 +351,21 @@ public:
     /// <param name="def">Default value of property. </param>
     /// <returns>Property value.</returns>
     virtual ASPOSE_PAGE_SHARED_API bool IsProperty(System::String key, bool def);
+    ASPOSE_PAGE_SHARED_API void SetTemplateWeakPtr(uint32_t argument) override;
     
 protected:
 
+    /// <summary>
+    /// An alternative properties values.
+    /// </summary>
     System::SharedPtr<System::Collections::Generic::Dictionary<System::String, System::SharedPtr<System::Object>>> altDefaults;
     
-    ASPOSE_PAGE_SHARED_API System::Object::shared_members_type GetSharedMembers() override;
+    virtual ASPOSE_PAGE_SHARED_API ~UserProperties();
+    
+    #ifdef ASPOSE_GET_SHARED_MEMBERS
+    ASPOSE_PAGE_SHARED_API System::Object::shared_members_type GetSharedMembers() const override;
+    #endif
+    
     
 };
 

@@ -1,4 +1,5 @@
 ﻿#pragma once
+// Copyright (c) 2001-2022 Aspose Pty Ltd. All Rights Reserved.
 
 #include "Aspose.Page.Cpp/xps/src_xps/Import/LoadOptions.h"
 #include "Aspose.Page.Cpp/aspose_page_api_defs.h"
@@ -7,15 +8,15 @@ namespace Aspose {
 
 namespace Page {
 
-namespace Xps {
+namespace XPS {
 
 /// <summary>
 /// APS document loading options.
 /// </summary>
-class ApsLoadOptions : public Aspose::Page::Xps::LoadOptions
+class ASPOSE_PAGE_SHARED_CLASS ApsLoadOptions : public Aspose::Page::XPS::LoadOptions
 {
     typedef ApsLoadOptions ThisType;
-    typedef Aspose::Page::Xps::LoadOptions BaseType;
+    typedef Aspose::Page::XPS::LoadOptions BaseType;
     
     typedef ::System::BaseTypesInfo<BaseType> ThisTypeBaseTypesInfo;
     ASPOSE_PAGE_SHARED_RTTI_INFO_DECL();
@@ -29,7 +30,7 @@ public:
     
 };
 
-} // namespace Xps
+} // namespace XPS
 } // namespace Page
 } // namespace Aspose
 

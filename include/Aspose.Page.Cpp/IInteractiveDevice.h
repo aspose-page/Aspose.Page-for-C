@@ -1,14 +1,28 @@
 ﻿#pragma once
+// Copyright (c) 2001-2022 Aspose Pty Ltd. All Rights Reserved.
 
-#include <system/string.h>
 #include <system/object.h>
-#include <system/collections/list.h>
-#include <system/collections/idictionary.h>
-#include <drawing/rectangle_f.h>
-#include <drawing/point_f.h>
 #include <cstdint>
 
 #include "Aspose.Page.Cpp/aspose_page_api_defs.h"
+
+namespace System
+{
+namespace Collections
+{
+namespace Generic
+{
+template <typename, typename> class IDictionary;
+template <typename> class List;
+} // namespace Generic
+} // namespace Collections
+namespace Drawing
+{
+class PointF;
+class RectangleF;
+} // namespace Drawing
+class String;
+} // namespace System
 
 namespace Aspose {
 
@@ -17,7 +31,7 @@ namespace Page {
 /// <summary>
 /// The interface defining interactive features processing methods.
 /// </summary>
-class IInteractiveDevice : public virtual System::Object
+class ASPOSE_PAGE_SHARED_CLASS IInteractiveDevice : public virtual System::Object
 {
     typedef IInteractiveDevice ThisType;
     typedef System::Object BaseType;

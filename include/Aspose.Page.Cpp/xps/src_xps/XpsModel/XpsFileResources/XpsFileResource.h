@@ -1,52 +1,74 @@
 ﻿#pragma once
+// Copyright (c) 2001-2022 Aspose Pty Ltd. All Rights Reserved.
 
 #include <system/type_info.h>
-#include <system/string.h>
-#include <system/shared_ptr.h>
 #include <system/scope_guard.h>
 #include <system/object_ext.h>
-#include <system/object.h>
 #include <system/io/stream.h>
 #include <system/io/seekorigin.h>
 #include <system/exceptions.h>
 #include <system/details/force_copy_constructor.h>
 #include <system/constraints.h>
 
-#include "xps/src_xps/XpsModel/XpsContext/XpsContext.h"
 #include "xps/src_xps/Util/XpsUtils.h"
+#include "Aspose.Page.Cpp/xps/src_xps/XpsModel/XpsContext/XpsContext.h"
 #include "Aspose.Page.Cpp/aspose_page_api_defs.h"
 
-namespace Aspose { namespace Page { namespace Xps { namespace Presentation { class NativeConverter; } } } }
-namespace Aspose { namespace Page { namespace Xps { namespace Presentation { namespace Aps { class ApsConverter; } } } } }
-namespace Aspose { namespace Page { namespace Xps { namespace Presentation { namespace Xps { class XpsSerializer; } } } } }
-namespace Aspose { namespace Page { namespace Xps { namespace Presentation { namespace Xps { class XpsSerializationContext; } } } } }
-namespace Aspose { namespace Page { namespace Xps { namespace Presentation { namespace Xps { class XpsSerializationContextBase; } } } } }
-namespace Aspose { namespace Page { namespace Xps { namespace XpsModel { class XpsElement; } } } }
-namespace Aspose { namespace Page { namespace Xps { namespace XpsModel { class XpsGradientBrush; } } } }
-namespace Aspose { namespace Page { namespace Xps { namespace XpsModel { class XpsGradientStop; } } } }
-namespace Aspose { namespace Page { namespace Xps { namespace XpsModel { class XpsImageBrush; } } } }
-namespace Aspose { namespace Page { namespace Xps { namespace XpsModel { class XpsSolidColorBrush; } } } }
-namespace Aspose { namespace Page { namespace Xps { namespace XpsModel { class XpsIccBasedColor; } } } }
-namespace Aspose { namespace Page { namespace Xps { namespace XpsModel { class XpsFont; } } } }
-namespace Aspose { namespace Page { namespace Xps { namespace XpsModel { class XpsIccProfile; } } } }
-namespace Aspose { namespace Page { namespace Xps { namespace XpsModel { class XpsImage; } } } }
-namespace Aspose { namespace Page { namespace Xps { namespace XpsModel { class XpsGlyphs; } } } }
-namespace Aspose { namespace Page { namespace Xps { namespace Tests { class XpsFontTests; } } } }
-namespace Aspose { namespace Page { namespace Xps { namespace Tests { class XpsIccProfileTests; } } } }
-namespace Aspose { namespace Page { namespace Xps { namespace Tests { class XpsImageTests; } } } }
+namespace Aspose
+{
+namespace Page
+{
+namespace XPS
+{
+namespace Presentation
+{
+namespace Aps
+{
+class ApsConverter;
+} // namespace Aps
+class NativeConverter;
+namespace Xps
+{
+class XpsSerializationContext;
+class XpsSerializationContextBase;
+class XpsSerializer;
+} // namespace Xps
+} // namespace Presentation
+namespace Tests
+{
+class XpsFontTests;
+class XpsIccProfileTests;
+class XpsImageTests;
+} // namespace Tests
+namespace XpsModel
+{
+class XpsElement;
+class XpsFont;
+class XpsGlyphs;
+class XpsGradientBrush;
+class XpsGradientStop;
+class XpsIccBasedColor;
+class XpsIccProfile;
+class XpsImage;
+class XpsImageBrush;
+class XpsSolidColorBrush;
+} // namespace XpsModel
+} // namespace XPS
+} // namespace Page
+} // namespace Aspose
 
 namespace Aspose {
 
 namespace Page {
 
-namespace Xps {
+namespace XPS {
 
 namespace XpsModel {
 
 /// <summary>
 /// Class incapsulating common features of all file resources.
 /// </summary>
-class XpsFileResource : public System::Object
+class ASPOSE_PAGE_SHARED_CLASS XpsFileResource : public System::Object
 {
     typedef XpsFileResource ThisType;
     typedef System::Object BaseType;
@@ -54,45 +76,55 @@ class XpsFileResource : public System::Object
     typedef ::System::BaseTypesInfo<BaseType> ThisTypeBaseTypesInfo;
     ASPOSE_PAGE_SHARED_RTTI_INFO_DECL();
     
-    FRIEND_FUNCTION_System_MakeObject;
-    friend class Aspose::Page::Xps::Presentation::NativeConverter;
-    friend class Aspose::Page::Xps::Presentation::Aps::ApsConverter;
-    friend class Aspose::Page::Xps::Presentation::Xps::XpsSerializer;
-    friend class Aspose::Page::Xps::Presentation::Xps::XpsSerializationContext;
-    friend class Aspose::Page::Xps::Presentation::Xps::XpsSerializationContextBase;
-    friend class Aspose::Page::Xps::XpsModel::XpsElement;
-    friend class Aspose::Page::Xps::XpsModel::XpsGradientBrush;
-    friend class Aspose::Page::Xps::XpsModel::XpsGradientStop;
-    friend class Aspose::Page::Xps::XpsModel::XpsImageBrush;
-    friend class Aspose::Page::Xps::XpsModel::XpsSolidColorBrush;
-    friend class Aspose::Page::Xps::XpsModel::XpsIccBasedColor;
-    friend class Aspose::Page::Xps::XpsModel::XpsContext;
-    friend class Aspose::Page::Xps::XpsModel::XpsFont;
-    friend class Aspose::Page::Xps::XpsModel::XpsIccProfile;
-    friend class Aspose::Page::Xps::XpsModel::XpsImage;
-    friend class Aspose::Page::Xps::XpsModel::XpsGlyphs;
-    friend class Aspose::Page::Xps::Tests::XpsFontTests;
-    friend class Aspose::Page::Xps::Tests::XpsIccProfileTests;
-    friend class Aspose::Page::Xps::Tests::XpsImageTests;
+    friend class Aspose::Page::XPS::Presentation::NativeConverter;
+    friend class Aspose::Page::XPS::Presentation::Aps::ApsConverter;
+    friend class Aspose::Page::XPS::Presentation::Xps::XpsSerializer;
+    friend class Aspose::Page::XPS::Presentation::Xps::XpsSerializationContext;
+    friend class Aspose::Page::XPS::Presentation::Xps::XpsSerializationContextBase;
+    friend class Aspose::Page::XPS::XpsModel::XpsGradientBrush;
+    friend class Aspose::Page::XPS::XpsModel::XpsGradientStop;
+    friend class Aspose::Page::XPS::XpsModel::XpsImageBrush;
+    friend class Aspose::Page::XPS::XpsModel::XpsSolidColorBrush;
+    friend class Aspose::Page::XPS::XpsModel::XpsIccBasedColor;
+    friend class Aspose::Page::XPS::XpsModel::XpsContext;
+    friend class Aspose::Page::XPS::XpsModel::XpsElement;
+    friend class Aspose::Page::XPS::XpsModel::XpsFont;
+    friend class Aspose::Page::XPS::XpsModel::XpsIccProfile;
+    friend class Aspose::Page::XPS::XpsModel::XpsImage;
+    friend class Aspose::Page::XPS::XpsModel::XpsGlyphs;
+    friend class Aspose::Page::XPS::Tests::XpsFontTests;
+    friend class Aspose::Page::XPS::Tests::XpsIccProfileTests;
+    friend class Aspose::Page::XPS::Tests::XpsImageTests;
     
 protected:
 
-    System::SharedPtr<XpsContext> _context;
-    System::String _source;
-    bool _isExternal;
-    System::SharedPtr<System::IO::Stream> _stream;
-    
-    System::String get_Source();
+    System::SharedPtr<XpsContext> get_Context() const;
+    bool get_IsExternal() const;
+    System::String get_Source() const;
     void set_Source(System::String value);
-    System::SharedPtr<System::IO::Stream> get_Stream();
+    System::SharedPtr<System::IO::Stream> get_Stream() const;
     virtual ASPOSE_PAGE_SHARED_API System::String get_DefaultNamePrefix();
     virtual ASPOSE_PAGE_SHARED_API System::String get_Extension();
+    int32_t get_Hash() const;
+    void set_Hash(int32_t value);
     
     XpsFileResource(System::SharedPtr<XpsContext> context, System::String source);
+    
+    MEMBER_FUNCTION_MAKE_OBJECT_DECLARATION(XpsFileResource, CODEPORTING_ARGS(System::SharedPtr<XpsContext> context, System::String source));
+    
     XpsFileResource(System::SharedPtr<XpsContext> context, bool isExternal = false);
+    
+    MEMBER_FUNCTION_MAKE_OBJECT_DECLARATION(XpsFileResource, CODEPORTING_ARGS(System::SharedPtr<XpsContext> context, bool isExternal = false));
+    
     XpsFileResource(System::SharedPtr<XpsContext> context, System::SharedPtr<System::IO::Stream> stream, bool isExternal = false);
     
-    virtual ASPOSE_PAGE_SHARED_API void Load();
+    MEMBER_FUNCTION_MAKE_OBJECT_DECLARATION(XpsFileResource, CODEPORTING_ARGS(System::SharedPtr<XpsContext> context, System::SharedPtr<System::IO::Stream> stream, bool isExternal = false));
+    
+    XpsFileResource(System::SharedPtr<XpsContext> context, System::SharedPtr<XpsFileResource> resource);
+    
+    MEMBER_FUNCTION_MAKE_OBJECT_DECLARATION(XpsFileResource, CODEPORTING_ARGS(System::SharedPtr<XpsContext> context, System::SharedPtr<XpsFileResource> resource));
+    virtual ASPOSE_PAGE_SHARED_API System::SharedPtr<System::IO::Stream> CreateStream();
+    virtual ASPOSE_PAGE_SHARED_API void LoadExternal();
     template <typename T>
     static T GetXpsResource(System::SharedPtr<XpsContext> context, T fileResource, System::SharedPtr<System::IO::Stream> stream)
     {
@@ -108,9 +140,16 @@ protected:
         stream->Seek(0, System::IO::SeekOrigin::Begin);
         
         {
-            auto __finally_guard_0 = ::System::MakeScopeGuard([&stream]()
+            auto __finally_guard_0 = ::System::MakeScopeGuard([&fileResource, &stream]()
             {
-                stream->Seek(0, System::IO::SeekOrigin::Begin);
+                if (fileResource->_isExternal)
+                {
+                    stream->Seek(0, System::IO::SeekOrigin::Begin);
+                }
+                else
+                {
+                    stream->Dispose();
+                }
             });
             
             try
@@ -123,14 +162,15 @@ protected:
                 }
                 
                 context->AddFileResourceHash(stream, hash);
-                if (cachedResource == nullptr)
+                if (cachedResource != nullptr)
                 {
-                    context->AddFileResource(hash, fileResource);
-                    XpsUtils::CopyStream(stream, fileResource->get_Stream());
-                    return fileResource;
+                    return System::StaticCast<typename T::Pointee_>(cachedResource);
                 }
                 
-                return System::StaticCast<typename T::Pointee_>(cachedResource);
+                context->AddFileResource(hash, fileResource);
+                XpsUtils::CopyStream(stream, fileResource->get_Stream());
+                
+                return System::Details::ForceCopyConstructor(fileResource);
             }
             catch (...)
             {
@@ -162,13 +202,18 @@ protected:
                     throw System::ArgumentException(u"Invalid resource type.");
                 }
                 
-                if (resource == nullptr)
+                if (resource != nullptr)
                 {
-                    context->AddFileResource(hash, fileResource);
-                    return System::Details::ForceCopyConstructor(fileResource);
+                    return System::StaticCast<typename T::Pointee_>(resource);
                 }
                 
-                return System::StaticCast<typename T::Pointee_>(resource);
+                if (fileResource->_context != context)
+                {
+                    fileResource = System::StaticCast<typename T::Pointee_>(fileResource->Clone(context));
+                }
+                context->AddFileResource(hash, fileResource);
+                
+                return System::Details::ForceCopyConstructor(fileResource);
             }
             catch (...)
             {
@@ -179,12 +224,30 @@ protected:
     
     static System::SharedPtr<XpsFileResource> Create(System::SharedPtr<XpsContext> context, System::String path, System::SharedPtr<System::IO::Stream> stream);
     void Internalize();
-    ASPOSE_PAGE_SHARED_API System::Object::shared_members_type GetSharedMembers() override;
+    void Assert();
+    void Dispose();
+    virtual ASPOSE_PAGE_SHARED_API System::SharedPtr<XpsFileResource> Clone(System::SharedPtr<XpsContext> context);
+    
+    virtual ASPOSE_PAGE_SHARED_API ~XpsFileResource();
+    
+    #ifdef ASPOSE_GET_SHARED_MEMBERS
+    ASPOSE_PAGE_SHARED_API System::Object::shared_members_type GetSharedMembers() const override;
+    #endif
+    
+    
+private:
+
+    System::WeakPtr<XpsContext> _context;
+    System::String _source;
+    bool _isExternal;
+    System::SharedPtr<System::IO::Stream> _stream;
+    bool _isDisposed;
+    int32_t _hash;
     
 };
 
 } // namespace XpsModel
-} // namespace Xps
+} // namespace XPS
 } // namespace Page
 } // namespace Aspose
 

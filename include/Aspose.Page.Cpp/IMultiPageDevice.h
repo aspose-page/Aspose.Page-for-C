@@ -1,11 +1,15 @@
 ﻿#pragma once
+// Copyright (c) 2001-2022 Aspose Pty Ltd. All Rights Reserved.
 
-#include <system/string.h>
-#include <system/shared_ptr.h>
 #include <system/object.h>
 #include <cstdint>
 
 #include "Aspose.Page.Cpp/aspose_page_api_defs.h"
+
+namespace System
+{
+class String;
+} // namespace System
 
 namespace Aspose {
 
@@ -14,7 +18,7 @@ namespace Page {
 /// <summary>
 /// This interface contains methods for manipulating multi-paged device.
 /// </summary>
-class IMultiPageDevice : public virtual System::Object
+class ASPOSE_PAGE_SHARED_CLASS IMultiPageDevice : public virtual System::Object
 {
     typedef IMultiPageDevice ThisType;
     typedef System::Object BaseType;

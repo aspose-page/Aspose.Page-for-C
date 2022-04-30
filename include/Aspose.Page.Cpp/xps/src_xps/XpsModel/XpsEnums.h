@@ -1,5 +1,7 @@
 ﻿#pragma once
+// Copyright (c) 2001-2022 Aspose Pty Ltd. All Rights Reserved.
 
+#include <system/object_ext.h>
 #include <system/enum.h>
 
 #include "Aspose.Page.Cpp/aspose_page_api_defs.h"
@@ -8,7 +10,7 @@ namespace Aspose {
 
 namespace Page {
 
-namespace Xps {
+namespace XPS {
 
 namespace XpsModel {
 
@@ -224,59 +226,59 @@ enum class XpsEdgeMode
 };
 
 } // namespace XpsModel
-} // namespace Xps
+} // namespace XPS
 } // namespace Page
 } // namespace Aspose
 
 template<>
-struct EnumMetaInfo<Aspose::Page::Xps::XpsModel::XpsDashCap>
+struct EnumMetaInfo<Aspose::Page::XPS::XpsModel::XpsDashCap>
 {
-    static const ASPOSE_PAGE_SHARED_API std::array<std::pair<Aspose::Page::Xps::XpsModel::XpsDashCap, const char_t*>, 4>& values();
+    static const ASPOSE_PAGE_SHARED_API std::array<std::pair<Aspose::Page::XPS::XpsModel::XpsDashCap, const char_t*>, 4>& values();
 };
 template<>
-struct EnumMetaInfo<Aspose::Page::Xps::XpsModel::XpsLineCap>
+struct EnumMetaInfo<Aspose::Page::XPS::XpsModel::XpsLineCap>
 {
-    static const ASPOSE_PAGE_SHARED_API std::array<std::pair<Aspose::Page::Xps::XpsModel::XpsLineCap, const char_t*>, 4>& values();
+    static const ASPOSE_PAGE_SHARED_API std::array<std::pair<Aspose::Page::XPS::XpsModel::XpsLineCap, const char_t*>, 4>& values();
 };
 template<>
-struct EnumMetaInfo<Aspose::Page::Xps::XpsModel::XpsLineJoin>
+struct EnumMetaInfo<Aspose::Page::XPS::XpsModel::XpsLineJoin>
 {
-    static const ASPOSE_PAGE_SHARED_API std::array<std::pair<Aspose::Page::Xps::XpsModel::XpsLineJoin, const char_t*>, 3>& values();
+    static const ASPOSE_PAGE_SHARED_API std::array<std::pair<Aspose::Page::XPS::XpsModel::XpsLineJoin, const char_t*>, 3>& values();
 };
 template<>
-struct EnumMetaInfo<Aspose::Page::Xps::XpsModel::XpsStyleSimulations>
+struct EnumMetaInfo<Aspose::Page::XPS::XpsModel::XpsStyleSimulations>
 {
-    static const ASPOSE_PAGE_SHARED_API std::array<std::pair<Aspose::Page::Xps::XpsModel::XpsStyleSimulations, const char_t*>, 4>& values();
+    static const ASPOSE_PAGE_SHARED_API std::array<std::pair<Aspose::Page::XPS::XpsModel::XpsStyleSimulations, const char_t*>, 4>& values();
 };
 template<>
-struct EnumMetaInfo<Aspose::Page::Xps::XpsModel::XpsFillRule>
+struct EnumMetaInfo<Aspose::Page::XPS::XpsModel::XpsFillRule>
 {
-    static const ASPOSE_PAGE_SHARED_API std::array<std::pair<Aspose::Page::Xps::XpsModel::XpsFillRule, const char_t*>, 2>& values();
+    static const ASPOSE_PAGE_SHARED_API std::array<std::pair<Aspose::Page::XPS::XpsModel::XpsFillRule, const char_t*>, 2>& values();
 };
 template<>
-struct EnumMetaInfo<Aspose::Page::Xps::XpsModel::XpsSweepDirection>
+struct EnumMetaInfo<Aspose::Page::XPS::XpsModel::XpsSweepDirection>
 {
-    static const ASPOSE_PAGE_SHARED_API std::array<std::pair<Aspose::Page::Xps::XpsModel::XpsSweepDirection, const char_t*>, 2>& values();
+    static const ASPOSE_PAGE_SHARED_API std::array<std::pair<Aspose::Page::XPS::XpsModel::XpsSweepDirection, const char_t*>, 2>& values();
 };
 template<>
-struct EnumMetaInfo<Aspose::Page::Xps::XpsModel::XpsTileMode>
+struct EnumMetaInfo<Aspose::Page::XPS::XpsModel::XpsTileMode>
 {
-    static const ASPOSE_PAGE_SHARED_API std::array<std::pair<Aspose::Page::Xps::XpsModel::XpsTileMode, const char_t*>, 5>& values();
+    static const ASPOSE_PAGE_SHARED_API std::array<std::pair<Aspose::Page::XPS::XpsModel::XpsTileMode, const char_t*>, 5>& values();
 };
 template<>
-struct EnumMetaInfo<Aspose::Page::Xps::XpsModel::XpsColorInterpolationMode>
+struct EnumMetaInfo<Aspose::Page::XPS::XpsModel::XpsColorInterpolationMode>
 {
-    static const ASPOSE_PAGE_SHARED_API std::array<std::pair<Aspose::Page::Xps::XpsModel::XpsColorInterpolationMode, const char_t*>, 2>& values();
+    static const ASPOSE_PAGE_SHARED_API std::array<std::pair<Aspose::Page::XPS::XpsModel::XpsColorInterpolationMode, const char_t*>, 2>& values();
 };
 template<>
-struct EnumMetaInfo<Aspose::Page::Xps::XpsModel::XpsSpreadMethod>
+struct EnumMetaInfo<Aspose::Page::XPS::XpsModel::XpsSpreadMethod>
 {
-    static const ASPOSE_PAGE_SHARED_API std::array<std::pair<Aspose::Page::Xps::XpsModel::XpsSpreadMethod, const char_t*>, 3>& values();
+    static const ASPOSE_PAGE_SHARED_API std::array<std::pair<Aspose::Page::XPS::XpsModel::XpsSpreadMethod, const char_t*>, 3>& values();
 };
 template<>
-struct EnumMetaInfo<Aspose::Page::Xps::XpsModel::XpsEdgeMode>
+struct EnumMetaInfo<Aspose::Page::XPS::XpsModel::XpsEdgeMode>
 {
-    static const ASPOSE_PAGE_SHARED_API std::array<std::pair<Aspose::Page::Xps::XpsModel::XpsEdgeMode, const char_t*>, 2>& values();
+    static const ASPOSE_PAGE_SHARED_API std::array<std::pair<Aspose::Page::XPS::XpsModel::XpsEdgeMode, const char_t*>, 2>& values();
 };
 
 

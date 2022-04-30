@@ -1,8 +1,7 @@
 ﻿#pragma once
+// Copyright (c) 2001-2022 Aspose Pty Ltd. All Rights Reserved.
 
 #include <system/string.h>
-#include <system/shared_ptr.h>
-#include <system/object.h>
 #include <cstdint>
 
 #include "Aspose.Page.Cpp/aspose_page_api_defs.h"
@@ -14,7 +13,7 @@ namespace Page {
 /// <summary>
 /// This class encapsulates top, left, bottom and right margins.
 /// </summary>
-class Margins : public System::Object
+class ASPOSE_PAGE_SHARED_CLASS Margins : public System::Object
 {
     typedef Margins ThisType;
     typedef System::Object BaseType;
@@ -24,9 +23,21 @@ class Margins : public System::Object
     
 public:
 
+    /// <summary>
+    /// Top margin.
+    /// </summary>
     int32_t top;
+    /// <summary>
+    /// Left margin.
+    /// </summary>
     int32_t left;
+    /// <summary>
+    /// Bottom margin.
+    /// </summary>
     int32_t bottom;
+    /// <summary>
+    /// Right margin.
+    /// </summary>
     int32_t right;
     
     /// <summary>
@@ -51,17 +62,21 @@ public:
     /// </summary>
     /// <param name="obj">Another margins object.</param>
     /// <returns>True if all margins are equal.</returns>
-    virtual ASPOSE_PAGE_SHARED_API bool Equals(System::SharedPtr<System::Object> obj);
+    ASPOSE_PAGE_SHARED_API bool Equals(System::SharedPtr<System::Object> obj) override;
     /// <summary>
     /// Calculates hashcode for this margins object.
     /// </summary>
     /// <returns> A hashcode. </returns>
-    virtual ASPOSE_PAGE_SHARED_API int32_t GetHashCode() const;
+    ASPOSE_PAGE_SHARED_API int32_t GetHashCode() const override;
     /// <summary>
     /// Make up a string representing this margins object.
     /// </summary>
     /// <returns> A string representation of this margins object. </returns>
-    virtual ASPOSE_PAGE_SHARED_API System::String ToString();
+    ASPOSE_PAGE_SHARED_API System::String ToString() const override;
+    
+private:
+
+    System::String ToString_NonConst();
     
 };
 

@@ -1,7 +1,14 @@
 ﻿#pragma once
+// Copyright (c) 2001-2022 Aspose Pty Ltd. All Rights Reserved.
 
 // C# preprocessor directive: #if ASPOSE_PAGE
 
+
+// C# preprocessor directive: #elif ASPOSE_TEX
+
+// C# INACTIVE CODE:
+// using LicenseCore = Aspose.TeX.LicenseCore;
+// using LicenseState = Aspose.TeX.LicenseState;
 
 // C# preprocessor directive: #else
 
@@ -12,50 +19,109 @@
 // C# preprocessor directive: #endif
 
 
-#include <system/string.h>
-#include <system/shared_ptr.h>
-#include <system/object.h>
 #include <system/exceptions.h>
-#include <system/collections/dictionary.h>
 #include <system/array.h>
-#include <drawing/texture_brush.h>
-#include <drawing/solid_brush.h>
 #include <drawing/size.h>
-#include <drawing/rectangle_f.h>
-#include <drawing/pen.h>
-#include <drawing/drawing2d/matrix.h>
-#include <drawing/drawing2d/linear_gradient_brush.h>
-#include <drawing/drawing2d/line_join.h>
-#include <drawing/drawing2d/line_cap.h>
-#include <drawing/drawing2d/graphics_path.h>
-#include <drawing/drawing2d/dash_cap.h>
 #include <drawing/color.h>
-#include <drawing/brush.h>
-#include <drawing/bitmap.h>
 #include <cstdint>
 
 #include "Aspose.Page.Cpp/aspose_page_api_defs.h"
 
-namespace Aspose { namespace Page { namespace LicenseManagement { class VentureLicense; } } }
-namespace Aspose { namespace Page { namespace LicenseManagement { class VentureLicenseDecoder; } } }
-namespace Aspose { namespace Page { namespace EPS { namespace Graphics2d { class PixelGraphics2D; } } } }
-namespace Aspose { namespace Page { namespace EPS { namespace Graphics2d { class ScreenConstants; } } } }
-namespace Aspose { namespace Page { namespace EPS { namespace Device { class ApsDevice; } } } }
-namespace Aspose { namespace Page { namespace EPS { namespace Device { class ImageDevice; } } } }
-namespace Aspose { namespace Page { namespace EPS { namespace GraphicsIO { namespace Font { class FontUtilities; } } } } }
-namespace Aspose { namespace Page { namespace EPS { namespace Device { class PdfDevice; } } } }
-namespace Aspose { namespace Page { namespace EPS { class PsDocument; } } }
-namespace Aspose { namespace Page { namespace Xps { namespace Presentation { namespace Image { class ImageDevice; } } } } }
-namespace Aspose { namespace Page { namespace Xps { namespace Presentation { namespace Pdf { class PdfDevice; } } } } }
-namespace Aspose { namespace Page { namespace Xps { namespace Presentation { class XpsPresenter; } } } }
-namespace Aspose { namespace Page { namespace Xps { namespace Presentation { namespace Aps { class ApsDevice; } } } } }
-namespace Aspose { namespace Page { namespace Xps { class XpsDocument; } } }
-namespace Aspose { namespace Page { enum class TextRenderingMode; } }
-namespace Aspose { namespace Page { class UserProperties; } }
-namespace Aspose { namespace Page { class SaveOptions; } }
-namespace Aspose { namespace Page { class ITrFont; } }
-namespace Aspose { namespace Page { class Margins; } }
-namespace Aspose { namespace Rendering { class ApsGlyphsIndices; } }
+namespace Aspose
+{
+namespace Page
+{
+namespace EPS
+{
+namespace Device
+{
+class ApsDevice;
+class ImageDevice;
+class PdfDevice;
+} // namespace Device
+namespace Graphics2d
+{
+class PixelGraphics2D;
+class ScreenConstants;
+} // namespace Graphics2d
+namespace GraphicsIO
+{
+namespace Font
+{
+class FontUtilities;
+} // namespace Font
+} // namespace GraphicsIO
+namespace Postscript
+{
+class PSComment;
+class SetPageDevice;
+} // namespace Postscript
+class PsDocument;
+} // namespace EPS
+class ITrFont;
+namespace LicenseManagement
+{
+class VentureLicense;
+class VentureLicenseDecoder;
+} // namespace LicenseManagement
+class Margins;
+class SaveOptions;
+enum class TextRenderingMode;
+class UserProperties;
+namespace XPS
+{
+namespace Presentation
+{
+namespace Aps
+{
+class ApsDevice;
+} // namespace Aps
+namespace Image
+{
+class ImageDevice;
+} // namespace Image
+namespace Pdf
+{
+class PdfDevice;
+} // namespace Pdf
+class XpsPresenter;
+} // namespace Presentation
+class XpsDocument;
+} // namespace XPS
+} // namespace Page
+namespace Rendering
+{
+class ApsGlyphsIndices;
+} // namespace Rendering
+} // namespace Aspose
+namespace System
+{
+namespace Collections
+{
+namespace Generic
+{
+template <typename, typename> class Dictionary;
+} // namespace Generic
+} // namespace Collections
+namespace Drawing
+{
+class Bitmap;
+class Brush;
+namespace Drawing2D
+{
+enum class DashCap;
+class GraphicsPath;
+class LinearGradientBrush;
+enum class LineCap;
+enum class LineJoin;
+class Matrix;
+} // namespace Drawing2D
+class Pen;
+class RectangleF;
+class SolidBrush;
+class TextureBrush;
+} // namespace Drawing
+} // namespace System
 
 namespace Aspose {
 
@@ -65,7 +131,7 @@ namespace Page {
 /// This class encapsulates rendering of document to abstract device.
 /// Rendering of the document is performed page by page.
 /// </summary>
-class Device : public virtual System::Object
+class ASPOSE_PAGE_SHARED_CLASS Device : public virtual System::Object
 {
     typedef Device ThisType;
     typedef System::Object BaseType;
@@ -73,7 +139,6 @@ class Device : public virtual System::Object
     typedef ::System::BaseTypesInfo<BaseType> ThisTypeBaseTypesInfo;
     ASPOSE_PAGE_SHARED_RTTI_INFO_DECL();
     
-    FRIEND_FUNCTION_System_MakeObject;
     friend class Aspose::Page::LicenseManagement::VentureLicenseDecoder;
     friend class Aspose::Page::EPS::Graphics2d::PixelGraphics2D;
     friend class Aspose::Page::EPS::Graphics2d::ScreenConstants;
@@ -81,15 +146,18 @@ class Device : public virtual System::Object
     friend class Aspose::Page::EPS::Device::ImageDevice;
     friend class Aspose::Page::EPS::GraphicsIO::Font::FontUtilities;
     friend class Aspose::Page::EPS::Device::PdfDevice;
+    friend class Aspose::Page::EPS::Postscript::SetPageDevice;
+    friend class Aspose::Page::EPS::Postscript::PSComment;
     friend class Aspose::Page::EPS::PsDocument;
-    friend class Aspose::Page::Xps::Presentation::Image::ImageDevice;
-    friend class Aspose::Page::Xps::Presentation::Pdf::PdfDevice;
-    friend class Aspose::Page::Xps::Presentation::XpsPresenter;
-    friend class Aspose::Page::Xps::Presentation::Aps::ApsDevice;
-    friend class Aspose::Page::Xps::XpsDocument;
+    friend class Aspose::Page::XPS::Presentation::Image::ImageDevice;
+    friend class Aspose::Page::XPS::Presentation::Pdf::PdfDevice;
+    friend class Aspose::Page::XPS::Presentation::XpsPresenter;
+    friend class Aspose::Page::XPS::Presentation::Aps::ApsDevice;
+    friend class Aspose::Page::XPS::XpsDocument;
     
 public:
 
+    /// <summary> Current device version. </summary>
     static ASPOSE_PAGE_SHARED_API System::String VERSION;
     
     /// <summary>
@@ -99,7 +167,7 @@ public:
     /// <summary>
     /// Device properties including metadata.
     /// </summary>
-    ASPOSE_PAGE_SHARED_API System::SharedPtr<System::Collections::Generic::Dictionary<System::String, System::SharedPtr<System::Object>>> get_Properties();
+    ASPOSE_PAGE_SHARED_API System::SharedPtr<System::Collections::Generic::Dictionary<System::String, System::SharedPtr<System::Object>>> get_Properties() const;
     /// <summary>
     /// Device properties including metadata.
     /// </summary>
@@ -107,7 +175,7 @@ public:
     /// <summary>
     /// Returns or specifies creator of resulting device output.
     /// </summary>
-    ASPOSE_PAGE_SHARED_API System::String get_Creator();
+    ASPOSE_PAGE_SHARED_API System::String get_Creator() const;
     /// <summary>
     /// Returns or specifies creator of resulting device output.
     /// </summary>
@@ -203,7 +271,7 @@ public:
     ASPOSE_PAGE_SHARED_API bool get_IsLicensed();
     
     /// <summary>
-    /// Initializes <see cref="Device"/> with a size of a page.
+    /// Initializes <see cref="Device"></see> with a size of a page.
     /// </summary>
     /// <param name="pageSize">Page size. </param>
     ASPOSE_PAGE_SHARED_API Device(System::Drawing::Size pageSize);
@@ -367,11 +435,6 @@ public:
     /// <param name="comment"> A comment to be written. </param>
     virtual ASPOSE_PAGE_SHARED_API void WriteComment(System::String comment);
     /// <summary>
-    /// Returns the name of device type.
-    /// </summary>
-    /// <returns>Type name.</returns>
-    virtual ASPOSE_PAGE_SHARED_API System::String ToString();
-    /// <summary>
     /// Draws an arc.
     /// </summary>
     /// <param name="x"> X coordinate of center of the arc. </param>
@@ -493,36 +556,58 @@ public:
     /// <param name="arcWidth"> A width of circumscribed rectangle of the arc that rounds an angle of the rectangle. </param>
     /// <param name="arcHeight"> A height of circumscribed rectangle of the arc that rounds an angle of the rectangle. </param>
     virtual ASPOSE_PAGE_SHARED_API void FillRoundRect(double x, double y, double width, double height, double arcWidth, double arcHeight);
+    /// <summary>
+    /// Returns the name of device type.
+    /// </summary>
+    /// <returns>Type name.</returns>
+    ASPOSE_PAGE_SHARED_API System::String ToString() const override;
     
 protected:
 
+    /// <summary> Creator of resulting device output. </summary>
     System::String creator;
+    /// <summary> Options for managing rendering process. </summary>
     System::SharedPtr<Aspose::Page::SaveOptions> saveOptions;
+    /// <summary> Size of the page. </summary>
     System::Drawing::Size size;
+    /// <summary> Current opacity. </summary>
     float opacity;
+    /// <summary> Current stroke. </summary>
     System::SharedPtr<System::Drawing::Pen> stroke;
+    /// <summary> Current paint. </summary>
     System::SharedPtr<System::Drawing::Brush> paint;
+    /// <summary> Current opacity mask. </summary>
     System::SharedPtr<System::Drawing::Brush> opacityMask;
+    /// <summary> Current font. </summary>
     System::SharedPtr<ITrFont> font;
+    /// <summary> Current character transform. </summary>
     System::SharedPtr<System::Drawing::Drawing2D::Matrix> charTM;
+    /// <summary> Current text rendering mode. </summary>
     Aspose::Page::TextRenderingMode textRenderingMode;
+    /// <summary> Current text stroke width. </summary>
     float textStrokeWidth;
+    bool mainDocument;
+    
+    bool get_IsMainDocument() const;
     
     /// <summary>
-    /// Initializes new instance of <see cref="Device"/>.
+    /// Initializes new instance of <see cref="Device"></see>.
     /// </summary>
-    Device();
+    ASPOSE_PAGE_SHARED_API Device();
+    
+    virtual ASPOSE_PAGE_SHARED_API void ReNewForMerge(bool mainDocument);
+    
     /// <summary>
     /// Clone constructor. Initializes this device with existing device.
     /// </summary>
     /// <param name="device"> Existing device. </param>
-    Device(System::SharedPtr<Device> device);
+    ASPOSE_PAGE_SHARED_API Device(System::SharedPtr<Device> device);
     
     /// <summary>
     /// Initializes default properties of device with values.
     /// </summary>
     /// <param name="defaults"> Default properties with values. </param>
-    void InitProperties(System::SharedPtr<System::Collections::Generic::Dictionary<System::String, System::SharedPtr<System::Object>>> defaults);
+    ASPOSE_PAGE_SHARED_API void InitProperties(System::SharedPtr<System::Collections::Generic::Dictionary<System::String, System::SharedPtr<System::Object>>> defaults);
     virtual ASPOSE_PAGE_SHARED_API void ApplyGraphicState(System::SharedPtr<System::Drawing::Drawing2D::Matrix> transform, System::SharedPtr<System::Drawing::Drawing2D::GraphicsPath> clip);
     virtual ASPOSE_PAGE_SHARED_API void DrawString(System::String str, double x, double y, double width, System::SharedPtr<Aspose::Rendering::ApsGlyphsIndices> indices, bool isRtl = false);
     /// <summary>
@@ -542,7 +627,7 @@ protected:
     /// <param name="nPoints"> The number of points. </param>
     /// <param name="close"> Indicates whether shape is closed </param>
     /// <returns>The shape.</returns>
-    System::SharedPtr<System::Drawing::Drawing2D::GraphicsPath> CreateShape(System::ArrayPtr<double> xPoints, System::ArrayPtr<double> yPoints, int32_t nPoints, bool close);
+    ASPOSE_PAGE_SHARED_API System::SharedPtr<System::Drawing::Drawing2D::GraphicsPath> CreateShape(System::ArrayPtr<double> xPoints, System::ArrayPtr<double> yPoints, int32_t nPoints, bool close);
     /// <summary>
     /// Clears rectangle by painting it with the backgroundColor.
     /// </summary>
@@ -639,15 +724,21 @@ protected:
     virtual ASPOSE_PAGE_SHARED_API void WriteString(System::SharedPtr<ITrFont> font, System::String str);
     virtual ASPOSE_PAGE_SHARED_API void SetVentureLicense(System::SharedPtr<LicenseManagement::VentureLicense> license);
     virtual ASPOSE_PAGE_SHARED_API System::SharedPtr<LicenseManagement::VentureLicense> GetVentureLicense();
-    ASPOSE_PAGE_SHARED_API System::Object::shared_members_type GetSharedMembers() override;
+    #ifdef ASPOSE_GET_SHARED_MEMBERS
+    ASPOSE_PAGE_SHARED_API System::Object::shared_members_type GetSharedMembers() const override;
+    #endif
+    
     
 private:
 
     System::SharedPtr<Aspose::Page::LicenseManagement::VentureLicense> _ventureLicense;
+    /// <summary> Device properties including metadata. </summary>
     System::SharedPtr<UserProperties> properties;
+    /// <summary>Current background of the page. </summary>
     System::Drawing::Color background;
     
     void Init();
+    System::String ToString_NonConst();
     System::SharedPtr<System::Drawing::Drawing2D::GraphicsPath> CreateRoundedRectanglePath(double x, double y, double width, double height, double arcWidth, double arcHeight);
     
 };

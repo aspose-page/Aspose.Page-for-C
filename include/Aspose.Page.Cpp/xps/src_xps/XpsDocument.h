@@ -1,76 +1,127 @@
 ﻿#pragma once
+// Copyright (c) 2001-2022 Aspose Pty Ltd. All Rights Reserved.
 
-#include <system/string.h>
-#include <system/io/stream.h>
-#include <system/enum_helpers.h>
-#include <system/collections/list.h>
-#include <system/collections/dictionary.h>
+#include <system/idisposable.h>
+#include <system/constraints.h>
 #include <system/array.h>
-#include <drawing/size_f.h>
-#include <drawing/rectangle_f.h>
-#include <drawing/point_f.h>
-#include <drawing/font_style.h>
-#include <drawing/color.h>
-#include <cstdint>
 
+#include "Aspose.Page.Cpp/xps/src_xps/XpsPackageParts/FixedPage.h"
+#include "Aspose.Page.Cpp/xps/src_xps/XpsModel/XpsPage.h"
+#include "Aspose.Page.Cpp/xps/src_xps/XpsModel/XpsContext/XpsContext.h"
+#include "Aspose.Page.Cpp/xps/src_xps/XpsModel/XpsContentElement.h"
 #include "Aspose.Page.Cpp/Document.h"
+#include "Aspose.Page.Cpp/aspose_page_api_defs.h"
 
-namespace Aspose { namespace Page { namespace LicenseManagement { class VentureLicense; } } }
-namespace Aspose { namespace Page { namespace Xps { namespace Presentation { class XpsPresenter; } } } }
-namespace Aspose { namespace Page { namespace Xps { namespace Presentation { class XpsBasePresenter; } } } }
-namespace Aspose { namespace Page { namespace Xps { namespace Presentation { namespace Xps { class XpsSerializer; } } } } }
-namespace Aspose { namespace Page { namespace Xps { namespace Util { class XpsLicenseUtils; } } } }
-namespace Aspose { namespace Page { namespace Xps { namespace Tests { class DocumentOperationsTests; } } } }
-namespace Aspose { namespace Page { namespace Xps { namespace Tests { class PageOperationsTests; } } } }
-namespace Aspose { namespace Page { namespace Xps { namespace Tests { class XpsCanvasTests; } } } }
-namespace Aspose { namespace Page { namespace Xps { namespace Tests { class XpsBaseTest; } } } }
-namespace Aspose { namespace Page { namespace Xps { namespace Tests { class XpsPathTests; } } } }
-namespace Aspose { namespace Page { namespace Xps { namespace Tests { class XpsDocumentTests; } } } }
-namespace Aspose { namespace Page { namespace Xps { namespace Tests { class SavingAsImageTests; } } } }
-namespace Aspose { namespace Page { namespace Xps { namespace Tests { class GlyphsToImageTests; } } } }
-namespace Aspose { namespace Page { namespace Xps { namespace XpsPackageParts { class FixedDocumentSequence; } } } }
-namespace Aspose { namespace OpcPackaging { class OpcPackage; } }
-namespace Aspose { namespace Page { namespace Xps { namespace XpsModel { class XpsContext; } } } }
-namespace Aspose { namespace Page { namespace Xps { namespace XpsModel { class XpsPage; } } } }
-namespace Aspose { namespace Page { namespace Xps { namespace XpsModel { class XpsGlyphs; } } } }
-namespace Aspose { namespace Page { namespace Xps { namespace XpsPackageParts { class FixedDocument; } } } }
-namespace Aspose { namespace Page { namespace Xps { namespace XpsMetadata { class JobPrintTicket; } } } }
-namespace Aspose { namespace Page { namespace Xps { class LoadOptions; } } }
-namespace Aspose { namespace Page { class Device; } }
-namespace Aspose { namespace Page { class SaveOptions; } }
-namespace Aspose { namespace Page { namespace Xps { namespace XpsMetadata { class DocumentPrintTicket; } } } }
-namespace Aspose { namespace Page { namespace Xps { namespace XpsMetadata { class PagePrintTicket; } } } }
-namespace Aspose { namespace Page { namespace Xps { namespace XpsModel { class XpsElement; } } } }
-namespace Aspose { namespace Page { namespace Xps { namespace XpsModel { class XpsCanvas; } } } }
-namespace Aspose { namespace Page { namespace Xps { namespace XpsModel { class XpsPath; } } } }
-namespace Aspose { namespace Page { namespace Xps { namespace XpsPackageParts { class FixedPage; } } } }
-namespace Aspose { namespace Page { namespace Xps { namespace XpsModel { class XpsPathGeometry; } } } }
-namespace Aspose { namespace Page { namespace Xps { namespace XpsModel { class XpsFont; } } } }
-namespace Aspose { namespace Page { namespace Xps { namespace XpsModel { class XpsMatrix; } } } }
-namespace Aspose { namespace Page { namespace Xps { namespace XpsModel { class XpsPathFigure; } } } }
-namespace Aspose { namespace Page { namespace Xps { namespace XpsModel { template<typename> class XpsList; } } } }
-namespace Aspose { namespace Page { namespace Xps { namespace XpsModel { class XpsPathSegment; } } } }
-namespace Aspose { namespace Page { namespace Xps { namespace XpsModel { class XpsArcSegment; } } } }
-namespace Aspose { namespace Page { namespace Xps { namespace XpsModel { enum class XpsSweepDirection; } } } }
-namespace Aspose { namespace Page { namespace Xps { namespace XpsModel { class XpsPolyLineSegment; } } } }
-namespace Aspose { namespace Page { namespace Xps { namespace XpsModel { class XpsPolyBezierSegment; } } } }
-namespace Aspose { namespace Page { namespace Xps { namespace XpsModel { class XpsPolyQuadraticBezierSegment; } } } }
-namespace Aspose { namespace Page { namespace Xps { namespace XpsModel { class XpsSolidColorBrush; } } } }
-namespace Aspose { namespace Page { namespace Xps { namespace XpsModel { class XpsColor; } } } }
-namespace Aspose { namespace Page { namespace Xps { namespace XpsModel { class XpsGradientStop; } } } }
-namespace Aspose { namespace Page { namespace Xps { namespace XpsModel { class XpsLinearGradientBrush; } } } }
-namespace Aspose { namespace Page { namespace Xps { namespace XpsModel { class XpsRadialGradientBrush; } } } }
-namespace Aspose { namespace Page { namespace Xps { namespace XpsModel { class XpsVisualBrush; } } } }
-namespace Aspose { namespace Page { namespace Xps { namespace XpsModel { class XpsImageBrush; } } } }
-namespace Aspose { namespace Page { namespace Xps { namespace XpsModel { class XpsImage; } } } }
-namespace Aspose { namespace Page { namespace Xps { namespace XpsModel { class XpsIccProfile; } } } }
-namespace Aspose { namespace Page { namespace Xps { namespace XpsModel { class XpsHyperlinkTarget; } } } }
+namespace Aspose
+{
+namespace OpcPackaging
+{
+class OpcPackage;
+} // namespace OpcPackaging
+namespace Page
+{
+class Device;
+namespace LicenseManagement
+{
+class VentureLicense;
+} // namespace LicenseManagement
+class SaveOptions;
+namespace XPS
+{
+class LoadOptions;
+namespace Presentation
+{
+namespace Xps
+{
+class XpsSerializer;
+} // namespace Xps
+class XpsBasePresenter;
+class XpsPresenter;
+} // namespace Presentation
+namespace Tests
+{
+class DocumentOperationsTests;
+class GlyphsToImageTests;
+class PageOperationsTests;
+class SavingAsImageTests;
+class XpsBaseTest;
+class XpsCanvasTests;
+class XpsDocumentTests;
+class XpsPathTests;
+} // namespace Tests
+namespace Util
+{
+class XpsLicenseUtils;
+} // namespace Util
+namespace XpsMetadata
+{
+class DocumentPrintTicket;
+class JobPrintTicket;
+class PagePrintTicket;
+} // namespace XpsMetadata
+namespace XpsModel
+{
+class XpsArcSegment;
+class XpsCanvas;
+class XpsColor;
+class XpsFont;
+class XpsGlyphs;
+class XpsGradientStop;
+class XpsHyperlinkTarget;
+class XpsIccProfile;
+class XpsImage;
+class XpsImageBrush;
+class XpsLinearGradientBrush;
+class XpsMatrix;
+class XpsPath;
+class XpsPathFigure;
+class XpsPathGeometry;
+class XpsPathSegment;
+class XpsPolyBezierSegment;
+class XpsPolyLineSegment;
+class XpsPolyQuadraticBezierSegment;
+class XpsRadialGradientBrush;
+class XpsSolidColorBrush;
+enum class XpsSweepDirection;
+class XpsVisualBrush;
+} // namespace XpsModel
+namespace XpsPackageParts
+{
+class FixedDocument;
+class FixedDocumentSequence;
+} // namespace XpsPackageParts
+} // namespace XPS
+} // namespace Page
+} // namespace Aspose
+namespace System
+{
+namespace Collections
+{
+namespace Generic
+{
+template <typename, typename> class Dictionary;
+template <typename> class List;
+} // namespace Generic
+} // namespace Collections
+namespace Drawing
+{
+class Color;
+enum class FontStyle;
+class PointF;
+class RectangleF;
+class SizeF;
+} // namespace Drawing
+namespace IO
+{
+class Stream;
+} // namespace IO
+} // namespace System
 
 namespace Aspose {
 
 namespace Page {
 
-namespace Xps {
+namespace XPS {
 
 /// <summary>
 /// The <b>Aspose.Page.XPS</b> is a root namespace for all classes that deal with XPS document.
@@ -89,26 +140,27 @@ class NamespaceDoc : public System::Object
 /// Class incapsulating the main entity of XPS document that provides manipulation
 /// methods for any XPS element.
 /// </summary>
-class XpsDocument FINAL : public Aspose::Page::Document
+class ASPOSE_PAGE_SHARED_CLASS XpsDocument final : public Aspose::Page::Document, public System::IDisposable
 {
     typedef XpsDocument ThisType;
     typedef Aspose::Page::Document BaseType;
+    typedef System::IDisposable BaseType1;
     
-    typedef ::System::BaseTypesInfo<BaseType> ThisTypeBaseTypesInfo;
+    typedef ::System::BaseTypesInfo<BaseType, BaseType1> ThisTypeBaseTypesInfo;
     ASPOSE_PAGE_SHARED_RTTI_INFO_DECL();
     
-    friend class Aspose::Page::Xps::Presentation::XpsPresenter;
-    friend class Aspose::Page::Xps::Presentation::XpsBasePresenter;
-    friend class Aspose::Page::Xps::Presentation::Xps::XpsSerializer;
-    friend class Aspose::Page::Xps::Util::XpsLicenseUtils;
-    friend class Aspose::Page::Xps::Tests::DocumentOperationsTests;
-    friend class Aspose::Page::Xps::Tests::PageOperationsTests;
-    friend class Aspose::Page::Xps::Tests::XpsCanvasTests;
-    friend class Aspose::Page::Xps::Tests::XpsBaseTest;
-    friend class Aspose::Page::Xps::Tests::XpsPathTests;
-    friend class Aspose::Page::Xps::Tests::XpsDocumentTests;
-    friend class Aspose::Page::Xps::Tests::SavingAsImageTests;
-    friend class Aspose::Page::Xps::Tests::GlyphsToImageTests;
+    friend class Aspose::Page::XPS::Presentation::XpsPresenter;
+    friend class Aspose::Page::XPS::Presentation::XpsBasePresenter;
+    friend class Aspose::Page::XPS::Presentation::Xps::XpsSerializer;
+    friend class Aspose::Page::XPS::Util::XpsLicenseUtils;
+    friend class Aspose::Page::XPS::Tests::DocumentOperationsTests;
+    friend class Aspose::Page::XPS::Tests::PageOperationsTests;
+    friend class Aspose::Page::XPS::Tests::XpsCanvasTests;
+    friend class Aspose::Page::XPS::Tests::XpsBaseTest;
+    friend class Aspose::Page::XPS::Tests::XpsPathTests;
+    friend class Aspose::Page::XPS::Tests::XpsDocumentTests;
+    friend class Aspose::Page::XPS::Tests::SavingAsImageTests;
+    friend class Aspose::Page::XPS::Tests::GlyphsToImageTests;
     
 public:
 
@@ -121,7 +173,7 @@ public:
     /// </summary>
     ASPOSE_PAGE_SHARED_API int32_t get_ActivePage();
     /// <summary>
-    /// Returns an <see cref="XpsPage"/> instance for active page.
+    /// Returns an <see cref="XpsPage"></see> instance for active page.
     /// </summary>
     ASPOSE_PAGE_SHARED_API System::SharedPtr<XpsModel::XpsPage> get_Page();
     /// <summary>
@@ -139,29 +191,29 @@ public:
     /// <summary>
     /// Returns/sets document's job print ticket
     /// </summary>
-    ASPOSE_PAGE_SHARED_API System::SharedPtr<Aspose::Page::Xps::XpsMetadata::JobPrintTicket> get_JobPrintTicket();
+    ASPOSE_PAGE_SHARED_API System::SharedPtr<Aspose::Page::XPS::XpsMetadata::JobPrintTicket> get_JobPrintTicket();
     /// <summary>
     /// Returns/sets document's job print ticket
     /// </summary>
-    ASPOSE_PAGE_SHARED_API void set_JobPrintTicket(System::SharedPtr<Aspose::Page::Xps::XpsMetadata::JobPrintTicket> value);
+    ASPOSE_PAGE_SHARED_API void set_JobPrintTicket(System::SharedPtr<Aspose::Page::XPS::XpsMetadata::JobPrintTicket> value);
     
     /// <summary>
     /// Creates empty XPS document with default page size.
     /// </summary>
     ASPOSE_PAGE_SHARED_API XpsDocument();
     /// <summary>
-    /// Opens an existing XPS document located at the <paramref name="path"/>.
+    /// Opens an existing XPS document located at the <paramref name="path"></paramref>.
     /// </summary>
     /// <param name="path">Location of the document.</param>
     ASPOSE_PAGE_SHARED_API XpsDocument(System::String path);
     /// <summary>
-    /// Opens an existing document located at the <paramref name="path"/> as XPS document.
+    /// Opens an existing document located at the <paramref name="path"></paramref> as XPS document.
     /// </summary>
     /// <param name="path">Location of the document.</param>
     /// <param name="options">Document loading options.</param>
     ASPOSE_PAGE_SHARED_API XpsDocument(System::String path, System::SharedPtr<LoadOptions> options);
     /// <summary>
-    /// Loads an existing document stored in the <paramref name="stream"/> as XPS document.
+    /// Loads an existing document stored in the <paramref name="stream"></paramref> as XPS document.
     /// </summary>
     /// <param name="stream">Document stream.</param>
     /// <param name="options">Document loading options.</param>
@@ -172,18 +224,18 @@ public:
     /// </summary>
     /// <param name="documentNumber">A document number.</param>
     /// <exception cref="System::ArgumentException">Thrown when 
-    /// <paramref name="documentNumber"/> is out of bounds.</exception>
+    /// <paramref name="documentNumber"></paramref> is out of bounds.</exception>
     ASPOSE_PAGE_SHARED_API void SelectActiveDocument(int32_t documentNumber);
     /// <summary>
     /// Selects an active document page for editing.
     /// </summary>
     /// <param name="pageNumber">A page number.</param>
-    /// <returns><see cref="XpsPage"/> instance for active page.</returns>
+    /// <returns><see cref="XpsPage"></see> instance for active page.</returns>
     /// <exception cref="System::ArgumentException">Thrown when 
-    /// <paramref name="pageNumber"/> is out of bounds.</exception>
+    /// <paramref name="pageNumber"></paramref> is out of bounds.</exception>
     ASPOSE_PAGE_SHARED_API System::SharedPtr<XpsModel::XpsPage> SelectActivePage(int32_t pageNumber);
     /// <summary>
-    /// Saves XPS document to XPS file located at the <paramref name="path"/>.
+    /// Saves XPS document to XPS file located at the <paramref name="path"></paramref>.
     /// </summary>
     /// <param name="path">Location of the document.</param>
     ASPOSE_PAGE_SHARED_API void Save(System::String path);
@@ -193,90 +245,102 @@ public:
     /// <param name="stream">Stream XPS document to be saved into.</param>
     ASPOSE_PAGE_SHARED_API void Save(System::SharedPtr<System::IO::Stream> stream);
     /// <summary>
-    /// Saves the document using the <see cref="Device"/> instance.
+    /// Saves the document using the <see cref="Device"></see> instance.
     /// </summary>
-    /// <param name="device">The <see cref="Device"/> instance.</param>
+    /// <param name="device">The <see cref="Device"></see> instance.</param>
     /// <param name="options">Document saving options.</param>
-    virtual ASPOSE_PAGE_SHARED_API void Save(System::SharedPtr<Device> device, System::SharedPtr<SaveOptions> options);
+    ASPOSE_PAGE_SHARED_API void Save(System::SharedPtr<Device> device, System::SharedPtr<SaveOptions> options) override;
     /// <summary>
-    /// Returns the print ticket of the document indexed by <paramref name="documentIndex"/>.
+    /// Merging XPS documents using the <see cref="Device"></see> instance.
+    /// </summary>
+    /// <param name="filesForMerge"> XPS files for merging with this document to an output device. </param>
+    /// <param name="device">The <see cref="Device"></see> instance.</param>
+    /// <param name="options">Document saving options.</param>
+    ASPOSE_PAGE_SHARED_API void Merge(System::ArrayPtr<System::String> filesForMerge, System::SharedPtr<Device> device, System::SharedPtr<SaveOptions> options);
+    /// <summary>
+    /// Returns the print ticket of the document indexed by <paramref name="documentIndex"></paramref>.
     /// </summary>
     /// <param name="documentIndex">Index of the document whose print ticket to return.</param>
     /// <returns>Document's print ticket.</returns>
     ASPOSE_PAGE_SHARED_API System::SharedPtr<XpsMetadata::DocumentPrintTicket> GetDocumentPrintTicket(int32_t documentIndex);
     /// <summary>
-    /// Links the <paramref name="printTicket"/> to the document indexed by <paramref name="documentIndex"/>.
+    /// Links the <paramref name="printTicket"></paramref> to the document indexed by <paramref name="documentIndex"></paramref>.
     /// </summary>
     /// <param name="documentIndex">Index of the document to link the print ticket to.</param>
     /// <param name="printTicket">The print ticket to link.</param>
     ASPOSE_PAGE_SHARED_API void SetDocumentPrintTicket(int32_t documentIndex, System::SharedPtr<XpsMetadata::DocumentPrintTicket> printTicket);
     /// <summary>
-    /// Returns the print ticket of the page indexed by <paramref name="pageIndex"/> 
-    /// in the document indexed by <paramref name="documentIndex"/>.
+    /// Returns the print ticket of the page indexed by <paramref name="pageIndex"></paramref> 
+    /// in the document indexed by <paramref name="documentIndex"></paramref>.
     /// </summary>
     /// <param name="documentIndex">Index of the document.</param>
     /// <param name="pageIndex">Index of the page whose print ticket to return.</param>
     /// <returns>Page's print ticket.</returns>
     ASPOSE_PAGE_SHARED_API System::SharedPtr<XpsMetadata::PagePrintTicket> GetPagePrintTicket(int32_t documentIndex, int32_t pageIndex);
     /// <summary>
-    /// Links the <paramref name="printTicket"/> to the page indexed by <paramref name="pageIndex"/>
-    /// in the document indexed by <paramref name="documentIndex"/>.
+    /// Links the <paramref name="printTicket"></paramref> to the page indexed by <paramref name="pageIndex"></paramref>
+    /// in the document indexed by <paramref name="documentIndex"></paramref>.
     /// </summary>
     /// <param name="documentIndex">Index of the document.</param>
     /// <param name="pageIndex">Index of the page to link the print ticket to.</param>
     /// <param name="printTicket">The print ticket to link.</param>
     ASPOSE_PAGE_SHARED_API void SetPagePrintTicket(int32_t documentIndex, int32_t pageIndex, System::SharedPtr<XpsMetadata::PagePrintTicket> printTicket);
     /// <summary>
-    /// Adds a canvas to the active page.
+    /// Adds a content element (Canvas, Path or Glyphs)
     /// </summary>
-    /// <param name="canvas">Canvas to be added.</param>
-    /// <returns>Added canvas.</returns>
-    ASPOSE_PAGE_SHARED_API System::SharedPtr<XpsModel::XpsCanvas> Add(System::SharedPtr<XpsModel::XpsCanvas> canvas);
+    /// <typeparam name="T">The type of the element.</typeparam>
+    /// <param name="element">Element to be added.</param>
+    /// <returns>Added element.</returns>
+    template <typename T>
+    T Add(T element)
+    {
+        typedef XpsModel::XpsContentElement BaseT_XpsContentElement;
+        assert_is_base_of(BaseT_XpsContentElement, T);
+        
+        Assert();
+        return _context->get_ActivePage().get_Value()->get_Page()->template Add<T>(element);
+    }
+    
     /// <summary>
-    /// Adds a path to the active page.
+    /// Inserts an element (Canvas, Path or Glyphs) to the active page
+    /// at <paramref name="index"></paramref> position.
     /// </summary>
-    /// <param name="path">Path to be added.</param>
-    /// <returns>Added path.</returns>
-    ASPOSE_PAGE_SHARED_API System::SharedPtr<XpsModel::XpsPath> Add(System::SharedPtr<XpsModel::XpsPath> path);
-    /// <summary>
-    /// Adds glyphs to the active page.
-    /// </summary>
-    /// <param name="glyphs">Glyphs to be added.</param>
-    /// <returns>Added glyphs.</returns>
-    ASPOSE_PAGE_SHARED_API System::SharedPtr<XpsModel::XpsGlyphs> Add(System::SharedPtr<XpsModel::XpsGlyphs> glyphs);
-    /// <summary>
-    /// Inserts a canvas to the active page at <paramref name="index"/> position.
-    /// </summary>
-    /// <param name="index">Position at which a <paramref name="canvas"/> should be inserted.</param>
-    /// <param name="canvas">Canvas to be inserted.</param>
-    /// <returns>Inserted canvas.</returns>
-    ASPOSE_PAGE_SHARED_API System::SharedPtr<XpsModel::XpsCanvas> Insert(int32_t index, System::SharedPtr<XpsModel::XpsCanvas> canvas);
-    /// <summary>
-    /// Inserts a path to the active page at <paramref name="index"/> position.
-    /// </summary>
-    /// <param name="index">Position at which a <paramref name="path"/> should be inserted.</param>
-    /// <param name="path">Path to be inserted.</param>
-    /// <returns>Inserted path.</returns>
-    ASPOSE_PAGE_SHARED_API System::SharedPtr<XpsModel::XpsPath> Insert(int32_t index, System::SharedPtr<XpsModel::XpsPath> path);
-    /// <summary>
-    /// Inserts glyphs to the active page at <paramref name="index"/> position.
-    /// </summary>
-    /// <param name="index">Position at which <paramref name="glyphs"/> should be inserted.</param>
-    /// <param name="glyphs">Glyphs to be inserted.</param>
-    /// <returns>Inserted <see cref="XpsGlyphs"/> instance.</returns>
-    ASPOSE_PAGE_SHARED_API System::SharedPtr<XpsModel::XpsGlyphs> Insert(int32_t index, System::SharedPtr<XpsModel::XpsGlyphs> glyphs);
+    /// <typeparam name="T">The type of the element.</typeparam>
+    /// <param name="index">Position at which an <paramref name="element"></paramref> should be inserted.</param>
+    /// <param name="element">Element to be inserted.</param>
+    /// <returns>Inserted element.</returns>
+    template <typename T>
+    T Insert(int32_t index, T element)
+    {
+        typedef XpsModel::XpsContentElement BaseT_XpsContentElement;
+        assert_is_base_of(BaseT_XpsContentElement, T);
+        
+        Assert();
+        return _context->get_ActivePage().get_Value()->get_Page()->template Insert<T>(index, element);
+    }
+    
     /// <summary>
     /// Removes an element from the active page.
     /// </summary>
-    /// <param name="element">An element to be removed.</param>
+    /// <typeparam name="T">The type of the element.</typeparam>
+    /// <param name="element">Element to be removed.</param>
     /// <returns>Removed element.</returns>
-    ASPOSE_PAGE_SHARED_API System::SharedPtr<XpsModel::XpsElement> Remove(System::SharedPtr<XpsModel::XpsElement> element);
+    template <typename T>
+    T Remove(T element)
+    {
+        typedef XpsModel::XpsContentElement BaseT_XpsContentElement;
+        assert_is_base_of(BaseT_XpsContentElement, T);
+        
+        Assert();
+        return _context->get_ActivePage().get_Value()->get_Page()->template Remove<T>(element);
+    }
+    
     /// <summary>
-    /// Removes an element at <paramref name="index"/> position from the active page.
+    /// Removes an element at <paramref name="index"></paramref> position from the active page.
     /// </summary>
-    /// <param name="index">Position at which an element should be removed.</param>
+    /// <param name="index">Position at which element should be removed.</param>
     /// <returns>Removed element.</returns>
-    ASPOSE_PAGE_SHARED_API System::SharedPtr<XpsModel::XpsElement> RemoveAt(int32_t index);
+    ASPOSE_PAGE_SHARED_API System::SharedPtr<XpsModel::XpsContentElement> RemoveAt(int32_t index);
     /// <summary>
     /// Adds an empty document with default page size.
     /// </summary>
@@ -284,7 +348,7 @@ public:
     ASPOSE_PAGE_SHARED_API void AddDocument(bool activate = true);
     /// <summary>
     /// Adds an empty document with the first page dimensions
-    /// <paramref name="width"/> and <paramref name="height"/>.
+    /// <paramref name="width"></paramref> and <paramref name="height"></paramref>.
     /// </summary>
     /// <param name="width">Width of the first page.</param>
     /// <param name="height">Height of the first page.</param>
@@ -292,14 +356,14 @@ public:
     ASPOSE_PAGE_SHARED_API void AddDocument(float width, float height, bool activate = true);
     /// <summary>
     /// Inserts an empty document with default page size
-    /// at <paramref name="index"/> position.
+    /// at <paramref name="index"></paramref> position.
     /// </summary>
     /// <param name="index">Position at which a document should be inserted.</param>
     /// <param name="activate">Flag indicating whether to select inserted document as active.</param>
     ASPOSE_PAGE_SHARED_API void InsertDocument(int32_t index, bool activate = true);
     /// <summary>
     /// Inserts an empty document with the first page dimensions
-    /// <paramref name="width"/> and <paramref name="height"/> at <paramref name="index"/> position.
+    /// <paramref name="width"></paramref> and <paramref name="height"></paramref> at <paramref name="index"></paramref> position.
     /// </summary>
     /// <param name="index">Position at which a document should be inserted.</param>
     /// <param name="width">Width of the first page.</param>
@@ -307,7 +371,7 @@ public:
     /// <param name="activate">Flag indicating whether to select inserted document as active.</param>
     ASPOSE_PAGE_SHARED_API void InsertDocument(int32_t index, float width, float height, bool activate = true);
     /// <summary>
-    /// Removes a document at <paramref name="index"/> position.
+    /// Removes a document at <paramref name="index"></paramref> position.
     /// </summary>
     /// <param name="index">Position at which a document should be removed.</param>
     ASPOSE_PAGE_SHARED_API void RemoveDocumentAt(int32_t index);
@@ -319,7 +383,7 @@ public:
     ASPOSE_PAGE_SHARED_API System::SharedPtr<XpsModel::XpsPage> AddPage(bool activate = true);
     /// <summary>
     /// Adds an empty page to the document with specified 
-    /// <paramref name="width"/> and <paramref name="height"/>.
+    /// <paramref name="width"></paramref> and <paramref name="height"></paramref>.
     /// </summary>
     /// <param name="width">Width of a new page.</param>
     /// <param name="height">Height of a new page.</param>
@@ -341,7 +405,7 @@ public:
     ASPOSE_PAGE_SHARED_API System::SharedPtr<XpsModel::XpsPage> RemovePage(System::SharedPtr<XpsModel::XpsPage> page);
     /// <summary>
     /// Inserts an empty page to the document with default page size
-    /// at <paramref name="index"/> position.
+    /// at <paramref name="index"></paramref> position.
     /// </summary>
     /// <param name="index">Position at which a page should be inserted.</param>
     /// <param name="activate">Flag indicating whether to select inserted page as active.</param>
@@ -349,7 +413,7 @@ public:
     ASPOSE_PAGE_SHARED_API System::SharedPtr<XpsModel::XpsPage> InsertPage(int32_t index, bool activate = true);
     /// <summary>
     /// Inserts an empty page to the document with specified 
-    /// <paramref name="width"/> and <paramref name="height"/> at <paramref name="index"/> position.
+    /// <paramref name="width"></paramref> and <paramref name="height"></paramref> at <paramref name="index"></paramref> position.
     /// </summary>
     /// <param name="index">Position at which a page should be inserted.</param>
     /// <param name="width">Width of a new page.</param>
@@ -358,7 +422,7 @@ public:
     /// <returns>Inserted page.</returns>
     ASPOSE_PAGE_SHARED_API System::SharedPtr<XpsModel::XpsPage> InsertPage(int32_t index, float width, float height, bool activate = true);
     /// <summary>
-    /// Inserts a page to the document at <paramref name="index"/> position.
+    /// Inserts a page to the document at <paramref name="index"></paramref> position.
     /// </summary>
     /// <param name="index">Position at which a page should be added.</param>
     /// <param name="page">Page to be inserted.</param>
@@ -366,7 +430,7 @@ public:
     /// <returns>Inserted page.</returns>
     ASPOSE_PAGE_SHARED_API System::SharedPtr<XpsModel::XpsPage> InsertPage(int32_t index, System::SharedPtr<XpsModel::XpsPage> page, bool activate = true);
     /// <summary>
-    /// Removes a page from the document at <paramref name="index"/> position.
+    /// Removes a page from the document at <paramref name="index"></paramref> position.
     /// </summary>
     /// <param name="index">Position at which a page should be removed.</param>
     /// <returns>Removed page.</returns>
@@ -382,7 +446,7 @@ public:
     /// <returns>Added canvas.</returns>.
     ASPOSE_PAGE_SHARED_API System::SharedPtr<XpsModel::XpsCanvas> AddCanvas();
     /// <summary>
-    /// Inserts a new canvas to the active page at <paramref name="index"/> position.
+    /// Inserts a new canvas to the active page at <paramref name="index"></paramref> position.
     /// </summary>
     /// <param name="index">Position at which a new canvas should be inserted.</param>
     /// <returns>Inserted canvas.</returns>
@@ -400,7 +464,7 @@ public:
     /// <returns>Added path.</returns>
     ASPOSE_PAGE_SHARED_API System::SharedPtr<XpsModel::XpsPath> AddPath(System::SharedPtr<XpsModel::XpsPathGeometry> data);
     /// <summary>
-    /// Inserts a new path to the active page at <paramref name="index"/> position.
+    /// Inserts a new path to the active page at <paramref name="index"></paramref> position.
     /// </summary>
     /// <param name="index">Position at which a new path should be inserted.</param>
     /// <param name="data">The geometry of the path.</param>
@@ -439,7 +503,7 @@ public:
     /// <returns>Added glyphs.</returns>
     ASPOSE_PAGE_SHARED_API System::SharedPtr<XpsModel::XpsGlyphs> AddGlyphs(System::String fontFamily, float fontRenderingEmSize, System::Drawing::FontStyle fontStyle, float originX, float originY, System::String unicodeString);
     /// <summary>
-    /// Inserts new glyphs to the active page at <paramref name="index"/> position.
+    /// Inserts new glyphs to the active page at <paramref name="index"></paramref> position.
     /// </summary>
     /// <param name="index">Position at which new glyphs should be inserted.</param>
     /// <param name="fontFamily">Font family.</param>
@@ -461,7 +525,7 @@ public:
     /// <returns>Added glyphs.</returns>
     ASPOSE_PAGE_SHARED_API System::SharedPtr<XpsModel::XpsGlyphs> AddGlyphs(System::SharedPtr<XpsModel::XpsFont> font, float fontRenderingEmSize, float originX, float originY, System::String unicodeString);
     /// <summary>
-    /// Inserts new glyphs to the active page at <paramref name="index"/> position.
+    /// Inserts new glyphs to the active page at <paramref name="index"></paramref> position.
     /// </summary>
     /// <param name="index">Position at which new glyphs should be inserted.</param>
     /// <param name="font">Font resource.</param>
@@ -492,7 +556,7 @@ public:
     /// </summary>
     /// <param name="pathFigures">List of path figures.</param>
     /// <returns>New path geometry.</returns>
-    ASPOSE_PAGE_SHARED_API System::SharedPtr<XpsModel::XpsPathGeometry> CreatePathGeometry(System::SharedPtr<XpsModel::XpsList<System::SharedPtr<XpsModel::XpsPathFigure>>> pathFigures);
+    ASPOSE_PAGE_SHARED_API System::SharedPtr<XpsModel::XpsPathGeometry> CreatePathGeometry(System::SharedPtr<System::Collections::Generic::List<System::SharedPtr<XpsModel::XpsPathFigure>>> pathFigures);
     /// <summary>
     /// Creates a new path geometry specified with abbreviated form.
     /// </summary>
@@ -521,7 +585,7 @@ public:
     /// the last point is not connected to the start point. Only applicable if the path figure is
     /// used in a {Path} element that specifies a stroke.</param>
     /// <returns>New path figure.</returns>
-    ASPOSE_PAGE_SHARED_API System::SharedPtr<XpsModel::XpsPathFigure> CreatePathFigure(System::Drawing::PointF startPoint, System::SharedPtr<XpsModel::XpsList<System::SharedPtr<XpsModel::XpsPathSegment>>> segments, bool isClosed = false);
+    ASPOSE_PAGE_SHARED_API System::SharedPtr<XpsModel::XpsPathFigure> CreatePathFigure(System::Drawing::PointF startPoint, System::SharedPtr<System::Collections::Generic::List<System::SharedPtr<XpsModel::XpsPathSegment>>> segments, bool isClosed = false);
     /// <summary>
     /// Creates a new elliptical arc segment.
     /// </summary>
@@ -618,30 +682,12 @@ public:
     /// <summary>
     /// Creates a new visual brush.
     /// </summary>
-    /// <param name="canvas">The canvas for Visual element.</param>
+    /// <param name="element">The XPS element (Canvas, Path or Glyphs) for Visual property od visual brush.</param>
     /// <param name="viewbox">The position and dimensions of the brush's source content.</param>
     /// <param name="viewport">The region in the containing coordinate space of the prime brush
     /// tile that is (possibly repeatedly) applied to fill the region to which the brush is applied</param>
     /// <returns>New visual brush.</returns>
-    ASPOSE_PAGE_SHARED_API System::SharedPtr<XpsModel::XpsVisualBrush> CreateVisualBrush(System::SharedPtr<XpsModel::XpsCanvas> canvas, System::Drawing::RectangleF viewbox, System::Drawing::RectangleF viewport);
-    /// <summary>
-    /// Creates a new visual brush.
-    /// </summary>
-    /// <param name="path">The path for Visual element.</param>
-    /// <param name="viewbox">The position and dimensions of the brush's source content.</param>
-    /// <param name="viewport">The region in the containing coordinate space of the prime brush
-    /// tile that is (possibly repeatedly) applied to fill the region to which the brush is applied</param>
-    /// <returns>New visual brush.</returns>
-    ASPOSE_PAGE_SHARED_API System::SharedPtr<XpsModel::XpsVisualBrush> CreateVisualBrush(System::SharedPtr<XpsModel::XpsPath> path, System::Drawing::RectangleF viewbox, System::Drawing::RectangleF viewport);
-    /// <summary>
-    /// Creates a new visual brush.
-    /// </summary>
-    /// <param name="glyphs">The glyphs for Visual element.</param>
-    /// <param name="viewbox">The position and dimensions of the brush's source content.</param>
-    /// <param name="viewport">The region in the containing coordinate space of the prime brush
-    /// tile that is (possibly repeatedly) applied to fill the region to which the brush is applied</param>
-    /// <returns>New visual brush.</returns>
-    ASPOSE_PAGE_SHARED_API System::SharedPtr<XpsModel::XpsVisualBrush> CreateVisualBrush(System::SharedPtr<XpsModel::XpsGlyphs> glyphs, System::Drawing::RectangleF viewbox, System::Drawing::RectangleF viewport);
+    ASPOSE_PAGE_SHARED_API System::SharedPtr<XpsModel::XpsVisualBrush> CreateVisualBrush(System::SharedPtr<XpsModel::XpsContentElement> element, System::Drawing::RectangleF viewbox, System::Drawing::RectangleF viewport);
     /// <summary>
     /// Creates a new image brush.
     /// </summary>
@@ -715,26 +761,26 @@ public:
     /// <returns>New color.</returns>
     ASPOSE_PAGE_SHARED_API System::SharedPtr<XpsModel::XpsColor> CreateColor(System::SharedPtr<XpsModel::XpsIccProfile> iccProfile, const System::ArrayPtr<float>& components);
     /// <summary>
-    /// Creates a new image resource out of image file located at the <paramref name="imagePath"/>.
+    /// Creates a new image resource out of image file located at the <paramref name="imagePath"></paramref>.
     /// </summary>
     /// <param name="imagePath">The path to the image to take as a resource.</param>
     /// <returns>New image resource.</returns>
     ASPOSE_PAGE_SHARED_API System::SharedPtr<XpsModel::XpsImage> CreateImage(System::String imagePath);
     /// <summary>
-    /// Creates a new image resource out of <paramref name="stream"/>.
+    /// Creates a new image resource out of <paramref name="stream"></paramref>.
     /// </summary>
     /// <param name="stream">The stream containing the image to take as a resource.</param>
     /// <returns>New image resource.</returns>
     ASPOSE_PAGE_SHARED_API System::SharedPtr<XpsModel::XpsImage> CreateImage(System::SharedPtr<System::IO::Stream> stream);
     /// <summary>
     /// Creates a new ICC profile resource out of ICC profile file located at the
-    /// <paramref name="iccProfilePath"/>.
+    /// <paramref name="iccProfilePath"></paramref>.
     /// </summary>
     /// <param name="iccProfilePath">The path to the ICC profile to take as a resource.</param>
     /// <returns>New ICC profile resource.</returns>
     ASPOSE_PAGE_SHARED_API System::SharedPtr<XpsModel::XpsIccProfile> CreateIccProfile(System::String iccProfilePath);
     /// <summary>
-    /// Creates a new ICC profile resource out of <paramref name="stream"/>.
+    /// Creates a new ICC profile resource out of <paramref name="stream"></paramref>.
     /// </summary>
     /// <param name="stream">The stream containing the ICC profile to take as a resource.</param>
     /// <returns>New ICC profile resource.</returns>
@@ -759,28 +805,41 @@ public:
     /// <param name="outlineLevel">The outline level.</param>
     /// <param name="target">The entry target.</param>
     ASPOSE_PAGE_SHARED_API void AddOutlineEntry(System::String description, int32_t outlineLevel, System::SharedPtr<XpsModel::XpsHyperlinkTarget> target);
+    ASPOSE_PAGE_SHARED_API void Assert();
+    /// <summary>
+    /// Disposes the instance.
+    /// </summary>
+    ASPOSE_PAGE_SHARED_API void Dispose() override;
     
 protected:
 
-    System::SharedPtr<XpsPackageParts::FixedDocument> get_ActiveDocumentInternal();
-    System::SharedPtr<XpsModel::XpsContext> get_Context();
+    System::SharedPtr<XpsPackageParts::FixedDocumentSequence> _fixedDocumentSequence;
     
-    virtual ASPOSE_PAGE_SHARED_API void SetVentureLicense(System::SharedPtr<Aspose::Page::LicenseManagement::VentureLicense> license);
-    virtual ASPOSE_PAGE_SHARED_API System::SharedPtr<Aspose::Page::LicenseManagement::VentureLicense> GetVentureLicense();
+    System::SharedPtr<XpsPackageParts::FixedDocument> get_ActiveDocumentInternal();
+    System::SharedPtr<XpsModel::XpsContext> get_Context() const;
+    
+    ASPOSE_PAGE_SHARED_API void SetVentureLicense(System::SharedPtr<Aspose::Page::LicenseManagement::VentureLicense> license) override;
+    ASPOSE_PAGE_SHARED_API System::SharedPtr<Aspose::Page::LicenseManagement::VentureLicense> GetVentureLicense() override;
     void PrepareSaving(System::SharedPtr<Device> device);
     void SerializeDocumentSequence(System::SharedPtr<Aspose::OpcPackaging::OpcPackage> package);
-    ASPOSE_PAGE_SHARED_API System::Object::shared_members_type GetSharedMembers() override;
+    
+    virtual ASPOSE_PAGE_SHARED_API ~XpsDocument();
+    
+    #ifdef ASPOSE_GET_SHARED_MEMBERS
+    ASPOSE_PAGE_SHARED_API System::Object::shared_members_type GetSharedMembers() const override;
+    #endif
+    
     
 private:
 
-    System::SharedPtr<XpsPackageParts::FixedDocumentSequence> _fixedDocumentSequence;
     System::SharedPtr<Aspose::OpcPackaging::OpcPackage> _package;
     System::SharedPtr<XpsModel::XpsContext> _context;
     System::SharedPtr<System::Collections::Generic::Dictionary<System::SharedPtr<XpsModel::XpsPage>, System::SharedPtr<XpsModel::XpsGlyphs>>> _watermarks;
+    bool _isDisposed;
     
     void LoadDocument(System::SharedPtr<System::IO::Stream> stream, System::SharedPtr<LoadOptions> options);
     void CreateDocumentSequence();
-    void LoadDocumentSequence(System::SharedPtr<System::IO::Stream> stream);
+    void LoadDocumentSequence();
     System::SharedPtr<XpsPackageParts::FixedDocument> SelectActiveDocumentInternal();
     System::SharedPtr<XpsModel::XpsPage> SelectActivePageInternal();
     bool BackupIfExists(System::String sourcePath, System::String backupPath);
@@ -788,10 +847,6 @@ private:
     void AddEvaluationWatermarkInternal();
     void AddEvaluationWatermarksInternal();
     void AddEvaluationWatermarks();
-    System::SharedPtr<XpsModel::XpsElement> AddInternal(System::SharedPtr<XpsModel::XpsElement> element);
-    System::SharedPtr<XpsModel::XpsElement> InsertInternal(int32_t index, System::SharedPtr<XpsModel::XpsElement> element);
-    System::SharedPtr<XpsModel::XpsElement> RemoveInternal(System::SharedPtr<XpsModel::XpsElement> element);
-    System::SharedPtr<XpsModel::XpsElement> RemoveAtInternal(int32_t index);
     System::SharedPtr<XpsPackageParts::FixedDocument> AddDocumentInternal(System::SharedPtr<XpsPackageParts::FixedDocument> fixedDocument, bool activate);
     System::SharedPtr<XpsPackageParts::FixedDocument> InsertDocumentInternal(int32_t index, System::SharedPtr<XpsPackageParts::FixedDocument> fixedDocument, bool activate);
     System::SharedPtr<XpsPackageParts::FixedDocument> RemoveDocumentAtInternal(int32_t index, System::SharedPtr<XpsPackageParts::FixedDocument> fixedDocument);
@@ -801,7 +856,7 @@ private:
     
 };
 
-} // namespace Xps
+} // namespace XPS
 } // namespace Page
 } // namespace Aspose
 

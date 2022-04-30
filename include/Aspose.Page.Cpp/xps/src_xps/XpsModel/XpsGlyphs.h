@@ -1,37 +1,82 @@
 ﻿#pragma once
+// Copyright (c) 2001-2022 Aspose Pty Ltd. All Rights Reserved.
 
-#include <system/collections/sorted_list.h>
+#include <system/string.h>
+#include <system/enum_helpers.h>
+#include <cstdint>
 
-#include "Aspose.Page.Cpp/xps/src_xps/XpsModel/XpsInterfaces.h"
-#include "Aspose.Page.Cpp/xps/src_xps/XpsModel/XpsElement.h"
+#include "Aspose.Page.Cpp/xps/src_xps/XpsModel/XpsContentElement.h"
+#include "Aspose.Page.Cpp/aspose_page_api_defs.h"
 
-namespace Aspose { namespace Page { namespace Xps { namespace Presentation { class XpsPresenter; } } } }
-namespace Aspose { namespace Page { namespace Xps { namespace Presentation { namespace Aps { class ApsConverter; } } } } }
-namespace Aspose { namespace Page { namespace Xps { namespace Presentation { namespace Xps { class XpsPageWriter; } } } } }
-namespace Aspose { namespace Page { namespace Xps { namespace Presentation { namespace Xps { class XpsSerializer; } } } } }
-namespace Aspose { namespace Page { namespace Xps { namespace Presentation { namespace Xps { class XpsSerializationContext; } } } } }
-namespace Aspose { namespace Page { namespace Xps { namespace XpsModel { class XpsPropertyValueManager; } } } }
-namespace Aspose { namespace Page { namespace Xps { namespace XpsModel { class XpsTreeLoader; } } } }
-namespace Aspose { namespace Page { namespace Xps { namespace XpsModel { template<typename> class XpsProperty; } } } }
-namespace Aspose { namespace Page { namespace Xps { namespace Tests { class GlyphsToImageTests; } } } }
-namespace Aspose { namespace Page { namespace Xps { namespace Tests { class GlyphsToApsTests; } } } }
-namespace Aspose { namespace Page { namespace Xps { namespace Tests { class GlyphsToPdfTests; } } } }
-namespace Aspose { namespace Page { namespace Xps { namespace XpsModel { enum class XpsStyleSimulations; } } } }
-namespace Aspose { namespace Page { namespace Xps { namespace XpsModel { class XpsBrush; } } } }
-namespace Aspose { namespace Page { namespace Xps { namespace XpsModel { class XpsFont; } } } }
-namespace Aspose { namespace Page { namespace Xps { namespace XpsModel { class XpsGlyphMapping; } } } }
-namespace Aspose { namespace Page { namespace Xps { namespace XpsModel { class XpsMatrix; } } } }
-namespace Aspose { namespace Page { namespace Xps { namespace XpsModel { class XpsPathGeometry; } } } }
-namespace Aspose { namespace Page { namespace Xps { namespace XpsModel { class XpsHyperlinkTarget; } } } }
-namespace Aspose { namespace Page { namespace Xps { namespace XpsModel { class XpsContext; } } } }
-namespace Aspose { namespace Page { namespace Xps { class XpsDocumentVisitor; } } }
-namespace Aspose { namespace Page { namespace Xps { namespace XpsModel { class XpsGlyphsClusterMap; } } } }
+namespace Aspose
+{
+namespace Page
+{
+namespace XPS
+{
+namespace Presentation
+{
+namespace Aps
+{
+class ApsConverter;
+} // namespace Aps
+namespace Xps
+{
+class XpsPageWriter;
+class XpsSerializationContext;
+class XpsSerializer;
+} // namespace Xps
+class XpsPresenter;
+} // namespace Presentation
+namespace Tests
+{
+class GlyphsToApsTests;
+class GlyphsToImageTests;
+class GlyphsToPdfTests;
+} // namespace Tests
+class XpsDocumentVisitor;
+namespace XpsModel
+{
+template <typename> class XpsArray;
+class XpsBrush;
+class XpsContentElement;
+class XpsContext;
+class XpsElement;
+class XpsFont;
+class XpsGlyphMapping;
+class XpsGlyphsClusterMap;
+class XpsObject;
+template <typename> class XpsProperty;
+enum class XpsStyleSimulations;
+class XpsTreeLoader;
+} // namespace XpsModel
+} // namespace XPS
+} // namespace Page
+} // namespace Aspose
+namespace System
+{
+namespace Collections
+{
+namespace Generic
+{
+template <typename, typename> class SortedList;
+} // namespace Generic
+} // namespace Collections
+namespace Drawing
+{
+enum class FontStyle;
+} // namespace Drawing
+namespace Xml
+{
+class XmlElement;
+} // namespace Xml
+} // namespace System
 
 namespace Aspose {
 
 namespace Page {
 
-namespace Xps {
+namespace XPS {
 
 namespace XpsModel {
 
@@ -41,30 +86,26 @@ namespace XpsModel {
 /// It provides information necessary for accurate rendering and supports search
 /// and selection features in viewing consumers. 
 /// </summary>
-class XpsGlyphs FINAL : public Aspose::Page::Xps::XpsModel::XpsElement, public Aspose::Page::Xps::XpsModel::ITransformableElement, public Aspose::Page::Xps::XpsModel::IClippable, public Aspose::Page::Xps::XpsModel::IXpsVisualElement
+class ASPOSE_PAGE_SHARED_CLASS XpsGlyphs final : public Aspose::Page::XPS::XpsModel::XpsContentElement
 {
     typedef XpsGlyphs ThisType;
-    typedef Aspose::Page::Xps::XpsModel::XpsElement BaseType;
-    typedef Aspose::Page::Xps::XpsModel::ITransformableElement BaseType1;
-    typedef Aspose::Page::Xps::XpsModel::IClippable BaseType2;
-    typedef Aspose::Page::Xps::XpsModel::IXpsVisualElement BaseType3;
+    typedef Aspose::Page::XPS::XpsModel::XpsContentElement BaseType;
     
-    typedef ::System::BaseTypesInfo<BaseType, BaseType1, BaseType2, BaseType3> ThisTypeBaseTypesInfo;
+    typedef ::System::BaseTypesInfo<BaseType> ThisTypeBaseTypesInfo;
     ASPOSE_PAGE_SHARED_RTTI_INFO_DECL();
     
-    FRIEND_FUNCTION_System_MakeObject;
-    friend class Aspose::Page::Xps::Presentation::XpsPresenter;
-    friend class Aspose::Page::Xps::Presentation::Aps::ApsConverter;
-    friend class Aspose::Page::Xps::Presentation::Xps::XpsPageWriter;
-    friend class Aspose::Page::Xps::Presentation::Xps::XpsSerializer;
-    friend class Aspose::Page::Xps::Presentation::Xps::XpsSerializationContext;
-    friend class Aspose::Page::Xps::XpsModel::XpsElement;
-    friend class Aspose::Page::Xps::XpsModel::XpsPropertyValueManager;
-    friend class Aspose::Page::Xps::XpsModel::XpsTreeLoader;
-    template<typename FT0> friend class Aspose::Page::Xps::XpsModel::XpsProperty;
-    friend class Aspose::Page::Xps::Tests::GlyphsToImageTests;
-    friend class Aspose::Page::Xps::Tests::GlyphsToApsTests;
-    friend class Aspose::Page::Xps::Tests::GlyphsToPdfTests;
+    friend class Aspose::Page::XPS::Presentation::XpsPresenter;
+    friend class Aspose::Page::XPS::Presentation::Aps::ApsConverter;
+    friend class Aspose::Page::XPS::Presentation::Xps::XpsPageWriter;
+    friend class Aspose::Page::XPS::Presentation::Xps::XpsSerializer;
+    friend class Aspose::Page::XPS::Presentation::Xps::XpsSerializationContext;
+    template<typename FT0> friend class Aspose::Page::XPS::XpsModel::XpsArray;
+    friend class Aspose::Page::XPS::XpsModel::XpsTreeLoader;
+    friend class Aspose::Page::XPS::XpsModel::XpsElement;
+    template<typename FT0> friend class Aspose::Page::XPS::XpsModel::XpsProperty;
+    friend class Aspose::Page::XPS::Tests::GlyphsToPdfTests;
+    friend class Aspose::Page::XPS::Tests::GlyphsToImageTests;
+    friend class Aspose::Page::XPS::Tests::GlyphsToApsTests;
     
 public:
 
@@ -75,7 +116,7 @@ public:
     /// with positive advance widths (representing advances to the left) placing subsequent
     /// glyphs to the left of the previous glyph.
     /// </summary>
-    ASPOSE_PAGE_SHARED_API int32_t get_BidiLevel();
+    ASPOSE_PAGE_SHARED_API int32_t get_BidiLevel() const;
     /// <summary>
     /// Returns/sets the value specifying the Unicode algorithm bidirectional nesting level.
     /// Even values imply left-to-right layout, odd values imply right-to-left layout.
@@ -100,33 +141,37 @@ public:
     /// Returns/sets the font size in drawing surface units, expressed as a float
     /// in units of the effective coordinate space.
     /// </summary>
-    ASPOSE_PAGE_SHARED_API float get_FontRenderingEmSize();
+    ASPOSE_PAGE_SHARED_API float get_FontRenderingEmSize() const;
     /// <summary>
     /// Returns/sets the font size in drawing surface units, expressed as a float
     /// in units of the effective coordinate space.
     /// </summary>
     ASPOSE_PAGE_SHARED_API void set_FontRenderingEmSize(float value);
     /// <summary>
-    /// Returns/sets the x coordinate of the first glyph in the run, in units of the effective coordinate space.
+    /// Returns/sets the x coordinate of the first glyph in the run,
+    /// in units of the effective coordinate space.
     /// </summary>
-    ASPOSE_PAGE_SHARED_API float get_OriginX();
+    ASPOSE_PAGE_SHARED_API float get_OriginX() const;
     /// <summary>
-    /// Returns/sets the x coordinate of the first glyph in the run, in units of the effective coordinate space.
+    /// Returns/sets the x coordinate of the first glyph in the run,
+    /// in units of the effective coordinate space.
     /// </summary>
     ASPOSE_PAGE_SHARED_API void set_OriginX(float value);
     /// <summary>
-    /// Returns/sets the y coordinate of the first glyph in the run, in units of the effective coordinate space.
+    /// Returns/sets the y coordinate of the first glyph in the run,
+    /// in units of the effective coordinate space.
     /// </summary>
-    ASPOSE_PAGE_SHARED_API float get_OriginY();
+    ASPOSE_PAGE_SHARED_API float get_OriginY() const;
     /// <summary>
-    /// Returns/sets the y coordinate of the first glyph in the run, in units of the effective coordinate space.
+    /// Returns/sets the y coordinate of the first glyph in the run,
+    /// in units of the effective coordinate space.
     /// </summary>
     ASPOSE_PAGE_SHARED_API void set_OriginY(float value);
     /// <summary>
     /// Returns/sets the value indicating that a glyph is turned on its side,
     /// with the origin being defined as the top center of the unturned glyph. 
     /// </summary>
-    ASPOSE_PAGE_SHARED_API bool get_IsSideways();
+    ASPOSE_PAGE_SHARED_API bool get_IsSideways() const;
     /// <summary>
     /// Returns/sets the value indicating that a glyph is turned on its side,
     /// with the origin being defined as the top center of the unturned glyph. 
@@ -136,74 +181,22 @@ public:
     /// Returns/sets the string of text rendered by the Glyphs element.
     /// The text is specified as Unicode code points.
     /// </summary>
-    ASPOSE_PAGE_SHARED_API System::String get_UnicodeString();
+    ASPOSE_PAGE_SHARED_API System::String get_UnicodeString() const;
     /// <summary>
     /// Returns/sets the string of text rendered by the Glyphs element.
     /// The text is specified as Unicode code points.
     /// </summary>
     ASPOSE_PAGE_SHARED_API void set_UnicodeString(System::String value);
+    ASPOSE_PAGE_SHARED_API System::SharedPtr<System::Collections::Generic::SortedList<int32_t, System::SharedPtr<XpsGlyphMapping>>> get_Indices();
+    ASPOSE_PAGE_SHARED_API void set_Indices(System::SharedPtr<System::Collections::Generic::SortedList<int32_t, System::SharedPtr<XpsGlyphMapping>>> value);
     /// <summary>
     /// Returns/sets the value specifying a style simulation.
     /// </summary>
-    ASPOSE_PAGE_SHARED_API XpsStyleSimulations get_StyleSimulations();
+    ASPOSE_PAGE_SHARED_API XpsStyleSimulations get_StyleSimulations() const;
     /// <summary>
     /// Returns/sets the value specifying a style simulation.
     /// </summary>
     ASPOSE_PAGE_SHARED_API void set_StyleSimulations(XpsStyleSimulations value);
-    /// <summary>
-    /// Returns/sets the affine transformation matrix establishing a new coordinate frame for
-    /// the glyph run specified by the Glyphs element. The render transform affects clip, opacity mask,
-    /// fill, x origin, y origin, the actual shape of individual glyphs, and the advance widths.
-    /// The render transform also affects the font size and values specified in the Indices attribute. 
-    /// </summary>
-    ASPOSE_PAGE_SHARED_API System::SharedPtr<XpsMatrix> get_RenderTransform();
-    /// <summary>
-    /// Returns/sets the affine transformation matrix establishing a new coordinate frame for
-    /// the glyph run specified by the Glyphs element. The render transform affects clip, opacity mask,
-    /// fill, x origin, y origin, the actual shape of individual glyphs, and the advance widths.
-    /// The render transform also affects the font size and values specified in the Indices attribute. 
-    /// </summary>
-    ASPOSE_PAGE_SHARED_API void set_RenderTransform(System::SharedPtr<XpsMatrix> value);
-    /// <summary>
-    /// Returns/sets the path geometry limitting the rendered region of the element.
-    /// Only portions of the Glyphs element that fall within the clip region (even partially clipped characters)
-    /// produce marks on the page. 
-    /// </summary>
-    ASPOSE_PAGE_SHARED_API System::SharedPtr<XpsPathGeometry> get_Clip();
-    /// <summary>
-    /// Returns/sets the path geometry limitting the rendered region of the element.
-    /// Only portions of the Glyphs element that fall within the clip region (even partially clipped characters)
-    /// produce marks on the page. 
-    /// </summary>
-    ASPOSE_PAGE_SHARED_API void set_Clip(System::SharedPtr<XpsPathGeometry> value);
-    /// <summary>
-    /// Returns/sets the value defining the uniform transparency of the glyph element.
-    /// </summary>
-    ASPOSE_PAGE_SHARED_API float get_Opacity();
-    /// <summary>
-    /// Returns/sets the value defining the uniform transparency of the glyph element.
-    /// </summary>
-    ASPOSE_PAGE_SHARED_API void set_Opacity(float value);
-    /// <summary>
-    /// Returns/sets the brush specifying a mask of alpha values
-    /// that is applied to the glyphs in the same fashion as the Opacity attribute, but allowing
-    /// different alpha values for different areas of the element. 
-    /// </summary>
-    ASPOSE_PAGE_SHARED_API System::SharedPtr<XpsBrush> get_OpacityMask();
-    /// <summary>
-    /// Returns/sets the brush specifying a mask of alpha values
-    /// that is applied to the glyphs in the same fashion as the Opacity attribute, but allowing
-    /// different alpha values for different areas of the element. 
-    /// </summary>
-    ASPOSE_PAGE_SHARED_API void set_OpacityMask(System::SharedPtr<XpsBrush> value);
-    /// <summary>
-    /// Returns/sets hyperlink target object.
-    /// </summary>
-    ASPOSE_PAGE_SHARED_API System::SharedPtr<XpsHyperlinkTarget> get_HyperlinkTarget();
-    /// <summary>
-    /// Returns/sets hyperlink target object.
-    /// </summary>
-    ASPOSE_PAGE_SHARED_API void set_HyperlinkTarget(System::SharedPtr<XpsHyperlinkTarget> value);
     
     /// <summary>
     /// Clone this glyphs.
@@ -217,28 +210,43 @@ protected:
     /// Returns font resource for the TrueType font used to typeset elements text.
     /// </summary>
     ASPOSE_PAGE_SHARED_API void set_Font(System::SharedPtr<XpsFont> value);
-    System::String get_FontUri();
+    System::String get_FontUri() const;
     void set_FontUri(System::String value);
-    System::SharedPtr<System::Collections::Generic::SortedList<int32_t, System::SharedPtr<XpsGlyphMapping>>> get_Indices();
-    void set_Indices(System::SharedPtr<System::Collections::Generic::SortedList<int32_t, System::SharedPtr<XpsGlyphMapping>>> value);
     
     XpsGlyphs(System::SharedPtr<XpsContext> context, System::String fontFamily, float fontRenderingEmSize, System::Drawing::FontStyle fontStyle, float originX, float originY, System::String unicodeString);
-    XpsGlyphs(System::SharedPtr<XpsContext> context, System::SharedPtr<XpsFont> font, float fontRenderingEmSize, float originX, float originY, System::String unicodeString);
-    XpsGlyphs(System::SharedPtr<System::Xml::XmlElement> element, System::SharedPtr<XpsElement> parent);
-    XpsGlyphs(System::SharedPtr<XpsContext> context, System::SharedPtr<XpsFont> font);
     
-    virtual ASPOSE_PAGE_SHARED_API void Initialize(System::SharedPtr<System::Xml::XmlElement> element);
-    virtual ASPOSE_PAGE_SHARED_API void Accept(System::SharedPtr<XpsDocumentVisitor> visitor);
-    virtual ASPOSE_PAGE_SHARED_API void AcceptProperties(System::SharedPtr<XpsDocumentVisitor> visitor);
-    virtual ASPOSE_PAGE_SHARED_API void ForcePropertyValueReferencesUpdate(System::SharedPtr<XpsElement> parent, bool add = true);
-    virtual ASPOSE_PAGE_SHARED_API void ForceRegisterForPreprocessing(bool add = true);
+    MEMBER_FUNCTION_MAKE_OBJECT_DECLARATION(XpsGlyphs, CODEPORTING_ARGS(System::SharedPtr<XpsContext> context, System::String fontFamily, float fontRenderingEmSize, System::Drawing::FontStyle fontStyle, float originX, float originY, System::String unicodeString));
+    
+    XpsGlyphs(System::SharedPtr<XpsContext> context, System::SharedPtr<XpsFont> font, float fontRenderingEmSize, float originX, float originY, System::String unicodeString);
+    
+    MEMBER_FUNCTION_MAKE_OBJECT_DECLARATION(XpsGlyphs, CODEPORTING_ARGS(System::SharedPtr<XpsContext> context, System::SharedPtr<XpsFont> font, float fontRenderingEmSize, float originX, float originY, System::String unicodeString));
+    
+    XpsGlyphs(System::SharedPtr<System::Xml::XmlElement> element, System::SharedPtr<XpsElement> parent);
+    
+    MEMBER_FUNCTION_MAKE_OBJECT_DECLARATION(XpsGlyphs, CODEPORTING_ARGS(System::SharedPtr<System::Xml::XmlElement> element, System::SharedPtr<XpsElement> parent));
+    
+    XpsGlyphs(System::SharedPtr<XpsContext> context);
+    
+    MEMBER_FUNCTION_MAKE_OBJECT_DECLARATION(XpsGlyphs, CODEPORTING_ARGS(System::SharedPtr<XpsContext> context));
+    ASPOSE_PAGE_SHARED_API void Initialize(System::SharedPtr<System::Xml::XmlElement> element) override;
+    ASPOSE_PAGE_SHARED_API void Accept(System::SharedPtr<XpsDocumentVisitor> visitor) override;
+    ASPOSE_PAGE_SHARED_API void AcceptProperties(System::SharedPtr<XpsDocumentVisitor> visitor) override;
+    ASPOSE_PAGE_SHARED_API void ForcePropertyValueReferencesUpdate(System::SharedPtr<XpsElement> parent, bool add = true) override;
+    ASPOSE_PAGE_SHARED_API void ForceRegisterForPreprocessing(bool add = true) override;
     void InitIndices(System::String indices);
     System::String IndicesToString();
-    virtual ASPOSE_PAGE_SHARED_API System::SharedPtr<XpsElement> Clone(bool deep, System::SharedPtr<XpsContext> context, System::SharedPtr<XpsElement> parent, int32_t index);
-    virtual ASPOSE_PAGE_SHARED_API void CopyPropertyValues(System::SharedPtr<XpsElement> element);
-    virtual ASPOSE_PAGE_SHARED_API void ClonePropertyValues(System::SharedPtr<XpsElement> element);
-    virtual ASPOSE_PAGE_SHARED_API void CopySimplePropertyValues(System::SharedPtr<XpsElement> element);
-    ASPOSE_PAGE_SHARED_API System::Object::shared_members_type GetSharedMembers() override;
+    ASPOSE_PAGE_SHARED_API System::SharedPtr<XpsElement> Clone(bool deep, System::SharedPtr<XpsContext> context, System::SharedPtr<XpsElement> parent, int32_t index) override;
+    ASPOSE_PAGE_SHARED_API void CopyPropertyValues(System::SharedPtr<XpsObject> obj) override;
+    ASPOSE_PAGE_SHARED_API void ClonePropertyValues(System::SharedPtr<XpsObject> obj) override;
+    ASPOSE_PAGE_SHARED_API void CopySimplePropertyValues(System::SharedPtr<XpsObject> obj) override;
+    ASPOSE_PAGE_SHARED_API void Dispose() override;
+    
+    virtual ASPOSE_PAGE_SHARED_API ~XpsGlyphs();
+    
+    #ifdef ASPOSE_GET_SHARED_MEMBERS
+    ASPOSE_PAGE_SHARED_API System::Object::shared_members_type GetSharedMembers() const override;
+    #endif
+    
     
 private:
 
@@ -253,42 +261,54 @@ private:
     System::SharedPtr<System::Collections::Generic::SortedList<int32_t, System::SharedPtr<XpsGlyphMapping>>> _indices;
     System::String _unicodeString;
     XpsStyleSimulations _styleSymulations;
-    float _opacity;
-    System::SharedPtr<XpsProperty<System::SharedPtr<XpsBrush>>> _opacityMask;
     
 };
 
-class XpsGlyphMapping : public System::Object
+
+// C# preprocessor directive: #if CPLUSPLUS
+
+
+// C# preprocessor directive: #else
+
+
+// C# preprocessor directive: #endif
+
+class ASPOSE_PAGE_SHARED_CLASS XpsGlyphMapping : public System::Object
 {
     typedef XpsGlyphMapping ThisType;
     typedef System::Object BaseType;
     
     typedef ::System::BaseTypesInfo<BaseType> ThisTypeBaseTypesInfo;
-    RTTI_INFO_DECL();
+    ASPOSE_PAGE_SHARED_RTTI_INFO_DECL();
+    
+    friend class Aspose::Page::XPS::XpsModel::XpsGlyphs;
     
 public:
 
-    static const float AdvanceWidthUndefined;
+    static const ASPOSE_PAGE_SHARED_API float AdvanceWidthUndefined;
     
-    System::SharedPtr<XpsGlyphsClusterMap> get_ClusterMap();
-    float get_AdvanceWidth();
-    float get_UOffset();
-    float get_VOffset();
+    ASPOSE_PAGE_SHARED_API System::SharedPtr<XpsGlyphsClusterMap> get_ClusterMap() const;
+    ASPOSE_PAGE_SHARED_API float get_AdvanceWidth() const;
+    ASPOSE_PAGE_SHARED_API float get_UOffset() const;
+    ASPOSE_PAGE_SHARED_API float get_VOffset() const;
     
-    XpsGlyphMapping(System::SharedPtr<XpsGlyphsClusterMap> clusterMap, float advanceWidth, float uOffset, float vOffset);
-    XpsGlyphMapping(float advanceWidth, float uOffset, float vOffset);
-    XpsGlyphMapping(float uOffset, float vOffset);
-    XpsGlyphMapping(float advanceWidth);
-    XpsGlyphMapping(System::SharedPtr<XpsGlyphsClusterMap> clusterMap, float advanceWidth);
-    XpsGlyphMapping(System::SharedPtr<XpsGlyphsClusterMap> clusterMap);
+    ASPOSE_PAGE_SHARED_API XpsGlyphMapping(System::SharedPtr<XpsGlyphsClusterMap> clusterMap, float advanceWidth, float uOffset, float vOffset);
+    ASPOSE_PAGE_SHARED_API XpsGlyphMapping(float advanceWidth, float uOffset, float vOffset);
+    ASPOSE_PAGE_SHARED_API XpsGlyphMapping(float uOffset, float vOffset);
+    ASPOSE_PAGE_SHARED_API XpsGlyphMapping(float advanceWidth);
+    ASPOSE_PAGE_SHARED_API XpsGlyphMapping(System::SharedPtr<XpsGlyphsClusterMap> clusterMap, float advanceWidth);
+    ASPOSE_PAGE_SHARED_API XpsGlyphMapping(System::SharedPtr<XpsGlyphsClusterMap> clusterMap);
     
-    virtual System::String ToString();
-    System::SharedPtr<XpsGlyphMapping> Clone();
-    static System::SharedPtr<XpsGlyphMapping> Create(System::String indices);
+    ASPOSE_PAGE_SHARED_API System::SharedPtr<XpsGlyphMapping> Clone();
+    ASPOSE_PAGE_SHARED_API System::String ToString() const override;
     
 protected:
 
-    System::Object::shared_members_type GetSharedMembers() override;
+    static System::SharedPtr<XpsGlyphMapping> Create(System::String indices);
+    #ifdef ASPOSE_GET_SHARED_MEMBERS
+    ASPOSE_PAGE_SHARED_API System::Object::shared_members_type GetSharedMembers() const override;
+    #endif
+    
     
 private:
 
@@ -297,28 +317,44 @@ private:
     float _uOffset;
     float _vOffset;
     
+    System::String ToString_NonConst();
+    
 };
 
-class XpsGlyphsClusterMap : public System::Object
+
+// C# preprocessor directive: #if CPLUSPLUS
+
+
+// C# preprocessor directive: #else
+
+
+// C# preprocessor directive: #endif
+
+class ASPOSE_PAGE_SHARED_CLASS XpsGlyphsClusterMap : public System::Object
 {
     typedef XpsGlyphsClusterMap ThisType;
     typedef System::Object BaseType;
     
     typedef ::System::BaseTypesInfo<BaseType> ThisTypeBaseTypesInfo;
-    RTTI_INFO_DECL();
+    ASPOSE_PAGE_SHARED_RTTI_INFO_DECL();
+    
+    friend class Aspose::Page::XPS::XpsModel::XpsGlyphMapping;
     
 public:
 
-    uint8_t get_CodeUnitCount();
-    uint8_t get_GlyphCount();
-    int32_t get_GlyphId();
+    ASPOSE_PAGE_SHARED_API uint8_t get_CodeUnitCount() const;
+    ASPOSE_PAGE_SHARED_API uint8_t get_GlyphCount() const;
+    ASPOSE_PAGE_SHARED_API int32_t get_GlyphId() const;
     
-    XpsGlyphsClusterMap(uint8_t codeUnitCount, uint8_t glyphCount, int32_t glyphId);
-    XpsGlyphsClusterMap(uint8_t codeUnitCount, int32_t glyphId);
-    XpsGlyphsClusterMap(int32_t glyphId);
+    ASPOSE_PAGE_SHARED_API XpsGlyphsClusterMap(uint8_t codeUnitCount, uint8_t glyphCount, int32_t glyphId);
+    ASPOSE_PAGE_SHARED_API XpsGlyphsClusterMap(uint8_t codeUnitCount, int32_t glyphId);
+    ASPOSE_PAGE_SHARED_API XpsGlyphsClusterMap(int32_t glyphId);
     
-    virtual System::String ToString();
-    System::SharedPtr<XpsGlyphsClusterMap> Clone();
+    ASPOSE_PAGE_SHARED_API System::SharedPtr<XpsGlyphsClusterMap> Clone();
+    ASPOSE_PAGE_SHARED_API System::String ToString() const override;
+    
+protected:
+
     static System::SharedPtr<XpsGlyphsClusterMap> Create(System::String clusterMap);
     
 private:
@@ -327,10 +363,12 @@ private:
     uint8_t _glyphCount;
     int32_t _glyphId;
     
+    System::String ToString_NonConst();
+    
 };
 
 } // namespace XpsModel
-} // namespace Xps
+} // namespace XPS
 } // namespace Page
 } // namespace Aspose
 

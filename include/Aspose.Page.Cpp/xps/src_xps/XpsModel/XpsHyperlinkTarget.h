@@ -1,38 +1,64 @@
 ﻿#pragma once
+// Copyright (c) 2001-2022 Aspose Pty Ltd. All Rights Reserved.
 
 #include <system/string.h>
-#include <system/shared_ptr.h>
-#include <system/object.h>
 #include <cstdint>
 
 #include "Aspose.Page.Cpp/aspose_page_api_defs.h"
 
-namespace Aspose { namespace Page { namespace Xps { namespace Presentation { namespace Xps { class XpsSerializationContext; } } } } }
-namespace Aspose { namespace Page { namespace Xps { namespace XpsModel { class XpsElement; } } } }
-namespace Aspose { namespace Page { namespace Xps { namespace XpsModel { class XpsContext; } } } }
-namespace Aspose { namespace Page { namespace Xps { namespace XpsPackageParts { class FixedDocument; } } } }
-namespace Aspose { namespace Page { namespace Xps { namespace Presentation { class XpsPresenter; } } } }
-namespace Aspose { namespace Page { namespace Xps { namespace Presentation { namespace Aps { class ApsConverter; } } } } }
-namespace Aspose { namespace Page { namespace Xps { namespace XpsModel { class XpsHyperlinkTarget; } } } }
-namespace Aspose { namespace Page { namespace Xps { class XpsDocument; } } }
-namespace Aspose { namespace Page { namespace Xps { namespace Tests { class HyperlinksTests; } } } }
-namespace Aspose { namespace Page { namespace Xps { namespace XpsModel { class XpsPage; } } } }
-namespace Aspose { namespace Page { namespace Xps { namespace XpsModel { class XpsCanvas; } } } }
-namespace Aspose { namespace Page { namespace Xps { namespace XpsModel { class XpsPath; } } } }
-namespace Aspose { namespace Page { namespace Xps { namespace XpsModel { class XpsGlyphs; } } } }
+namespace Aspose
+{
+namespace Page
+{
+namespace XPS
+{
+namespace Presentation
+{
+namespace Aps
+{
+class ApsConverter;
+} // namespace Aps
+namespace Xps
+{
+class XpsSerializationContext;
+} // namespace Xps
+class XpsPresenter;
+} // namespace Presentation
+namespace Tests
+{
+class HyperlinksTests;
+} // namespace Tests
+class XpsDocument;
+namespace XpsModel
+{
+class XpsCanvas;
+class XpsContext;
+class XpsElement;
+class XpsGlyphs;
+class XpsHyperlinkElement;
+class XpsPage;
+class XpsPath;
+} // namespace XpsModel
+namespace XpsPackageParts
+{
+class FixedDocument;
+} // namespace XpsPackageParts
+} // namespace XPS
+} // namespace Page
+} // namespace Aspose
 
 namespace Aspose {
 
 namespace Page {
 
-namespace Xps {
+namespace XPS {
 
 namespace XpsModel {
 
 /// <summary>
 /// Base class for a hyperlink target.
 /// </summary>
-class XpsHyperlinkTarget : public System::Object
+class ASPOSE_PAGE_SHARED_CLASS XpsHyperlinkTarget : public System::Object
 {
     typedef XpsHyperlinkTarget ThisType;
     typedef System::Object BaseType;
@@ -40,10 +66,10 @@ class XpsHyperlinkTarget : public System::Object
     typedef ::System::BaseTypesInfo<BaseType> ThisTypeBaseTypesInfo;
     ASPOSE_PAGE_SHARED_RTTI_INFO_DECL();
     
-    friend class Aspose::Page::Xps::Presentation::Xps::XpsSerializationContext;
-    friend class Aspose::Page::Xps::XpsModel::XpsElement;
-    friend class Aspose::Page::Xps::XpsModel::XpsContext;
-    friend class Aspose::Page::Xps::XpsPackageParts::FixedDocument;
+    friend class Aspose::Page::XPS::Presentation::Xps::XpsSerializationContext;
+    friend class Aspose::Page::XPS::XpsModel::XpsHyperlinkElement;
+    friend class Aspose::Page::XPS::XpsModel::XpsContext;
+    friend class Aspose::Page::XPS::XpsPackageParts::FixedDocument;
     
 protected:
 
@@ -55,16 +81,16 @@ protected:
 /// <summary>
 /// Class incapsulating the external hyperlink target.
 /// </summary>
-class XpsExternalLinkTarget FINAL : public Aspose::Page::Xps::XpsModel::XpsHyperlinkTarget
+class ASPOSE_PAGE_SHARED_CLASS XpsExternalLinkTarget final : public Aspose::Page::XPS::XpsModel::XpsHyperlinkTarget
 {
     typedef XpsExternalLinkTarget ThisType;
-    typedef Aspose::Page::Xps::XpsModel::XpsHyperlinkTarget BaseType;
+    typedef Aspose::Page::XPS::XpsModel::XpsHyperlinkTarget BaseType;
     
     typedef ::System::BaseTypesInfo<BaseType> ThisTypeBaseTypesInfo;
     ASPOSE_PAGE_SHARED_RTTI_INFO_DECL();
     
-    friend class Aspose::Page::Xps::Presentation::XpsPresenter;
-    friend class Aspose::Page::Xps::Presentation::Aps::ApsConverter;
+    friend class Aspose::Page::XPS::Presentation::XpsPresenter;
+    friend class Aspose::Page::XPS::Presentation::Aps::ApsConverter;
     
 public:
 
@@ -76,9 +102,9 @@ public:
     
 protected:
 
-    System::String get_TargetUri();
+    System::String get_TargetUri() const;
     
-    virtual ASPOSE_PAGE_SHARED_API System::String GetUri(System::SharedPtr<XpsContext> context);
+    ASPOSE_PAGE_SHARED_API System::String GetUri(System::SharedPtr<XpsContext> context) override;
     
 private:
 
@@ -89,17 +115,17 @@ private:
 /// <summary>
 /// Class incapsulating the page hyperlink target.
 /// </summary>
-class XpsPageLinkTarget FINAL : public Aspose::Page::Xps::XpsModel::XpsHyperlinkTarget
+class ASPOSE_PAGE_SHARED_CLASS XpsPageLinkTarget final : public Aspose::Page::XPS::XpsModel::XpsHyperlinkTarget
 {
     typedef XpsPageLinkTarget ThisType;
-    typedef Aspose::Page::Xps::XpsModel::XpsHyperlinkTarget BaseType;
+    typedef Aspose::Page::XPS::XpsModel::XpsHyperlinkTarget BaseType;
     
     typedef ::System::BaseTypesInfo<BaseType> ThisTypeBaseTypesInfo;
     ASPOSE_PAGE_SHARED_RTTI_INFO_DECL();
     
-    friend class Aspose::Page::Xps::Presentation::XpsPresenter;
-    friend class Aspose::Page::Xps::Presentation::Aps::ApsConverter;
-    friend class Aspose::Page::Xps::XpsModel::XpsContext;
+    friend class Aspose::Page::XPS::Presentation::XpsPresenter;
+    friend class Aspose::Page::XPS::Presentation::Aps::ApsConverter;
+    friend class Aspose::Page::XPS::XpsModel::XpsContext;
     
 public:
 
@@ -112,9 +138,9 @@ public:
     
 protected:
 
-    int32_t get_TargetPageNumber();
+    int32_t get_TargetPageNumber() const;
     
-    virtual ASPOSE_PAGE_SHARED_API System::String GetUri(System::SharedPtr<XpsContext> context);
+    ASPOSE_PAGE_SHARED_API System::String GetUri(System::SharedPtr<XpsContext> context) override;
     
 private:
 
@@ -125,24 +151,23 @@ private:
 /// <summary>
 /// Class incapsulating the relative named-address hyperlink target.
 /// </summary>
-class XpsElementLinkTarget FINAL : public Aspose::Page::Xps::XpsModel::XpsHyperlinkTarget
+class ASPOSE_PAGE_SHARED_CLASS XpsElementLinkTarget final : public Aspose::Page::XPS::XpsModel::XpsHyperlinkTarget
 {
     typedef XpsElementLinkTarget ThisType;
-    typedef Aspose::Page::Xps::XpsModel::XpsHyperlinkTarget BaseType;
+    typedef Aspose::Page::XPS::XpsModel::XpsHyperlinkTarget BaseType;
     
     typedef ::System::BaseTypesInfo<BaseType> ThisTypeBaseTypesInfo;
     ASPOSE_PAGE_SHARED_RTTI_INFO_DECL();
     
-    FRIEND_FUNCTION_System_MakeObject;
-    friend class Aspose::Page::Xps::Presentation::XpsPresenter;
-    friend class Aspose::Page::Xps::Presentation::Aps::ApsConverter;
-    friend class Aspose::Page::Xps::Presentation::Xps::XpsSerializationContext;
-    friend class Aspose::Page::Xps::XpsModel::XpsHyperlinkTarget;
-    friend class Aspose::Page::Xps::XpsModel::XpsElement;
-    friend class Aspose::Page::Xps::XpsModel::XpsContext;
-    friend class Aspose::Page::Xps::XpsDocument;
-    friend class Aspose::Page::Xps::XpsPackageParts::FixedDocument;
-    friend class Aspose::Page::Xps::Tests::HyperlinksTests;
+    friend class Aspose::Page::XPS::Presentation::XpsPresenter;
+    friend class Aspose::Page::XPS::Presentation::Aps::ApsConverter;
+    friend class Aspose::Page::XPS::Presentation::Xps::XpsSerializationContext;
+    friend class Aspose::Page::XPS::XpsModel::XpsHyperlinkElement;
+    friend class Aspose::Page::XPS::XpsModel::XpsHyperlinkTarget;
+    friend class Aspose::Page::XPS::XpsModel::XpsContext;
+    friend class Aspose::Page::XPS::XpsDocument;
+    friend class Aspose::Page::XPS::XpsPackageParts::FixedDocument;
+    friend class Aspose::Page::XPS::Tests::HyperlinksTests;
     
 public:
 
@@ -169,15 +194,19 @@ public:
     
 protected:
 
-    System::SharedPtr<XpsElement> get_TargetElement();
+    System::SharedPtr<XpsElement> get_TargetElement() const;
     void set_TargetElement(System::SharedPtr<XpsElement> value);
-    System::String get_TargetName();
+    System::String get_TargetName() const;
     void set_TargetName(System::String value);
     
     XpsElementLinkTarget(System::String targetName);
     
-    virtual ASPOSE_PAGE_SHARED_API System::String GetUri(System::SharedPtr<XpsContext> context);
-    ASPOSE_PAGE_SHARED_API System::Object::shared_members_type GetSharedMembers() override;
+    MEMBER_FUNCTION_MAKE_OBJECT_DECLARATION(XpsElementLinkTarget, CODEPORTING_ARGS(System::String targetName));
+    ASPOSE_PAGE_SHARED_API System::String GetUri(System::SharedPtr<XpsContext> context) override;
+    #ifdef ASPOSE_GET_SHARED_MEMBERS
+    ASPOSE_PAGE_SHARED_API System::Object::shared_members_type GetSharedMembers() const override;
+    #endif
+    
     
 private:
 
@@ -186,10 +215,12 @@ private:
     
     XpsElementLinkTarget(System::SharedPtr<XpsElement> targetElement);
     
+    MEMBER_FUNCTION_MAKE_OBJECT_DECLARATION(XpsElementLinkTarget, CODEPORTING_ARGS(System::SharedPtr<XpsElement> targetElement));
+    
 };
 
 } // namespace XpsModel
-} // namespace Xps
+} // namespace XPS
 } // namespace Page
 } // namespace Aspose
 

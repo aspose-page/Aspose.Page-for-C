@@ -1,6 +1,8 @@
 ﻿#pragma once
+// Copyright (c) 2001-2022 Aspose Pty Ltd. All Rights Reserved.
 
 #include "Aspose.Page.Cpp/IMultiPageDevice.h"
+#include "Aspose.Page.Cpp/aspose_page_api_defs.h"
 
 namespace Aspose {
 
@@ -9,7 +11,7 @@ namespace Page {
 /// <summary>
 /// Basic interface for multi-partition device.
 /// </summary>
-class IMultiPartitionDevice : public Aspose::Page::IMultiPageDevice
+class ASPOSE_PAGE_SHARED_CLASS IMultiPartitionDevice : public Aspose::Page::IMultiPageDevice
 {
     typedef IMultiPartitionDevice ThisType;
     typedef Aspose::Page::IMultiPageDevice BaseType;

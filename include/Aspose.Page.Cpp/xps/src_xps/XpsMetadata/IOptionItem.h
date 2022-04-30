@@ -1,4 +1,5 @@
 ﻿#pragma once
+// Copyright (c) 2001-2022 Aspose Pty Ltd. All Rights Reserved.
 
 #include <system/object.h>
 
@@ -8,14 +9,14 @@ namespace Aspose {
 
 namespace Page {
 
-namespace Xps {
+namespace XPS {
 
 namespace XpsMetadata {
 
 /// <summary>
 /// Basic interface for classes that can be a print ticket option item.
 /// </summary>
-class IOptionItem : public virtual System::Object
+class ASPOSE_PAGE_SHARED_CLASS IOptionItem : public virtual System::Object
 {
     typedef IOptionItem ThisType;
     typedef System::Object BaseType;
@@ -26,7 +27,7 @@ class IOptionItem : public virtual System::Object
 };
 
 } // namespace XpsMetadata
-} // namespace Xps
+} // namespace XPS
 } // namespace Page
 } // namespace Aspose
 

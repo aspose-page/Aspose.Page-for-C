@@ -36,6 +36,10 @@
 #include "drawing/bitmap.h"
 #include "drawing/graphics.h"
 
+#include <Aspose.Page.Cpp/eps/src_eps/XMP/XmpValue.h>
+#include <Aspose.Page.Cpp/eps/src_eps/XMP/XmpMetadata.h>
+#include <Aspose.Page.Cpp/eps/src_eps/PsDocument.h>
+
 #include <Aspose.Page.Cpp/eps/src_eps/PsDocument.h>
 #include <Aspose.Page.Cpp/eps/src_eps/PsConverterException.h>
 #include <Aspose.Page.Cpp/eps/src_eps/Device/ImageSaveOptions.h>
@@ -45,13 +49,13 @@
 
 #include <Aspose.Page.Cpp/xps/src_xps/XpsDocument.h>
 #include <Aspose.Page.Cpp/xps/src_xps/Import/XpsLoadOptions.h>
-#include <Aspose.Page.Cpp/xps/src_xps/Presentation/Image/ImageDevice_.h>
+#include <Aspose.Page.Cpp/xps/src_xps/Presentation/Image/ImageDevice.h>
 #include <Aspose.Page.Cpp/xps/src_xps/Presentation/Image/BmpSaveOptions.h>
 #include <Aspose.Page.Cpp/xps/src_xps/Presentation/Image/JpegSaveOptions.h>
 #include <Aspose.Page.Cpp/xps/src_xps/Presentation/Image/PngSaveOptions.h>
 #include <Aspose.Page.Cpp/xps/src_xps/Presentation/Image/TiffSaveOptions.h>
-#include <Aspose.Page.Cpp/xps/src_xps/Presentation/Pdf/PdfDevice_.h>
-#include <Aspose.Page.Cpp/xps/src_xps/Presentation/Pdf/PdfSaveOptions_.h>
+#include <Aspose.Page.Cpp/xps/src_xps/Presentation/Pdf/PdfDevice.h>
+#include <Aspose.Page.Cpp/xps/src_xps/Presentation/Pdf/PdfSaveOptions.h>
 
 
 #include <Aspose.Page.Cpp/xps/src_xps/XpsModel/XpsPathSegments/XpsPolyQuadraticBezierSegment.h>

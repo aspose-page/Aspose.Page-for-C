@@ -1,0 +1,364 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{C5E40D21-7544-4938-91E2-1DED359BB346}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>HelloWorld</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug.Static|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug.Static|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug.Static|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug.Static|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug.Static|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug.Static|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug.Static|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug.Static|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug.Static|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug.Static|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug.Static|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <OutDir>$(ProjectDir)bin\$(Configuration)\</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug.Static|x64'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug.Static|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug.Static|x64'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug.Static|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>$(ProjectDir)include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;_CONSOLE;_DEBUG;DEBUG;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;DISABLE_EXTERNAL_REFCOUNT;GTEST_HAS_PTHREAD=0;BOOST_ALL_NO_LIB;U_STATIC_IMPLEMENTATION;LIBXML_STATIC;LIBXSLT_STATIC;SK_INTERNAL;SK_GAMMA_SRGB;SK_GAMMA_APPLY_TO_A8;SK_SCALAR_TO_FLOAT_EXCLUDED;SK_ALLOW_STATIC_GLOBAL_INITIALIZERS=1;SK_SUPPORT_GPU=0;SK_SUPPORT_OPENCL=0;SK_FORCE_DISTANCE_FIELD_TEXT=0;GR_GL_FUNCTION_TYPE=__stdcall;SK_A32_SHIFT=24;SK_R32_SHIFT=16;SK_G32_SHIFT=8;SK_B32_SHIFT=0;SK_DEVELOPER=1;CMAKE_INTDIR="Debug";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
+      <MinimalRebuild>false</MinimalRebuild>
+      <IntrinsicFunctions>false</IntrinsicFunctions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>$(ProjectDir)include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;_CONSOLE;_DEBUG;DEBUG;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;DISABLE_EXTERNAL_REFCOUNT;GTEST_HAS_PTHREAD=0;BOOST_ALL_NO_LIB;U_STATIC_IMPLEMENTATION;LIBXML_STATIC;LIBXSLT_STATIC;SK_INTERNAL;SK_GAMMA_SRGB;SK_GAMMA_APPLY_TO_A8;SK_SCALAR_TO_FLOAT_EXCLUDED;SK_ALLOW_STATIC_GLOBAL_INITIALIZERS=1;SK_SUPPORT_GPU=0;SK_SUPPORT_OPENCL=0;SK_FORCE_DISTANCE_FIELD_TEXT=0;GR_GL_FUNCTION_TYPE=__stdcall;SK_A32_SHIFT=24;SK_R32_SHIFT=16;SK_G32_SHIFT=8;SK_B32_SHIFT=0;SK_DEVELOPER=1;CMAKE_INTDIR="Debug";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
+      <MinimalRebuild>false</MinimalRebuild>
+      <IntrinsicFunctions>false</IntrinsicFunctions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>$(ProjectDir)include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_CONSOLE;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;BOOST_ALL_NO_LIB;DISABLE_EXTERNAL_REFCOUNT;U_STATIC_IMPLEMENTATION;LIBXML_STATIC;LIBXSLT_STATIC;SK_INTERNAL;SK_GAMMA_SRGB;SK_GAMMA_APPLY_TO_A8;SK_SCALAR_TO_FLOAT_EXCLUDED;SK_ALLOW_STATIC_GLOBAL_INITIALIZERS=1;SK_SUPPORT_GPU=0;SK_SUPPORT_OPENCL=0;SK_FORCE_DISTANCE_FIELD_TEXT=0;GR_GL_FUNCTION_TYPE=__stdcall;SK_A32_SHIFT=24;SK_R32_SHIFT=16;SK_G32_SHIFT=8;SK_B32_SHIFT=0;SK_DEVELOPER=1;CMAKE_INTDIR="Release";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>No</GenerateDebugInformation>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>$(ProjectDir)include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_CONSOLE;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;BOOST_ALL_NO_LIB;DISABLE_EXTERNAL_REFCOUNT;U_STATIC_IMPLEMENTATION;LIBXML_STATIC;LIBXSLT_STATIC;SK_INTERNAL;SK_GAMMA_SRGB;SK_GAMMA_APPLY_TO_A8;SK_SCALAR_TO_FLOAT_EXCLUDED;SK_ALLOW_STATIC_GLOBAL_INITIALIZERS=1;SK_SUPPORT_GPU=0;SK_SUPPORT_OPENCL=0;SK_FORCE_DISTANCE_FIELD_TEXT=0;GR_GL_FUNCTION_TYPE=__stdcall;SK_A32_SHIFT=24;SK_R32_SHIFT=16;SK_G32_SHIFT=8;SK_B32_SHIFT=0;SK_DEVELOPER=1;CMAKE_INTDIR="Release";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>No</GenerateDebugInformation>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <Text Include="../ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="source\GettingStarted\LoadLicenseFromFile.cpp" />
+    <ClCompile Include="source\GettingStarted\LoadLicenseFromStreamObject.cpp" />
+    <ClCompile Include="source\GettingStarted\SetLicenseUsingEmbeddedResource.cpp" />
+    <ClCompile Include="source\RunExamples.cpp" />
+    <ClInclude Include="source\RunExamples.h" />
+    <ClCompile Include="source\WorkingWithDocumentConversion\PostScriptToImage.cpp" />
+    <ClInclude Include="source\WorkingWithDocumentConversion\PostScriptToImage.h" />
+    <ClCompile Include="source\WorkingWithDocumentConversion\PostScriptToPdf.cpp">
+      <ObjectFileName>$(IntDir)/source/WorkingWithDocumentConversion/PostScriptToPdf.cpp.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="source\WorkingWithDocumentConversion\XPStoBMP.cpp" />
+    <ClCompile Include="source\WorkingWithDocumentConversion\XPStoJPEG.cpp" />
+    <ClCompile Include="source\WorkingWithDocumentConversion\XPStoPDF.cpp">
+      <ObjectFileName>$(IntDir)/source/WorkingWithDocumentConversion/XPStoPDF.cpp.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="source\WorkingWithDocumentConversion\XPStoPNG.cpp" />
+    <ClCompile Include="source\WorkingWithDocumentConversion\XPStoTIFF.cpp" />
+    <ClCompile Include="source\WorkingWithDocumentMerging\PostScriptToPdf.cpp">
+      <ObjectFileName>$(IntDir)/source/WorkingWithDocumentMerging/PostScriptToPdf.cpp.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="source\WorkingWithDocumentMerging\XPStoPDF.cpp">
+      <ObjectFileName>$(IntDir)/source/WorkingWithDocumentMerging/XPStoPDF.cpp.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="source\WorkingWithGradient\AddHorizontalGradient.cpp" />
+    <ClCompile Include="source\WorkingWithGradient\AddLinearGradient.cpp" />
+    <ClCompile Include="source\WorkingWithGradient\AddVerticalGradient.cpp" />
+    <ClCompile Include="source\WorkingWithImages\AddImage.cpp" />
+    <ClCompile Include="source\WorkingWithImages\AddTiledImage.cpp" />
+    <ClCompile Include="source\WorkingWithPages\AddPage.cpp" />
+    <ClCompile Include="source\WorkingWithShapes\AddEllipse.cpp" />
+    <ClCompile Include="source\WorkingWithShapes\AddRectangle.cpp" />
+    <ClCompile Include="source\WorkingWithText\AddText.cpp" />
+    <ClCompile Include="source\WorkingWithText\AddTextUsingUnicodeString.cpp" />
+    <ClCompile Include="source\WorkingWithTransparency\AddTransparentObject.cpp" />
+    <ClCompile Include="source\WorkingWithTransparency\SetOpacityMask.cpp" />
+    <ClCompile Include="source\WorkingWithVisualBrush\AddGrid.cpp" />
+    <ClCompile Include="source\WorkingWithXMPMetadataInEPS\AddMetadata.cpp" />
+    <ClCompile Include="source\WorkingWithXMPMetadataInEPS\ChangeMetadata_AddArrayItems.cpp" />
+    <ClCompile Include="source\WorkingWithXMPMetadataInEPS\ChangeMetadata_AddNamedValueItem.cpp" />
+    <ClCompile Include="source\WorkingWithXMPMetadataInEPS\ChangeMetadata_AddNamespace.cpp" />
+    <ClCompile Include="source\WorkingWithXMPMetadataInEPS\ChangeMetadata_AddSimpleProperties.cpp" />
+    <ClCompile Include="source\WorkingWithXMPMetadataInEPS\ChangeMetadata_ChangeArrayItems.cpp" />
+    <ClCompile Include="source\WorkingWithXMPMetadataInEPS\ChangeMetadata_ChangeNamedValueItem.cpp" />
+    <ClCompile Include="source\WorkingWithXMPMetadataInEPS\ChangeMetadata_ChangeValues.cpp" />
+    <ClCompile Include="source\WorkingWithXMPMetadataInEPS\GetMetadata.cpp" />
+    <ClInclude Include="include\GettingStarted\LoadLicenseFromFile.h" />
+    <ClInclude Include="include\GettingStarted\LoadLicenseFromStreamObject.h" />
+    <ClInclude Include="include\GettingStarted\SetLicenseUsingEmbeddedResource.h" />
+    <ClInclude Include="include\WorkingWithDocumentConversion\PostScriptToPdf.h" />
+    <ClInclude Include="include\WorkingWithDocumentConversion\XPStoBMP.h" />
+    <ClInclude Include="include\WorkingWithDocumentConversion\XPStoJPEG.h" />
+    <ClInclude Include="include\WorkingWithDocumentConversion\XPStoPDF.h" />
+    <ClInclude Include="include\WorkingWithDocumentConversion\XPStoPNG.h" />
+    <ClInclude Include="include\WorkingWithDocumentConversion\XPStoTIFF.h" />
+    <ClInclude Include="include\WorkingWithDocumentMerging\PostScriptToPdf.h" />
+    <ClInclude Include="include\WorkingWithDocumentMerging\XPStoPDF.h" />
+    <ClInclude Include="include\WorkingWithGradient\AddHorizontalGradient.h" />
+    <ClInclude Include="include\WorkingWithGradient\AddLinearGradient.h" />
+    <ClInclude Include="include\WorkingWithGradient\AddVerticalGradient.h" />
+    <ClInclude Include="include\WorkingWithImages\AddImage.h" />
+    <ClInclude Include="include\WorkingWithImages\AddTiledImage.h" />
+    <ClInclude Include="include\WorkingWithPages\AddPage.h" />
+    <ClInclude Include="include\WorkingWithShapes\AddEllipse.h" />
+    <ClInclude Include="include\WorkingWithShapes\AddRectangle.h" />
+    <ClInclude Include="include\WorkingWithText\AddText.h" />
+    <ClInclude Include="include\WorkingWithText\AddTextUsingUnicodeString.h" />
+    <ClInclude Include="include\WorkingWithTransparency\AddTransparentObject.h" />
+    <ClInclude Include="include\WorkingWithTransparency\SetOpacityMask.h" />
+    <ClInclude Include="include\WorkingWithVisualBrush\AddGrid.h" />
+    <ClInclude Include="include\WorkingWithXMPMetadataInEPS\AddMetadata.h" />
+    <ClInclude Include="include\WorkingWithXMPMetadataInEPS\ChangeMetadata_AddArrayItems.h" />
+    <ClInclude Include="include\WorkingWithXMPMetadataInEPS\ChangeMetadata_AddNamedValueItem.h" />
+    <ClInclude Include="include\WorkingWithXMPMetadataInEPS\ChangeMetadata_AddNamespace.h" />
+    <ClInclude Include="include\WorkingWithXMPMetadataInEPS\ChangeMetadata_AddSimpleProperties.h" />
+    <ClInclude Include="include\WorkingWithXMPMetadataInEPS\ChangeMetadata_ChangeArrayItems.h" />
+    <ClInclude Include="include\WorkingWithXMPMetadataInEPS\ChangeMetadata_ChangeNamedValueItem.h" />
+    <ClInclude Include="include\WorkingWithXMPMetadataInEPS\ChangeMetadata_ChangeValues.h" />
+    <ClInclude Include="include\WorkingWithXMPMetadataInEPS\GetMetadata.h" />
+    <ClCompile Include="stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+    </ClCompile>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets" />
+  <Import Project="..\aspose.page.cpp.targets" />
+  <Import Project="..\CodePorting.Native.Cs2Cpp_vc14_22.4\CodePorting.Native.Cs2Cpp.API.targets" />
+</Project>

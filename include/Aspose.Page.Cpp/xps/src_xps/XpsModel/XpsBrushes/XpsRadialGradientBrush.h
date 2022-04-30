@@ -1,21 +1,52 @@
 ﻿#pragma once
+// Copyright (c) 2001-2022 Aspose Pty Ltd. All Rights Reserved.
 
 #include <drawing/point_f.h>
-#include <cstdint>
 
 #include "Aspose.Page.Cpp/xps/src_xps/XpsModel/XpsBrushes/XpsGradientBrush.h"
+#include "Aspose.Page.Cpp/aspose_page_api_defs.h"
 
-namespace Aspose { namespace Page { namespace Xps { namespace XpsModel { class XpsBrush; } } } }
-namespace Aspose { namespace Page { namespace Xps { namespace XpsModel { class XpsElement; } } } }
-namespace Aspose { namespace Page { namespace Xps { namespace XpsModel { class XpsContext; } } } }
-namespace Aspose { namespace Page { namespace Xps { namespace XpsModel { class XpsGradientStop; } } } }
-namespace Aspose { namespace Page { namespace Xps { class XpsDocumentVisitor; } } }
+namespace Aspose
+{
+namespace Page
+{
+namespace XPS
+{
+class XpsDocumentVisitor;
+namespace XpsModel
+{
+template <typename> class XpsArray;
+class XpsBrush;
+class XpsContext;
+class XpsElement;
+class XpsGradientStop;
+class XpsObject;
+template <typename> class XpsProperty;
+class XpsPropertyValueManager;
+} // namespace XpsModel
+} // namespace XPS
+} // namespace Page
+} // namespace Aspose
+namespace System
+{
+namespace Collections
+{
+namespace Generic
+{
+template <typename> class List;
+} // namespace Generic
+} // namespace Collections
+namespace Xml
+{
+class XmlElement;
+} // namespace Xml
+} // namespace System
 
 namespace Aspose {
 
 namespace Page {
 
-namespace Xps {
+namespace XPS {
 
 namespace XpsModel {
 
@@ -23,17 +54,19 @@ namespace XpsModel {
 /// Class incapsulating RadialGradientBrush property element features.
 /// This element is used to specify a radial gradient brush.
 /// </summary>
-class XpsRadialGradientBrush FINAL : public Aspose::Page::Xps::XpsModel::XpsGradientBrush
+class ASPOSE_PAGE_SHARED_CLASS XpsRadialGradientBrush final : public Aspose::Page::XPS::XpsModel::XpsGradientBrush
 {
     typedef XpsRadialGradientBrush ThisType;
-    typedef Aspose::Page::Xps::XpsModel::XpsGradientBrush BaseType;
+    typedef Aspose::Page::XPS::XpsModel::XpsGradientBrush BaseType;
     
     typedef ::System::BaseTypesInfo<BaseType> ThisTypeBaseTypesInfo;
     ASPOSE_PAGE_SHARED_RTTI_INFO_DECL();
     
-    FRIEND_FUNCTION_System_MakeObject;
-    friend class Aspose::Page::Xps::XpsModel::XpsBrush;
-    friend class Aspose::Page::Xps::XpsModel::XpsElement;
+    template<typename FT0> friend class Aspose::Page::XPS::XpsModel::XpsArray;
+    friend class Aspose::Page::XPS::XpsModel::XpsBrush;
+    friend class Aspose::Page::XPS::XpsModel::XpsPropertyValueManager;
+    friend class Aspose::Page::XPS::XpsModel::XpsElement;
+    template<typename FT0> friend class Aspose::Page::XPS::XpsModel::XpsProperty;
     
 public:
 
@@ -41,7 +74,7 @@ public:
     /// Returns/sets the center point of the radial
     /// gradient (that is, the center of the ellipse).
     /// </summary>
-    ASPOSE_PAGE_SHARED_API System::Drawing::PointF get_Center();
+    ASPOSE_PAGE_SHARED_API System::Drawing::PointF get_Center() const;
     /// <summary>
     /// Returns/sets the center point of the radial
     /// gradient (that is, the center of the ellipse).
@@ -50,7 +83,7 @@ public:
     /// <summary>
     /// Returns/sets the origin point of the radial gradient. 
     /// </summary>
-    ASPOSE_PAGE_SHARED_API System::Drawing::PointF get_GradientOrigin();
+    ASPOSE_PAGE_SHARED_API System::Drawing::PointF get_GradientOrigin() const;
     /// <summary>
     /// Returns/sets the origin point of the radial gradient. 
     /// </summary>
@@ -58,7 +91,7 @@ public:
     /// <summary>
     /// Returns/sets the radius in the x dimension of the ellipse which defines the radial gradient.
     /// </summary>
-    ASPOSE_PAGE_SHARED_API float get_RadiusX();
+    ASPOSE_PAGE_SHARED_API float get_RadiusX() const;
     /// <summary>
     /// Returns/sets the radius in the x dimension of the ellipse which defines the radial gradient.
     /// </summary>
@@ -66,7 +99,7 @@ public:
     /// <summary>
     /// Returns/sets the radius in the y dimension of the ellipse which defines the radial gradient.
     /// </summary>
-    ASPOSE_PAGE_SHARED_API float get_RadiusY();
+    ASPOSE_PAGE_SHARED_API float get_RadiusY() const;
     /// <summary>
     /// Returns/sets the radius in the y dimension of the ellipse which defines the radial gradient.
     /// </summary>
@@ -81,16 +114,32 @@ public:
 protected:
 
     XpsRadialGradientBrush(System::SharedPtr<XpsContext> context, System::SharedPtr<System::Collections::Generic::List<System::SharedPtr<XpsGradientStop>>> gradientStops, System::Drawing::PointF center, System::Drawing::PointF gradientOrigin, float radiusX, float radiusY);
+    
+    MEMBER_FUNCTION_MAKE_OBJECT_DECLARATION(XpsRadialGradientBrush, CODEPORTING_ARGS(System::SharedPtr<XpsContext> context, System::SharedPtr<System::Collections::Generic::List<System::SharedPtr<XpsGradientStop>>> gradientStops, System::Drawing::PointF center, System::Drawing::PointF gradientOrigin, float radiusX, float radiusY));
+    
     XpsRadialGradientBrush(System::SharedPtr<XpsContext> context, System::Drawing::PointF center, System::Drawing::PointF gradientOrigin, float radiusX, float radiusY);
+    
+    MEMBER_FUNCTION_MAKE_OBJECT_DECLARATION(XpsRadialGradientBrush, CODEPORTING_ARGS(System::SharedPtr<XpsContext> context, System::Drawing::PointF center, System::Drawing::PointF gradientOrigin, float radiusX, float radiusY));
+    
     XpsRadialGradientBrush(System::SharedPtr<XpsContext> context, System::SharedPtr<System::Collections::Generic::List<System::SharedPtr<XpsGradientStop>>> gradientStops);
+    
+    MEMBER_FUNCTION_MAKE_OBJECT_DECLARATION(XpsRadialGradientBrush, CODEPORTING_ARGS(System::SharedPtr<XpsContext> context, System::SharedPtr<System::Collections::Generic::List<System::SharedPtr<XpsGradientStop>>> gradientStops));
+    
     XpsRadialGradientBrush(System::SharedPtr<System::Xml::XmlElement> element, System::SharedPtr<XpsContext> context);
     
-    virtual ASPOSE_PAGE_SHARED_API void Initialize(System::SharedPtr<System::Xml::XmlElement> element);
-    virtual ASPOSE_PAGE_SHARED_API void Accept(System::SharedPtr<XpsDocumentVisitor> visitor);
-    virtual ASPOSE_PAGE_SHARED_API void Validate();
-    virtual ASPOSE_PAGE_SHARED_API System::SharedPtr<XpsElement> Clone(bool deep, System::SharedPtr<XpsContext> context, System::SharedPtr<XpsElement> parent, int32_t index);
-    virtual ASPOSE_PAGE_SHARED_API void CopySimplePropertyValues(System::SharedPtr<XpsElement> element);
-    ASPOSE_PAGE_SHARED_API System::Object::shared_members_type GetSharedMembers() override;
+    MEMBER_FUNCTION_MAKE_OBJECT_DECLARATION(XpsRadialGradientBrush, CODEPORTING_ARGS(System::SharedPtr<System::Xml::XmlElement> element, System::SharedPtr<XpsContext> context));
+    ASPOSE_PAGE_SHARED_API void Initialize(System::SharedPtr<System::Xml::XmlElement> element) override;
+    ASPOSE_PAGE_SHARED_API void Accept(System::SharedPtr<XpsDocumentVisitor> visitor) override;
+    ASPOSE_PAGE_SHARED_API void Validate() override;
+    ASPOSE_PAGE_SHARED_API System::SharedPtr<XpsObject> Clone(bool deep, System::SharedPtr<XpsContext> context) override;
+    ASPOSE_PAGE_SHARED_API void CopySimplePropertyValues(System::SharedPtr<XpsObject> obj) override;
+    
+    virtual ASPOSE_PAGE_SHARED_API ~XpsRadialGradientBrush();
+    
+    #ifdef ASPOSE_GET_SHARED_MEMBERS
+    ASPOSE_PAGE_SHARED_API System::Object::shared_members_type GetSharedMembers() const override;
+    #endif
+    
     
 private:
 
@@ -105,7 +154,7 @@ private:
 };
 
 } // namespace XpsModel
-} // namespace Xps
+} // namespace XPS
 } // namespace Page
 } // namespace Aspose
 

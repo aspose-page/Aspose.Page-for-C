@@ -1,24 +1,59 @@
 ﻿#pragma once
+// Copyright (c) 2001-2022 Aspose Pty Ltd. All Rights Reserved.
 
-#include <system/shared_ptr.h>
 #include <system/object.h>
 
 #include "Aspose.Page.Cpp/xps/src_xps/XpsDocumentVisitor.h"
 #include "Aspose.Page.Cpp/aspose_page_api_defs.h"
 
-namespace Aspose { namespace Page { namespace Xps { namespace Presentation { class XpsPresenter; } } } }
-namespace Aspose { namespace Page { namespace Xps { namespace Presentation { namespace Aps { class ApsConverter; } } } } }
-namespace Aspose { namespace Page { namespace Xps { namespace Presentation { namespace Xps { class XpsSerializer; } } } } }
-namespace Aspose { namespace Page { namespace Xps { class XpsDocument; } } }
-namespace Aspose { namespace Page { namespace Xps { namespace XpsModel { class XpsContext; } } } }
+namespace Aspose
+{
+namespace Page
+{
+namespace XPS
+{
+namespace Presentation
+{
+namespace Aps
+{
+class ApsConverter;
+} // namespace Aps
+namespace Xps
+{
+class XpsSerializer;
+} // namespace Xps
+class XpsPresenter;
+} // namespace Presentation
+class XpsDocument;
+namespace XpsModel
+{
+class XpsContext;
+} // namespace XpsModel
+} // namespace XPS
+} // namespace Page
+} // namespace Aspose
 
 namespace Aspose {
 
 namespace Page {
 
-namespace Xps {
+namespace XPS {
 
 namespace Presentation {
+
+/// <summary>
+/// The <b>Aspose.Page.Xps.Presentation</b> namespace provides base classes for rendering XPS
+/// document to other formats.
+/// </summary>
+class NamespaceDoc : public System::Object
+{
+    typedef NamespaceDoc ThisType;
+    typedef System::Object BaseType;
+    
+    typedef ::System::BaseTypesInfo<BaseType> ThisTypeBaseTypesInfo;
+    RTTI_INFO_DECL();
+    
+};
 
 
 // C# preprocessor directive: #if INTERNAL
@@ -29,23 +64,22 @@ namespace Presentation {
 
 // C# preprocessor directive: #endif
 
-class XpsBasePresenter : public Aspose::Page::Xps::XpsDocumentVisitor
+class ASPOSE_PAGE_SHARED_CLASS XpsBasePresenter : public Aspose::Page::XPS::XpsDocumentVisitor
 {
     typedef XpsBasePresenter ThisType;
-    typedef Aspose::Page::Xps::XpsDocumentVisitor BaseType;
+    typedef Aspose::Page::XPS::XpsDocumentVisitor BaseType;
     
     typedef ::System::BaseTypesInfo<BaseType> ThisTypeBaseTypesInfo;
     ASPOSE_PAGE_SHARED_RTTI_INFO_DECL();
     
-    FRIEND_FUNCTION_System_MakeObject;
-    friend class Aspose::Page::Xps::Presentation::XpsPresenter;
-    friend class Aspose::Page::Xps::Presentation::Aps::ApsConverter;
-    friend class Aspose::Page::Xps::Presentation::Xps::XpsSerializer;
-    friend class Aspose::Page::Xps::XpsDocument;
+    friend class Aspose::Page::XPS::Presentation::XpsPresenter;
+    friend class Aspose::Page::XPS::Presentation::Aps::ApsConverter;
+    friend class Aspose::Page::XPS::Presentation::Xps::XpsSerializer;
+    friend class Aspose::Page::XPS::XpsDocument;
     
 protected:
 
-    System::SharedPtr<Aspose::Page::Xps::XpsModel::XpsContext> get_Context();
+    System::SharedPtr<Aspose::Page::XPS::XpsModel::XpsContext> get_Context();
     
     XpsBasePresenter(System::SharedPtr<XpsDocument> document);
     
@@ -55,10 +89,12 @@ protected:
     virtual void BeforeDocument() = 0;
     virtual void AfterDocument() = 0;
     
+    virtual ASPOSE_PAGE_SHARED_API ~XpsBasePresenter();
+    
 };
 
 } // namespace Presentation
-} // namespace Xps
+} // namespace XPS
 } // namespace Page
 } // namespace Aspose
 

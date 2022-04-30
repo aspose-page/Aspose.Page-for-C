@@ -1,30 +1,55 @@
 ﻿#pragma once
+// Copyright (c) 2001-2022 Aspose Pty Ltd. All Rights Reserved.
 
-#include <xml/xml_element.h>
 #include <system/shared_ptr.h>
-#include <system/object.h>
-#include <drawing/color.h>
-#include <cstdint>
 
-#include "Aspose.Page.Cpp/xps/src_xps/XpsModel/XpsElement.h"
+#include "Aspose.Page.Cpp/xps/src_xps/XpsModel/XpsObject.h"
 #include "Aspose.Page.Cpp/aspose_page_api_defs.h"
 
-namespace Aspose { namespace Page { namespace Xps { namespace Presentation { class NativeConverter; } } } }
-namespace Aspose { namespace Page { namespace Xps { namespace Presentation { namespace Aps { class ApsConverter; } } } } }
-namespace Aspose { namespace Page { namespace Xps { namespace Presentation { namespace Xps { class XpsPageWriter; } } } } }
-namespace Aspose { namespace Page { namespace Xps { namespace Presentation { namespace Xps { class XpsSerializer; } } } } }
-namespace Aspose { namespace Page { namespace Xps { namespace XpsModel { class XpsGradientBrush; } } } }
-namespace Aspose { namespace Page { namespace Xps { namespace XpsModel { class XpsPropertyValueManager; } } } }
-namespace Aspose { namespace Page { namespace Xps { namespace XpsModel { template<typename> class XpsProperty; } } } }
-namespace Aspose { namespace Page { namespace Xps { namespace XpsModel { class XpsColor; } } } }
-namespace Aspose { namespace Page { namespace Xps { namespace XpsModel { class XpsContext; } } } }
-namespace Aspose { namespace Page { namespace Xps { class XpsDocumentVisitor; } } }
+namespace Aspose
+{
+namespace Page
+{
+namespace XPS
+{
+namespace Presentation
+{
+namespace Xps
+{
+class XpsSerializer;
+} // namespace Xps
+} // namespace Presentation
+class XpsDocumentVisitor;
+namespace XpsModel
+{
+template <typename> class XpsArray;
+class XpsColor;
+class XpsContext;
+class XpsElement;
+class XpsGradientBrush;
+template <typename> class XpsProperty;
+class XpsPropertyValueManager;
+} // namespace XpsModel
+} // namespace XPS
+} // namespace Page
+} // namespace Aspose
+namespace System
+{
+namespace Drawing
+{
+class Color;
+} // namespace Drawing
+namespace Xml
+{
+class XmlElement;
+} // namespace Xml
+} // namespace System
 
 namespace Aspose {
 
 namespace Page {
 
-namespace Xps {
+namespace XPS {
 
 namespace XpsModel {
 
@@ -33,23 +58,20 @@ namespace XpsModel {
 /// This  element is used by both the LinearGradientBrush and RadialGradientBrush elements to define
 /// the location and range of color progression for rendering a gradient.
 /// </summary>
-class XpsGradientStop FINAL : public Aspose::Page::Xps::XpsModel::XpsElement
+class ASPOSE_PAGE_SHARED_CLASS XpsGradientStop final : public Aspose::Page::XPS::XpsModel::XpsObject
 {
     typedef XpsGradientStop ThisType;
-    typedef Aspose::Page::Xps::XpsModel::XpsElement BaseType;
+    typedef Aspose::Page::XPS::XpsModel::XpsObject BaseType;
     
     typedef ::System::BaseTypesInfo<BaseType> ThisTypeBaseTypesInfo;
     ASPOSE_PAGE_SHARED_RTTI_INFO_DECL();
     
-    FRIEND_FUNCTION_System_MakeObject;
-    friend class Aspose::Page::Xps::Presentation::NativeConverter;
-    friend class Aspose::Page::Xps::Presentation::Aps::ApsConverter;
-    friend class Aspose::Page::Xps::Presentation::Xps::XpsPageWriter;
-    friend class Aspose::Page::Xps::Presentation::Xps::XpsSerializer;
-    friend class Aspose::Page::Xps::XpsModel::XpsElement;
-    friend class Aspose::Page::Xps::XpsModel::XpsGradientBrush;
-    friend class Aspose::Page::Xps::XpsModel::XpsPropertyValueManager;
-    template<typename FT0> friend class Aspose::Page::Xps::XpsModel::XpsProperty;
+    friend class Aspose::Page::XPS::Presentation::Xps::XpsSerializer;
+    template<typename FT0> friend class Aspose::Page::XPS::XpsModel::XpsArray;
+    friend class Aspose::Page::XPS::XpsModel::XpsGradientBrush;
+    friend class Aspose::Page::XPS::XpsModel::XpsPropertyValueManager;
+    friend class Aspose::Page::XPS::XpsModel::XpsElement;
+    template<typename FT0> friend class Aspose::Page::XPS::XpsModel::XpsProperty;
     
 public:
 
@@ -62,7 +84,7 @@ public:
     /// the gradient at which a color is specified. Colors between gradient offsets in
     /// the progression are interpolated.
     /// </summary>
-    ASPOSE_PAGE_SHARED_API float get_Offset();
+    ASPOSE_PAGE_SHARED_API float get_Offset() const;
     
     /// <summary>
     /// Clones this gradient stop.
@@ -72,42 +94,46 @@ public:
     
 protected:
 
-    /// <summary>
-    /// The gradient stop color.
-    /// </summary>
-    ASPOSE_PAGE_SHARED_API void set_Color(System::SharedPtr<XpsColor> value);
-    /// <summary>
-    /// Returns/sets the gradient offset. The offset indicates a point along the progression of
-    /// the gradient at which a color is specified. Colors between gradient offsets in
-    /// the progression are interpolated.
-    /// </summary>
-    ASPOSE_PAGE_SHARED_API void set_Offset(float value);
-    
     XpsGradientStop(System::SharedPtr<XpsContext> context, System::SharedPtr<XpsColor> color, float offset);
-    XpsGradientStop(System::SharedPtr<XpsContext> context, System::Drawing::Color color, float offset);
+    
+    MEMBER_FUNCTION_MAKE_OBJECT_DECLARATION(XpsGradientStop, CODEPORTING_ARGS(System::SharedPtr<XpsContext> context, System::SharedPtr<XpsColor> color, float offset));
+    
+    XpsGradientStop(System::Drawing::Color color, float offset);
+    
+    MEMBER_FUNCTION_MAKE_OBJECT_DECLARATION(XpsGradientStop, CODEPORTING_ARGS(System::Drawing::Color color, float offset));
+    
     XpsGradientStop(System::SharedPtr<XpsContext> context);
+    
+    MEMBER_FUNCTION_MAKE_OBJECT_DECLARATION(XpsGradientStop, CODEPORTING_ARGS(System::SharedPtr<XpsContext> context));
+    
     XpsGradientStop(System::SharedPtr<System::Xml::XmlElement> element, System::SharedPtr<XpsContext> context);
     
-    virtual ASPOSE_PAGE_SHARED_API void Initialize(System::SharedPtr<System::Xml::XmlElement> element);
-    virtual ASPOSE_PAGE_SHARED_API void Accept(System::SharedPtr<XpsDocumentVisitor> visitor);
-    virtual ASPOSE_PAGE_SHARED_API System::SharedPtr<XpsElement> Clone(bool deep, System::SharedPtr<XpsContext> context, System::SharedPtr<XpsElement> parent, int32_t index);
-    virtual ASPOSE_PAGE_SHARED_API void CopySimplePropertyValues(System::SharedPtr<XpsElement> element);
-    virtual ASPOSE_PAGE_SHARED_API void ClonePropertyValues(System::SharedPtr<XpsElement> element);
-    ASPOSE_PAGE_SHARED_API System::Object::shared_members_type GetSharedMembers() override;
+    MEMBER_FUNCTION_MAKE_OBJECT_DECLARATION(XpsGradientStop, CODEPORTING_ARGS(System::SharedPtr<System::Xml::XmlElement> element, System::SharedPtr<XpsContext> context));
+    ASPOSE_PAGE_SHARED_API void Initialize(System::SharedPtr<System::Xml::XmlElement> element) override;
+    ASPOSE_PAGE_SHARED_API void Accept(System::SharedPtr<XpsDocumentVisitor> visitor) override;
+    ASPOSE_PAGE_SHARED_API System::SharedPtr<XpsObject> Clone(bool deep, System::SharedPtr<XpsContext> context) override;
+    ASPOSE_PAGE_SHARED_API void CopySimplePropertyValues(System::SharedPtr<XpsObject> obj) override;
+    ASPOSE_PAGE_SHARED_API void ClonePropertyValues(System::SharedPtr<XpsObject> obj) override;
+    ASPOSE_PAGE_SHARED_API void Dispose() override;
+    
+    virtual ASPOSE_PAGE_SHARED_API ~XpsGradientStop();
+    
+    #ifdef ASPOSE_GET_SHARED_MEMBERS
+    ASPOSE_PAGE_SHARED_API System::Object::shared_members_type GetSharedMembers() const override;
+    #endif
+    
     
 private:
 
     System::SharedPtr<XpsColor> _color;
     float _offset;
     
-    void Validate();
-    void ValidateOffset(float value);
     System::SharedPtr<XpsColor> GetColor(System::SharedPtr<XpsColor> color);
     
 };
 
 } // namespace XpsModel
-} // namespace Xps
+} // namespace XPS
 } // namespace Page
 } // namespace Aspose
 

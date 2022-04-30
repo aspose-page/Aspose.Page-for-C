@@ -1,4 +1,5 @@
 ﻿#pragma once
+// Copyright (c) 2001-2022 Aspose Pty Ltd. All Rights Reserved.
 
 #include <system/object.h>
 
@@ -11,7 +12,7 @@ namespace Page {
 /// <summary>
 /// This interface give access to main parameters of glyphs.
 /// </summary>
-class IGlyph : public virtual System::Object
+class ASPOSE_PAGE_SHARED_CLASS IGlyph : public virtual System::Object
 {
     typedef IGlyph ThisType;
     typedef System::Object BaseType;

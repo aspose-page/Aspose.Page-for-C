@@ -1,21 +1,46 @@
 ﻿#pragma once
+// Copyright (c) 2001-2022 Aspose Pty Ltd. All Rights Reserved.
 
-#include <system/string.h>
-#include <system/shared_ptr.h>
-#include <system/object.h>
 #include <system/enum_helpers.h>
-#include <system/collections/dictionary.h>
 #include <system/array.h>
-#include <drawing/font_style.h>
-#include <drawing/font.h>
-#include <drawing/drawing2d/matrix.h>
-#include <drawing/drawing2d/graphics_path.h>
 #include <cstdint>
 
 #include "Aspose.Page.Cpp/aspose_page_api_defs.h"
 
-namespace Aspose { namespace Page { class IGlyph; } }
-namespace Aspose { namespace Foundation { namespace Drawing { class DrFont; } } }
+namespace Aspose
+{
+namespace Foundation
+{
+namespace Drawing
+{
+class DrFont;
+} // namespace Drawing
+} // namespace Foundation
+namespace Page
+{
+class IGlyph;
+} // namespace Page
+} // namespace Aspose
+namespace System
+{
+namespace Collections
+{
+namespace Generic
+{
+template <typename, typename> class Dictionary;
+} // namespace Generic
+} // namespace Collections
+namespace Drawing
+{
+namespace Drawing2D
+{
+class GraphicsPath;
+class Matrix;
+} // namespace Drawing2D
+class Font;
+enum class FontStyle;
+} // namespace Drawing
+} // namespace System
 
 namespace Aspose {
 
@@ -24,7 +49,7 @@ namespace Page {
 /// <summary>
 /// This interface give access to main parameters of font.
 /// </summary>
-class ITrFont : public System::Object
+class ASPOSE_PAGE_SHARED_CLASS ITrFont : public System::Object
 {
     typedef ITrFont ThisType;
     typedef System::Object BaseType;

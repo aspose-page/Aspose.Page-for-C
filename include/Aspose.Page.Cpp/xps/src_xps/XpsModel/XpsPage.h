@@ -1,20 +1,46 @@
 ﻿#pragma once
+// Copyright (c) 2001-2022 Aspose Pty Ltd. All Rights Reserved.
 
 #include "Aspose.Page.Cpp/xps/src_xps/XpsModel/XpsElement.h"
+#include "Aspose.Page.Cpp/aspose_page_api_defs.h"
 
-namespace Aspose { namespace Page { namespace Xps { namespace XpsModel { class XpsPropertyValueManager; } } } }
-namespace Aspose { namespace Page { namespace Xps { class XpsDocument; } } }
-namespace Aspose { namespace Page { namespace Xps { namespace XpsModel { template<typename> class XpsProperty; } } } }
-namespace Aspose { namespace Page { namespace Xps { namespace XpsPackageParts { class FixedPage; } } } }
-namespace Aspose { namespace Page { namespace Xps { namespace XpsModel { class XpsContext; } } } }
-namespace Aspose { namespace Page { namespace Xps { class XpsDocumentVisitor; } } }
-namespace Aspose { namespace Page { namespace Xps { namespace XpsModel { enum class RegistrationType; } } } }
+namespace Aspose
+{
+namespace Page
+{
+namespace XPS
+{
+class XpsDocument;
+class XpsDocumentVisitor;
+namespace XpsModel
+{
+enum class RegistrationType;
+template <typename> class XpsArray;
+class XpsContext;
+class XpsElement;
+class XpsObject;
+template <typename> class XpsProperty;
+} // namespace XpsModel
+namespace XpsPackageParts
+{
+class FixedPage;
+} // namespace XpsPackageParts
+} // namespace XPS
+} // namespace Page
+} // namespace Aspose
+namespace System
+{
+namespace Xml
+{
+class XmlElement;
+} // namespace Xml
+} // namespace System
 
 namespace Aspose {
 
 namespace Page {
 
-namespace Xps {
+namespace XPS {
 
 namespace XpsModel {
 
@@ -22,46 +48,49 @@ namespace XpsModel {
 /// Class incapsulating FixedPage element features.
 /// This element contains the contents of a page and is the root element of a FixedPage part.
 /// </summary>
-class XpsPage FINAL : public Aspose::Page::Xps::XpsModel::XpsElement
+class ASPOSE_PAGE_SHARED_CLASS XpsPage final : public Aspose::Page::XPS::XpsModel::XpsElement
 {
     typedef XpsPage ThisType;
-    typedef Aspose::Page::Xps::XpsModel::XpsElement BaseType;
+    typedef Aspose::Page::XPS::XpsModel::XpsElement BaseType;
     
     typedef ::System::BaseTypesInfo<BaseType> ThisTypeBaseTypesInfo;
     ASPOSE_PAGE_SHARED_RTTI_INFO_DECL();
     
-    FRIEND_FUNCTION_System_MakeObject;
-    friend class Aspose::Page::Xps::XpsModel::XpsPropertyValueManager;
-    friend class Aspose::Page::Xps::XpsDocument;
-    template<typename FT0> friend class Aspose::Page::Xps::XpsModel::XpsProperty;
-    friend class Aspose::Page::Xps::XpsPackageParts::FixedPage;
+    template<typename FT0> friend class Aspose::Page::XPS::XpsModel::XpsArray;
+    friend class Aspose::Page::XPS::XpsDocument;
+    template<typename FT0> friend class Aspose::Page::XPS::XpsModel::XpsProperty;
+    friend class Aspose::Page::XPS::XpsPackageParts::FixedPage;
     
 public:
 
     /// <summary>
-    /// Returns/sets height of the page, expressed as a real number in units of the effective coordinate space.
+    /// Returns/sets height of the page, expressed as a real number
+    /// in units of the effective coordinate space.
     /// </summary>
-    ASPOSE_PAGE_SHARED_API float get_Height();
+    ASPOSE_PAGE_SHARED_API float get_Height() const;
     /// <summary>
-    /// Returns/sets height of the page, expressed as a real number in units of the effective coordinate space.
+    /// Returns/sets height of the page, expressed as a real number
+    /// in units of the effective coordinate space.
     /// </summary>
     ASPOSE_PAGE_SHARED_API void set_Height(float value);
     /// <summary>
-    /// Returns/sets width of the page, expressed as a real number in units of the effective coordinate space. 
+    /// Returns/sets width of the page, expressed as a real number in
+    /// units of the effective coordinate space. 
     /// </summary>
-    ASPOSE_PAGE_SHARED_API float get_Width();
+    ASPOSE_PAGE_SHARED_API float get_Width() const;
     /// <summary>
-    /// Returns/sets width of the page, expressed as a real number in units of the effective coordinate space. 
+    /// Returns/sets width of the page, expressed as a real number in
+    /// units of the effective coordinate space. 
     /// </summary>
     ASPOSE_PAGE_SHARED_API void set_Width(float value);
     /// <summary>
-    /// Returns/sets value specifying the default language used for the current element and
-    /// for any child or descendant elements.
+    /// Returns/sets value specifying the default language used for
+    /// the current element and for any child or descendant elements.
     /// </summary>
-    ASPOSE_PAGE_SHARED_API System::String get_XmlLang();
+    ASPOSE_PAGE_SHARED_API System::String get_XmlLang() const;
     /// <summary>
-    /// Returns/sets value specifying the default language used for the current element and
-    /// for any child or descendant elements.
+    /// Returns/sets value specifying the default language used for
+    /// the current element and for any child or descendant elements.
     /// </summary>
     ASPOSE_PAGE_SHARED_API void set_XmlLang(System::String value);
     
@@ -73,23 +102,36 @@ public:
     
 protected:
 
-    System::SharedPtr<Aspose::Page::Xps::XpsPackageParts::FixedPage> get_FixedPage();
+    System::SharedPtr<Aspose::Page::XPS::XpsPackageParts::FixedPage> get_FixedPage() const;
     
-    XpsPage(System::SharedPtr<Aspose::Page::Xps::XpsPackageParts::FixedPage> fixedPage, System::SharedPtr<XpsContext> context, float width, float height, System::String xmlLang = u"en-US");
-    XpsPage(System::SharedPtr<Aspose::Page::Xps::XpsPackageParts::FixedPage> fixedPage, System::SharedPtr<XpsContext> context, System::SharedPtr<XpsPage> page);
-    XpsPage(System::SharedPtr<Aspose::Page::Xps::XpsPackageParts::FixedPage> fixedPage, System::SharedPtr<XpsContext> context);
+    XpsPage(System::SharedPtr<Aspose::Page::XPS::XpsPackageParts::FixedPage> fixedPage, System::SharedPtr<XpsContext> context, float width, float height, System::String xmlLang = u"en-US");
     
-    virtual ASPOSE_PAGE_SHARED_API void Initialize(System::SharedPtr<System::Xml::XmlElement> element);
-    virtual ASPOSE_PAGE_SHARED_API void Accept(System::SharedPtr<XpsDocumentVisitor> visitor);
-    virtual ASPOSE_PAGE_SHARED_API void UpdatePropertyValueReferences(System::SharedPtr<XpsElement> propertyValue, bool add = true);
-    virtual ASPOSE_PAGE_SHARED_API void RegisterForPreprocessing(System::SharedPtr<XpsElement> element, RegistrationType regType, bool add = true);
-    virtual ASPOSE_PAGE_SHARED_API System::SharedPtr<XpsElement> Clone(bool deep, System::SharedPtr<XpsContext> context, System::SharedPtr<XpsElement> parent, int32_t index);
-    virtual ASPOSE_PAGE_SHARED_API void CopySimplePropertyValues(System::SharedPtr<XpsElement> element);
-    ASPOSE_PAGE_SHARED_API System::Object::shared_members_type GetSharedMembers() override;
+    MEMBER_FUNCTION_MAKE_OBJECT_DECLARATION(XpsPage, CODEPORTING_ARGS(System::SharedPtr<Aspose::Page::XPS::XpsPackageParts::FixedPage> fixedPage, System::SharedPtr<XpsContext> context, float width, float height, System::String xmlLang = u"en-US"));
+    
+    XpsPage(System::SharedPtr<Aspose::Page::XPS::XpsPackageParts::FixedPage> fixedPage, System::SharedPtr<XpsContext> context, System::SharedPtr<XpsPage> page);
+    
+    MEMBER_FUNCTION_MAKE_OBJECT_DECLARATION(XpsPage, CODEPORTING_ARGS(System::SharedPtr<Aspose::Page::XPS::XpsPackageParts::FixedPage> fixedPage, System::SharedPtr<XpsContext> context, System::SharedPtr<XpsPage> page));
+    
+    XpsPage(System::SharedPtr<Aspose::Page::XPS::XpsPackageParts::FixedPage> fixedPage, System::SharedPtr<XpsContext> context);
+    
+    MEMBER_FUNCTION_MAKE_OBJECT_DECLARATION(XpsPage, CODEPORTING_ARGS(System::SharedPtr<Aspose::Page::XPS::XpsPackageParts::FixedPage> fixedPage, System::SharedPtr<XpsContext> context));
+    ASPOSE_PAGE_SHARED_API void Initialize(System::SharedPtr<System::Xml::XmlElement> element) override;
+    ASPOSE_PAGE_SHARED_API void Accept(System::SharedPtr<XpsDocumentVisitor> visitor) override;
+    ASPOSE_PAGE_SHARED_API void UpdatePropertyValueReferences(System::SharedPtr<XpsElement> propertyValue, bool add = true) override;
+    ASPOSE_PAGE_SHARED_API void RegisterForPreprocessing(System::SharedPtr<XpsElement> element, RegistrationType regType, bool add = true) override;
+    ASPOSE_PAGE_SHARED_API System::SharedPtr<XpsElement> Clone(bool deep, System::SharedPtr<XpsContext> context, System::SharedPtr<XpsElement> parent, int32_t index) override;
+    ASPOSE_PAGE_SHARED_API void CopySimplePropertyValues(System::SharedPtr<XpsObject> obj) override;
+    
+    virtual ASPOSE_PAGE_SHARED_API ~XpsPage();
+    
+    #ifdef ASPOSE_GET_SHARED_MEMBERS
+    ASPOSE_PAGE_SHARED_API System::Object::shared_members_type GetSharedMembers() const override;
+    #endif
+    
     
 private:
 
-    System::SharedPtr<Aspose::Page::Xps::XpsPackageParts::FixedPage> _fixedPage;
+    System::WeakPtr<Aspose::Page::XPS::XpsPackageParts::FixedPage> _fixedPage;
     float _height;
     float _width;
     System::String _xmlLang;
@@ -97,7 +139,7 @@ private:
 };
 
 } // namespace XpsModel
-} // namespace Xps
+} // namespace XPS
 } // namespace Page
 } // namespace Aspose
 

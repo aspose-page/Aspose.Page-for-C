@@ -1,4 +1,5 @@
 ﻿#pragma once
+// Copyright (c) 2001-2022 Aspose Pty Ltd. All Rights Reserved.
 
 namespace Aspose {
 

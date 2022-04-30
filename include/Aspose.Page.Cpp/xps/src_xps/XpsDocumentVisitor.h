@@ -1,39 +1,57 @@
 ﻿#pragma once
+// Copyright (c) 2001-2022 Aspose Pty Ltd. All Rights Reserved.
 
-#include <system/shared_ptr.h>
 #include <system/object.h>
 
 #include "Aspose.Page.Cpp/aspose_page_api_defs.h"
 
-namespace Aspose { namespace Page { namespace Xps { namespace Presentation { class NativePathBuilder; } } } }
-namespace Aspose { namespace Page { namespace Xps { namespace Presentation { class XpsBasePresenter; } } } }
-namespace Aspose { namespace Page { namespace Xps { namespace XpsModel { class XpsGradientStop; } } } }
-namespace Aspose { namespace Page { namespace Xps { namespace XpsModel { class XpsImageBrush; } } } }
-namespace Aspose { namespace Page { namespace Xps { namespace XpsModel { class XpsLinearGradientBrush; } } } }
-namespace Aspose { namespace Page { namespace Xps { namespace XpsModel { class XpsRadialGradientBrush; } } } }
-namespace Aspose { namespace Page { namespace Xps { namespace XpsModel { class XpsSolidColorBrush; } } } }
-namespace Aspose { namespace Page { namespace Xps { namespace XpsModel { class XpsVisualBrush; } } } }
-namespace Aspose { namespace Page { namespace Xps { namespace XpsModel { class XpsCanvas; } } } }
-namespace Aspose { namespace Page { namespace Xps { namespace XpsModel { class XpsGlyphs; } } } }
-namespace Aspose { namespace Page { namespace Xps { namespace XpsModel { class XpsMatrix; } } } }
-namespace Aspose { namespace Page { namespace Xps { namespace XpsModel { class XpsPage; } } } }
-namespace Aspose { namespace Page { namespace Xps { namespace XpsModel { class XpsPath; } } } }
-namespace Aspose { namespace Page { namespace Xps { namespace XpsModel { class XpsPathFigure; } } } }
-namespace Aspose { namespace Page { namespace Xps { namespace XpsModel { class XpsPathGeometry; } } } }
-namespace Aspose { namespace Page { namespace Xps { namespace XpsModel { class XpsArcSegment; } } } }
-namespace Aspose { namespace Page { namespace Xps { namespace XpsModel { class XpsPolyBezierSegment; } } } }
-namespace Aspose { namespace Page { namespace Xps { namespace XpsModel { class XpsPolyLineSegment; } } } }
-namespace Aspose { namespace Page { namespace Xps { namespace XpsModel { class XpsPolyQuadraticBezierSegment; } } } }
-namespace Aspose { namespace Page { namespace Xps { namespace XpsModel { template<typename> class XpsProperty; } } } }
-namespace Aspose { namespace Page { namespace Xps { namespace XpsPackageParts { class FixedPage; } } } }
-namespace Aspose { namespace Page { namespace Xps { class XpsDocument; } } }
-namespace Aspose { namespace Page { namespace Xps { namespace XpsModel { class IXpsProperty; } } } }
+namespace Aspose
+{
+namespace Page
+{
+namespace XPS
+{
+namespace Presentation
+{
+class NativePathBuilder;
+class XpsBasePresenter;
+} // namespace Presentation
+class XpsDocument;
+namespace XpsModel
+{
+class IXpsProperty;
+class XpsArcSegment;
+class XpsCanvas;
+class XpsGlyphs;
+class XpsGradientStop;
+class XpsImageBrush;
+class XpsLinearGradientBrush;
+class XpsMatrix;
+class XpsPage;
+class XpsPath;
+class XpsPathFigure;
+class XpsPathGeometry;
+class XpsPolyBezierSegment;
+class XpsPolyLineSegment;
+class XpsPolyQuadraticBezierSegment;
+template <typename> class XpsProperty;
+class XpsRadialGradientBrush;
+class XpsSolidColorBrush;
+class XpsVisualBrush;
+} // namespace XpsModel
+namespace XpsPackageParts
+{
+class FixedPage;
+} // namespace XpsPackageParts
+} // namespace XPS
+} // namespace Page
+} // namespace Aspose
 
 namespace Aspose {
 
 namespace Page {
 
-namespace Xps {
+namespace XPS {
 
 
 // C# preprocessor directive: #if INTERNAL
@@ -44,7 +62,7 @@ namespace Xps {
 
 // C# preprocessor directive: #endif
 
-class XpsDocumentVisitor : public virtual System::Object
+class ASPOSE_PAGE_SHARED_CLASS XpsDocumentVisitor : public virtual System::Object
 {
     typedef XpsDocumentVisitor ThisType;
     typedef System::Object BaseType;
@@ -52,28 +70,27 @@ class XpsDocumentVisitor : public virtual System::Object
     typedef ::System::BaseTypesInfo<BaseType> ThisTypeBaseTypesInfo;
     ASPOSE_PAGE_SHARED_RTTI_INFO_DECL();
     
-    FRIEND_FUNCTION_System_MakeObject;
-    friend class Aspose::Page::Xps::Presentation::NativePathBuilder;
-    friend class Aspose::Page::Xps::Presentation::XpsBasePresenter;
-    friend class Aspose::Page::Xps::XpsModel::XpsGradientStop;
-    friend class Aspose::Page::Xps::XpsModel::XpsImageBrush;
-    friend class Aspose::Page::Xps::XpsModel::XpsLinearGradientBrush;
-    friend class Aspose::Page::Xps::XpsModel::XpsRadialGradientBrush;
-    friend class Aspose::Page::Xps::XpsModel::XpsSolidColorBrush;
-    friend class Aspose::Page::Xps::XpsModel::XpsVisualBrush;
-    friend class Aspose::Page::Xps::XpsModel::XpsCanvas;
-    friend class Aspose::Page::Xps::XpsModel::XpsGlyphs;
-    friend class Aspose::Page::Xps::XpsModel::XpsMatrix;
-    friend class Aspose::Page::Xps::XpsModel::XpsPage;
-    friend class Aspose::Page::Xps::XpsModel::XpsPath;
-    friend class Aspose::Page::Xps::XpsModel::XpsPathFigure;
-    friend class Aspose::Page::Xps::XpsModel::XpsPathGeometry;
-    friend class Aspose::Page::Xps::XpsModel::XpsArcSegment;
-    friend class Aspose::Page::Xps::XpsModel::XpsPolyBezierSegment;
-    friend class Aspose::Page::Xps::XpsModel::XpsPolyLineSegment;
-    friend class Aspose::Page::Xps::XpsModel::XpsPolyQuadraticBezierSegment;
-    template<typename FT0> friend class Aspose::Page::Xps::XpsModel::XpsProperty;
-    friend class Aspose::Page::Xps::XpsPackageParts::FixedPage;
+    friend class Aspose::Page::XPS::Presentation::NativePathBuilder;
+    friend class Aspose::Page::XPS::Presentation::XpsBasePresenter;
+    friend class Aspose::Page::XPS::XpsModel::XpsGradientStop;
+    friend class Aspose::Page::XPS::XpsModel::XpsImageBrush;
+    friend class Aspose::Page::XPS::XpsModel::XpsLinearGradientBrush;
+    friend class Aspose::Page::XPS::XpsModel::XpsRadialGradientBrush;
+    friend class Aspose::Page::XPS::XpsModel::XpsSolidColorBrush;
+    friend class Aspose::Page::XPS::XpsModel::XpsVisualBrush;
+    friend class Aspose::Page::XPS::XpsModel::XpsCanvas;
+    friend class Aspose::Page::XPS::XpsModel::XpsGlyphs;
+    friend class Aspose::Page::XPS::XpsModel::XpsMatrix;
+    friend class Aspose::Page::XPS::XpsModel::XpsPage;
+    friend class Aspose::Page::XPS::XpsModel::XpsPath;
+    friend class Aspose::Page::XPS::XpsModel::XpsPathFigure;
+    friend class Aspose::Page::XPS::XpsModel::XpsPathGeometry;
+    friend class Aspose::Page::XPS::XpsModel::XpsArcSegment;
+    friend class Aspose::Page::XPS::XpsModel::XpsPolyBezierSegment;
+    friend class Aspose::Page::XPS::XpsModel::XpsPolyLineSegment;
+    friend class Aspose::Page::XPS::XpsModel::XpsPolyQuadraticBezierSegment;
+    template<typename FT0> friend class Aspose::Page::XPS::XpsModel::XpsProperty;
+    friend class Aspose::Page::XPS::XpsPackageParts::FixedPage;
     
 protected:
 
@@ -81,6 +98,7 @@ protected:
     
     XpsDocumentVisitor(System::SharedPtr<XpsDocument> document);
     
+    MEMBER_FUNCTION_MAKE_OBJECT_DECLARATION(XpsDocumentVisitor, CODEPORTING_ARGS(System::SharedPtr<XpsDocument> document));
     virtual ASPOSE_PAGE_SHARED_API void VisitFixedPageStart(System::SharedPtr<XpsPackageParts::FixedPage> fixedPage);
     virtual ASPOSE_PAGE_SHARED_API void VisitFixedPageEnd(System::SharedPtr<XpsPackageParts::FixedPage> fixedPage);
     virtual ASPOSE_PAGE_SHARED_API bool VisitPageStart(System::SharedPtr<XpsModel::XpsPage> page);
@@ -109,11 +127,14 @@ protected:
     virtual ASPOSE_PAGE_SHARED_API void VisitGradientStop(System::SharedPtr<XpsModel::XpsGradientStop> gradientStop);
     virtual ASPOSE_PAGE_SHARED_API bool StartProperty(System::SharedPtr<XpsModel::IXpsProperty> property);
     virtual ASPOSE_PAGE_SHARED_API void EndProperty(System::SharedPtr<XpsModel::IXpsProperty> property);
-    ASPOSE_PAGE_SHARED_API System::Object::shared_members_type GetSharedMembers() override;
+    #ifdef ASPOSE_GET_SHARED_MEMBERS
+    ASPOSE_PAGE_SHARED_API System::Object::shared_members_type GetSharedMembers() const override;
+    #endif
+    
     
 };
 
-} // namespace Xps
+} // namespace XPS
 } // namespace Page
 } // namespace Aspose
 

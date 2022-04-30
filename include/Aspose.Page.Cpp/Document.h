@@ -1,4 +1,5 @@
 ﻿#pragma once
+// Copyright (c) 2001-2022 Aspose Pty Ltd. All Rights Reserved.
 
 // C# preprocessor directive: #if ASPOSE_PDF
 
@@ -8,16 +9,27 @@
 // C# preprocessor directive: #endif
 
 
-#include <system/shared_ptr.h>
 #include <system/object.h>
 
 #include "Aspose.Page.Cpp/aspose_page_api_defs.h"
 
-namespace Aspose { namespace Page { namespace LicenseManagement { class VentureLicense; } } }
-namespace Aspose { namespace Page { namespace LicenseManagement { class VentureLicenser; } } }
-namespace Aspose { namespace Page { namespace Xps { class XpsDocument; } } }
-namespace Aspose { namespace Page { class Device; } }
-namespace Aspose { namespace Page { class SaveOptions; } }
+namespace Aspose
+{
+namespace Page
+{
+class Device;
+namespace LicenseManagement
+{
+class VentureLicense;
+class VentureLicenser;
+} // namespace LicenseManagement
+class SaveOptions;
+namespace XPS
+{
+class XpsDocument;
+} // namespace XPS
+} // namespace Page
+} // namespace Aspose
 
 namespace Aspose {
 
@@ -26,7 +38,7 @@ namespace Page {
 /// <summary>
 /// A superclass for all encapsulated documents.
 /// </summary>
-class Document : public System::Object
+class ASPOSE_PAGE_SHARED_CLASS Document : public virtual System::Object
 {
     typedef Document ThisType;
     typedef System::Object BaseType;
@@ -35,7 +47,7 @@ class Document : public System::Object
     ASPOSE_PAGE_SHARED_RTTI_INFO_DECL();
     
     friend class Aspose::Page::LicenseManagement::VentureLicenser;
-    friend class Aspose::Page::Xps::XpsDocument;
+    friend class Aspose::Page::XPS::XpsDocument;
     
 public:
 
@@ -54,7 +66,10 @@ protected:
     
     virtual ASPOSE_PAGE_SHARED_API void SetVentureLicense(System::SharedPtr<LicenseManagement::VentureLicense> license);
     virtual ASPOSE_PAGE_SHARED_API System::SharedPtr<LicenseManagement::VentureLicense> GetVentureLicense();
-    ASPOSE_PAGE_SHARED_API System::Object::shared_members_type GetSharedMembers() override;
+    #ifdef ASPOSE_GET_SHARED_MEMBERS
+    ASPOSE_PAGE_SHARED_API System::Object::shared_members_type GetSharedMembers() const override;
+    #endif
+    
     
 };
 

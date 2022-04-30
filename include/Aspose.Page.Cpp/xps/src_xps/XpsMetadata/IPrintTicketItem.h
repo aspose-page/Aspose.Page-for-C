@@ -1,22 +1,27 @@
 ﻿#pragma once
+// Copyright (c) 2001-2022 Aspose Pty Ltd. All Rights Reserved.
 
-#include <system/string.h>
 #include <system/object.h>
 
 #include "Aspose.Page.Cpp/aspose_page_api_defs.h"
+
+namespace System
+{
+class String;
+} // namespace System
 
 namespace Aspose {
 
 namespace Page {
 
-namespace Xps {
+namespace XPS {
 
 namespace XpsMetadata {
 
 /// <summary>
 /// Basic interface for classes that can be a print ticket item.
 /// </summary>
-class IPrintTicketItem : public virtual System::Object
+class ASPOSE_PAGE_SHARED_CLASS IPrintTicketItem : public virtual System::Object
 {
     typedef IPrintTicketItem ThisType;
     typedef System::Object BaseType;
@@ -34,7 +39,7 @@ public:
 };
 
 } // namespace XpsMetadata
-} // namespace Xps
+} // namespace XPS
 } // namespace Page
 } // namespace Aspose
 

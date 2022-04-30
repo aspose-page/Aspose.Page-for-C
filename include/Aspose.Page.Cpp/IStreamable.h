@@ -1,10 +1,17 @@
 ﻿#pragma once
+// Copyright (c) 2001-2022 Aspose Pty Ltd. All Rights Reserved.
 
-#include <system/shared_ptr.h>
 #include <system/object.h>
-#include <system/io/stream.h>
 
 #include "Aspose.Page.Cpp/aspose_page_api_defs.h"
+
+namespace System
+{
+namespace IO
+{
+class Stream;
+} // namespace IO
+} // namespace System
 
 namespace Aspose {
 
@@ -13,7 +20,7 @@ namespace Page {
 /// <summary>
 /// This interface is used for dervices that renders document to a stream.
 /// </summary>
-class IStreamable : public virtual System::Object
+class ASPOSE_PAGE_SHARED_CLASS IStreamable : public virtual System::Object
 {
     typedef IStreamable ThisType;
     typedef System::Object BaseType;
