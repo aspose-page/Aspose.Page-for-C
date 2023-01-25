@@ -58,7 +58,9 @@ namespace CPP {
 
 	void RunExamples::Main()
 	{
-		System::Console::WriteLine(u"Open RunExamples.cs. \nIn Main() method uncomment the example that you want to run.");
+		System::Console::WriteLine(Aspose::Page::BuildVersionInfo::Product);
+		System::Console::WriteLine(Aspose::Page::BuildVersionInfo::AssemblyVersion);
+		System::Console::WriteLine(u"Open RunExamples.cpp. \nIn Main() method uncomment the example that you want to run.");
 		System::Console::WriteLine(u"=====================================================");
 		// Uncomment the one you want to try out
 
