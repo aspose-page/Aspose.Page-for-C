@@ -95,22 +95,6 @@ public:
         }
     }
     
-protected:
-
-    #ifdef ASPOSE_GET_SHARED_MEMBERS
-    System::Object::shared_members_type GetSharedMembers() const override
-    {
-        auto result = System::Object::GetSharedMembers();
-        
-        result.Add("Aspose::Page::EPS::Util::ThreadLocal::threadData", this->threadData);
-        result.Add("Aspose::Page::EPS::Util::ThreadLocal::factory", this->factory);
-        
-        return result;
-    }
-    #endif
-    
-    
-    
 private:
 
     System::SharedPtr<System::Collections::Generic::Dictionary<int32_t, T>> threadData;

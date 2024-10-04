@@ -1,7 +1,7 @@
 ﻿#pragma once
-// Copyright (c) 2001-2022 Aspose Pty Ltd. All Rights Reserved.
+// Copyright (c) 2001-2024 Aspose Pty Ltd. All Rights Reserved.
 
-#include <system/shared_ptr.h>
+#include <system/array.h>
 #include <drawing/point_f.h>
 #include <cstdint>
 
@@ -44,20 +44,11 @@ class XpsPolyLineSegment;
 class XpsPolyQuadraticBezierSegment;
 template <typename> class XpsProperty;
 } // namespace XpsModel
-class XpsUtils;
 } // namespace XPS
 } // namespace Page
 } // namespace Aspose
 namespace System
 {
-namespace Collections
-{
-namespace Generic
-{
-template <typename> class IList;
-} // namespace Generic
-} // namespace Collections
-class String;
 namespace Xml
 {
 class XmlElement;
@@ -93,7 +84,6 @@ class ASPOSE_PAGE_SHARED_CLASS XpsPathPolySegment : public Aspose::Page::XPS::Xp
     friend class Aspose::Page::XPS::XpsModel::XpsPolyLineSegment;
     friend class Aspose::Page::XPS::XpsModel::XpsPolyQuadraticBezierSegment;
     template<typename FT0> friend class Aspose::Page::XPS::XpsModel::XpsProperty;
-    friend class Aspose::Page::XPS::XpsUtils;
     friend class Aspose::Page::XPS::Tests::XpsPathGeometryTests;
     friend class Aspose::Page::XPS::Tests::XpsCanvasTests;
     friend class Aspose::Page::XPS::Tests::XpsGlyphsTests;
@@ -101,24 +91,20 @@ class ASPOSE_PAGE_SHARED_CLASS XpsPathPolySegment : public Aspose::Page::XPS::Xp
     
 protected:
 
-    System::SharedPtr<System::Collections::Generic::IList<System::Drawing::PointF>> get_Points();
+    System::ArrayPtr<System::Drawing::PointF> get_Points();
     virtual int32_t get_NumberOfPoints() = 0;
     
-    XpsPathPolySegment(System::SharedPtr<XpsContext> context, System::SharedPtr<System::Collections::Generic::IList<System::Drawing::PointF>> points, bool isStroked = true);
+    XpsPathPolySegment(System::SharedPtr<XpsContext> context, System::ArrayPtr<System::Drawing::PointF> points, bool isStroked = true);
     XpsPathPolySegment(System::SharedPtr<XpsContext> context);
     
     ASPOSE_PAGE_SHARED_API void Initialize(System::SharedPtr<System::Xml::XmlElement> element) override;
     ASPOSE_PAGE_SHARED_API System::String Abbreviate(System::String abbrChar, System::Drawing::PointF& endPoint) override;
     ASPOSE_PAGE_SHARED_API void CopySimplePropertyValues(System::SharedPtr<XpsObject> obj) override;
     ASPOSE_PAGE_SHARED_API void Dispose() override;
-    #ifdef ASPOSE_GET_SHARED_MEMBERS
-    ASPOSE_PAGE_SHARED_API System::Object::shared_members_type GetSharedMembers() const override;
-    #endif
-    
     
 private:
 
-    System::SharedPtr<System::Collections::Generic::IList<System::Drawing::PointF>> _points;
+    System::ArrayPtr<System::Drawing::PointF> _points;
     
 };
 

@@ -1,5 +1,5 @@
 ﻿#pragma once
-// Copyright (c) 2001-2022 Aspose Pty Ltd. All Rights Reserved.
+// Copyright (c) 2001-2024 Aspose Pty Ltd. All Rights Reserved.
 
 #include <system/object.h>
 #include <cstdint>
@@ -8,18 +8,9 @@
 
 namespace System
 {
-namespace Collections
-{
-namespace Generic
-{
-template <typename, typename> class IDictionary;
-template <typename> class List;
-} // namespace Generic
-} // namespace Collections
 namespace Drawing
 {
 class PointF;
-class RectangleF;
 } // namespace Drawing
 class String;
 } // namespace System
@@ -41,11 +32,6 @@ class ASPOSE_PAGE_SHARED_CLASS IInteractiveDevice : public virtual System::Objec
     
 public:
 
-    /// <summary>
-    /// Returns the map of internal hyperlink targets.
-    /// </summary>
-    virtual System::SharedPtr<System::Collections::Generic::IDictionary<int32_t, System::SharedPtr<System::Collections::Generic::List<System::Drawing::RectangleF>>>> get_InternalHyperlinksTargets() = 0;
-    
     /// <summary>
     /// Set the hyperlink with an external URI as its target.
     /// </summary>
@@ -69,12 +55,6 @@ public:
     /// <param name="outlineLevel">The outline level.</param>
     /// <param name="description">The item description.</param>
     virtual void AddOutline(System::Drawing::PointF origin, int32_t outlineLevel, System::String description) = 0;
-    /// <summary>
-    /// Saves internal hyperlink target as an absolute page number and a rectangular area on a page.
-    /// </summary>
-    /// <param name="absolutePageNumber">The absolute page number.</param>
-    /// <param name="rect">The rectangular area on a page.</param>
-    virtual void SaveInternalHyperlinkTarget(int32_t absolutePageNumber, System::Drawing::RectangleF rect) = 0;
     
 };
 

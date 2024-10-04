@@ -1,5 +1,5 @@
 ﻿#pragma once
-// Copyright (c) 2001-2022 Aspose Pty Ltd. All Rights Reserved.
+// Copyright (c) 2001-2024 Aspose Pty Ltd. All Rights Reserved.
 
 #include <drawing/point_f.h>
 
@@ -13,6 +13,7 @@ namespace Page
 {
 namespace XPS
 {
+class DocumentUtils;
 namespace Presentation
 {
 namespace Xps
@@ -70,6 +71,7 @@ class ASPOSE_PAGE_SHARED_CLASS XpsPathFigure : public Aspose::Page::XPS::XpsMode
     ASPOSE_PAGE_SHARED_RTTI_INFO_DECL();
     
     friend class Aspose::Page::XPS::Presentation::Xps::XpsPageWriter;
+    friend class Aspose::Page::XPS::DocumentUtils;
     template<typename FT0> friend class Aspose::Page::XPS::XpsModel::XpsArray;
     friend class Aspose::Page::XPS::XpsModel::XpsPropertyValueManager;
     friend class Aspose::Page::XPS::XpsModel::XpsElement;
@@ -143,11 +145,6 @@ protected:
     ASPOSE_PAGE_SHARED_API void CopySimplePropertyValues(System::SharedPtr<XpsObject> obj) override;
     
     virtual ASPOSE_PAGE_SHARED_API ~XpsPathFigure();
-    
-    #ifdef ASPOSE_GET_SHARED_MEMBERS
-    ASPOSE_PAGE_SHARED_API System::Object::shared_members_type GetSharedMembers() const override;
-    #endif
-    
     
 private:
 

@@ -2,7 +2,7 @@
 
 #include <system/object.h>
 
-namespace CPP {
+namespace CSharp {
 
 namespace WorkingWithVisualBrush {
 
@@ -21,6 +21,6 @@ public:
 };
 
 } // namespace WorkingWithVisualBrush
-} // namespace CPP
+} // namespace CSharp
 
 

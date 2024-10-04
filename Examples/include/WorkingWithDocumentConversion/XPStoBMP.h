@@ -1,8 +1,19 @@
 ﻿#pragma once
 
+// C# preprocessor directive: #if ASPOSE_DRAWING
+
+// C# INACTIVE CODE:
+// using SmoothingMode = Aspose.Page.Drawing.Drawing2D.SmoothingMode;
+
+// C# preprocessor directive: #else
+
+
+// C# preprocessor directive: #endif
+
+
 #include <system/object.h>
 
-namespace CPP {
+namespace CSharp {
 
 namespace WorkingWithDocumentConversion {
 
@@ -21,6 +32,6 @@ public:
 };
 
 } // namespace WorkingWithDocumentConversion
-} // namespace CPP
+} // namespace CSharp
 
 

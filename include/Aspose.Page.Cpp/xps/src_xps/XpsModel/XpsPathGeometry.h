@@ -1,5 +1,5 @@
 ﻿#pragma once
-// Copyright (c) 2001-2022 Aspose Pty Ltd. All Rights Reserved.
+// Copyright (c) 2001-2024 Aspose Pty Ltd. All Rights Reserved.
 
 #include <system/shared_ptr.h>
 
@@ -14,13 +14,13 @@ namespace Page
 {
 namespace XPS
 {
+class DocumentUtils;
 namespace Presentation
 {
 namespace Aps
 {
 class ApsConverter;
 } // namespace Aps
-class NativePathBuilder;
 class XpsPresenter;
 } // namespace Presentation
 class XpsDocumentVisitor;
@@ -78,9 +78,9 @@ class ASPOSE_PAGE_SHARED_CLASS XpsPathGeometry final : public Aspose::Page::XPS:
     typedef ::System::BaseTypesInfo<BaseType, BaseType1> ThisTypeBaseTypesInfo;
     ASPOSE_PAGE_SHARED_RTTI_INFO_DECL();
     
-    friend class Aspose::Page::XPS::Presentation::NativePathBuilder;
     friend class Aspose::Page::XPS::Presentation::XpsPresenter;
     friend class Aspose::Page::XPS::Presentation::Aps::ApsConverter;
+    friend class Aspose::Page::XPS::DocumentUtils;
     template<typename FT0> friend class Aspose::Page::XPS::XpsModel::XpsArray;
     friend class Aspose::Page::XPS::XpsModel::XpsPropertyValueManager;
     friend class Aspose::Page::XPS::XpsModel::XpsResourceDictionary;
@@ -177,6 +177,7 @@ protected:
     
     MEMBER_FUNCTION_MAKE_OBJECT_DECLARATION(XpsPathGeometry, CODEPORTING_ARGS(System::SharedPtr<System::Xml::XmlElement> element, System::SharedPtr<XpsContext> context));
     ASPOSE_PAGE_SHARED_API void Initialize(System::SharedPtr<System::Xml::XmlElement> element) override;
+    ASPOSE_PAGE_SHARED_API void Load() override;
     ASPOSE_PAGE_SHARED_API void Accept(System::SharedPtr<XpsDocumentVisitor> visitor) override;
     ASPOSE_PAGE_SHARED_API void AcceptProperties(System::SharedPtr<XpsDocumentVisitor> visitor) override;
     ASPOSE_PAGE_SHARED_API System::SharedPtr<XpsObject> Clone(bool deep, System::SharedPtr<XpsContext> context) override;
@@ -186,11 +187,6 @@ protected:
     ASPOSE_PAGE_SHARED_API void Dispose() override;
     
     virtual ASPOSE_PAGE_SHARED_API ~XpsPathGeometry();
-    
-    #ifdef ASPOSE_GET_SHARED_MEMBERS
-    ASPOSE_PAGE_SHARED_API System::Object::shared_members_type GetSharedMembers() const override;
-    #endif
-    
     
 private:
 

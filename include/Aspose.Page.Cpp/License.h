@@ -126,6 +126,40 @@ namespace Aspose {
 
 namespace Page {
 
+/// <summary>
+/// Specifies the edition type of the license.
+/// </summary>
+enum class EditionType
+{
+    Professional,
+    Enterprise
+};
+
+/// <summary>
+/// Which product of the license or black list : Aspose or Conholdate.
+/// </summary>
+enum class ProductType
+{
+    Aspose,
+    Conholdate,
+    Market
+};
+
+/// <summary>
+/// Represents possible license states.
+/// </summary>
+enum class LicenseState
+{
+    /// <summary>
+    /// The license is Evaluation
+    /// </summary>
+    Evaluation,
+    /// <summary>
+    /// The license is a proper valid license.
+    /// </summary>
+    Licensed
+};
+
 
 // C# preprocessor directive: #endif
 
@@ -210,9 +244,6 @@ public:
 private:
 
     bool mEmbedded;
-    
-    void _SetLicense(System::String licenseName);
-    void _SetLicense(System::SharedPtr<System::IO::Stream> stream);
     
 };
 

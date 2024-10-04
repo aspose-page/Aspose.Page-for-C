@@ -1,5 +1,5 @@
 ﻿#pragma once
-// Copyright (c) 2001-2022 Aspose Pty Ltd. All Rights Reserved.
+// Copyright (c) 2001-2024 Aspose Pty Ltd. All Rights Reserved.
 
 #include <system/type_info.h>
 #include <system/scope_guard.h>
@@ -10,8 +10,8 @@
 #include <system/details/force_copy_constructor.h>
 #include <system/constraints.h>
 
-#include "xps/src_xps/Util/XpsUtils.h"
 #include "Aspose.Page.Cpp/xps/src_xps/XpsModel/XpsContext/XpsContext.h"
+#include "Aspose.Page.Cpp/xps/src_xps/Util/XpsUtils.h"
 #include "Aspose.Page.Cpp/aspose_page_api_defs.h"
 
 namespace Aspose
@@ -20,12 +20,9 @@ namespace Page
 {
 namespace XPS
 {
+class DocumentUtils;
 namespace Presentation
 {
-namespace Aps
-{
-class ApsConverter;
-} // namespace Aps
 class NativeConverter;
 namespace Xps
 {
@@ -77,7 +74,7 @@ class ASPOSE_PAGE_SHARED_CLASS XpsFileResource : public System::Object
     ASPOSE_PAGE_SHARED_RTTI_INFO_DECL();
     
     friend class Aspose::Page::XPS::Presentation::NativeConverter;
-    friend class Aspose::Page::XPS::Presentation::Aps::ApsConverter;
+    friend class Aspose::Page::XPS::DocumentUtils;
     friend class Aspose::Page::XPS::Presentation::Xps::XpsSerializer;
     friend class Aspose::Page::XPS::Presentation::Xps::XpsSerializationContext;
     friend class Aspose::Page::XPS::Presentation::Xps::XpsSerializationContextBase;
@@ -134,7 +131,7 @@ protected:
         System::String hash = context->GetFileResourceHash(stream);
         if (hash != nullptr)
         {
-            return System::StaticCast<typename T::Pointee_>(context->GetFileResource(hash));
+            return System::ExplicitCast<T>(context->GetFileResource(hash));
         }
         
         stream->Seek(0, System::IO::SeekOrigin::Begin);
@@ -155,6 +152,7 @@ protected:
             try
             {
                 hash = XpsUtils::ComputeHash(stream);
+                // Consider optimizing this.
                 System::SharedPtr<XpsFileResource> cachedResource = context->GetFileResource(hash);
                 if (cachedResource != nullptr && System::ObjectExt::GetType(cachedResource) != System::ObjectExt::GetType<T>())
                 {
@@ -164,7 +162,7 @@ protected:
                 context->AddFileResourceHash(stream, hash);
                 if (cachedResource != nullptr)
                 {
-                    return System::StaticCast<typename T::Pointee_>(cachedResource);
+                    return System::ExplicitCast<T>(cachedResource);
                 }
                 
                 context->AddFileResource(hash, fileResource);
@@ -195,7 +193,7 @@ protected:
             try
             {
                 fileResource->_stream->Seek(0, System::IO::SeekOrigin::Begin);
-                System::String hash = XpsUtils::ComputeHash(fileResource->_stream);
+                System::String hash = ComputeHash(fileResource->_stream);
                 System::SharedPtr<XpsFileResource> resource = context->GetFileResource(hash);
                 if (resource != nullptr && System::ObjectExt::GetType(resource) != System::ObjectExt::GetType<T>())
                 {
@@ -204,12 +202,12 @@ protected:
                 
                 if (resource != nullptr)
                 {
-                    return System::StaticCast<typename T::Pointee_>(resource);
+                    return System::ExplicitCast<T>(resource);
                 }
                 
                 if (fileResource->_context != context)
                 {
-                    fileResource = System::StaticCast<typename T::Pointee_>(fileResource->Clone(context));
+                    fileResource = System::ExplicitCast<T>(fileResource->Clone(context));
                 }
                 context->AddFileResource(hash, fileResource);
                 
@@ -222,6 +220,8 @@ protected:
         }
     }
     
+    static System::String ComputeHash(System::SharedPtr<System::IO::Stream> stream);
+    static void CopyStream(System::SharedPtr<System::IO::Stream> source, System::SharedPtr<System::IO::Stream> dest);
     static System::SharedPtr<XpsFileResource> Create(System::SharedPtr<XpsContext> context, System::String path, System::SharedPtr<System::IO::Stream> stream);
     void Internalize();
     void Assert();
@@ -229,11 +229,6 @@ protected:
     virtual ASPOSE_PAGE_SHARED_API System::SharedPtr<XpsFileResource> Clone(System::SharedPtr<XpsContext> context);
     
     virtual ASPOSE_PAGE_SHARED_API ~XpsFileResource();
-    
-    #ifdef ASPOSE_GET_SHARED_MEMBERS
-    ASPOSE_PAGE_SHARED_API System::Object::shared_members_type GetSharedMembers() const override;
-    #endif
-    
     
 private:
 

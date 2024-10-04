@@ -1,5 +1,5 @@
 ﻿#pragma once
-// Copyright (c) 2001-2022 Aspose Pty Ltd. All Rights Reserved.
+// Copyright (c) 2001-2024 Aspose Pty Ltd. All Rights Reserved.
 
 #include <system/string.h>
 
@@ -12,6 +12,7 @@ namespace Page
 {
 namespace XPS
 {
+class DocumentUtils;
 namespace Presentation
 {
 namespace Xps
@@ -41,6 +42,13 @@ namespace Drawing
 {
 class RectangleF;
 } // namespace Drawing
+namespace Text
+{
+namespace RegularExpressions
+{
+class Regex;
+} // namespace RegularExpressions
+} // namespace Text
 namespace Xml
 {
 class XmlElement;
@@ -68,6 +76,7 @@ class ASPOSE_PAGE_SHARED_CLASS XpsImageBrush final : public Aspose::Page::XPS::X
     ASPOSE_PAGE_SHARED_RTTI_INFO_DECL();
     
     friend class Aspose::Page::XPS::Presentation::Xps::XpsPageWriter;
+    friend class Aspose::Page::XPS::DocumentUtils;
     friend class Aspose::Page::XPS::Presentation::Xps::XpsSerializer;
     template<typename FT0> friend class Aspose::Page::XPS::XpsModel::XpsArray;
     friend class Aspose::Page::XPS::XpsModel::XpsBrush;
@@ -121,16 +130,13 @@ protected:
     
     virtual ASPOSE_PAGE_SHARED_API ~XpsImageBrush();
     
-    #ifdef ASPOSE_GET_SHARED_MEMBERS
-    ASPOSE_PAGE_SHARED_API System::Object::shared_members_type GetSharedMembers() const override;
-    #endif
-    
-    
 private:
 
+    static System::SharedPtr<System::Text::RegularExpressions::Regex> ImageWithIcc;
     System::SharedPtr<XpsImage> _image;
     System::String _imageSource;
     
+    System::String ParseImageSource(System::String value);
     void ValidateImageSource(System::String value);
     void ValidateImage(System::SharedPtr<XpsImage> value);
     

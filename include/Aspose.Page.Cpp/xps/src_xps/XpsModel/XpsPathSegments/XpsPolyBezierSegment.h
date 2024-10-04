@@ -1,7 +1,5 @@
 ﻿#pragma once
-// Copyright (c) 2001-2022 Aspose Pty Ltd. All Rights Reserved.
-
-#include <system/array.h>
+// Copyright (c) 2001-2024 Aspose Pty Ltd. All Rights Reserved.
 
 #include "Aspose.Page.Cpp/xps/src_xps/XpsModel/XpsPathSegments/XpsPathPolySegment.h"
 #include "Aspose.Page.Cpp/aspose_page_api_defs.h"

@@ -1,8 +1,10 @@
 ﻿#pragma once
-// Copyright (c) 2001-2022 Aspose Pty Ltd. All Rights Reserved.
+// Copyright (c) 2001-2024 Aspose Pty Ltd. All Rights Reserved.
 
+#include <system/object_ext.h>
 #include <system/exceptions.h>
 #include <system/details/pointer_collection_helpers.h>
+#include <system/default.h>
 #include <system/constraints.h>
 #include <system/collections/list.h>
 #include <system/collections/ienumerable.h>
@@ -33,6 +35,7 @@ class XpsPresenter;
 namespace Tests
 {
 class ChildElementsCollectionTests;
+class GlyphsToImageTests;
 class HyperlinksTests;
 class PageOperationsTests;
 class XpsCanvasTests;
@@ -46,13 +49,13 @@ class XpsDocument;
 class XpsDocumentVisitor;
 namespace XpsModel
 {
-enum class RegistrationType;
 class XpsArcSegment;
 template <typename> class XpsArray;
 class XpsCanvas;
 class XpsColor;
 class XpsContentElement;
 class XpsElementLinkTarget;
+class XpsEvent;
 class XpsFont;
 class XpsGlyphs;
 class XpsGradientStop;
@@ -172,6 +175,7 @@ class ASPOSE_PAGE_SHARED_CLASS XpsElement : public Aspose::Page::XPS::XpsModel::
     friend class Aspose::Page::XPS::Tests::XpsPathFigureTests;
     friend class Aspose::Page::XPS::Tests::XpsPathGeometryTests;
     friend class Aspose::Page::XPS::Tests::XpsPathTests;
+    friend class Aspose::Page::XPS::Tests::GlyphsToImageTests;
     
 public:
     /// A collection type whose iterator types is used as iterator types in the current collection.
@@ -250,16 +254,15 @@ public:
     
 protected:
 
-    XpsElementType _elementType;
     System::String _name;
     
-    XpsElement(System::SharedPtr<XpsContext> context);
+    XpsElementType get_ElementType() const;
+    
+    XpsElement(System::SharedPtr<XpsContext> context, XpsElementType elementType = System::Default<XpsElementType>());
     
     ASPOSE_PAGE_SHARED_API void Initialize(System::SharedPtr<System::Xml::XmlElement> element) override;
-    virtual ASPOSE_PAGE_SHARED_API void ForcePropertyValueReferencesUpdate(System::SharedPtr<XpsElement> parent, bool add = true);
-    virtual ASPOSE_PAGE_SHARED_API void UpdatePropertyValueReferences(System::SharedPtr<XpsElement> propertyValue, bool add = true);
-    ASPOSE_PAGE_SHARED_API void ForceRegisterForPreprocessing(bool add = true) override;
-    ASPOSE_PAGE_SHARED_API void RegisterForPreprocessing(System::SharedPtr<XpsElement> element, RegistrationType regType, bool add = true) override;
+    ASPOSE_PAGE_SHARED_API void NotifyDescendants(bool isAdd = true) override;
+    ASPOSE_PAGE_SHARED_API void NotifyRoot(System::SharedPtr<XpsEvent> evt) override;
     template <typename T>
     T Add(T element)
     {
@@ -273,15 +276,13 @@ protected:
         if (element->get_Parent() == nullptr && element->_context == _context)
         {
             AddReference<T>(element);
-            element->ForcePropertyValueReferencesUpdate(System::MakeSharedPtr(this));
-            element->ForceRegisterForPreprocessing();
+            element->NotifyDescendants();
             
             return element;
         }
         
-        T addedElement = System::StaticCast<typename T::Pointee_>(element->Clone(_context != element->_context, _context, System::MakeSharedPtr(this), -1));
-        addedElement->ForcePropertyValueReferencesUpdate(System::MakeSharedPtr(this));
-        addedElement->ForceRegisterForPreprocessing();
+        T addedElement = System::ExplicitCast<T>(element->Clone(_context != element->_context, _context, System::MakeSharedPtr(this), -1));
+        addedElement->NotifyDescendants();
         
         return addedElement;
     }
@@ -314,8 +315,7 @@ protected:
         AssertObject();
         element->AssertObject();
         
-        element->ForcePropertyValueReferencesUpdate(get_Parent(), false);
-        element->ForceRegisterForPreprocessing(false);
+        element->NotifyDescendants(false);
         RemoveReference<T>(element);
         
         return element;
@@ -357,15 +357,13 @@ protected:
         if (element->get_Parent() == nullptr && element->_context == _context)
         {
             InsertReference<T>(index, element);
-            element->ForcePropertyValueReferencesUpdate(System::MakeSharedPtr(this));
-            element->ForceRegisterForPreprocessing();
+            element->NotifyDescendants();
             
             return element;
         }
         
-        T insertedElement = System::StaticCast<typename T::Pointee_>(element->Clone(_context != element->_context, _context, System::MakeSharedPtr(this), index));
-        insertedElement->ForcePropertyValueReferencesUpdate(System::MakeSharedPtr(this));
-        insertedElement->ForceRegisterForPreprocessing();
+        T insertedElement = System::ExplicitCast<T>(element->Clone(_context != element->_context, _context, System::MakeSharedPtr(this), index));
+        insertedElement->NotifyDescendants();
         
         return insertedElement;
     }
@@ -444,13 +442,9 @@ protected:
     
     virtual ASPOSE_PAGE_SHARED_API ~XpsElement();
     
-    #ifdef ASPOSE_GET_SHARED_MEMBERS
-    ASPOSE_PAGE_SHARED_API System::Object::shared_members_type GetSharedMembers() const override;
-    #endif
-    
-    
 private:
 
+    XpsElementType _elementType;
     System::SharedPtr<System::Collections::Generic::List<System::SharedPtr<XpsContentElement>>> _children;
     System::SharedPtr<XpsElement> pr_Parent;
     

@@ -1,5 +1,5 @@
 ﻿#pragma once
-// Copyright (c) 2001-2022 Aspose Pty Ltd. All Rights Reserved.
+// Copyright (c) 2001-2024 Aspose Pty Ltd. All Rights Reserved.
 
 #include <system/string.h>
 
@@ -93,10 +93,6 @@ protected:
     
     MEMBER_FUNCTION_MAKE_OBJECT_DECLARATION(XpsRgbColor, CODEPORTING_ARGS(System::Drawing::Color color));
     ASPOSE_PAGE_SHARED_API System::SharedPtr<XpsColor> Clone() override;
-    #ifdef ASPOSE_GET_SHARED_MEMBERS
-    ASPOSE_PAGE_SHARED_API System::Object::shared_members_type GetSharedMembers() const override;
-    #endif
-    
     
 private:
 

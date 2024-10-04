@@ -1,6 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
+    <ClCompile Include="source\GettingStarted\ApplyMeteredLicense.cpp">
+      <Filter>source\GettingStarted</Filter>
+    </ClCompile>
     <ClCompile Include="source\GettingStarted\LoadLicenseFromFile.cpp">
       <Filter>source\GettingStarted</Filter>
     </ClCompile>
@@ -12,6 +15,36 @@
     </ClCompile>
     <ClCompile Include="source\RunExamples.cpp">
       <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\WorkingWithCanvas\ClippingPS.cpp">
+      <Filter>source\WorkingWithCanvas</Filter>
+    </ClCompile>
+    <ClCompile Include="source\WorkingWithCanvas\ClippingXPS.cpp">
+      <Filter>source\WorkingWithCanvas</Filter>
+    </ClCompile>
+    <ClCompile Include="source\WorkingWithCanvas\TransformationsPS.cpp">
+      <Filter>source\WorkingWithCanvas</Filter>
+    </ClCompile>
+    <ClCompile Include="source\WorkingWithCanvas\TransformationsXPS.cpp">
+      <Filter>source\WorkingWithCanvas</Filter>
+    </ClCompile>
+    <ClCompile Include="source\WorkingWithCrossPackageOperations\AddGlyphCloneAndChangeColor.cpp">
+      <Filter>source\WorkingWithCrossPackageOperations</Filter>
+    </ClCompile>
+    <ClCompile Include="source\WorkingWithCrossPackageOperations\AddImageFilledGlyphAndForeignImage.cpp">
+      <Filter>source\WorkingWithCrossPackageOperations</Filter>
+    </ClCompile>
+    <ClCompile Include="source\WorkingWithCrossPackageOperations\ManipulatePages.cpp">
+      <Filter>source\WorkingWithCrossPackageOperations</Filter>
+    </ClCompile>
+    <ClCompile Include="source\WorkingWithDocument\ChangeDocumentXPS.cpp">
+      <Filter>source\WorkingWithDocument</Filter>
+    </ClCompile>
+    <ClCompile Include="source\WorkingWithDocument\CreateDocumentPS.cpp">
+      <Filter>source\WorkingWithDocument</Filter>
+    </ClCompile>
+    <ClCompile Include="source\WorkingWithDocument\CreateDocumentXPS.cpp">
+      <Filter>source\WorkingWithDocument</Filter>
     </ClCompile>
     <ClCompile Include="source\WorkingWithDocumentConversion\PostScriptToImage.cpp">
       <Filter>source\WorkingWithDocumentConversion</Filter>
@@ -40,40 +73,124 @@
     <ClCompile Include="source\WorkingWithDocumentMerging\XPStoPDF.cpp">
       <Filter>source\WorkingWithDocumentMerging</Filter>
     </ClCompile>
-    <ClCompile Include="source\WorkingWithGradient\AddHorizontalGradient.cpp">
+    <ClCompile Include="source\WorkingWithDocumentMerging\XPStoXPS.cpp">
+      <Filter>source\WorkingWithDocumentMerging</Filter>
+    </ClCompile>
+    <ClCompile Include="source\WorkingWithEPS\CropEPS.cpp">
+      <Filter>source\WorkingWithEPS</Filter>
+    </ClCompile>
+    <ClCompile Include="source\WorkingWithEPS\ResizeEPS.cpp">
+      <Filter>source\WorkingWithEPS</Filter>
+    </ClCompile>
+    <ClCompile Include="source\WorkingWithGradient\AddDiagonalGradientPS.cpp">
       <Filter>source\WorkingWithGradient</Filter>
     </ClCompile>
-    <ClCompile Include="source\WorkingWithGradient\AddLinearGradient.cpp">
+    <ClCompile Include="source\WorkingWithGradient\AddDiagonalGradientXPS.cpp">
       <Filter>source\WorkingWithGradient</Filter>
     </ClCompile>
-    <ClCompile Include="source\WorkingWithGradient\AddVerticalGradient.cpp">
+    <ClCompile Include="source\WorkingWithGradient\AddHorizontalGradientPS.cpp">
       <Filter>source\WorkingWithGradient</Filter>
     </ClCompile>
-    <ClCompile Include="source\WorkingWithImages\AddImage.cpp">
+    <ClCompile Include="source\WorkingWithGradient\AddHorizontalGradientXPS.cpp">
+      <Filter>source\WorkingWithGradient</Filter>
+    </ClCompile>
+    <ClCompile Include="source\WorkingWithGradient\AddRadialGradient1PS.cpp">
+      <Filter>source\WorkingWithGradient</Filter>
+    </ClCompile>
+    <ClCompile Include="source\WorkingWithGradient\AddRadialGradient2PS.cpp">
+      <Filter>source\WorkingWithGradient</Filter>
+    </ClCompile>
+    <ClCompile Include="source\WorkingWithGradient\AddVerticalGradientPS.cpp">
+      <Filter>source\WorkingWithGradient</Filter>
+    </ClCompile>
+    <ClCompile Include="source\WorkingWithGradient\AddVerticalGradientXPS.cpp">
+      <Filter>source\WorkingWithGradient</Filter>
+    </ClCompile>
+    <ClCompile Include="source\WorkingWithHatches\AddHatchPatternPS.cpp">
+      <Filter>source\WorkingWithHatches</Filter>
+    </ClCompile>
+    <ClCompile Include="source\WorkingWithImageConversion\SaveImageAsEPS.cpp">
+      <Filter>source\WorkingWithImageConversion</Filter>
+    </ClCompile>
+    <ClCompile Include="source\WorkingWithImages\AddImagePS.cpp">
       <Filter>source\WorkingWithImages</Filter>
     </ClCompile>
-    <ClCompile Include="source\WorkingWithImages\AddTiledImage.cpp">
+    <ClCompile Include="source\WorkingWithImages\AddImageXPS.cpp">
       <Filter>source\WorkingWithImages</Filter>
     </ClCompile>
-    <ClCompile Include="source\WorkingWithPages\AddPage.cpp">
+    <ClCompile Include="source\WorkingWithImages\AddTiledImageXPS.cpp">
+      <Filter>source\WorkingWithImages</Filter>
+    </ClCompile>
+    <ClCompile Include="source\WorkingWithImages\UseImageUtilitiesXPS.cpp">
+      <Filter>source\WorkingWithImages</Filter>
+    </ClCompile>
+    <ClCompile Include="source\WorkingWithPages\AddPage1PS.cpp">
       <Filter>source\WorkingWithPages</Filter>
     </ClCompile>
-    <ClCompile Include="source\WorkingWithShapes\AddEllipse.cpp">
+    <ClCompile Include="source\WorkingWithPages\AddPage2PS.cpp">
+      <Filter>source\WorkingWithPages</Filter>
+    </ClCompile>
+    <ClCompile Include="source\WorkingWithPages\AddPageXPS.cpp">
+      <Filter>source\WorkingWithPages</Filter>
+    </ClCompile>
+    <ClCompile Include="source\WorkingWithPages\RemovePageXPS.cpp">
+      <Filter>source\WorkingWithPages</Filter>
+    </ClCompile>
+    <ClCompile Include="source\WorkingWithPrintTickets\CreateCustomPrintTicket.cpp">
+      <Filter>source\WorkingWithPrintTickets</Filter>
+    </ClCompile>
+    <ClCompile Include="source\WorkingWithPrintTickets\EditPrintTicket.cpp">
+      <Filter>source\WorkingWithPrintTickets</Filter>
+    </ClCompile>
+    <ClCompile Include="source\WorkingWithPrintTickets\GetPrintTickets.cpp">
+      <Filter>source\WorkingWithPrintTickets</Filter>
+    </ClCompile>
+    <ClCompile Include="source\WorkingWithPrintTickets\LinkPrintTickets.cpp">
+      <Filter>source\WorkingWithPrintTickets</Filter>
+    </ClCompile>
+    <ClCompile Include="source\WorkingWithShapes\AddEllipsePS.cpp">
       <Filter>source\WorkingWithShapes</Filter>
     </ClCompile>
-    <ClCompile Include="source\WorkingWithShapes\AddRectangle.cpp">
+    <ClCompile Include="source\WorkingWithShapes\AddEllipseXPS.cpp">
       <Filter>source\WorkingWithShapes</Filter>
     </ClCompile>
-    <ClCompile Include="source\WorkingWithText\AddText.cpp">
+    <ClCompile Include="source\WorkingWithShapes\AddRectanglePS.cpp">
+      <Filter>source\WorkingWithShapes</Filter>
+    </ClCompile>
+    <ClCompile Include="source\WorkingWithShapes\AddRectangleXPS.cpp">
+      <Filter>source\WorkingWithShapes</Filter>
+    </ClCompile>
+    <ClCompile Include="source\WorkingWithShapes\ApplyDifferentColorSpacesXPS.cpp">
+      <Filter>source\WorkingWithShapes</Filter>
+    </ClCompile>
+    <ClCompile Include="source\WorkingWithShapes\UseShapeUtilitiesXPS.cpp">
+      <Filter>source\WorkingWithShapes</Filter>
+    </ClCompile>
+    <ClCompile Include="source\WorkingWithText\AddTextPS.cpp">
       <Filter>source\WorkingWithText</Filter>
     </ClCompile>
-    <ClCompile Include="source\WorkingWithText\AddTextUsingUnicodeString.cpp">
+    <ClCompile Include="source\WorkingWithText\AddTextUsingUnicodeStringPS.cpp">
       <Filter>source\WorkingWithText</Filter>
     </ClCompile>
-    <ClCompile Include="source\WorkingWithTransparency\AddTransparentObject.cpp">
+    <ClCompile Include="source\WorkingWithText\AddTextUsingUnicodeStringXPS.cpp">
+      <Filter>source\WorkingWithText</Filter>
+    </ClCompile>
+    <ClCompile Include="source\WorkingWithText\AddTextXPS.cpp">
+      <Filter>source\WorkingWithText</Filter>
+    </ClCompile>
+    <ClCompile Include="source\WorkingWithTexture\AddTextureTilingPatternPS.cpp">
+      <Filter>source\WorkingWithTexture</Filter>
+    </ClCompile>
+    <ClCompile Include="source\WorkingWithTransparency\AddTransparentImagePS.cpp">
       <Filter>source\WorkingWithTransparency</Filter>
     </ClCompile>
-    <ClCompile Include="source\WorkingWithTransparency\SetOpacityMask.cpp">
+    <ClCompile Include="source\WorkingWithTransparency\AddTransparentObjectXPS.cpp">
+      <Filter>source\WorkingWithTransparency</Filter>
+    </ClCompile>
+    <ClCompile Include="source\WorkingWithTransparency\SetOpacityMaskXPS.cpp">
+      <Filter>source\WorkingWithTransparency</Filter>
+    </ClCompile>
+    <ClCompile Include="source\WorkingWithTransparency\ShowPseudoTransparencyPS.cpp">
       <Filter>source\WorkingWithTransparency</Filter>
     </ClCompile>
     <ClCompile Include="source\WorkingWithVisualBrush\AddGrid.cpp">
@@ -109,16 +226,14 @@
     <ClCompile Include="source\version_compatibility.cpp">
       <Filter>source</Filter>
     </ClCompile>
-    <ClCompile Include="C:\ASPOSE.GIT\asposecpplib\pch\aspose_pch.cpp">
-      <Filter>pch</Filter>
-    </ClCompile>
+    <ClCompile Include="stdafx.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="source\RunExamples.h">
-      <Filter>source</Filter>
-    </ClInclude>
     <ClInclude Include="source\WorkingWithDocumentConversion\PostScriptToImage.h">
       <Filter>source\WorkingWithDocumentConversion</Filter>
+    </ClInclude>
+    <ClInclude Include="include\GettingStarted\ApplyMeteredLicense.h">
+      <Filter>include\GettingStarted</Filter>
     </ClInclude>
     <ClInclude Include="include\GettingStarted\LoadLicenseFromFile.h">
       <Filter>include\GettingStarted</Filter>
@@ -128,6 +243,36 @@
     </ClInclude>
     <ClInclude Include="include\GettingStarted\SetLicenseUsingEmbeddedResource.h">
       <Filter>include\GettingStarted</Filter>
+    </ClInclude>
+    <ClInclude Include="include\WorkingWithCanvas\ClippingPS.h">
+      <Filter>include\WorkingWithCanvas</Filter>
+    </ClInclude>
+    <ClInclude Include="include\WorkingWithCanvas\ClippingXPS.h">
+      <Filter>include\WorkingWithCanvas</Filter>
+    </ClInclude>
+    <ClInclude Include="include\WorkingWithCanvas\TransformationsPS.h">
+      <Filter>include\WorkingWithCanvas</Filter>
+    </ClInclude>
+    <ClInclude Include="include\WorkingWithCanvas\TransformationsXPS.h">
+      <Filter>include\WorkingWithCanvas</Filter>
+    </ClInclude>
+    <ClInclude Include="include\WorkingWithCrossPackageOperations\AddGlyphCloneAndChangeColor.h">
+      <Filter>include\WorkingWithCrossPackageOperations</Filter>
+    </ClInclude>
+    <ClInclude Include="include\WorkingWithCrossPackageOperations\AddImageFilledGlyphAndForeignImage.h">
+      <Filter>include\WorkingWithCrossPackageOperations</Filter>
+    </ClInclude>
+    <ClInclude Include="include\WorkingWithCrossPackageOperations\ManipulatePages.h">
+      <Filter>include\WorkingWithCrossPackageOperations</Filter>
+    </ClInclude>
+    <ClInclude Include="include\WorkingWithDocument\ChangeDocumentXPS.h">
+      <Filter>include\WorkingWithDocument</Filter>
+    </ClInclude>
+    <ClInclude Include="include\WorkingWithDocument\CreateDocumentPS.h">
+      <Filter>include\WorkingWithDocument</Filter>
+    </ClInclude>
+    <ClInclude Include="include\WorkingWithDocument\CreateDocumentXPS.h">
+      <Filter>include\WorkingWithDocument</Filter>
     </ClInclude>
     <ClInclude Include="include\WorkingWithDocumentConversion\PostScriptToPdf.h">
       <Filter>include\WorkingWithDocumentConversion</Filter>
@@ -153,40 +298,124 @@
     <ClInclude Include="include\WorkingWithDocumentMerging\XPStoPDF.h">
       <Filter>include\WorkingWithDocumentMerging</Filter>
     </ClInclude>
-    <ClInclude Include="include\WorkingWithGradient\AddHorizontalGradient.h">
+    <ClInclude Include="include\WorkingWithDocumentMerging\XPStoXPS.h">
+      <Filter>include\WorkingWithDocumentMerging</Filter>
+    </ClInclude>
+    <ClInclude Include="include\WorkingWithEPS\CropEPS.h">
+      <Filter>include\WorkingWithEPS</Filter>
+    </ClInclude>
+    <ClInclude Include="include\WorkingWithEPS\ResizeEPS.h">
+      <Filter>include\WorkingWithEPS</Filter>
+    </ClInclude>
+    <ClInclude Include="include\WorkingWithGradient\AddDiagonalGradientPS.h">
       <Filter>include\WorkingWithGradient</Filter>
     </ClInclude>
-    <ClInclude Include="include\WorkingWithGradient\AddLinearGradient.h">
+    <ClInclude Include="include\WorkingWithGradient\AddDiagonalGradientXPS.h">
       <Filter>include\WorkingWithGradient</Filter>
     </ClInclude>
-    <ClInclude Include="include\WorkingWithGradient\AddVerticalGradient.h">
+    <ClInclude Include="include\WorkingWithGradient\AddHorizontalGradientPS.h">
       <Filter>include\WorkingWithGradient</Filter>
     </ClInclude>
-    <ClInclude Include="include\WorkingWithImages\AddImage.h">
+    <ClInclude Include="include\WorkingWithGradient\AddHorizontalGradientXPS.h">
+      <Filter>include\WorkingWithGradient</Filter>
+    </ClInclude>
+    <ClInclude Include="include\WorkingWithGradient\AddRadialGradient1PS.h">
+      <Filter>include\WorkingWithGradient</Filter>
+    </ClInclude>
+    <ClInclude Include="include\WorkingWithGradient\AddRadialGradient2PS.h">
+      <Filter>include\WorkingWithGradient</Filter>
+    </ClInclude>
+    <ClInclude Include="include\WorkingWithGradient\AddVerticalGradientPS.h">
+      <Filter>include\WorkingWithGradient</Filter>
+    </ClInclude>
+    <ClInclude Include="include\WorkingWithGradient\AddVerticalGradientXPS.h">
+      <Filter>include\WorkingWithGradient</Filter>
+    </ClInclude>
+    <ClInclude Include="include\WorkingWithHatches\AddHatchPatternPS.h">
+      <Filter>include\WorkingWithHatches</Filter>
+    </ClInclude>
+    <ClInclude Include="include\WorkingWithImageConversion\SaveImageAsEPS.h">
+      <Filter>include\WorkingWithImageConversion</Filter>
+    </ClInclude>
+    <ClInclude Include="include\WorkingWithImages\AddImagePS.h">
       <Filter>include\WorkingWithImages</Filter>
     </ClInclude>
-    <ClInclude Include="include\WorkingWithImages\AddTiledImage.h">
+    <ClInclude Include="include\WorkingWithImages\AddImageXPS.h">
       <Filter>include\WorkingWithImages</Filter>
     </ClInclude>
-    <ClInclude Include="include\WorkingWithPages\AddPage.h">
+    <ClInclude Include="include\WorkingWithImages\AddTiledImageXPS.h">
+      <Filter>include\WorkingWithImages</Filter>
+    </ClInclude>
+    <ClInclude Include="include\WorkingWithImages\UseImageUtilitiesXPS.h">
+      <Filter>include\WorkingWithImages</Filter>
+    </ClInclude>
+    <ClInclude Include="include\WorkingWithPages\AddPage1PS.h">
       <Filter>include\WorkingWithPages</Filter>
     </ClInclude>
-    <ClInclude Include="include\WorkingWithShapes\AddEllipse.h">
+    <ClInclude Include="include\WorkingWithPages\AddPage2PS.h">
+      <Filter>include\WorkingWithPages</Filter>
+    </ClInclude>
+    <ClInclude Include="include\WorkingWithPages\AddPageXPS.h">
+      <Filter>include\WorkingWithPages</Filter>
+    </ClInclude>
+    <ClInclude Include="include\WorkingWithPages\RemovePageXPS.h">
+      <Filter>include\WorkingWithPages</Filter>
+    </ClInclude>
+    <ClInclude Include="include\WorkingWithPrintTickets\CreateCustomPrintTicket.h">
+      <Filter>include\WorkingWithPrintTickets</Filter>
+    </ClInclude>
+    <ClInclude Include="include\WorkingWithPrintTickets\EditPrintTicket.h">
+      <Filter>include\WorkingWithPrintTickets</Filter>
+    </ClInclude>
+    <ClInclude Include="include\WorkingWithPrintTickets\GetPrintTickets.h">
+      <Filter>include\WorkingWithPrintTickets</Filter>
+    </ClInclude>
+    <ClInclude Include="include\WorkingWithPrintTickets\LinkPrintTickets.h">
+      <Filter>include\WorkingWithPrintTickets</Filter>
+    </ClInclude>
+    <ClInclude Include="include\WorkingWithShapes\AddEllipsePS.h">
       <Filter>include\WorkingWithShapes</Filter>
     </ClInclude>
-    <ClInclude Include="include\WorkingWithShapes\AddRectangle.h">
+    <ClInclude Include="include\WorkingWithShapes\AddEllipseXPS.h">
       <Filter>include\WorkingWithShapes</Filter>
     </ClInclude>
-    <ClInclude Include="include\WorkingWithText\AddText.h">
+    <ClInclude Include="include\WorkingWithShapes\AddRectanglePS.h">
+      <Filter>include\WorkingWithShapes</Filter>
+    </ClInclude>
+    <ClInclude Include="include\WorkingWithShapes\AddRectangleXPS.h">
+      <Filter>include\WorkingWithShapes</Filter>
+    </ClInclude>
+    <ClInclude Include="include\WorkingWithShapes\ApplyDifferentColorSpacesXPS.h">
+      <Filter>include\WorkingWithShapes</Filter>
+    </ClInclude>
+    <ClInclude Include="include\WorkingWithShapes\UseShapeUtilitiesXPS.h">
+      <Filter>include\WorkingWithShapes</Filter>
+    </ClInclude>
+    <ClInclude Include="include\WorkingWithText\AddTextPS.h">
       <Filter>include\WorkingWithText</Filter>
     </ClInclude>
-    <ClInclude Include="include\WorkingWithText\AddTextUsingUnicodeString.h">
+    <ClInclude Include="include\WorkingWithText\AddTextUsingUnicodeStringPS.h">
       <Filter>include\WorkingWithText</Filter>
     </ClInclude>
-    <ClInclude Include="include\WorkingWithTransparency\AddTransparentObject.h">
+    <ClInclude Include="include\WorkingWithText\AddTextUsingUnicodeStringXPS.h">
+      <Filter>include\WorkingWithText</Filter>
+    </ClInclude>
+    <ClInclude Include="include\WorkingWithText\AddTextXPS.h">
+      <Filter>include\WorkingWithText</Filter>
+    </ClInclude>
+    <ClInclude Include="include\WorkingWithTexture\AddTextureTilingPatternPS.h">
+      <Filter>include\WorkingWithTexture</Filter>
+    </ClInclude>
+    <ClInclude Include="include\WorkingWithTransparency\AddTransparentImagePS.h">
       <Filter>include\WorkingWithTransparency</Filter>
     </ClInclude>
-    <ClInclude Include="include\WorkingWithTransparency\SetOpacityMask.h">
+    <ClInclude Include="include\WorkingWithTransparency\AddTransparentObjectXPS.h">
+      <Filter>include\WorkingWithTransparency</Filter>
+    </ClInclude>
+    <ClInclude Include="include\WorkingWithTransparency\SetOpacityMaskXPS.h">
+      <Filter>include\WorkingWithTransparency</Filter>
+    </ClInclude>
+    <ClInclude Include="include\WorkingWithTransparency\ShowPseudoTransparencyPS.h">
       <Filter>include\WorkingWithTransparency</Filter>
     </ClInclude>
     <ClInclude Include="include\WorkingWithVisualBrush\AddGrid.h">
@@ -219,85 +448,145 @@
     <ClInclude Include="include\WorkingWithXMPMetadataInEPS\GetMetadata.h">
       <Filter>include\WorkingWithXMPMetadataInEPS</Filter>
     </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <CustomBuild Include="CMakeLists.txt" />
+    <ClInclude Include="include\stdafx.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\targetver.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="source\RunExamples.h">
+      <Filter>include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="include">
-      <UniqueIdentifier>{E28C478D-7A01-3A64-9DBA-494FF6FFE566}</UniqueIdentifier>
+      <UniqueIdentifier>{A9855354-3908-3105-B65A-2FDA3D4741E9}</UniqueIdentifier>
     </Filter>
     <Filter Include="include\GettingStarted">
-      <UniqueIdentifier>{D29D38A0-1B29-3E5F-92ED-2C1FDCB09739}</UniqueIdentifier>
+      <UniqueIdentifier>{157BCFFA-8124-3BDD-AD95-8E1AC40AA11B}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\WorkingWithCanvas">
+      <UniqueIdentifier>{514E93C8-6E21-3FDC-A987-8BED67789119}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\WorkingWithCrossPackageOperations">
+      <UniqueIdentifier>{BD7AE967-CA56-3387-AAD6-B1D2A1B05441}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\WorkingWithDocument">
+      <UniqueIdentifier>{EA746535-8C80-3C9C-8902-14BF2E3767D3}</UniqueIdentifier>
     </Filter>
     <Filter Include="include\WorkingWithDocumentConversion">
-      <UniqueIdentifier>{337E6504-B246-3487-8474-5BDC78481B0C}</UniqueIdentifier>
+      <UniqueIdentifier>{82F50342-C603-32B1-84E2-167E6154332E}</UniqueIdentifier>
     </Filter>
     <Filter Include="include\WorkingWithDocumentMerging">
-      <UniqueIdentifier>{E6B894D6-DBD7-3110-8A73-17609D22A775}</UniqueIdentifier>
+      <UniqueIdentifier>{06DD3A80-7428-3610-A2E3-000F691D3646}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\WorkingWithEPS">
+      <UniqueIdentifier>{BD105E6B-607A-3192-AAAE-08A5E95EFCCD}</UniqueIdentifier>
     </Filter>
     <Filter Include="include\WorkingWithGradient">
-      <UniqueIdentifier>{192CFF9A-5D14-3185-A982-1A4202FB3BF8}</UniqueIdentifier>
+      <UniqueIdentifier>{D936CA37-CD30-36C5-BCC5-ADCFC640EE31}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\WorkingWithHatches">
+      <UniqueIdentifier>{DB6A4FE5-F46A-3F5C-877F-FB30C9BAB2AD}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\WorkingWithImageConversion">
+      <UniqueIdentifier>{E0FE9B4D-1932-3861-982E-C4C743AF5051}</UniqueIdentifier>
     </Filter>
     <Filter Include="include\WorkingWithImages">
-      <UniqueIdentifier>{92D14A43-960C-3E59-B27C-EA528D35F495}</UniqueIdentifier>
+      <UniqueIdentifier>{9A41574A-9A79-3CF3-9518-9E78342536B3}</UniqueIdentifier>
     </Filter>
     <Filter Include="include\WorkingWithPages">
-      <UniqueIdentifier>{2D8D096F-9B1B-3E18-90C6-95CE54D291E0}</UniqueIdentifier>
+      <UniqueIdentifier>{AD87974E-381D-305E-854E-0DA10F01B098}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\WorkingWithPrintTickets">
+      <UniqueIdentifier>{AF3C72DC-3297-32C1-BC66-AB0E2953BA48}</UniqueIdentifier>
     </Filter>
     <Filter Include="include\WorkingWithShapes">
-      <UniqueIdentifier>{61ECEEE3-55B8-3030-BD4B-CE7961F2DFCD}</UniqueIdentifier>
+      <UniqueIdentifier>{DF6D222E-0AD8-3AFF-8154-0E874664DC3E}</UniqueIdentifier>
     </Filter>
     <Filter Include="include\WorkingWithText">
-      <UniqueIdentifier>{E02D17D0-3B8A-395D-89C4-525C4276616E}</UniqueIdentifier>
+      <UniqueIdentifier>{AC5CDE96-8CF7-345E-B91A-B55FFEB0E5FE}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\WorkingWithTexture">
+      <UniqueIdentifier>{44745D03-D132-3CFF-ACBA-B4E7C40C9A66}</UniqueIdentifier>
     </Filter>
     <Filter Include="include\WorkingWithTransparency">
-      <UniqueIdentifier>{E10E669B-8DC8-30ED-A332-ED5B11CCCD9E}</UniqueIdentifier>
+      <UniqueIdentifier>{E9E8056C-7175-3D2E-8BDF-61622D8A36F1}</UniqueIdentifier>
     </Filter>
     <Filter Include="include\WorkingWithVisualBrush">
-      <UniqueIdentifier>{098343C2-77B9-3F37-B767-C3D3282A4228}</UniqueIdentifier>
+      <UniqueIdentifier>{BC453F55-5851-3ACE-9436-6D5800D394AA}</UniqueIdentifier>
     </Filter>
     <Filter Include="include\WorkingWithXMPMetadataInEPS">
-      <UniqueIdentifier>{0D6A0940-174A-3FE0-8F5E-A8166287D50C}</UniqueIdentifier>
+      <UniqueIdentifier>{ABACA972-9B34-3E39-93BA-F70DF23F0D18}</UniqueIdentifier>
     </Filter>
     <Filter Include="pch">
-      <UniqueIdentifier>{9E5B6E3C-7219-34C9-9CC7-7DE69DF5AA40}</UniqueIdentifier>
+      <UniqueIdentifier>{3C85F59E-32D4-3000-ABAB-C6C54BA385D8}</UniqueIdentifier>
     </Filter>
     <Filter Include="source">
-      <UniqueIdentifier>{7F7C5A33-BF94-383B-B2F8-C9FEE0643738}</UniqueIdentifier>
+      <UniqueIdentifier>{B9F7316A-8C77-3C89-930F-3305C15CCDAE}</UniqueIdentifier>
     </Filter>
     <Filter Include="source\GettingStarted">
-      <UniqueIdentifier>{CD1017B6-9EC0-3BC5-A97F-404A45C916D1}</UniqueIdentifier>
+      <UniqueIdentifier>{F9CEF2AB-A55C-3B25-8C1F-1B2B9A85E6BE}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\WorkingWithCanvas">
+      <UniqueIdentifier>{A89F5AF4-F8F1-37E2-8D03-A01375EC1898}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\WorkingWithCrossPackageOperations">
+      <UniqueIdentifier>{67FB97F5-D34E-39A0-8C98-30FCEFC52ABA}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\WorkingWithDocument">
+      <UniqueIdentifier>{F3534B65-F5D5-309A-93E4-0A7AC7290FB2}</UniqueIdentifier>
     </Filter>
     <Filter Include="source\WorkingWithDocumentConversion">
-      <UniqueIdentifier>{2C0B689C-1FB5-33B4-A924-530C754C707C}</UniqueIdentifier>
+      <UniqueIdentifier>{FC077D34-0783-36BD-836B-A8416E11B7BF}</UniqueIdentifier>
     </Filter>
     <Filter Include="source\WorkingWithDocumentMerging">
-      <UniqueIdentifier>{6D90231A-F262-3A0A-BA06-0B1069D0FECB}</UniqueIdentifier>
+      <UniqueIdentifier>{99B1E204-9269-3438-B120-DC2D5A43EA1F}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\WorkingWithEPS">
+      <UniqueIdentifier>{1BB67271-9930-39DC-B8B2-95D896BB9530}</UniqueIdentifier>
     </Filter>
     <Filter Include="source\WorkingWithGradient">
-      <UniqueIdentifier>{B858D910-8D8D-34B9-B9DF-FB324326E5D8}</UniqueIdentifier>
+      <UniqueIdentifier>{071E0BA1-54BF-3996-8AF7-D408BF8051D7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\WorkingWithHatches">
+      <UniqueIdentifier>{50C14168-D07F-3A03-856A-F5E502DB6B7A}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\WorkingWithImageConversion">
+      <UniqueIdentifier>{5DE73FDF-5915-324F-A98D-9F9D8147AD89}</UniqueIdentifier>
     </Filter>
     <Filter Include="source\WorkingWithImages">
-      <UniqueIdentifier>{33B79B72-72A5-38CB-9A91-934DE1463797}</UniqueIdentifier>
+      <UniqueIdentifier>{4628F3B7-AE3E-3E2C-B9CE-1B008859B25F}</UniqueIdentifier>
     </Filter>
     <Filter Include="source\WorkingWithPages">
-      <UniqueIdentifier>{5961451A-1C1D-37C2-B3C0-9E8860D7D171}</UniqueIdentifier>
+      <UniqueIdentifier>{80C0A819-6CB1-3AF1-B671-C523DD4C4CCD}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\WorkingWithPrintTickets">
+      <UniqueIdentifier>{767B45BB-3789-3DFE-8865-049474474373}</UniqueIdentifier>
     </Filter>
     <Filter Include="source\WorkingWithShapes">
-      <UniqueIdentifier>{F54AA5FF-2006-3F1F-8715-89535DB7662A}</UniqueIdentifier>
+      <UniqueIdentifier>{DAD54E11-34E6-3E05-881F-F40126F7C11B}</UniqueIdentifier>
     </Filter>
     <Filter Include="source\WorkingWithText">
-      <UniqueIdentifier>{131FF565-2CD5-35FB-852F-58504565A85F}</UniqueIdentifier>
+      <UniqueIdentifier>{058D86C4-E8DD-3A0D-A543-D65DE61E209B}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\WorkingWithTexture">
+      <UniqueIdentifier>{0288AD95-C314-3C45-9E23-92B51AD1AB0A}</UniqueIdentifier>
     </Filter>
     <Filter Include="source\WorkingWithTransparency">
-      <UniqueIdentifier>{92548E6F-3C86-39A4-B98E-CB80D8080FC3}</UniqueIdentifier>
+      <UniqueIdentifier>{CEADE164-15A2-3237-9EC8-54B21A9F1C0F}</UniqueIdentifier>
     </Filter>
     <Filter Include="source\WorkingWithVisualBrush">
-      <UniqueIdentifier>{4C5303B7-2CBC-308A-B43A-CA761C8B5CF6}</UniqueIdentifier>
+      <UniqueIdentifier>{70619E06-498C-330B-832C-80CA2DBD0A98}</UniqueIdentifier>
     </Filter>
     <Filter Include="source\WorkingWithXMPMetadataInEPS">
-      <UniqueIdentifier>{8A83D5B7-2B87-334A-BBEB-689DE90A8698}</UniqueIdentifier>
+      <UniqueIdentifier>{B7F6B66B-121A-3105-BAA0-2FE51D34F83C}</UniqueIdentifier>
     </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Natvis Include="$(MSBuildThisFileDirectory)misc\natvis\aspose_types.natvis" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="../ReadMe.txt" />
   </ItemGroup>
 </Project>

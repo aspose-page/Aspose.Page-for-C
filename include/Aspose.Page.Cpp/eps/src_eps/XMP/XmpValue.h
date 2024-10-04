@@ -1,5 +1,5 @@
 ﻿#pragma once
-// Copyright (c) 2001-2021 Aspose Pty Ltd. All Rights Reserved.
+// Copyright (c) 2001-2024 Aspose Pty Ltd. All Rights Reserved.
 
 #include <system/object_ext.h>
 #include <system/date_time.h>
@@ -245,10 +245,6 @@ protected:
     
     MEMBER_FUNCTION_MAKE_OBJECT_DECLARATION(XmpValue, CODEPORTING_ARGS(System::SharedPtr<System::Object> value));
     System::String ToStringEx();
-    #ifdef ASPOSE_GET_SHARED_MEMBERS
-    ASPOSE_PAGE_SHARED_API System::Object::shared_members_type GetSharedMembers() const override;
-    #endif
-    
     
 private:
 
@@ -275,7 +271,7 @@ private:
         _arrayValue = System::MakeArray<System::SharedPtr<Aspose::Page::EPS::XMP::XmpValue>>(array->get_Length());
         for (int32_t i = 0; i < array->get_Length(); i++)
         {
-            _arrayValue[i] = XmpValue::MakeObject(System::ObjectExt::ExplicitCastToObject(array[i]));
+            _arrayValue[i] = XmpValue::MakeObject(System::ExplicitCast<System::Object>(array[i]));
         }
     }
     

@@ -2,7 +2,7 @@
 
 #include <system/object.h>
 
-namespace CPP {
+namespace CSharp {
 
 namespace WorkingWithDocumentConversion {
 
@@ -21,6 +21,6 @@ public:
 };
 
 } // namespace WorkingWithDocumentConversion
-} // namespace CPP
+} // namespace CSharp
 
 

@@ -1,5 +1,5 @@
 ﻿#pragma once
-// Copyright (c) 2001-2022 Aspose Pty Ltd. All Rights Reserved.
+// Copyright (c) 2001-2024 Aspose Pty Ltd. All Rights Reserved.
 
 #include <system/string.h>
 #include <cstdint>
@@ -89,11 +89,13 @@ class ASPOSE_PAGE_SHARED_CLASS XpsExternalLinkTarget final : public Aspose::Page
     typedef ::System::BaseTypesInfo<BaseType> ThisTypeBaseTypesInfo;
     ASPOSE_PAGE_SHARED_RTTI_INFO_DECL();
     
-    friend class Aspose::Page::XPS::Presentation::XpsPresenter;
-    friend class Aspose::Page::XPS::Presentation::Aps::ApsConverter;
-    
 public:
 
+    /// <summary>
+    /// Gets the target URI.
+    /// </summary>
+    ASPOSE_PAGE_SHARED_API System::String get_TargetUri() const;
+    
     /// <summary>
     /// Creates the new instance.
     /// </summary>
@@ -102,8 +104,6 @@ public:
     
 protected:
 
-    System::String get_TargetUri() const;
-    
     ASPOSE_PAGE_SHARED_API System::String GetUri(System::SharedPtr<XpsContext> context) override;
     
 private:
@@ -123,12 +123,13 @@ class ASPOSE_PAGE_SHARED_CLASS XpsPageLinkTarget final : public Aspose::Page::XP
     typedef ::System::BaseTypesInfo<BaseType> ThisTypeBaseTypesInfo;
     ASPOSE_PAGE_SHARED_RTTI_INFO_DECL();
     
-    friend class Aspose::Page::XPS::Presentation::XpsPresenter;
-    friend class Aspose::Page::XPS::Presentation::Aps::ApsConverter;
-    friend class Aspose::Page::XPS::XpsModel::XpsContext;
-    
 public:
 
+    /// <summary>
+    /// Gets the page number that the parent XPS element refers to.
+    /// </summary>
+    ASPOSE_PAGE_SHARED_API int32_t get_TargetPageNumber() const;
+    
     /// <summary>
     /// Creates the new instance.
     /// </summary>
@@ -138,8 +139,6 @@ public:
     
 protected:
 
-    int32_t get_TargetPageNumber() const;
-    
     ASPOSE_PAGE_SHARED_API System::String GetUri(System::SharedPtr<XpsContext> context) override;
     
 private:
@@ -203,10 +202,6 @@ protected:
     
     MEMBER_FUNCTION_MAKE_OBJECT_DECLARATION(XpsElementLinkTarget, CODEPORTING_ARGS(System::String targetName));
     ASPOSE_PAGE_SHARED_API System::String GetUri(System::SharedPtr<XpsContext> context) override;
-    #ifdef ASPOSE_GET_SHARED_MEMBERS
-    ASPOSE_PAGE_SHARED_API System::Object::shared_members_type GetSharedMembers() const override;
-    #endif
-    
     
 private:
 

@@ -1,5 +1,5 @@
 ﻿#pragma once
-// Copyright (c) 2001-2022 Aspose Pty Ltd. All Rights Reserved.
+// Copyright (c) 2001-2024 Aspose Pty Ltd. All Rights Reserved.
 
 #include <system/string.h>
 #include <cstdint>
@@ -104,11 +104,6 @@ protected:
     ASPOSE_PAGE_SHARED_API void Dispose() override;
     
     virtual ASPOSE_PAGE_SHARED_API ~FixedDocumentSequence();
-    
-    #ifdef ASPOSE_GET_SHARED_MEMBERS
-    ASPOSE_PAGE_SHARED_API System::Object::shared_members_type GetSharedMembers() const override;
-    #endif
-    
     
 private:
 

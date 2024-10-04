@@ -2,7 +2,7 @@
 
 #include <system/object.h>
 
-namespace CPP {
+namespace CSharp {
 
 namespace WorkingWithXMPMetadataInEPS {
 
@@ -21,6 +21,6 @@ public:
 };
 
 } // namespace WorkingWithXMPMetadataInEPS
-} // namespace CPP
+} // namespace CSharp
 
 

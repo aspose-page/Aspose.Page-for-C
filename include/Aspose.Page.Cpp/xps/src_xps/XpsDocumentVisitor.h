@@ -1,5 +1,5 @@
 ﻿#pragma once
-// Copyright (c) 2001-2022 Aspose Pty Ltd. All Rights Reserved.
+// Copyright (c) 2001-2024 Aspose Pty Ltd. All Rights Reserved.
 
 #include <system/object.h>
 
@@ -54,7 +54,7 @@ namespace Page {
 namespace XPS {
 
 
-// C# preprocessor directive: #if INTERNAL
+// C# preprocessor directive: #if INTERNAL || CPLUSPLUS
 
 
 // C# preprocessor directive: #else
@@ -127,10 +127,6 @@ protected:
     virtual ASPOSE_PAGE_SHARED_API void VisitGradientStop(System::SharedPtr<XpsModel::XpsGradientStop> gradientStop);
     virtual ASPOSE_PAGE_SHARED_API bool StartProperty(System::SharedPtr<XpsModel::IXpsProperty> property);
     virtual ASPOSE_PAGE_SHARED_API void EndProperty(System::SharedPtr<XpsModel::IXpsProperty> property);
-    #ifdef ASPOSE_GET_SHARED_MEMBERS
-    ASPOSE_PAGE_SHARED_API System::Object::shared_members_type GetSharedMembers() const override;
-    #endif
-    
     
 };
 

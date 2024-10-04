@@ -1,10 +1,21 @@
 ﻿#pragma once
-// Copyright (c) 2001-2022 Aspose Pty Ltd. All Rights Reserved.
+// Copyright (c) 2001-2024 Aspose Pty Ltd. All Rights Reserved.
+
+// C# preprocessor directive: #if ASPOSE_PDF_DRAWING
+
+// C# INACTIVE CODE:
+// using Aspose.Page.Drawing;
+// using FontStyle = Aspose.Page.Drawing.FontStyle;
+
+// C# preprocessor directive: #else
+
+
+// C# preprocessor directive: #endif
+
 
 #include <system/object.h>
 #include <system/enum_helpers.h>
 #include <system/constraints.h>
-#include <cstdint>
 
 #include "Aspose.Page.Cpp/xps/src_xps/XpsModel/XpsElement.h"
 #include "Aspose.Page.Cpp/xps/src_xps/XpsModel/XpsContentElement.h"
@@ -191,25 +202,19 @@ public:
     
 protected:
 
-    XpsCanvas(System::SharedPtr<XpsContext> context);
+    XpsCanvas(System::SharedPtr<XpsContext> context, int32_t elementId = -1);
     
-    MEMBER_FUNCTION_MAKE_OBJECT_DECLARATION(XpsCanvas, CODEPORTING_ARGS(System::SharedPtr<XpsContext> context));
+    MEMBER_FUNCTION_MAKE_OBJECT_DECLARATION(XpsCanvas, CODEPORTING_ARGS(System::SharedPtr<XpsContext> context, int32_t elementId = -1));
     
-    XpsCanvas(System::SharedPtr<System::Xml::XmlElement> element, System::SharedPtr<XpsElement> parent);
+    XpsCanvas(System::SharedPtr<System::Xml::XmlElement> element, System::SharedPtr<XpsElement> parent, int32_t elementId = -1);
     
-    MEMBER_FUNCTION_MAKE_OBJECT_DECLARATION(XpsCanvas, CODEPORTING_ARGS(System::SharedPtr<System::Xml::XmlElement> element, System::SharedPtr<XpsElement> parent));
+    MEMBER_FUNCTION_MAKE_OBJECT_DECLARATION(XpsCanvas, CODEPORTING_ARGS(System::SharedPtr<System::Xml::XmlElement> element, System::SharedPtr<XpsElement> parent, int32_t elementId = -1));
     ASPOSE_PAGE_SHARED_API void Initialize(System::SharedPtr<System::Xml::XmlElement> element) override;
     ASPOSE_PAGE_SHARED_API void Accept(System::SharedPtr<XpsDocumentVisitor> visitor) override;
-    ASPOSE_PAGE_SHARED_API void ForcePropertyValueReferencesUpdate(System::SharedPtr<XpsElement> parent, bool add = true) override;
     ASPOSE_PAGE_SHARED_API System::SharedPtr<XpsElement> Clone(bool deep, System::SharedPtr<XpsContext> context, System::SharedPtr<XpsElement> parent, int32_t index = -1) override;
     ASPOSE_PAGE_SHARED_API void CopySimplePropertyValues(System::SharedPtr<XpsObject> obj) override;
     
     virtual ASPOSE_PAGE_SHARED_API ~XpsCanvas();
-    
-    #ifdef ASPOSE_GET_SHARED_MEMBERS
-    ASPOSE_PAGE_SHARED_API System::Object::shared_members_type GetSharedMembers() const override;
-    #endif
-    
     
 private:
 

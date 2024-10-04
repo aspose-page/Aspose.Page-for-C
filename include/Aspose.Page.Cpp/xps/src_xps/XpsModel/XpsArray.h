@@ -1,6 +1,6 @@
 ﻿#pragma once
 
-#include <system/string.h>
+#include <system/object_ext.h>
 #include <system/exceptions.h>
 #include <system/enumerator_adapter.h>
 #include <system/details/pointer_collection_helpers.h>
@@ -197,7 +197,7 @@ protected:
     {
         for (auto&& obj : array->_array)
         {
-            Add(System::StaticCast<typename T::Pointee_>(obj->Clone(true, _context)));
+            Add(System::ExplicitCast<T>(obj->Clone(true, _context)));
         }
     }
     
@@ -217,18 +217,6 @@ protected:
         }
         Aspose::Page::XPS::XpsModel::XpsObject::Dispose();
     }
-    
-    #ifdef ASPOSE_GET_SHARED_MEMBERS
-    System::Object::shared_members_type GetSharedMembers() const override
-    {
-        auto result = Aspose::Page::XPS::XpsModel::XpsObject::GetSharedMembers();
-        
-        result.Add("Aspose::Page::XPS::XpsModel::XpsArray::_array", this->_array);
-        
-        return result;
-    }
-    #endif
-    
     
     
 private:

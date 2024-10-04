@@ -1,12 +1,26 @@
 ﻿#pragma once
-// Copyright (c) 2001-2022 Aspose Pty Ltd. All Rights Reserved.
+// Copyright (c) 2001-2024 Aspose Pty Ltd. All Rights Reserved.
 
 #include <system/exceptions.h>
 #include <system/array.h>
 #include <cstdint>
 
+#include "Aspose.Page.Cpp/Drawing/Size.h"
 #include "Aspose.Page.Cpp/aspose_page_api_defs.h"
 
+namespace Aspose
+{
+namespace Page
+{
+namespace XPS
+{
+namespace Presentation
+{
+class XpsPresenter;
+} // namespace Presentation
+} // namespace XPS
+} // namespace Page
+} // namespace Aspose
 namespace System
 {
 namespace Collections
@@ -34,6 +48,8 @@ class ASPOSE_PAGE_SHARED_CLASS SaveOptions : public virtual System::Object
     typedef ::System::BaseTypesInfo<BaseType> ThisTypeBaseTypesInfo;
     ASPOSE_PAGE_SHARED_RTTI_INFO_DECL();
     
+    friend class Aspose::Page::XPS::Presentation::XpsPresenter;
+    
 public:
 
     /// <summary>
@@ -48,6 +64,14 @@ public:
     /// If false the first error will terminate the program.
     /// </summary>
     virtual ASPOSE_PAGE_SHARED_API void set_SupressErrors(bool value);
+    /// <summary>
+    /// Gets/sets the size of the image.
+    /// </summary>
+    ASPOSE_PAGE_SHARED_API Aspose::Page::Drawing::Size get_Size() const;
+    /// <summary>
+    /// Gets/sets the size of the image.
+    /// </summary>
+    ASPOSE_PAGE_SHARED_API void set_Size(Aspose::Page::Drawing::Size value);
     /// <summary>
     /// Returns a list of suppressed conversion errors If <see cref="SuppressErrors"></see> is true.
     /// </summary>
@@ -96,13 +120,24 @@ public:
     /// <param name="supressErrors"> Specifies whether errors must be suppressed or not.
     /// If true suppressed errors are added to <see cref="Exceptions"></see> list.</param>
     ASPOSE_PAGE_SHARED_API SaveOptions(bool supressErrors);
+    /// <summary>
+    /// Initializes a new instance of the <see cref="SaveOptions"></see> with
+    /// with specified size of the page.
+    /// </summary>
+    /// <param name="size"> The page size.</param>
+    ASPOSE_PAGE_SHARED_API SaveOptions(Aspose::Page::Drawing::Size size);
+    /// <summary>
+    /// Initializes a new instance of the <see cref="SaveOptions"></see> class with default value for flag <see cref="Debug"></see> (false) and with specified size of the page.
+    /// </summary>
+    /// <param name="supressErrors"> Specifies whether errors must be suppressed or not.
+    /// If true suppressed errors are added to <see cref="Exceptions"></see> list.</param>
+    /// <param name="size"> The page size.</param>
+    ASPOSE_PAGE_SHARED_API SaveOptions(bool supressErrors, Aspose::Page::Drawing::Size size);
     
 protected:
 
-    #ifdef ASPOSE_GET_SHARED_MEMBERS
-    ASPOSE_PAGE_SHARED_API System::Object::shared_members_type GetSharedMembers() const override;
-    #endif
-    
+    virtual ASPOSE_PAGE_SHARED_API bool get_OutlineCff();
+    virtual ASPOSE_PAGE_SHARED_API void set_OutlineCff(bool value);
     
 private:
 
@@ -111,6 +146,7 @@ private:
     System::ArrayPtr<System::String> additionalFontsFolders;
     bool debug;
     int32_t jpegQualityLevel;
+    Aspose::Page::Drawing::Size pr_Size;
     
 };
 

@@ -1,4 +1,14 @@
-﻿#include <stdafx.h>
+﻿#include "stdafx.h"
+// C# preprocessor directive: #if ASPOSE_DRAWING
+
+// C# INACTIVE CODE:
+// using SmoothingMode = Aspose.Page.Drawing.Drawing2D.SmoothingMode;
+
+// C# preprocessor directive: #else
+
+
+// C# preprocessor directive: #endif
+
 #include "WorkingWithDocumentConversion/XPStoJPEG.h"
 
 #include <system/io/stream.h>
@@ -12,7 +22,6 @@
 #include <system/array.h>
 #include <Aspose.Page.Cpp/xps/src_xps/XpsDocument.h>
 #include <Aspose.Page.Cpp/xps/src_xps/Presentation/Image/JpegSaveOptions.h>
-#include <Aspose.Page.Cpp/xps/src_xps/Presentation/Image/ImageDevice.h>
 #include <Aspose.Page.Cpp/xps/src_xps/Import/XpsLoadOptions.h>
 #include <drawing/drawing2d/smoothing_mode.h>
 #include <cstdint>
@@ -22,11 +31,11 @@
 
 using namespace Aspose::Page::XPS;
 using namespace Aspose::Page::XPS::Presentation::Image;
-namespace CPP {
+namespace CSharp {
 
 namespace WorkingWithDocumentConversion {
 
-RTTI_INFO_IMPL_HASH(1048537565u, ::CPP::WorkingWithDocumentConversion::XPStoJPEG, ThisTypeBaseTypesInfo);
+RTTI_INFO_IMPL_HASH(1048537565u, ::CSharp::WorkingWithDocumentConversion::XPStoJPEG, ThisTypeBaseTypesInfo);
 
 // Using statement is translated using System::Details::DisposeGuard class which may store exception and then throw from destructor.
 // We block the warnings related as these are false alarms (the exception, if caught, will be re-thrown from the destructor).
@@ -44,62 +53,45 @@ void XPStoJPEG::Run()
     // ExStart:1
     // The path to the documents directory.
     System::String dataDir = RunExamples::GetDataDir_WorkingWithDocumentConversion();
-    // Input file
-    System::String inputFileName = dataDir + u"input.xps";
+    
     //Outut file 
-    System::String outputFileName = RunExamples::GetOutDir() + u"XPStoImage_out.jpeg";
-    // Initialize XPS input stream
+    System::String outputFileName = dataDir + u"XPStoImage_out.jpeg";
+    
+    // Load XPS document form the XPS file
+    System::SharedPtr<XpsDocument> document = System::MakeObject<XpsDocument>(dataDir + u"input.xps", System::MakeObject<XpsLoadOptions>());
+    
+    // Initialize options object with necessary parameters.
+    System::SharedPtr<JpegSaveOptions> options = System::MakeObject<JpegSaveOptions>();
+    options->set_SmoothingMode(System::Drawing::Drawing2D::SmoothingMode::HighQuality);
+    options->set_Resolution(300);
+    options->set_PageNumbers(System::MakeArray<int32_t>({1, 2, 6}));
+    
+    // Save XPS document to the images byte arrays. The first dimension is for inner documents
+    /// and the second one is for pages within inner documents.
+    System::ArrayPtr<System::ArrayPtr<System::ArrayPtr<uint8_t>>> imagesBytes = document->SaveAsImage(options);
+    
+    // Iterate through document partitions (fixed documents, in XPS terms)
+    for (int32_t i = 0; i < imagesBytes->get_Length(); i++)
     {
-        System::SharedPtr<System::IO::Stream> xpsStream = System::IO::File::Open(inputFileName, System::IO::FileMode::Open, System::IO::FileAccess::Read);
-        // Clearing resources under 'using' statement
-        System::Details::DisposeGuard<1> __dispose_guard_1({ xpsStream});
-        // ------------------------------------------
-        
-        try
+        // Iterate through partition pages
+        for (int32_t j = 0; j < imagesBytes[i]->get_Length(); j++)
         {
-            // Load XPS document form the stream
-            System::SharedPtr<XpsDocument> document = System::MakeObject<XpsDocument>(xpsStream, System::MakeObject<XpsLoadOptions>());
-            // or load XPS document directly from file. No xpsStream is needed then.
-            // XpsDocument document = new XpsDocument(inputFileName, new XpsLoadOptions());
-            
-            // Initialize options object with necessary parameters.
-            System::SharedPtr<JpegSaveOptions> options = System::MakeObject<JpegSaveOptions>();
-            options->set_SmoothingMode(System::Drawing::Drawing2D::SmoothingMode::HighQuality);
-            options->set_Resolution(300);
-            options->set_PageNumbers(System::MakeArray<int32_t>({1, 2, 6}));
-            
-            // Create rendering device for PDF format
-            System::SharedPtr<ImageDevice> device = System::MakeObject<ImageDevice>();
-            
-            document->Save(device, options);
-            
-            // Iterate through document partitions (fixed documents, in XPS terms)
-            for (int32_t i = 0; i < device->get_Result()->get_Length(); i++)
+            // Initialize image output stream
             {
-                for (int32_t j = 0; j < device->get_Result()[i]->get_Length(); j++)
+                System::SharedPtr<System::IO::Stream> imageStream = System::IO::File::Open(System::IO::Path::GetDirectoryName(outputFileName) + System::IO::Path::DirectorySeparatorChar + System::IO::Path::GetFileNameWithoutExtension(outputFileName) + u"_" + (i + 1) + u"_" + (j + 1) + System::IO::Path::GetExtension(outputFileName), System::IO::FileMode::Create, System::IO::FileAccess::Write);
+                // Clearing resources under 'using' statement
+                System::Details::DisposeGuard<1> __dispose_guard_0({ imageStream});
+                // ------------------------------------------
+                
+                try
                 {
-                    // Initialize image output stream
-                    {
-                        System::SharedPtr<System::IO::Stream> imageStream = System::IO::File::Open(System::IO::Path::Combine(System::IO::Path::GetDirectoryName(outputFileName), System::IO::Path::GetFileNameWithoutExtension(outputFileName) + u"_" + (i + 1) + u"_" + (j + 1) + System::IO::Path::GetExtension(outputFileName)), System::IO::FileMode::Create, System::IO::FileAccess::Write);
-                        // Clearing resources under 'using' statement
-                        System::Details::DisposeGuard<1> __dispose_guard_0({ imageStream});
-                        // ------------------------------------------
-                        
-                        try
-                        {
-                            imageStream->Write(device->get_Result()[i][j], 0, device->get_Result()[i][j]->get_Length());
-                        }
-                        catch(...)
-                        {
-                            __dispose_guard_0.SetCurrentException(std::current_exception());
-                        }
-                    }
+                    imageStream->Write(imagesBytes[i][j], 0, imagesBytes[i][j]->get_Length());
+                }
+                catch(...)
+                {
+                    __dispose_guard_0.SetCurrentException(std::current_exception());
                 }
             }
-        }
-        catch(...)
-        {
-            __dispose_guard_1.SetCurrentException(std::current_exception());
         }
     }
     // ExEnd:1
@@ -111,4 +103,4 @@ void XPStoJPEG::Run()
 #endif
 
 } // namespace WorkingWithDocumentConversion
-} // namespace CPP
+} // namespace CSharp

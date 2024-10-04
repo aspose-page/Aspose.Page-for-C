@@ -1,4 +1,4 @@
-﻿#include <stdafx.h>
+﻿#include "stdafx.h"
 #include "GettingStarted/SetLicenseUsingEmbeddedResource.h"
 
 #include <system/string.h>
@@ -7,11 +7,11 @@
 
 #include "RunExamples.h"
 
-namespace CPP {
+namespace CSharp {
 
 namespace GettingStarted {
 
-RTTI_INFO_IMPL_HASH(3965459737u, ::CPP::GettingStarted::SetLicenseUsingEmbeddedResource, ThisTypeBaseTypesInfo);
+RTTI_INFO_IMPL_HASH(3965459737u, ::CSharp::GettingStarted::SetLicenseUsingEmbeddedResource, ThisTypeBaseTypesInfo);
 
 void SetLicenseUsingEmbeddedResource::Run()
 {
@@ -21,7 +21,7 @@ void SetLicenseUsingEmbeddedResource::Run()
     // Initialize license object
     System::SharedPtr<Aspose::Page::License> license = System::MakeObject<Aspose::Page::License>();
     // Set license
-    license->SetLicense(u"MergedAPI.Aspose.Total.CPP.lic");
+    license->SetLicense(u"MergedAPI.Aspose.Total.NET.lic");
     // Set the value to indicate that license will be embedded in the application
     license->set_Embedded(true);
     System::Console::WriteLine(u"License set successfully.");
@@ -29,4 +29,4 @@ void SetLicenseUsingEmbeddedResource::Run()
 }
 
 } // namespace GettingStarted
-} // namespace CPP
+} // namespace CSharp

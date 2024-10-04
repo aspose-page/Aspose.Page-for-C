@@ -1,15 +1,12 @@
 ﻿#pragma once
-// Copyright (c) 2001-2022 Aspose Pty Ltd. All Rights Reserved.
-//using System.ComponentModel;
-//using System.Windows.Forms;
+// Copyright (c) 2001-2024 Aspose Pty Ltd. All Rights Reserved.
 
 #include <drawing/rectangle.h>
 #include <cstdint>
 
+#include "Device.h"
 #include "Aspose.Page.Cpp/IStreamable.h"
 #include "Aspose.Page.Cpp/IMultiPageDevice.h"
-#include "Aspose.Page.Cpp/Device.h"
-#include "Aspose.Page.Cpp/aspose_page_api_defs.h"
 
 namespace Aspose
 {
@@ -22,6 +19,7 @@ class DrMatrix;
 } // namespace Foundation
 namespace Page
 {
+class BaseTrFont;
 namespace EPS
 {
 namespace Device
@@ -46,6 +44,7 @@ namespace Pdf
 {
 class PDFFontTable;
 class PDFImageDelayQueue;
+class PDFName;
 class PDFPaintDelayQueue;
 class PDFStream;
 class PDFWriter;
@@ -63,7 +62,6 @@ class StreamEx;
 } // namespace IO
 } // namespace Util
 } // namespace EPS
-class ITrFont;
 class UserProperties;
 } // namespace Page
 } // namespace Aspose
@@ -137,13 +135,6 @@ public:
     
     PdfNode(PdfNodeType type);
     
-protected:
-
-    #ifdef ASPOSE_GET_SHARED_MEMBERS
-    System::Object::shared_members_type GetSharedMembers() const override;
-    #endif
-    
-    
 private:
 
     PdfNodeType type;
@@ -165,6 +156,8 @@ public:
     void set_Clip(System::SharedPtr<System::Drawing::Drawing2D::GraphicsPath> value);
     System::SharedPtr<Aspose::Foundation::Drawing::DrMatrix> get_RenderTransform() const;
     void set_RenderTransform(System::SharedPtr<Aspose::Foundation::Drawing::DrMatrix> value);
+    System::SharedPtr<System::Drawing::Brush> get_Paint() const;
+    void set_Paint(System::SharedPtr<System::Drawing::Brush> value);
     int32_t get_Count();
     
     PdfCanvas();
@@ -175,16 +168,12 @@ protected:
 
     virtual ~PdfCanvas();
     
-    #ifdef ASPOSE_GET_SHARED_MEMBERS
-    System::Object::shared_members_type GetSharedMembers() const override;
-    #endif
-    
-    
 private:
 
     System::SharedPtr<System::Collections::Generic::List<System::SharedPtr<PdfNode>>> children;
     System::SharedPtr<System::Drawing::Drawing2D::GraphicsPath> clip;
     System::SharedPtr<Aspose::Foundation::Drawing::DrMatrix> renderTransform;
+    System::SharedPtr<System::Drawing::Brush> paint;
     
 };
 
@@ -230,10 +219,11 @@ public:
     
 };
 
+/// @deprecated PdfDevice class is deprecated beginning from 24.3. Please use SaveAsPdf method in PsDocument class instead. In 24.6 this class will be entirely hidden False
 /// <summary>
 /// This class encapsulates rendering of document to PDF.
 /// </summary>
-class ASPOSE_PAGE_SHARED_CLASS PdfDevice : public Aspose::Page::Device, public Aspose::Page::IMultiPageDevice, public Aspose::Page::IStreamable
+class PdfDevice : public Aspose::Page::Device, public Aspose::Page::IMultiPageDevice, public Aspose::Page::IStreamable
 {
     typedef PdfDevice ThisType;
     typedef Aspose::Page::Device BaseType;
@@ -241,242 +231,64 @@ class ASPOSE_PAGE_SHARED_CLASS PdfDevice : public Aspose::Page::Device, public A
     typedef Aspose::Page::IStreamable BaseType2;
     
     typedef ::System::BaseTypesInfo<BaseType, BaseType1, BaseType2> ThisTypeBaseTypesInfo;
-    ASPOSE_PAGE_SHARED_RTTI_INFO_DECL();
+    RTTI_INFO_DECL();
     
 public:
 
     /// <summary> "Version" property key. </summary>
-    static ASPOSE_PAGE_SHARED_API System::String VERSION;
+    static System::String VERSION;
     /// <summary> "Version of Adobe Acrobat Reader" property value. </summary>
-    static const ASPOSE_PAGE_SHARED_API System::String VERSION5;
+    static const System::String VERSION5;
     
     /// <summary> "Transparent" property key. </summary>
-    static ASPOSE_PAGE_SHARED_API System::String& TRANSPARENT();
+    static System::String& TRANSPARENT();
     /// <summary> "Background" property key. </summary>
-    static ASPOSE_PAGE_SHARED_API System::String& BACKGROUND();
+    static System::String& BACKGROUND();
     /// <summary> "Background color" property key. </summary>
-    static ASPOSE_PAGE_SHARED_API System::String& BACKGROUND_COLOR();
-    /// <summary> "Page size" property key. </summary>
-    static ASPOSE_PAGE_SHARED_API System::String& PAGE_SIZE();
-    /// <summary> "Page margins" property key. </summary>
-    static ASPOSE_PAGE_SHARED_API System::String& PAGE_MARGINS();
-    /// <summary> "Orientation" property key. </summary>
-    static ASPOSE_PAGE_SHARED_API System::String& ORIENTATION();
-    /// <summary> "Fit content to page" property key. </summary>
-    static ASPOSE_PAGE_SHARED_API System::String& FIT_TO_PAGE();
-    /// <summary> "Embed font in document" property key. </summary>
-    static ASPOSE_PAGE_SHARED_API System::String& EMBED_FONTS();
-    /// <summary> "What font type is used for embedding" property key. </summary>
-    static ASPOSE_PAGE_SHARED_API System::String& EMBED_FONTS_AS();
-    /// <summary> "Compress" property key. </summary>
-    static ASPOSE_PAGE_SHARED_API System::String& COMPRESS();
-    /// <summary> "Format of images" property key. </summary>
-    static ASPOSE_PAGE_SHARED_API System::String& WRITE_IMAGES_AS();
-    /// <summary> "Author" property value. </summary>
-    static ASPOSE_PAGE_SHARED_API System::String& AUTHOR();
-    /// <summary> "Title" property value. </summary>
-    static ASPOSE_PAGE_SHARED_API System::String& TITLE();
-    /// <summary> "Subject" property value. </summary>
-    static ASPOSE_PAGE_SHARED_API System::String& SUBJECT();
-    /// <summary> "Keywords" property value. </summary>
-    static ASPOSE_PAGE_SHARED_API System::String& KEYWORDS();
-    /// <summary> "Emit warnings" property value. </summary>
-    static ASPOSE_PAGE_SHARED_API System::String& EMIT_WARNINGS();
-    /// <summary> "Emit errors" property value. </summary>
-    static ASPOSE_PAGE_SHARED_API System::String& EMIT_ERRORS();
+    static System::String& BACKGROUND_COLOR();
     
-    /// <summary>
-    /// Device properties including metadata.
-    /// </summary>
-    ASPOSE_PAGE_SHARED_API System::SharedPtr<System::Collections::Generic::Dictionary<System::String, System::SharedPtr<System::Object>>> get_Properties() const;
-    /// <summary>
-    /// Device properties including metadata.
-    /// </summary>
-    ASPOSE_PAGE_SHARED_API void set_Properties(System::SharedPtr<System::Collections::Generic::Dictionary<System::String, System::SharedPtr<System::Object>>> value);
+    /// <summary> "Page size" property key. </summary>
+    static System::String PAGE_SIZE_;
+    
+    /// <summary> "Page margins" property key. </summary>
+    static System::String& PAGE_MARGINS();
+    /// <summary> "Orientation" property key. </summary>
+    static System::String& ORIENTATION();
+    /// <summary> "Fit content to page" property key. </summary>
+    static System::String& FIT_TO_PAGE();
+    /// <summary> "Embed font in document" property key. </summary>
+    static System::String& EMBED_FONTS();
+    /// <summary> "What font type is used for embedding" property key. </summary>
+    static System::String& EMBED_FONTS_AS();
+    /// <summary> "Compress" property key. </summary>
+    static System::String& COMPRESS();
+    /// <summary> "Format of images" property key. </summary>
+    static System::String& WRITE_IMAGES_AS();
+    /// <summary> "Author" property value. </summary>
+    static System::String& AUTHOR();
+    /// <summary> "Title" property value. </summary>
+    static System::String& TITLE();
+    /// <summary> "Subject" property value. </summary>
+    static System::String& SUBJECT();
+    /// <summary> "Keywords" property value. </summary>
+    static System::String& KEYWORDS();
+    /// <summary> "Emit warnings" property value. </summary>
+    static System::String& EMIT_WARNINGS();
+    /// <summary> "Emit errors" property value. </summary>
+    static System::String& EMIT_ERRORS();
+    
     /// <summary>
     /// Current page number.
     /// </summary>
-    ASPOSE_PAGE_SHARED_API int32_t get_CurrentPageNumber() override;
+    int32_t get_CurrentPageNumber() override;
     /// <summary>
     /// Returns or specifies current stroke.
     /// </summary>
-    ASPOSE_PAGE_SHARED_API void set_Stroke(System::SharedPtr<System::Drawing::Pen> value) override;
+    void set_Stroke(System::SharedPtr<System::Drawing::Pen> value) override;
     /// <summary>
     /// Returns or specifies current paint.
     /// </summary>
-    ASPOSE_PAGE_SHARED_API void set_Paint(System::SharedPtr<System::Drawing::Brush> value) override;
-    /// <summary>
-    /// Specifies current font.
-    /// </summary>
-    ASPOSE_PAGE_SHARED_API void set_Font(System::SharedPtr<ITrFont> value) override;
-    /// <summary>
-    /// Specifies or returns an output stream.
-    /// </summary>
-    ASPOSE_PAGE_SHARED_API System::SharedPtr<System::IO::Stream> get_OutputStream() override;
-    /// <summary>
-    /// Specifies or returns an output stream.
-    /// </summary>
-    ASPOSE_PAGE_SHARED_API void set_OutputStream(System::SharedPtr<System::IO::Stream> value) override;
-    
-    /// <summary>
-    /// Initializes new instance of <see cref="PdfDevice"></see> with output stream.
-    /// </summary>
-    /// <param name="ros">Output stream. </param>
-    ASPOSE_PAGE_SHARED_API PdfDevice(System::SharedPtr<System::IO::Stream> ros);
-    /// <summary>
-    /// Initializes new instance of <see cref="PdfDevice"></see> with output stream and specified size of a page.
-    /// </summary>        
-    /// <param name="ros">Output stream. </param>
-    /// /// <param name="size">Page size. </param>
-    ASPOSE_PAGE_SHARED_API PdfDevice(System::SharedPtr<System::IO::Stream> ros, System::Drawing::Size size);
-    
-    /// <summary>
-    /// Reset device to initial state for whole document. Used for reseting output stream.
-    /// </summary>
-    ASPOSE_PAGE_SHARED_API void ReNew() override;
-    /// <summary>
-    /// Makes necessary preparation of device before start rendering of document.
-    /// </summary>
-    ASPOSE_PAGE_SHARED_API void StartDocument() override;
-    /// <summary>
-    /// Makes necessary preparation of device after the document has been rendered.
-    /// </summary>
-    ASPOSE_PAGE_SHARED_API void EndDocument() override;
-    /// <summary>
-    /// Disposes the graphics context. If on creation restoreOnDispose was true,
-    /// writeGraphicsRestore() will be called.
-    /// </summary>
-    ASPOSE_PAGE_SHARED_API void Dispose() override;
-    /// <summary>
-    /// If page device parameters will be set this method allows to return writing stream back the begining of page.
-    /// </summary>
-    ASPOSE_PAGE_SHARED_API void Reset() override;
-    /// <summary>
-    /// Initializes numbers of pages to output.
-    /// </summary>
-    ASPOSE_PAGE_SHARED_API void InitPageNumbers() override;
-    /// <summary>
-    /// Makes necessary preparation of the device before page rendering.
-    /// </summary>
-    /// <param name="title">The page title.</param>
-    /// <returns>Always true.</returns>
-    ASPOSE_PAGE_SHARED_API bool OpenPage(System::String title) override;
-    /// <summary>
-    /// Makes necessary preparation of the device before each page rendering.
-    /// </summary>
-    /// <param name="width">A width of the page.</param>
-    /// <param name="height">A height of the page.</param>
-    /// <returns>Always true.</returns>
-    ASPOSE_PAGE_SHARED_API bool OpenPage(float width, float height) override;
-    /// <summary>
-    /// Makes necessary preparation of the device after page has been rendered.
-    /// </summary>
-    ASPOSE_PAGE_SHARED_API void ClosePage() override;
-    /// <summary>
-    /// Updates page parameters from other multi-paged device.
-    /// </summary>
-    /// <param name="device"> Another instance of the same device. </param>
-    ASPOSE_PAGE_SHARED_API void UpdatePageParameters(System::SharedPtr<IMultiPageDevice> device) override;
-    /// <summary>
-    /// Creates a copy of this device.
-    /// </summary>
-    /// <returns>Copy of this device.</returns>
-    ASPOSE_PAGE_SHARED_API System::SharedPtr<Aspose::Page::Device> Create() override;
-    /// <summary>
-    /// Initializes clip of the device.
-    /// </summary>
-    ASPOSE_PAGE_SHARED_API void InitClip() override;
-    /// <summary>
-    /// Draws a path.
-    /// </summary>
-    /// <param name="s"> A path to be drawn. </param>
-    ASPOSE_PAGE_SHARED_API void Draw(System::SharedPtr<System::Drawing::Drawing2D::GraphicsPath> s) override;
-    /// <summary>
-    /// Fills a path.
-    /// </summary>
-    /// <param name="s"> A path to be filled. </param>
-    ASPOSE_PAGE_SHARED_API void Fill(System::SharedPtr<System::Drawing::Drawing2D::GraphicsPath> s) override;
-    /// <summary>
-    /// Draws an image with assigned transform and background.
-    /// </summary>
-    /// <param name="image"> An image to be drawn. </param>
-    /// <param name="transform"> A transform. </param>
-    /// <param name="bkg"> A background color. </param>
-    ASPOSE_PAGE_SHARED_API void DrawImage(System::SharedPtr<System::Drawing::Bitmap> image, System::SharedPtr<System::Drawing::Drawing2D::Matrix> transform, System::Drawing::Color bkg) override;
-    /// <summary>
-    /// Draws a string at given point.
-    /// </summary>
-    /// <param name="str"> A string to be drawn. </param>
-    /// <param name="x"> X coordinate of point. </param>
-    /// <param name="y"> Y coordinate of point. </param>
-    ASPOSE_PAGE_SHARED_API void DrawString(System::String str, double x, double y) override;
-    /// <summary>
-    /// Gets current transform.        
-    /// </summary>
-    /// <returns>Current transform</returns>
-    ASPOSE_PAGE_SHARED_API System::SharedPtr<System::Drawing::Drawing2D::Matrix> GetTransform() override;
-    /// <summary>
-    /// Specifies the current transform. Since most output formats do not
-    /// implement this functionality, the inverse transform of the
-    /// currentTransform is calculated and multiplied by the
-    /// transform to be set.The result is then forwarded by a call
-    /// to writeTransform(Transform).
-    /// </summary>
-    /// <param name="transform"> Transform to be applied. </param>
-    ASPOSE_PAGE_SHARED_API void SetTransform(System::SharedPtr<System::Drawing::Drawing2D::Matrix> transform) override;
-    /// <summary>
-    /// Transforms the current transformation matrix. Calls writeTransform(Transform)
-    /// </summary>
-    /// <param name="transform"> Transform to be applied. </param>
-    ASPOSE_PAGE_SHARED_API void Transform(System::SharedPtr<System::Drawing::Drawing2D::Matrix> transform) override;
-    /// <summary>
-    /// Translates the current transformation matrix. Calls writeTransform(Transform).
-    /// </summary>
-    /// <param name="x"> Translation in X axis. </param>
-    /// <param name="y"> Translation in Y axis. </param>
-    ASPOSE_PAGE_SHARED_API void Translate(double x, double y) override;
-    /// <summary>
-    /// Rotate the current transform over the Z-axis. Calls writeTransform(Transform).
-    /// Rotating with a positive angle theta rotates points on the positive x axis
-    /// toward the positive y axis.
-    /// </summary>
-    /// <param name="theta"> radians over which to rotate </param>
-    ASPOSE_PAGE_SHARED_API void Rotate(double theta) override;
-    /// <summary>
-    /// Scales the current transformation matrix. Calls writeTransform(Transform).
-    /// </summary>
-    /// <param name="sx"> A scale in X axis. </param>
-    /// <param name="sy"> A scale in Y axis. </param>
-    ASPOSE_PAGE_SHARED_API void Scale(double sx, double sy) override;
-    /// <summary>
-    /// Shears the current transformation matrix. Calls writeTransform(Transform).
-    /// </summary>
-    /// <param name="shx"> A shear in X axis. </param>
-    /// <param name="shy"> A shear in Y axis. </param>
-    ASPOSE_PAGE_SHARED_API void Shear(double shx, double shy) override;
-    /// <summary>
-    /// Specifies the clip of the device.
-    /// </summary>
-    /// <param name="clipPath"> A clipping path. </param>
-    ASPOSE_PAGE_SHARED_API void SetClip(System::SharedPtr<System::Drawing::Drawing2D::GraphicsPath> clipPath) override;
-    /// <summary>
-    /// Writes a comment.
-    /// </summary>
-    /// <param name="comment"> A comment to be written. </param>
-    ASPOSE_PAGE_SHARED_API void WriteComment(System::String comment) override;
-    /// <summary>
-    /// Returns the name of device type.
-    /// </summary>
-    /// <returns>Type name.</returns>
-    ASPOSE_PAGE_SHARED_API System::String ToString() const override;
-    
-protected:
-
-    /// <summary> "PDF version" property value. </summary>
-    static const ASPOSE_PAGE_SHARED_API System::String PDF_VERSION;
-    /// <summary> Current transform. </summary>
-    System::SharedPtr<System::Drawing::Drawing2D::Matrix> currentTransform;
-    
+    void set_Paint(System::SharedPtr<System::Drawing::Brush> value) override;
     /// <summary>
     /// Draws frame and banner around a string. The method calculates and returns
     ///  the point to which the text curser should be set before drawing the string. 
@@ -514,21 +326,61 @@ protected:
                 return new PointF((float)x, (float)y);
             }*/
     System::SharedPtr<System::Drawing::Brush> get_LastWrittenPaint() const;
+    /// <summary>
+    /// Specifies current font.
+    /// </summary>
+    void set_Font(System::SharedPtr<BaseTrFont> value) override;
     System::String get_WarningMessage();
+    /// <summary>
+    /// Specifies or returns an output stream.
+    /// </summary>
+    System::SharedPtr<System::IO::Stream> get_OutputStream() override;
+    /// <summary>
+    /// Specifies or returns an output stream.
+    /// </summary>
+    void set_OutputStream(System::SharedPtr<System::IO::Stream> value) override;
     
+    /// <summary>
+    /// Initializes new instance of <see cref="PdfDevice"></see> with output stream.
+    /// </summary>
+    /// <param name="ros">Output stream. </param>
+    PdfDevice(System::SharedPtr<System::IO::Stream> ros);
+    /// <summary>
+    /// Initializes new instance of <see cref="PdfDevice"></see> with output stream and specified size of a page.
+    /// </summary>        
+    /// <param name="ros">Output stream. </param>
+    /// /// <param name="size">Page size. </param>
+    PdfDevice(System::SharedPtr<System::IO::Stream> ros, System::Drawing::Size size);
+    
+    /// <summary>
+    /// Reset device to initial state for whole document. Used for reseting output stream.
+    /// </summary>
+    void ReNew() override;
     /// <summary>
     /// Reset device to initial state for whole document while merging several documents. Used for reseting output stream.
     /// </summary>
-    ASPOSE_PAGE_SHARED_API void ReNewForMerge(bool mainDocument) override;
+    void ReNewForMerge(bool mainDocument) override;
     
     /// <summary>
     /// Clone constructor. Initializes new instance of <see cref="PdfDevice"></see> with existing device.
     /// </summary>
     /// <param name="device"> Existing device. </param>
     /// <param name="doRestoreOnDispose">Use true if need to write restoring graphics state on disposing. </param>
-    ASPOSE_PAGE_SHARED_API PdfDevice(System::SharedPtr<PdfDevice> device, bool doRestoreOnDispose);
+    PdfDevice(System::SharedPtr<PdfDevice> device, bool doRestoreOnDispose);
     
-    ASPOSE_PAGE_SHARED_API MEMBER_FUNCTION_MAKE_OBJECT_DECLARATION(PdfDevice, CODEPORTING_ARGS(System::SharedPtr<PdfDevice> device, bool doRestoreOnDispose));
+    /// <summary>
+    /// Makes necessary preparation of device before start rendering of document.
+    /// </summary>
+    void StartDocument() override;
+    /// <summary>
+    /// Makes necessary preparation of device after the document has been rendered.
+    /// </summary>
+    void EndDocument() override;
+    /// <summary>
+    /// Disposes the graphics context. If on creation restoreOnDispose was true,
+    /// writeGraphicsRestore() will be called.
+    /// </summary>
+    void Dispose() override;
     /// <summary>
     /// Writes the catalog, docinfo, preferences, and (as we use only single page
     /// output the page tree. 
@@ -537,109 +389,257 @@ protected:
     /// <summary>
     /// Writes out current background.
     /// </summary>
-    ASPOSE_PAGE_SHARED_API void WriteBackground() override;
+    void WriteBackground() override;
     /// <summary>
     /// Writes out trailer of PDF document.
     /// </summary>
     void WriteTrailer();
     void CloseStream();
-    virtual ASPOSE_PAGE_SHARED_API void SetHeader(System::SharedPtr<Aspose::Page::EPS::Postscript::TrFont> font, System::SharedPtr<Aspose::Page::EPS::Graphics2d::TagString> left, System::SharedPtr<Aspose::Page::EPS::Graphics2d::TagString> center, System::SharedPtr<Aspose::Page::EPS::Graphics2d::TagString> right, int32_t underlineThickness);
-    virtual ASPOSE_PAGE_SHARED_API void SetFooter(System::SharedPtr<Aspose::Page::EPS::Postscript::TrFont> font, System::SharedPtr<Aspose::Page::EPS::Graphics2d::TagString> left, System::SharedPtr<Aspose::Page::EPS::Graphics2d::TagString> center, System::SharedPtr<Aspose::Page::EPS::Graphics2d::TagString> right, int32_t underlineThickness);
-    virtual ASPOSE_PAGE_SHARED_API System::SharedPtr<Aspose::Page::Device> Copy();
-    virtual ASPOSE_PAGE_SHARED_API System::SharedPtr<Aspose::Page::Device> Create(float x, float y, float width, float height);
-    virtual ASPOSE_PAGE_SHARED_API void WriteGraphicsSave();
-    virtual ASPOSE_PAGE_SHARED_API void WriteGraphicsRestore();
+    /// <summary>
+    /// If page device parameters will be set this method allows to return writing stream back the begining of page.
+    /// </summary>
+    void Reset() override;
+    void Reset(bool zeroPageNumbers) override;
+    /// <summary>
+    /// Initializes numbers of pages to output.
+    /// </summary>
+    void InitPageNumbers() override;
+    /// <summary>
+    /// Makes necessary preparation of the device before page rendering.
+    /// </summary>
+    /// <param name="title">The page title.</param>
+    /// <returns>Always true.</returns>
+    bool OpenPage(System::String title) override;
+    /// <summary>
+    /// Makes necessary preparation of the device before each page rendering.
+    /// </summary>
+    /// <param name="width">A width of the page.</param>
+    /// <param name="height">A height of the page.</param>
+    /// <returns>Always true.</returns>
+    bool OpenPage(float width, float height) override;
+    /// <summary>
+    /// Makes necessary preparation of the device after page has been rendered.
+    /// </summary>
+    void ClosePage() override;
+    virtual void SavePageTransform();
+    /// <summary>
+    /// Updates page parameters from other multi-paged device.
+    /// </summary>
+    /// <param name="device"> Another instance of the same device. </param>
+    void UpdatePageParameters(System::SharedPtr<IMultiPageDevice> device) override;
+    virtual void SetHeader(System::SharedPtr<Aspose::Page::EPS::Postscript::TrFont> font, System::SharedPtr<Aspose::Page::EPS::Graphics2d::TagString> left, System::SharedPtr<Aspose::Page::EPS::Graphics2d::TagString> center, System::SharedPtr<Aspose::Page::EPS::Graphics2d::TagString> right, int32_t underlineThickness);
+    virtual void SetFooter(System::SharedPtr<Aspose::Page::EPS::Postscript::TrFont> font, System::SharedPtr<Aspose::Page::EPS::Graphics2d::TagString> left, System::SharedPtr<Aspose::Page::EPS::Graphics2d::TagString> center, System::SharedPtr<Aspose::Page::EPS::Graphics2d::TagString> right, int32_t underlineThickness);
+    void SetSaveFromPatternCreate();
+    /// <summary>
+    /// Creates a copy of this device.
+    /// </summary>
+    /// <returns>Copy of this device.</returns>
+    System::SharedPtr<Aspose::Page::Device> Create() override;
+    virtual System::SharedPtr<Aspose::Page::Device> Copy();
+    virtual System::SharedPtr<Aspose::Page::Device> Create(float x, float y, float width, float height);
+    virtual void WriteGraphicsSave();
+    virtual void WriteGraphicsRestore();
+    /// <summary>
+    /// Initializes clip of the device.
+    /// </summary>
+    void InitClip() override;
+    /// <summary>
+    /// Draws a path.
+    /// </summary>
+    /// <param name="s"> A path to be drawn. </param>
+    void Draw(System::SharedPtr<System::Drawing::Drawing2D::GraphicsPath> s) override;
+    /// <summary>
+    /// Fills a path.
+    /// </summary>
+    /// <param name="s"> A path to be filled. </param>
+    void Fill(System::SharedPtr<System::Drawing::Drawing2D::GraphicsPath> s) override;
+    void FillLastClip();
+    /// <summary>
+    /// Draws an image with assigned transform and background.
+    /// </summary>
+    /// <param name="image"> An image to be drawn. </param>
+    /// <param name="transform"> A transform. </param>
+    /// <param name="bkg"> A background color. </param>
+    void DrawImage(System::SharedPtr<System::Drawing::Bitmap> image, System::SharedPtr<System::Drawing::Drawing2D::Matrix> transform, System::Drawing::Color bkg) override;
+    void DrawBitmapGlyph(System::SharedPtr<System::Object> charSelector, System::String fontName, System::SharedPtr<System::Drawing::Bitmap> image, System::SharedPtr<System::Drawing::Drawing2D::Matrix> transform) override;
+    /// <summary>
+    /// Draws a string at given point.
+    /// </summary>
+    /// <param name="str"> A string to be drawn. </param>
+    /// <param name="x"> X coordinate of point. </param>
+    /// <param name="y"> Y coordinate of point. </param>
+    void DrawString(System::String str, double x, double y) override;
     /// <summary>
     /// Write the given transformation matrix to the file. </summary>
-    virtual ASPOSE_PAGE_SHARED_API void WriteTransform(System::SharedPtr<System::Drawing::Drawing2D::Matrix> t);
-    virtual ASPOSE_PAGE_SHARED_API void WriteClip(System::Drawing::RectangleF r2d);
-    virtual ASPOSE_PAGE_SHARED_API void WriteClip(System::SharedPtr<System::Drawing::Drawing2D::GraphicsPath> s);
+    virtual void WriteTransform(System::SharedPtr<System::Drawing::Drawing2D::Matrix> t);
+    /// <summary>
+    /// Gets current transform.        
+    /// </summary>
+    /// <returns>Current transform</returns>
+    System::SharedPtr<System::Drawing::Drawing2D::Matrix> GetTransform() override;
+    /// <summary>
+    /// Specifies the current transform. Since most output formats do not
+    /// implement this functionality, the inverse transform of the
+    /// currentTransform is calculated and multiplied by the
+    /// transform to be set.The result is then forwarded by a call
+    /// to writeTransform(Transform).
+    /// </summary>
+    /// <param name="transform"> Transform to be applied. </param>
+    void SetTransform(System::SharedPtr<System::Drawing::Drawing2D::Matrix> transform) override;
+    /// <summary>
+    /// Transforms the current transformation matrix. Calls writeTransform(Transform)
+    /// </summary>
+    /// <param name="transform"> Transform to be applied. </param>
+    void Transform(System::SharedPtr<System::Drawing::Drawing2D::Matrix> transform) override;
+    /// <summary>
+    /// Translates the current transformation matrix. Calls writeTransform(Transform).
+    /// </summary>
+    /// <param name="x"> Translation in X axis. </param>
+    /// <param name="y"> Translation in Y axis. </param>
+    void Translate(double x, double y) override;
+    /// <summary>
+    /// Rotate the current transform over the Z-axis. Calls writeTransform(Transform).
+    /// Rotating with a positive angle theta rotates points on the positive x axis
+    /// toward the positive y axis.
+    /// </summary>
+    /// <param name="theta"> radians over which to rotate </param>
+    void Rotate(double theta) override;
+    /// <summary>
+    /// Scales the current transformation matrix. Calls writeTransform(Transform).
+    /// </summary>
+    /// <param name="sx"> A scale in X axis. </param>
+    /// <param name="sy"> A scale in Y axis. </param>
+    void Scale(double sx, double sy) override;
+    /// <summary>
+    /// Shears the current transformation matrix. Calls writeTransform(Transform).
+    /// </summary>
+    /// <param name="shx"> A shear in X axis. </param>
+    /// <param name="shy"> A shear in Y axis. </param>
+    void Shear(double shx, double shy) override;
+    /// <summary>
+    /// Specifies the clip of the device.
+    /// </summary>
+    /// <param name="clipPath"> A clipping path. </param>
+    void SetClip(System::SharedPtr<System::Drawing::Drawing2D::GraphicsPath> clipPath) override;
+    virtual void WriteClip(System::Drawing::RectangleF r2d);
+    virtual void WriteClip(System::SharedPtr<System::Drawing::Drawing2D::GraphicsPath> s);
     /// <summary>
     /// Clips rectangle. Calls clip(Rectangle2D).
     /// </summary>
     /// <param name="x">, y, width, height rectangle for clipping </param>
-    virtual ASPOSE_PAGE_SHARED_API void ClipRect(float x, float y, float width, float height);
+    virtual void ClipRect(float x, float y, float width, float height);
     /// <summary>
     /// Writes out the width of the stroke.
     /// </summary>
     /// <param name="width"> The width of the stroke </param>
-    ASPOSE_PAGE_SHARED_API void WriteWidth(float width) override;
+    void WriteWidth(float width) override;
     /// <summary>
     /// Writes out the cap of the stroke.
     /// </summary>
     /// <param name="cap"> Line cap of the stroke. </param>
-    ASPOSE_PAGE_SHARED_API void WriteCap(System::Drawing::Drawing2D::LineCap cap) override;
+    void WriteCap(System::Drawing::Drawing2D::LineCap cap) override;
     /// <summary>
     /// Writes out the join of the stroke.
     /// </summary>
     /// <param name="join"> Line join of the stroke. </param>
-    ASPOSE_PAGE_SHARED_API void WriteJoin(System::Drawing::Drawing2D::LineJoin join) override;
+    void WriteJoin(System::Drawing::Drawing2D::LineJoin join) override;
     /// <summary>
     /// Writes out the miter limit of the stroke.
     /// </summary>
     /// <param name="limit"> Miter limit of the stroke. </param>
-    ASPOSE_PAGE_SHARED_API void WriteMiterLimit(float limit) override;
+    void WriteMiterLimit(float limit) override;
     /// <summary>
     /// Writes out the dash of the stroke.
     /// </summary>
     /// <param name="dash"> The dash pattern or an empty array if line is solid. </param>
     /// <param name="phase"> The phase of the dash pattern. </param>
     /// <param name="dashCap"> The dash cap of the dash pattern. </param>
-    ASPOSE_PAGE_SHARED_API void WriteDash(System::ArrayPtr<double> dash, double phase, System::Drawing::Drawing2D::DashCap dashCap) override;
+    void WriteDash(System::ArrayPtr<double> dash, double phase, System::Drawing::Drawing2D::DashCap dashCap, float width) override;
     /// <summary>
     /// Writes out paint as the given color.
     /// </summary>
     /// <param name="c"> The color to be written. </param>
-    ASPOSE_PAGE_SHARED_API void WritePaint(System::SharedPtr<System::Drawing::SolidBrush> c) override;
+    void WritePaint(System::SharedPtr<System::Drawing::SolidBrush> c) override;
     /// <summary>
     /// Writes out paint as the given gradient.
     /// </summary>
     /// <param name="c"> The paint to be written </param>
-    ASPOSE_PAGE_SHARED_API void WritePaint(System::SharedPtr<System::Drawing::Drawing2D::LinearGradientBrush> c) override;
+    void WritePaint(System::SharedPtr<System::Drawing::Drawing2D::LinearGradientBrush> c) override;
     /// <summary>
     /// Writes out paint as the given texture.
     /// </summary>
     /// <param name="c"> The paint to be written </param>
-    ASPOSE_PAGE_SHARED_API void WritePaint(System::SharedPtr<System::Drawing::TextureBrush> c) override;
+    void WritePaint(System::SharedPtr<System::Drawing::TextureBrush> c) override;
     /// <summary>
     /// Writes out paint.
     /// </summary>
     /// <param name="paint"> The paint to be written. </param>
-    ASPOSE_PAGE_SHARED_API void WritePaint(System::SharedPtr<System::Drawing::Brush> paint) override;
+    void WritePaint(System::SharedPtr<System::Drawing::Brush> paint) override;
     /// <summary>
     /// Writes out last written paint. It is useful in cases when after writing paint graphics restore ("Q") was performed.
     /// </summary>
     /// <param name="paint"> The paint to be written. </param>
     void WriteLastWrittenPaint();
-    virtual ASPOSE_PAGE_SHARED_API void ResetClip(System::Drawing::Rectangle clip);
+    /// <summary>
+    /// Writes a comment.
+    /// </summary>
+    /// <param name="comment"> A comment to be written. </param>
+    void WriteComment(System::String comment) override;
+    virtual void ResetClip(System::Drawing::Rectangle clip);
     /// <summary>
     /// Clips using given shape. Dispatches to writeClip(Rectangle),
     /// writeClip(RectangleF) or writeClip(Shape).
     /// </summary>
     /// <param name="shape"> used for clipping </param>
-    virtual ASPOSE_PAGE_SHARED_API void Clip(System::SharedPtr<System::Drawing::Drawing2D::GraphicsPath> s);
-    /// <summary>
-    /// Called to write the initial graphics state.
-    /// </summary>
-    virtual ASPOSE_PAGE_SHARED_API void WriteGraphicsState();
+    virtual void Clip(System::SharedPtr<System::Drawing::Drawing2D::GraphicsPath> s);
     /// <summary>
     /// Writes out a warning, by default to System.err.
     /// </summary>
     /// <param name="warning"> The warning to be written. </param>
-    ASPOSE_PAGE_SHARED_API void WriteWarning(System::String warning) override;
+    void WriteWarning(System::String warning) override;
     /// <summary>
     /// Writes out string with specified font.
     /// </summary>
     /// <param name="font"> Specified font. </param>
     /// <param name="str"> The string. </param>
-    ASPOSE_PAGE_SHARED_API void WriteString(System::SharedPtr<ITrFont> font, System::String str) override;
+    void WriteString(System::SharedPtr<BaseTrFont> font, System::String str) override;
+    int64_t GetFinalWrittenLength() override;
+    System::SharedPtr<PdfCanvas> CreatePdfCanvas();
+    /// <summary>
+    /// Returns the name of device type.
+    /// </summary>
+    /// <returns>Type name.</returns>
+    System::String ToString() const override;
     
-    virtual ASPOSE_PAGE_SHARED_API ~PdfDevice();
+protected:
+
+    /// <summary>
+    /// Device properties including metadata.
+    /// </summary>
+    /*public Dictionary<string, object> Properties
+            {
+                get
+                {
+                    return defaultProperties;
+                }
+                set
+                {
+                    defaultProperties.Properties = value;
+                }
+            }*/
+    /// <summary> "PDF version" property value. </summary>
+    static const System::String PDF_VERSION;
+    /// <summary> Current transform. </summary>
+    System::SharedPtr<System::Drawing::Drawing2D::Matrix> currentTransform;
+    /// <summary> Transform that must be set on each page before adding any element (for multi-page documents). Used when some transforms are set before starting any page. </summary>
+    System::SharedPtr<System::Drawing::Drawing2D::Matrix> everyPageTransform;
     
-    #ifdef ASPOSE_GET_SHARED_MEMBERS
-    ASPOSE_PAGE_SHARED_API System::Object::shared_members_type GetSharedMembers() const override;
-    #endif
+    /// <summary>
+    /// Called to write the initial graphics state.
+    /// </summary>
+    virtual void WriteGraphicsState();
     
+    virtual ~PdfDevice();
     
 private:
 
@@ -664,6 +664,7 @@ private:
     System::SharedPtr<Aspose::Page::EPS::GraphicsIO::Pdf::PDFFontTable> fontTable;
     System::SharedPtr<Aspose::Page::EPS::GraphicsIO::Pdf::PDFImageDelayQueue> delayImageQueue;
     System::SharedPtr<Aspose::Page::EPS::GraphicsIO::Pdf::PDFPaintDelayQueue> delayPaintQueue;
+    System::SharedPtr<System::Collections::Generic::Dictionary<System::String, System::SharedPtr<System::Collections::Generic::Dictionary<System::SharedPtr<System::Object>, System::SharedPtr<Aspose::Page::EPS::GraphicsIO::Pdf::PDFName>>>>> bitmapFontsGlyphsCache;
     int32_t currentPageNumber;
     System::ArrayPtr<System::SharedPtr<Aspose::Page::EPS::Graphics2d::TagString>> headerText;
     int32_t headerUnderline;
@@ -681,11 +682,14 @@ private:
     System::SharedPtr<System::Drawing::Drawing2D::GraphicsPath> userClip;
     System::SharedPtr<PdfCanvas> currentCanvas;
     bool inClipQ;
+    bool lastClipMode;
     System::SharedPtr<System::Collections::Generic::Stack<System::SharedPtr<PdfCanvas>>> canvasesStack;
     System::SharedPtr<PdfNode> currentNode;
     static int32_t gStates;
     System::SharedPtr<System::Drawing::Brush> lastWrittenPaint;
     System::SharedPtr<Aspose::Page::EPS::GraphicsIO::Font::Encoding::CharTable> currentCharTable;
+    System::SharedPtr<System::Collections::Generic::List<System::SharedPtr<PdfCanvas>>> cpp_canvas;
+    bool saveFromPatternCreate;
     
     void set_NonStrokeColor(System::Drawing::Color value);
     void set_StrokeColor(System::Drawing::Color value);
@@ -696,11 +700,16 @@ private:
     void Init();
     void InitStream(System::SharedPtr<System::IO::Stream> ros);
     static System::SharedPtr<System::Drawing::Drawing2D::Matrix> DrMatrixToMatrix(System::SharedPtr<Aspose::Foundation::Drawing::DrMatrix> m);
+    void ResetDelayed();
     void ProcessDelayed();
+    void ResetInternal();
     void SetEvaluationWarning();
+    void Fill(bool eofill);
+    void WritePdfImage(System::SharedPtr<Aspose::Page::EPS::GraphicsIO::Pdf::PDFName> ref, System::SharedPtr<System::Drawing::Bitmap> image, System::SharedPtr<System::Drawing::Drawing2D::Matrix> transform);
     System::SharedPtr<System::Drawing::Drawing2D::GraphicsPath> TransformShape(System::SharedPtr<System::Drawing::Drawing2D::Matrix> at, System::SharedPtr<System::Drawing::Drawing2D::GraphicsPath> s);
     System::SharedPtr<System::Drawing::Drawing2D::GraphicsPath> TransformShape(System::SharedPtr<System::Drawing::Drawing2D::GraphicsPath> s);
     System::SharedPtr<System::Drawing::Drawing2D::GraphicsPath> UntransformShape(System::SharedPtr<System::Drawing::Drawing2D::GraphicsPath> s);
+    System::SharedPtr<System::Drawing::Brush> FindLastWrittenPaint(System::SharedPtr<PdfCanvas> canvas);
     System::String ToString_NonConst();
     void ShowCharacterCodes(System::String str);
     

@@ -1,8 +1,19 @@
 ﻿#pragma once
-// Copyright (c) 2001-2022 Aspose Pty Ltd. All Rights Reserved.
+// Copyright (c) 2001-2024 Aspose Pty Ltd. All Rights Reserved.
 
 #include "Aspose.Page.Cpp/SaveOptions.h"
 #include "Aspose.Page.Cpp/aspose_page_api_defs.h"
+
+namespace Aspose
+{
+namespace Page
+{
+namespace Drawing
+{
+class Size;
+} // namespace Drawing
+} // namespace Page
+} // namespace Aspose
 
 namespace Aspose {
 
@@ -36,6 +47,19 @@ public:
     /// <param name="supressErrors"> Specifies whether errors must be suppressed or not.
     /// If true suppressed errors are added to <see cref="Exceptions"></see> list.</param>
     ASPOSE_PAGE_SHARED_API PdfSaveOptions(bool supressErrors);
+    /// <summary>
+    /// Initializes a new instance of the <see cref="PdfSaveOptions"></see> with
+    /// with specified size of the page.
+    /// </summary>
+    /// <param name="size"> The page size.</param>
+    ASPOSE_PAGE_SHARED_API PdfSaveOptions(Aspose::Page::Drawing::Size size);
+    /// <summary>
+    /// Initializes a new instance of the <see cref="PdfSaveOptions"></see> class with default values for flag <see cref="Debug"></see> (false) and with specified size of the page.
+    /// </summary>
+    /// <param name="supressErrors"> Specifies whether errors must be suppressed or not.
+    /// If true suppressed errors are added to <see cref="Exceptions"></see> list.</param>
+    /// <param name="size"> The page size.</param>
+    ASPOSE_PAGE_SHARED_API PdfSaveOptions(bool supressErrors, Aspose::Page::Drawing::Size size);
     
 };
 

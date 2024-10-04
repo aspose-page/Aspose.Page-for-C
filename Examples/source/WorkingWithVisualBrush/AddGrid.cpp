@@ -1,7 +1,7 @@
-﻿#include <stdafx.h>
+﻿#include "stdafx.h"
 #include "WorkingWithVisualBrush/AddGrid.h"
 
-#include <system/exceptions.h>
+#include <system/object_ext.h>
 #include <system/array.h>
 #include <Aspose.Page.Cpp/xps/src_xps/XpsModel/XpsPathSegments/XpsPolyLineSegment.h>
 #include <Aspose.Page.Cpp/xps/src_xps/XpsModel/XpsPathSegments/XpsPathSegment.h>
@@ -24,11 +24,11 @@
 
 using namespace Aspose::Page::XPS;
 using namespace Aspose::Page::XPS::XpsModel;
-namespace CPP {
+namespace CSharp {
 
 namespace WorkingWithVisualBrush {
 
-RTTI_INFO_IMPL_HASH(2391680797u, ::CPP::WorkingWithVisualBrush::AddGrid, ThisTypeBaseTypesInfo);
+RTTI_INFO_IMPL_HASH(2391680797u, ::CSharp::WorkingWithVisualBrush::AddGrid, ThisTypeBaseTypesInfo);
 
 void AddGrid::Run()
 {
@@ -51,7 +51,7 @@ void AddGrid::Run()
     System::SharedPtr<XpsPath> gridPath = doc->CreatePath(pathGeometry);
     //Create Visual Brush, it is specified by some XPS fragment (vector graphics and glyphs)
     gridPath->set_Fill(doc->CreateVisualBrush(visualCanvas, System::Drawing::RectangleF(0.f, 0.f, 10.f, 10.f), System::Drawing::RectangleF(0.f, 0.f, 10.f, 10.f)));
-    (System::DynamicCast<Aspose::Page::XPS::XpsModel::XpsVisualBrush>(gridPath->get_Fill()))->set_TileMode(Aspose::Page::XPS::XpsModel::XpsTileMode::Tile);
+    (System::ExplicitCast<Aspose::Page::XPS::XpsModel::XpsVisualBrush>(gridPath->get_Fill()))->set_TileMode(Aspose::Page::XPS::XpsModel::XpsTileMode::Tile);
     // New canvas
     System::SharedPtr<XpsCanvas> canvas = doc->AddCanvas();
     canvas->set_RenderTransform(doc->CreateMatrix(1.f, 0.f, 0.f, 1.f, 268.f, 70.f));
@@ -63,9 +63,9 @@ void AddGrid::Run()
     path->set_Fill(doc->CreateSolidColorBrush(doc->CreateColor(1.0f, 0.0f, 0.0f)));
     path->set_Opacity(0.7f);
     // Save resultant XPS document
-    doc->Save(RunExamples::GetOutDir() + u"AddGrid_out.xps");
+    doc->Save(dataDir + u"AddGrid_out.xps");
     // ExEnd:1
 }
 
 } // namespace WorkingWithVisualBrush
-} // namespace CPP
+} // namespace CSharp

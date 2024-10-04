@@ -1,14 +1,8 @@
 ﻿#pragma once
-// Copyright (c) 2001-2022 Aspose Pty Ltd. All Rights Reserved.
+// Copyright (c) 2001-2024 Aspose Pty Ltd. All Rights Reserved.
 
-#include <system/object.h>
-
+#include "Aspose.Page.Cpp/xps/src_xps/XpsMetadata/IPrintTicketElementChild.h"
 #include "Aspose.Page.Cpp/aspose_page_api_defs.h"
-
-namespace System
-{
-class String;
-} // namespace System
 
 namespace Aspose {
 
@@ -19,22 +13,16 @@ namespace XPS {
 namespace XpsMetadata {
 
 /// <summary>
-/// Basic interface for classes that can be a print ticket item.
+/// The base interface for classes that may be <see cref="PrintTicket"></see> root element items.
+/// It is also the base interface for interfaces that define a scoping prefix.
 /// </summary>
-class ASPOSE_PAGE_SHARED_CLASS IPrintTicketItem : public virtual System::Object
+class ASPOSE_PAGE_SHARED_CLASS IPrintTicketItem : public virtual Aspose::Page::XPS::XpsMetadata::IPrintTicketElementChild
 {
     typedef IPrintTicketItem ThisType;
-    typedef System::Object BaseType;
+    typedef Aspose::Page::XPS::XpsMetadata::IPrintTicketElementChild BaseType;
     
     typedef ::System::BaseTypesInfo<BaseType> ThisTypeBaseTypesInfo;
     ASPOSE_PAGE_SHARED_RTTI_INFO_DECL();
-    
-public:
-
-    /// <summary>
-    /// Returns item name.
-    /// </summary>
-    virtual System::String get_Name() = 0;
     
 };
 

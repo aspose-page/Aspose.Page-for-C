@@ -1,4 +1,4 @@
-﻿#include <stdafx.h>
+﻿#include "stdafx.h"
 #include "GettingStarted/LoadLicenseFromStreamObject.h"
 
 #include <system/string.h>
@@ -9,21 +9,21 @@
 
 #include "RunExamples.h"
 
-namespace CPP {
+namespace CSharp {
 
 namespace GettingStarted {
 
-RTTI_INFO_IMPL_HASH(3870423936u, ::CPP::GettingStarted::LoadLicenseFromStreamObject, ThisTypeBaseTypesInfo);
+RTTI_INFO_IMPL_HASH(3870423936u, ::CSharp::GettingStarted::LoadLicenseFromStreamObject, ThisTypeBaseTypesInfo);
 
 void LoadLicenseFromStreamObject::Run()
 {
     // ExStart:1
     // The path to the documents directory.
-    System::String dataDir = RunExamples::GetDataDir_License();
+    System::String dataDir = RunExamples::GetDataDir_GettingStarted();
     // Initialize license object
     System::SharedPtr<Aspose::Page::License> license = System::MakeObject<Aspose::Page::License>();
     // Load license in FileStream
-    System::SharedPtr<System::IO::FileStream> myStream = System::MakeObject<System::IO::FileStream>(dataDir + u"Aspose.Total.CPP.lic", System::IO::FileMode::Open);
+    System::SharedPtr<System::IO::FileStream> myStream = System::MakeObject<System::IO::FileStream>(u"Aspose.Total.NET.lic", System::IO::FileMode::Open);
     // Set license
     license->SetLicense(myStream);
     System::Console::WriteLine(u"License set successfully.");
@@ -31,4 +31,4 @@ void LoadLicenseFromStreamObject::Run()
 }
 
 } // namespace GettingStarted
-} // namespace CPP
+} // namespace CSharp

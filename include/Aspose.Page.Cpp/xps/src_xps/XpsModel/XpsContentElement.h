@@ -1,8 +1,12 @@
 ﻿#pragma once
+// Copyright (c) 2001-2024 Aspose Pty Ltd. All Rights Reserved.
 
 #include <system/shared_ptr.h>
+#include <system/default.h>
+#include <cstdint>
 
 #include "Aspose.Page.Cpp/xps/src_xps/XpsModel/XpsHyperlinkElement.h"
+#include "Aspose.Page.Cpp/xps/src_xps/XpsModel/XpsElement.h"
 #include "Aspose.Page.Cpp/aspose_page_api_defs.h"
 
 namespace Aspose
@@ -11,6 +15,13 @@ namespace Page
 {
 namespace XPS
 {
+namespace Presentation
+{
+namespace Xps
+{
+class XpsPageWriter;
+} // namespace Xps
+} // namespace Presentation
 class XpsDocumentVisitor;
 namespace XpsModel
 {
@@ -19,6 +30,7 @@ class XpsBrush;
 class XpsCanvas;
 class XpsContext;
 class XpsElement;
+enum class XpsElementType;
 class XpsGlyphs;
 class XpsHyperlinkElement;
 class XpsMatrix;
@@ -26,6 +38,7 @@ class XpsObject;
 class XpsPath;
 class XpsPathGeometry;
 template <typename> class XpsProperty;
+class XpsPropertyValueManager;
 class XpsVisual;
 } // namespace XpsModel
 } // namespace XPS
@@ -33,6 +46,7 @@ class XpsVisual;
 } // namespace Aspose
 namespace System
 {
+class String;
 namespace Xml
 {
 class XmlElement;
@@ -58,9 +72,11 @@ class ASPOSE_PAGE_SHARED_CLASS XpsContentElement : public Aspose::Page::XPS::Xps
     typedef ::System::BaseTypesInfo<BaseType> ThisTypeBaseTypesInfo;
     ASPOSE_PAGE_SHARED_RTTI_INFO_DECL();
     
+    friend class Aspose::Page::XPS::Presentation::Xps::XpsPageWriter;
     template<typename FT0> friend class Aspose::Page::XPS::XpsModel::XpsArray;
     friend class Aspose::Page::XPS::XpsModel::XpsVisual;
     friend class Aspose::Page::XPS::XpsModel::XpsCanvas;
+    friend class Aspose::Page::XPS::XpsModel::XpsPropertyValueManager;
     friend class Aspose::Page::XPS::XpsModel::XpsElement;
     friend class Aspose::Page::XPS::XpsModel::XpsGlyphs;
     friend class Aspose::Page::XPS::XpsModel::XpsPath;
@@ -109,22 +125,19 @@ public:
     
 protected:
 
-    XpsContentElement(System::SharedPtr<XpsContext> context);
+    System::String get_RawClip();
+    
+    XpsContentElement(System::SharedPtr<XpsContext> context, int32_t elementId = -1, XpsElementType elementType = System::Default<XpsElementType>());
     
     ASPOSE_PAGE_SHARED_API void Initialize(System::SharedPtr<System::Xml::XmlElement> element) override;
     ASPOSE_PAGE_SHARED_API void AcceptProperties(System::SharedPtr<XpsDocumentVisitor> visitor) override;
-    ASPOSE_PAGE_SHARED_API void ForceRegisterForPreprocessing(bool add = true) override;
+    ASPOSE_PAGE_SHARED_API void NotifyDescendants(bool isAdd = true) override;
     ASPOSE_PAGE_SHARED_API void CopyPropertyValues(System::SharedPtr<XpsObject> obj) override;
     ASPOSE_PAGE_SHARED_API void ClonePropertyValues(System::SharedPtr<XpsObject> obj) override;
     ASPOSE_PAGE_SHARED_API void CopySimplePropertyValues(System::SharedPtr<XpsObject> obj) override;
     ASPOSE_PAGE_SHARED_API void Dispose() override;
     
     virtual ASPOSE_PAGE_SHARED_API ~XpsContentElement();
-    
-    #ifdef ASPOSE_GET_SHARED_MEMBERS
-    ASPOSE_PAGE_SHARED_API System::Object::shared_members_type GetSharedMembers() const override;
-    #endif
-    
     
 private:
 

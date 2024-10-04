@@ -1,8 +1,7 @@
 ﻿#pragma once
-// Copyright (c) 2001-2022 Aspose Pty Ltd. All Rights Reserved.
+// Copyright (c) 2001-2024 Aspose Pty Ltd. All Rights Reserved.
 
 #include <system/string.h>
-#include <system/enum_helpers.h>
 
 #include "Aspose.Page.Cpp/xps/src_xps/XpsPackageParts/FixedPart.h"
 #include "Aspose.Page.Cpp/aspose_page_api_defs.h"
@@ -44,9 +43,8 @@ class PrintTicket;
 } // namespace XpsMetadata
 namespace XpsModel
 {
-enum class RegistrationType;
 class XpsContext;
-class XpsElement;
+class XpsEvent;
 class XpsGlyphs;
 class XpsGradientBrush;
 class XpsHyperlinkElement;
@@ -123,6 +121,9 @@ public:
     
 protected:
 
+    static const float DefaultWidth;
+    static const float DefaultHeight;
+    
     System::String get_PageBasePath() const;
     System::String get_Source() const;
     void set_Source(System::String value);
@@ -149,17 +150,11 @@ protected:
     ASPOSE_PAGE_SHARED_API System::String GetDefaultPrintTicketPath(System::SharedPtr<Aspose::Page::XPS::XpsModel::XpsContext> context) override;
     ASPOSE_PAGE_SHARED_API System::String GetNewDefaultPrintTicketPath(System::SharedPtr<Aspose::Page::XPS::XpsModel::XpsContext> context) override;
     ASPOSE_PAGE_SHARED_API System::SharedPtr<Aspose::Page::XPS::XpsMetadata::PrintTicket> CreateDefaultPrintTicket(System::SharedPtr<Aspose::Page::XPS::XpsModel::XpsContext> context, System::SharedPtr<Aspose::OpcPackaging::OpcPackagePart> part) override;
-    void UpdatePropertyValueReferences(System::SharedPtr<Aspose::Page::XPS::XpsModel::XpsElement> propertyValue, bool add = true);
-    void RegisterForPreprocessing(System::SharedPtr<Aspose::Page::XPS::XpsModel::XpsElement> element, Aspose::Page::XPS::XpsModel::RegistrationType regType, bool add = true);
+    virtual ASPOSE_PAGE_SHARED_API void NotifyRoot(System::SharedPtr<Aspose::Page::XPS::XpsModel::XpsEvent> evt);
     System::SharedPtr<FixedPage> Clone(System::SharedPtr<Aspose::Page::XPS::XpsModel::XpsContext> context);
     ASPOSE_PAGE_SHARED_API void Dispose() override;
     
     virtual ASPOSE_PAGE_SHARED_API ~FixedPage();
-    
-    #ifdef ASPOSE_GET_SHARED_MEMBERS
-    ASPOSE_PAGE_SHARED_API System::Object::shared_members_type GetSharedMembers() const override;
-    #endif
-    
     
 private:
 

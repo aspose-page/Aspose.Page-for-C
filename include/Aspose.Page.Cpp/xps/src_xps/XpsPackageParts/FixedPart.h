@@ -1,5 +1,5 @@
 ﻿#pragma once
-// Copyright (c) 2001-2022 Aspose Pty Ltd. All Rights Reserved.
+// Copyright (c) 2001-2024 Aspose Pty Ltd. All Rights Reserved.
 
 #include <system/string.h>
 
@@ -11,6 +11,7 @@ namespace OpcPackaging
 {
 class OpcPackage;
 class OpcPackagePart;
+class OpcRelationship;
 } // namespace OpcPackaging
 namespace Page
 {
@@ -88,6 +89,7 @@ class ASPOSE_PAGE_SHARED_CLASS FixedPart : public System::Object
     ASPOSE_PAGE_SHARED_RTTI_INFO_DECL();
     
     friend class Aspose::Page::XPS::Presentation::Xps::XpsSerializer;
+    friend class Aspose::Page::XPS::XpsModel::XpsContext;
     friend class Aspose::Page::XPS::XpsDocument;
     friend class Aspose::Page::XPS::XpsPackageParts::FixedDocument;
     friend class Aspose::Page::XPS::XpsPackageParts::FixedDocumentSequence;
@@ -113,13 +115,9 @@ protected:
     virtual System::SharedPtr<Aspose::Page::XPS::XpsMetadata::PrintTicket> CreatePrintTicket(System::String printTicketPath, System::SharedPtr<System::IO::Stream> ptStream) = 0;
     void MakeEffectivePrintTicketItems(System::SharedPtr<FixedPart> parent);
     virtual ASPOSE_PAGE_SHARED_API void Dispose();
+    static System::SharedPtr<Aspose::OpcPackaging::OpcRelationship> GetPartRelationship(System::SharedPtr<Aspose::OpcPackaging::OpcPackagePart> part, System::String type);
     
     virtual ASPOSE_PAGE_SHARED_API ~FixedPart();
-    
-    #ifdef ASPOSE_GET_SHARED_MEMBERS
-    ASPOSE_PAGE_SHARED_API System::Object::shared_members_type GetSharedMembers() const override;
-    #endif
-    
     
 private:
 

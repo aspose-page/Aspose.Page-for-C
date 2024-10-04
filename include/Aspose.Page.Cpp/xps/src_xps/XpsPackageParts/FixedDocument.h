@@ -1,5 +1,5 @@
 ﻿#pragma once
-// Copyright (c) 2001-2022 Aspose Pty Ltd. All Rights Reserved.
+// Copyright (c) 2001-2024 Aspose Pty Ltd. All Rights Reserved.
 
 #include <system/string.h>
 
@@ -17,13 +17,6 @@ namespace Page
 {
 namespace XPS
 {
-namespace Presentation
-{
-namespace Aps
-{
-class ApsConverter;
-} // namespace Aps
-} // namespace Presentation
 namespace Tests
 {
 class DocumentOperationsTests;
@@ -96,7 +89,6 @@ class ASPOSE_PAGE_SHARED_CLASS FixedDocument : public Aspose::Page::XPS::XpsPack
     typedef ::System::BaseTypesInfo<BaseType> ThisTypeBaseTypesInfo;
     ASPOSE_PAGE_SHARED_RTTI_INFO_DECL();
     
-    friend class Aspose::Page::XPS::Presentation::Aps::ApsConverter;
     friend class Aspose::Page::XPS::XpsModel::XpsHyperlinkElement;
     friend class Aspose::Page::XPS::XpsDocument;
     friend class Aspose::Page::XPS::XpsPackageParts::FixedDocumentSequence;
@@ -128,11 +120,6 @@ protected:
     ASPOSE_PAGE_SHARED_API void Dispose() override;
     
     virtual ASPOSE_PAGE_SHARED_API ~FixedDocument();
-    
-    #ifdef ASPOSE_GET_SHARED_MEMBERS
-    ASPOSE_PAGE_SHARED_API System::Object::shared_members_type GetSharedMembers() const override;
-    #endif
-    
     
 private:
 

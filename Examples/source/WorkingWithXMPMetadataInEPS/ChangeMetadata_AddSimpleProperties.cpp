@@ -1,4 +1,4 @@
-﻿#include <stdafx.h>
+﻿#include "stdafx.h"
 #include "WorkingWithXMPMetadataInEPS/ChangeMetadata_AddSimpleProperties.h"
 
 #include <system/string.h>
@@ -7,6 +7,7 @@
 #include <system/io/file_mode.h>
 #include <system/io/file_access.h>
 #include <system/enum_helpers.h>
+#include <system/details/dispose_guard.h>
 #include <system/date_time.h>
 #include <Aspose.Page.Cpp/eps/src_eps/XMP/XmpValue.h>
 #include <Aspose.Page.Cpp/eps/src_eps/XMP/XmpMetadata.h>
@@ -18,12 +19,23 @@
 
 using namespace Aspose::Page::EPS;
 using namespace Aspose::Page::EPS::XMP;
-namespace CPP {
+namespace CSharp {
 
 namespace WorkingWithXMPMetadataInEPS {
 
-RTTI_INFO_IMPL_HASH(401523887u, ::CPP::WorkingWithXMPMetadataInEPS::ChangeMetadata_AddSimpleProperties, ThisTypeBaseTypesInfo);
+RTTI_INFO_IMPL_HASH(401523887u, ::CSharp::WorkingWithXMPMetadataInEPS::ChangeMetadata_AddSimpleProperties, ThisTypeBaseTypesInfo);
 
+// Using statement is translated using System::Details::DisposeGuard class which may store exception and then throw from destructor.
+// We block the warnings related as these are false alarms (the exception, if caught, will be re-thrown from the destructor).
+#if defined(__MSVC__)
+#pragma warning( push )
+#pragma warning(disable : 4715)
+#pragma warning(disable : 4700)
+#pragma warning(disable : 4701)
+#elif defined(__GNUC__)
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wreturn-type"
+#endif
 void ChangeMetadata_AddSimpleProperties::Run()
 {
     // ExStart:1
@@ -66,24 +78,20 @@ void ChangeMetadata_AddSimpleProperties::Run()
             // Save EPS file with changed XMP metadata
             
             // Create ouput stream
-            System::SharedPtr<System::IO::FileStream> outPsStream = System::MakeObject<System::IO::FileStream>(RunExamples::GetOutDir() + u"add_simple_props_output.eps", System::IO::FileMode::Create, System::IO::FileAccess::Write);
-            
-            // Save EPS file
-            
             {
-                auto __finally_guard_1 = ::System::MakeScopeGuard([&outPsStream]()
-                {
-                    outPsStream->Close();
-                });
+                System::SharedPtr<System::IO::FileStream> outPsStream = System::MakeObject<System::IO::FileStream>(dataDir + u"add_simple_props_output.eps", System::IO::FileMode::Create, System::IO::FileAccess::Write);
+                // Clearing resources under 'using' statement
+                System::Details::DisposeGuard<1> __dispose_guard_1({ outPsStream});
+                // ------------------------------------------
                 
                 try
                 {
+                    // Save EPS file
                     document->Save(outPsStream);
-                    outPsStream->Flush();
                 }
-                catch (...)
+                catch(...)
                 {
-                    throw;
+                    __dispose_guard_1.SetCurrentException(std::current_exception());
                 }
             }
             
@@ -96,6 +104,11 @@ void ChangeMetadata_AddSimpleProperties::Run()
     
     // ExEnd:1
 }
+#if defined(__MSVC__)
+#pragma warning( pop )
+#elif defined(__GNUC__)
+#pragma GCC diagnostic pop
+#endif
 
 } // namespace WorkingWithXMPMetadataInEPS
-} // namespace CPP
+} // namespace CSharp

@@ -2,7 +2,7 @@
 
 #include <system/object.h>
 
-namespace CPP {
+namespace CSharp {
 
 namespace GettingStarted {
 
@@ -21,6 +21,6 @@ public:
 };
 
 } // namespace GettingStarted
-} // namespace CPP
+} // namespace CSharp
 
 

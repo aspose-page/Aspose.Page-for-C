@@ -2,7 +2,7 @@
 
 #include <system/object.h>
 
-namespace CPP {
+namespace CSharp {
 
 namespace WorkingWithDocumentMerging {
 
@@ -21,6 +21,6 @@ public:
 };
 
 } // namespace WorkingWithDocumentMerging
-} // namespace CPP
+} // namespace CSharp
 
 

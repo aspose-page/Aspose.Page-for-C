@@ -1,8 +1,5 @@
 ﻿#pragma once
-// Copyright (c) 2001-2021 Aspose Pty Ltd. All Rights Reserved.
-/*using Aspose.Pdf.Engine.Factory;
-using Aspose.Pdf.Engine.Filters;
-using Aspose.Pdf.Engine.IO;*/
+// Copyright (c) 2001-2024 Aspose Pty Ltd. All Rights Reserved.
 
 #include <system/collections/idictionary.h>
 #include <system/array.h>
@@ -56,6 +53,19 @@ namespace Page {
 namespace EPS {
 
 namespace XMP {
+
+/// <summary>
+/// The <b>Aspose.Page.EPS.XMP</b> namespace provides classes for reading, changing XMP metadata in EPS files.
+/// </summary>
+class NamespaceDoc : public System::Object
+{
+    typedef NamespaceDoc ThisType;
+    typedef System::Object BaseType;
+    
+    typedef ::System::BaseTypesInfo<BaseType> ThisTypeBaseTypesInfo;
+    RTTI_INFO_DECL();
+    
+};
 
 /// <summary>
 /// Provides access to XMP metadata stream.
@@ -275,11 +285,6 @@ protected:
     System::SharedPtr<XmpDataCollection> GetData();
     
     virtual ASPOSE_PAGE_SHARED_API ~XmpMetadata();
-    
-    #ifdef ASPOSE_GET_SHARED_MEMBERS
-    ASPOSE_PAGE_SHARED_API System::Object::shared_members_type GetSharedMembers() const override;
-    #endif
-    
     
 private:
 

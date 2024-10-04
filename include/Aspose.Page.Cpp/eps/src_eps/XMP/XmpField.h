@@ -1,5 +1,5 @@
 ﻿#pragma once
-// Copyright (c) 2001-2021 Aspose Pty Ltd. All Rights Reserved.
+// Copyright (c) 2001-2024 Aspose Pty Ltd. All Rights Reserved.
 
 
 
@@ -214,10 +214,6 @@ protected:
     /// </summary>
     /// <param name="value"></param>
     void SetValue(System::SharedPtr<XmpValue> value);
-    #ifdef ASPOSE_GET_SHARED_MEMBERS
-    ASPOSE_PAGE_SHARED_API System::Object::shared_members_type GetSharedMembers() const override;
-    #endif
-    
     
 private:
 

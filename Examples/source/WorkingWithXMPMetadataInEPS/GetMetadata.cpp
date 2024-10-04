@@ -1,4 +1,4 @@
-﻿#include <stdafx.h>
+﻿#include "stdafx.h"
 #include "WorkingWithXMPMetadataInEPS/GetMetadata.h"
 
 #include <system/scope_guard.h>
@@ -19,11 +19,11 @@
 
 using namespace Aspose::Page::EPS;
 using namespace Aspose::Page::EPS::XMP;
-namespace CPP {
+namespace CSharp {
 
 namespace WorkingWithXMPMetadataInEPS {
 
-RTTI_INFO_IMPL_HASH(2153886748u, ::CPP::WorkingWithXMPMetadataInEPS::GetMetadata, ThisTypeBaseTypesInfo);
+RTTI_INFO_IMPL_HASH(2153886748u, ::CSharp::WorkingWithXMPMetadataInEPS::GetMetadata, ThisTypeBaseTypesInfo);
 
 void GetMetadata::Run()
 {
@@ -65,7 +65,7 @@ void GetMetadata::Run()
                 System::SharedPtr<XmpValue> val = xmp->idx_get(u"xmp:Thumbnails")->ToArray()->idx_get(0);
                 if (val->get_IsNamedValues() && val->ToDictionary()->ContainsKey(u"xmpGImg:width"))
                 {
-                    System::Console::WriteLine(System::String(u"Thumbnail Width: ") + val->ToDictionary()->idx_get(u"xmpGImg:width")->ToInteger());
+                    System::Console::WriteLine(System::String::Format(u"Thumbnail Width: {0}", val->ToDictionary()->idx_get(u"xmpGImg:width")->ToInteger()));
                 }
             }
             
@@ -92,4 +92,4 @@ void GetMetadata::Run()
 }
 
 } // namespace WorkingWithXMPMetadataInEPS
-} // namespace CPP
+} // namespace CSharp

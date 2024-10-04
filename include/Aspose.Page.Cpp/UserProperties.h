@@ -1,5 +1,5 @@
 ﻿#pragma once
-// Copyright (c) 2001-2022 Aspose Pty Ltd. All Rights Reserved.
+// Copyright (c) 2001-2024 Aspose Pty Ltd. All Rights Reserved.
 
 #include <system/details/pointer_collection_helpers.h>
 #include <system/collections/dictionary.h>
@@ -27,6 +27,10 @@ template <typename> class IEnumerator;
 namespace Drawing
 {
 class Color;
+namespace Drawing2D
+{
+class Matrix;
+} // namespace Drawing2D
 class Rectangle;
 class RectangleF;
 class Size;
@@ -79,6 +83,7 @@ public:
     /// </summary>
     /// <returns>Enumerator of properties names.</returns>
     virtual ASPOSE_PAGE_SHARED_API System::SharedPtr<System::Collections::Generic::IEnumerator<System::String>> PropertyNames();
+    virtual ASPOSE_PAGE_SHARED_API void PrintProperties();
     /// <summary>
     /// Sets string property value.
     /// </summary>
@@ -222,6 +227,21 @@ public:
     /// <returns>A property.</returns>
     static ASPOSE_PAGE_SHARED_API System::SharedPtr<System::Object> SetProperty(System::SharedPtr<System::Collections::Generic::Dictionary<System::String, System::SharedPtr<System::Object>>> properties, System::String key, bool value);
     /// <summary>
+    /// Sets matrix property value.
+    /// </summary>
+    /// <param name="key">The name of property. </param>
+    /// <param name="value">The value of property. </param>
+    /// <returns>A property.</returns>
+    virtual ASPOSE_PAGE_SHARED_API System::SharedPtr<System::Object> SetProperty(System::String key, System::SharedPtr<System::Drawing::Drawing2D::Matrix> value);
+    /// <summary>
+    /// Sets matrix property value in specified properties table.
+    /// </summary>
+    /// <param name="properties">The properties table. </param>
+    /// <param name="key">The name of property. </param>
+    /// <param name="value">The value of property. </param>
+    /// <returns>A property.</returns>
+    static ASPOSE_PAGE_SHARED_API System::SharedPtr<System::Object> SetProperty(System::SharedPtr<System::Collections::Generic::Dictionary<System::String, System::SharedPtr<System::Object>>> properties, System::String key, System::SharedPtr<System::Drawing::Drawing2D::Matrix> value);
+    /// <summary>
     /// Gets string property value.
     /// </summary>
     /// <param name="key">The name of property. </param>
@@ -231,9 +251,9 @@ public:
     /// Gets string property value. If requested property is absent, returns provided default value.
     /// </summary>
     /// <param name="key">The name of property. </param>
-    /// <param name="def">Default value of property. </param>
+    /// <param name="defValue">Default value of property. </param>
     /// <returns>Property value.</returns>
-    virtual ASPOSE_PAGE_SHARED_API System::String GetProperty(System::String key, System::String def);
+    virtual ASPOSE_PAGE_SHARED_API System::String GetProperty(System::String key, System::String defValue);
     /// <summary>
     /// Gets string array property value.
     /// </summary>
@@ -244,9 +264,9 @@ public:
     /// Gets string array property value. If requested property is absent, returns provided default value.
     /// </summary>
     /// <param name="key">The name of property. </param>
-    /// <param name="def">Default value of property. </param>
+    /// <param name="defValue">Default value of property. </param>
     /// <returns>Property value.</returns>
-    virtual ASPOSE_PAGE_SHARED_API System::ArrayPtr<System::String> GetPropertyStringArray(System::String key, System::ArrayPtr<System::String> def);
+    virtual ASPOSE_PAGE_SHARED_API System::ArrayPtr<System::String> GetPropertyStringArray(System::String key, System::ArrayPtr<System::String> defValue);
     /// <summary>
     /// Gets color property value.
     /// </summary>
@@ -257,9 +277,9 @@ public:
     /// Gets color property value. If requested property is absent, returns provided default value.
     /// </summary>
     /// <param name="key">The name of property. </param>
-    /// <param name="def">Default value of property. </param>
+    /// <param name="defValue">Default value of property. </param>
     /// <returns>Property value.</returns>
-    virtual ASPOSE_PAGE_SHARED_API System::Drawing::Color GetPropertyColor(System::String key, System::Drawing::Color def);
+    virtual ASPOSE_PAGE_SHARED_API System::Drawing::Color GetPropertyColor(System::String key, System::Drawing::Color defValue);
     /// <summary>
     /// Gets rectangle property value.
     /// </summary>
@@ -270,9 +290,9 @@ public:
     /// Gets rectangle property value. If requested property is absent, returns provided default value.
     /// </summary>
     /// <param name="key">The name of property. </param>
-    /// <param name="def">Default value of property. </param>
+    /// <param name="defValue">Default value of property. </param>
     /// <returns>Property value.</returns>
-    virtual ASPOSE_PAGE_SHARED_API System::Drawing::RectangleF GetPropertyRectangle(System::String key, System::Drawing::RectangleF def);
+    virtual ASPOSE_PAGE_SHARED_API System::Drawing::RectangleF GetPropertyRectangle(System::String key, System::Drawing::RectangleF defValue);
     /// <summary>
     /// Gets margins property value.
     /// </summary>
@@ -283,9 +303,9 @@ public:
     /// Gets margins property value. If requested property is absent, returns provided default value.
     /// </summary>
     /// <param name="key">The name of property. </param>
-    /// <param name="def">Default value of property. </param>
+    /// <param name="defValue">Default value of property. </param>
     /// <returns>Property value.</returns>
-    virtual ASPOSE_PAGE_SHARED_API System::SharedPtr<Margins> GetPropertyMargins(System::String key, System::SharedPtr<Margins> def);
+    virtual ASPOSE_PAGE_SHARED_API System::SharedPtr<Margins> GetPropertyMargins(System::String key, System::SharedPtr<Margins> defValue);
     /// <summary>
     /// Gets size property value.
     /// </summary>
@@ -296,9 +316,9 @@ public:
     /// Gets size property value. If requested property is absent, returns provided default value.
     /// </summary>
     /// <param name="key">The name of property. </param>
-    /// <param name="def">Default value of property. </param>
+    /// <param name="defValue">Default value of property. </param>
     /// <returns>Property value.</returns>
-    virtual ASPOSE_PAGE_SHARED_API System::Drawing::Size GetPropertySize(System::String key, System::Drawing::Size def);
+    virtual ASPOSE_PAGE_SHARED_API System::Drawing::Size GetPropertySize(System::String key, System::Drawing::Size defValue);
     /// <summary>
     /// Gets integer property value.
     /// </summary>
@@ -309,9 +329,9 @@ public:
     /// Gets integer property value. If requested property is absent, returns provided default value.
     /// </summary>
     /// <param name="key">The name of property. </param>
-    /// <param name="def">Default value of property. </param>
+    /// <param name="defValue">Default value of property. </param>
     /// <returns>Property value.</returns>
-    virtual ASPOSE_PAGE_SHARED_API int32_t GetPropertyInt(System::String key, int32_t def);
+    virtual ASPOSE_PAGE_SHARED_API int32_t GetPropertyInt(System::String key, int32_t defValue);
     /// <summary>
     /// Gets double property value.
     /// </summary>
@@ -322,9 +342,9 @@ public:
     /// Gets double property value. If requested property is absent, returns provided default value.
     /// </summary>
     /// <param name="key">The name of property. </param>
-    /// <param name="def">Default value of property. </param>
+    /// <param name="defValue">Default value of property. </param>
     /// <returns>Property value.</returns>
-    virtual ASPOSE_PAGE_SHARED_API double GetPropertyDouble(System::String key, double def);
+    virtual ASPOSE_PAGE_SHARED_API double GetPropertyDouble(System::String key, double defValue);
     /// <summary>
     /// Gets float property value.
     /// </summary>
@@ -335,9 +355,22 @@ public:
     /// Gets float property value. If requested property is absent, returns provided default value.
     /// </summary>
     /// <param name="key">The name of property. </param>
-    /// <param name="def">Default value of property. </param>
+    /// <param name="defValue">Default value of property. </param>
     /// <returns>Property value.</returns>
-    virtual ASPOSE_PAGE_SHARED_API float GetPropertyFloat(System::String key, float def);
+    virtual ASPOSE_PAGE_SHARED_API float GetPropertyFloat(System::String key, float defValue);
+    /// <summary>
+    /// Gets matrix property value.
+    /// </summary>
+    /// <param name="key">The name of property. </param>
+    /// <returns>Property value.</returns>
+    virtual ASPOSE_PAGE_SHARED_API System::SharedPtr<System::Drawing::Drawing2D::Matrix> GetPropertyMatrix(System::String key);
+    /// <summary>
+    /// Gets matrix property value. If requested property is absent, returns provided default value.
+    /// </summary>
+    /// <param name="key">The name of property. </param>
+    /// <param name="defValue">Default value of property. </param>
+    /// <returns>Property value.</returns>
+    virtual ASPOSE_PAGE_SHARED_API System::SharedPtr<System::Drawing::Drawing2D::Matrix> GetPropertyMatrix(System::String key, System::SharedPtr<System::Drawing::Drawing2D::Matrix> defValue);
     /// <summary>
     /// Gets boolean property value.
     /// </summary>
@@ -348,9 +381,9 @@ public:
     /// Gets boolean property value. If requested property is absent, returns provided default value.
     /// </summary>
     /// <param name="key">The name of property. </param>
-    /// <param name="def">Default value of property. </param>
+    /// <param name="defValue">Default value of property. </param>
     /// <returns>Property value.</returns>
-    virtual ASPOSE_PAGE_SHARED_API bool IsProperty(System::String key, bool def);
+    virtual ASPOSE_PAGE_SHARED_API bool IsProperty(System::String key, bool defValue);
     ASPOSE_PAGE_SHARED_API void SetTemplateWeakPtr(uint32_t argument) override;
     
 protected:
@@ -361,11 +394,6 @@ protected:
     System::SharedPtr<System::Collections::Generic::Dictionary<System::String, System::SharedPtr<System::Object>>> altDefaults;
     
     virtual ASPOSE_PAGE_SHARED_API ~UserProperties();
-    
-    #ifdef ASPOSE_GET_SHARED_MEMBERS
-    ASPOSE_PAGE_SHARED_API System::Object::shared_members_type GetSharedMembers() const override;
-    #endif
-    
     
 };
 

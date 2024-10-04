@@ -1,5 +1,5 @@
 ﻿#pragma once
-// Copyright (c) 2001-2022 Aspose Pty Ltd. All Rights Reserved.
+// Copyright (c) 2001-2024 Aspose Pty Ltd. All Rights Reserved.
 
 // C# preprocessor directive: #if ASPOSE_PAGE
 
@@ -15,6 +15,8 @@
 // C# INACTIVE CODE:
 // using LicenseCore = Aspose.Pdf.LicenseCore;
 // using LicenseState = Aspose.Pdf.LicenseState;
+// using MeteredBillingService = Aspose.Pdf.Licensing.Metered.MeteredBillingService;
+// using MeteredState = Aspose.Pdf.Licensing.Metered.MeteredState;
 
 // C# preprocessor directive: #endif
 
@@ -39,6 +41,11 @@ namespace LicenseManagement
 {
 class VentureLicense;
 } // namespace LicenseManagement
+namespace Plugins
+{
+enum class Plugin;
+} // namespace Plugins
+class SaveOptions;
 namespace XPS
 {
 namespace Presentation
@@ -55,6 +62,11 @@ class XpsSerializer;
 class XpsBasePresenter;
 class XpsPresenter;
 } // namespace Presentation
+namespace Tests
+{
+class MeteredToImagePluginsTests;
+class MeteredToPdfPluginsTests;
+} // namespace Tests
 class XpsDocument;
 namespace XpsMetadata
 {
@@ -171,6 +183,8 @@ class ASPOSE_PAGE_SHARED_CLASS XpsContext : public System::Object
     friend class Aspose::Page::XPS::XpsPackageParts::FixedPart;
     friend class Aspose::Page::XPS::XpsPackageParts::FixedDocumentSequence;
     friend class Aspose::Page::XPS::XpsPackageParts::FixedPage;
+    friend class Aspose::Page::XPS::Tests::MeteredToPdfPluginsTests;
+    friend class Aspose::Page::XPS::Tests::MeteredToImagePluginsTests;
     
 public:
 
@@ -182,11 +196,11 @@ public:
 protected:
 
     System::SharedPtr<XpsPropertyValueManager> PropertyValueManager;
+    Aspose::Page::Plugins::Plugin _usedByPlugin;
     
     static int32_t& IndivisibleLevel();
     
     bool get_Debug() const;
-    bool get_IsLicensed();
     System::SharedPtr<System::Collections::Generic::Dictionary<System::SharedPtr<Aspose::Page::XPS::XpsPackageParts::FixedDocument>, System::SharedPtr<System::Collections::Generic::IList<System::SharedPtr<XpsOutlineEntry>>>>> get_OutlinesMap() const;
     System::String get_FixedDocumentSequenceSource() const;
     void set_FixedDocumentSequenceSource(System::String value);
@@ -208,6 +222,8 @@ protected:
     void EndOperation();
     void SetVentureLicense(System::SharedPtr<Aspose::Page::LicenseManagement::VentureLicense> license);
     System::SharedPtr<Aspose::Page::LicenseManagement::VentureLicense> GetVentureLicense();
+    void SetPlugin(Aspose::Page::Plugins::Plugin plugin);
+    bool IsLicensed(System::SharedPtr<SaveOptions> saveOptions);
     bool Restricted(int32_t index);
     bool RestrictedPage();
     void ResetPageCounter();
@@ -244,11 +260,6 @@ protected:
     void Dispose();
     
     virtual ASPOSE_PAGE_SHARED_API ~XpsContext();
-    
-    #ifdef ASPOSE_GET_SHARED_MEMBERS
-    ASPOSE_PAGE_SHARED_API System::Object::shared_members_type GetSharedMembers() const override;
-    #endif
-    
     
 private:
 

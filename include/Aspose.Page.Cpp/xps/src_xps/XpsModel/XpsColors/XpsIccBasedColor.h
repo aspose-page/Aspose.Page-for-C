@@ -1,5 +1,5 @@
 ﻿#pragma once
-// Copyright (c) 2001-2022 Aspose Pty Ltd. All Rights Reserved.
+// Copyright (c) 2001-2024 Aspose Pty Ltd. All Rights Reserved.
 
 #include "Aspose.Page.Cpp/xps/src_xps/XpsModel/XpsColors/XpsColor.h"
 #include "Aspose.Page.Cpp/aspose_page_api_defs.h"
@@ -94,10 +94,6 @@ protected:
     MEMBER_FUNCTION_MAKE_OBJECT_DECLARATION(XpsIccBasedColor, CODEPORTING_ARGS(System::SharedPtr<XpsIccProfile> iccProfile, const System::ArrayPtr<float>& components));
     ASPOSE_PAGE_SHARED_API System::SharedPtr<XpsColor> Clone() override;
     ASPOSE_PAGE_SHARED_API void Dispose() override;
-    #ifdef ASPOSE_GET_SHARED_MEMBERS
-    ASPOSE_PAGE_SHARED_API System::Object::shared_members_type GetSharedMembers() const override;
-    #endif
-    
     
 private:
 

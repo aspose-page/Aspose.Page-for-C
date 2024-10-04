@@ -1,5 +1,5 @@
 ﻿#pragma once
-// Copyright (c) 2001-2022 Aspose Pty Ltd. All Rights Reserved.
+// Copyright (c) 2001-2024 Aspose Pty Ltd. All Rights Reserved.
 
 #include "Aspose.Page.Cpp/xps/src_xps/XpsModel/XpsFileResources/XpsFileResource.h"
 #include "Aspose.Page.Cpp/aspose_page_api_defs.h"
@@ -10,12 +10,9 @@ namespace Page
 {
 namespace XPS
 {
+class DocumentUtils;
 namespace Presentation
 {
-namespace Aps
-{
-class ApsConverter;
-} // namespace Aps
 class NativeConverter;
 } // namespace Presentation
 namespace XpsModel
@@ -55,7 +52,7 @@ class ASPOSE_PAGE_SHARED_CLASS XpsImage final : public Aspose::Page::XPS::XpsMod
     ASPOSE_PAGE_SHARED_RTTI_INFO_DECL();
     
     friend class Aspose::Page::XPS::Presentation::NativeConverter;
-    friend class Aspose::Page::XPS::Presentation::Aps::ApsConverter;
+    friend class Aspose::Page::XPS::DocumentUtils;
     friend class Aspose::Page::XPS::XpsModel::XpsImageBrush;
     friend class Aspose::Page::XPS::XpsModel::XpsElement;
     friend class Aspose::Page::XPS::XpsModel::XpsFileResource;

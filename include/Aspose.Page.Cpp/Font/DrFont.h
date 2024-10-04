@@ -1,5 +1,5 @@
 ﻿#pragma once
-// Copyright (c) 2001-2022 Aspose Pty Ltd. All Rights Reserved.
+// Copyright (c) 2001-2024 Aspose Pty Ltd. All Rights Reserved.
 
 #include <system/object_ext.h>
 #include <system/enum_helpers.h>
@@ -18,6 +18,10 @@ class DrFont;
 } // namespace Foundation
 namespace Page
 {
+namespace EPS
+{
+class PsDocument;
+} // namespace EPS
 class ExternalFontCache;
 } // namespace Page
 } // namespace Aspose
@@ -62,6 +66,7 @@ class ASPOSE_PAGE_SHARED_CLASS DrFont : public System::Object
     
     friend class System::ObjectExt;
     friend class Aspose::Page::ExternalFontCache;
+    friend class Aspose::Page::EPS::PsDocument;
     
 public:
 
@@ -250,6 +255,8 @@ public:
     
 protected:
 
+    System::SharedPtr<Foundation::Drawing::DrFont> get_Font() const;
+    
     DrFont(System::SharedPtr<Aspose::Foundation::Drawing::DrFont> font);
     
     MEMBER_FUNCTION_MAKE_OBJECT_DECLARATION(DrFont, CODEPORTING_ARGS(System::SharedPtr<Aspose::Foundation::Drawing::DrFont> font));
@@ -263,11 +270,6 @@ protected:
     ASPOSE_PAGE_SHARED_API bool Equals(System::SharedPtr<DrFont> other);
     
     virtual ASPOSE_PAGE_SHARED_API ~DrFont();
-    
-    #ifdef ASPOSE_GET_SHARED_MEMBERS
-    ASPOSE_PAGE_SHARED_API System::Object::shared_members_type GetSharedMembers() const override;
-    #endif
-    
     
 private:
 

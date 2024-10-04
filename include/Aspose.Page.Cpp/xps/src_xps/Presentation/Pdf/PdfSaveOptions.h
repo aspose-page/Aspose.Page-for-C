@@ -1,10 +1,13 @@
 ﻿#pragma once
-// Copyright (c) 2001-2022 Aspose Pty Ltd. All Rights Reserved.
+// Copyright (c) 2001-2024 Aspose Pty Ltd. All Rights Reserved.
 
 #include <system/object_ext.h>
 #include <system/enum.h>
 #include <system/date_time.h>
 
+#include "Aspose.Page.Cpp/xps/src_xps/Presentation/IXpsTextConversionOptions.h"
+#include "Aspose.Page.Cpp/xps/src_xps/Presentation/IPipelineOptions.h"
+#include "Aspose.Page.Cpp/xps/src_xps/Presentation/IEventBasedModificationOptions.h"
 #include "Aspose.Page.Cpp/SaveOptions.h"
 #include "Aspose.Page.Cpp/IMultiPageSaveOptions.h"
 #include "Aspose.Page.Cpp/aspose_page_api_defs.h"
@@ -15,8 +18,19 @@ namespace Page
 {
 namespace XPS
 {
+namespace Features
+{
+namespace EventBasedModifications
+{
+class BeforePageSavingEventHandler;
+} // namespace EventBasedModifications
+} // namespace Features
 namespace Presentation
 {
+namespace Aps
+{
+class ApsSaveOptions;
+} // namespace Aps
 namespace Pdf
 {
 class PdfDevice;
@@ -25,6 +39,7 @@ class PdfEncryptionDetails;
 class PdfRenderer;
 } // namespace Pdf
 } // namespace Presentation
+class XpsDocument;
 } // namespace XPS
 } // namespace Page
 namespace Rendering
@@ -39,6 +54,13 @@ class PdfOptionsCore;
 } // namespace Aspose
 namespace System
 {
+namespace Collections
+{
+namespace Generic
+{
+template <typename> class IList;
+} // namespace Generic
+} // namespace Collections
 namespace Security
 {
 namespace Cryptography
@@ -188,17 +210,21 @@ enum class PdfDigitalSignatureHashAlgorithm
 /// <summary>
 /// Class for XPS-as-PDF saving options.
 /// </summary>
-class ASPOSE_PAGE_SHARED_CLASS PdfSaveOptions : public Aspose::Page::SaveOptions, public Aspose::Page::IMultiPageSaveOptions
+class ASPOSE_PAGE_SHARED_CLASS PdfSaveOptions : public Aspose::Page::SaveOptions, public Aspose::Page::IMultiPageSaveOptions, public Aspose::Page::XPS::Presentation::IXpsTextConversionOptions, public Aspose::Page::XPS::Presentation::IPipelineOptions, public Aspose::Page::XPS::Presentation::IEventBasedModificationOptions
 {
     typedef PdfSaveOptions ThisType;
     typedef Aspose::Page::SaveOptions BaseType;
     typedef Aspose::Page::IMultiPageSaveOptions BaseType1;
+    typedef Aspose::Page::XPS::Presentation::IXpsTextConversionOptions BaseType2;
+    typedef Aspose::Page::XPS::Presentation::IPipelineOptions BaseType3;
+    typedef Aspose::Page::XPS::Presentation::IEventBasedModificationOptions BaseType4;
     
-    typedef ::System::BaseTypesInfo<BaseType, BaseType1> ThisTypeBaseTypesInfo;
+    typedef ::System::BaseTypesInfo<BaseType, BaseType1, BaseType2, BaseType3, BaseType4> ThisTypeBaseTypesInfo;
     ASPOSE_PAGE_SHARED_RTTI_INFO_DECL();
     
     friend class Aspose::Page::XPS::Presentation::Pdf::PdfDevice;
     friend class Aspose::Page::XPS::Presentation::Pdf::PdfRenderer;
+    friend class Aspose::Page::XPS::XpsDocument;
     
 public:
 
@@ -215,6 +241,7 @@ public:
     /// 0 - the outline tree will not be converted,
     /// 1 - only the first level outline items will be converted,
     /// ans so on.
+    /// Default is 10.
     /// </summary>
     ASPOSE_PAGE_SHARED_API int32_t get_OutlineTreeHeight() const;
     /// <summary>
@@ -222,10 +249,11 @@ public:
     /// 0 - the outline tree will not be converted,
     /// 1 - only the first level outline items will be converted,
     /// ans so on.
+    /// Default is 10.
     /// </summary>
     ASPOSE_PAGE_SHARED_API void set_OutlineTreeHeight(int32_t value);
     /// <summary>
-    /// Specifies up to what level the document outline should be expanded when the PDF file is viewed.
+    /// Specifies up to what level the document outline should be expanded when the PDF file is opened in a viewer.
     /// 1 - only the first level outline items are shown,
     /// 2 - only the first and second level outline items are shown,
     /// and so on.
@@ -233,7 +261,7 @@ public:
     /// </summary>
     ASPOSE_PAGE_SHARED_API int32_t get_OutlineTreeExpansionLevel() const;
     /// <summary>
-    /// Specifies up to what level the document outline should be expanded when the PDF file is viewed.
+    /// Specifies up to what level the document outline should be expanded when the PDF file is opened in a viewer.
     /// 1 - only the first level outline items are shown,
     /// 2 - only the first and second level outline items are shown,
     /// and so on.
@@ -290,6 +318,42 @@ public:
     /// Sets a encryption details. If not set, then no encryption will be performed.
     /// </summary>
     ASPOSE_PAGE_SHARED_API void set_EncryptionDetails(System::SharedPtr<PdfEncryptionDetails> value);
+    /// <summary>
+    /// In XPS, some text elements may contain references to alternate glyph forms
+    /// that do not correspond to any character code in the font.
+    /// If this flag is set to true, the text from such XPS elements is converted to graphic shapes.
+    /// Then the text itself appears transparent on top. This leaves the text of such elements selectable.
+    /// But the side effect is that the output file may be much larger than the original.
+    /// If this flag is set to false, the characters that should be displayed as alternate forms
+    /// are replaced with some other characters that become mapped to the alternate glyph forms.
+    /// Therefore the text, although still selectable, will be modified and likely become unreadable.
+    /// Default is false.
+    /// </summary>
+    ASPOSE_PAGE_SHARED_API bool get_PreserveText() override;
+    /// <summary>
+    /// In XPS, some text elements may contain references to alternate glyph forms
+    /// that do not correspond to any character code in the font.
+    /// If this flag is set to true, the text from such XPS elements is converted to graphic shapes.
+    /// Then the text itself appears transparent on top. This leaves the text of such elements selectable.
+    /// But the side effect is that the output file may be much larger than the original.
+    /// If this flag is set to false, the characters that should be displayed as alternate forms
+    /// are replaced with some other characters that become mapped to the alternate glyph forms.
+    /// Therefore the text, although still selectable, will be modified and likely become unreadable.
+    /// Default is false.
+    /// </summary>
+    ASPOSE_PAGE_SHARED_API void set_PreserveText(bool value) override;
+    /// <summary>
+    /// Specifies the size of a portion of pages to pass from node to node.
+    /// </summary>
+    ASPOSE_PAGE_SHARED_API int32_t get_BatchSize() override;
+    /// <summary>
+    /// Specifies the size of a portion of pages to pass from node to node.
+    /// </summary>
+    ASPOSE_PAGE_SHARED_API void set_BatchSize(int32_t value) override;
+    /// <summary>
+    /// The collection of event handlers that performs modifications to an XPS page just before it is saved.
+    /// </summary>
+    ASPOSE_PAGE_SHARED_API System::SharedPtr<System::Collections::Generic::IList<System::SharedPtr<Aspose::Page::XPS::Features::EventBasedModifications::BeforePageSavingEventHandler>>> get_BeforePageSavingEventHandlers() override;
     
     /// <summary>
     /// Creates new instance of options.
@@ -336,10 +400,7 @@ protected:
     void set_DigitalSignatureDetails(System::SharedPtr<PdfDigitalSignatureDetails> value);
     
     System::SharedPtr<Aspose::Rendering::Pdf::PdfOptionsCore> ToCore();
-    #ifdef ASPOSE_GET_SHARED_MEMBERS
-    ASPOSE_PAGE_SHARED_API System::Object::shared_members_type GetSharedMembers() const override;
-    #endif
-    
+    System::SharedPtr<Aspose::Page::XPS::Presentation::Aps::ApsSaveOptions> GetApsSaveOptions();
     
 private:
 
@@ -349,8 +410,11 @@ private:
     PdfImageCompression _imageCompression;
     PdfCompliance _compliance;
     System::SharedPtr<PdfEncryptionDetails> _encryptionDetails;
+    bool _preserveText;
     System::SharedPtr<PdfDigitalSignatureDetails> _digitalSignatureDetails;
+    System::SharedPtr<System::Collections::Generic::IList<System::SharedPtr<Aspose::Page::XPS::Features::EventBasedModifications::BeforePageSavingEventHandler>>> _beforePageSavingEventHandlers;
     System::ArrayPtr<int32_t> pr_PageNumbers;
+    int32_t pr_BatchSize;
     
 };
 
@@ -462,10 +526,6 @@ public:
 protected:
 
     System::SharedPtr<Aspose::Rendering::Pdf::PdfEncryptionDetailsCore> ToCore();
-    #ifdef ASPOSE_GET_SHARED_MEMBERS
-    ASPOSE_PAGE_SHARED_API System::Object::shared_members_type GetSharedMembers() const override;
-    #endif
-    
     
 private:
 
@@ -572,13 +632,6 @@ public:
     PdfDigitalSignatureDetails(System::SharedPtr<System::Security::Cryptography::X509Certificates::X509Certificate2> certificate, System::String reason, System::String location, System::DateTime signatureDate, PdfDigitalSignatureHashAlgorithm hashAlgorithm);
     
     System::SharedPtr<Aspose::Rendering::Pdf::PdfDigitalSignatureDetailsCore> ToCore();
-    
-protected:
-
-    #ifdef ASPOSE_GET_SHARED_MEMBERS
-    System::Object::shared_members_type GetSharedMembers() const override;
-    #endif
-    
     
 private:
 

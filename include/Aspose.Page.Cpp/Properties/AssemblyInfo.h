@@ -1,11 +1,14 @@
 ﻿#pragma once
-//Copyright (c) 2001-2020 Aspose Pty Ltd. All Rights Reserved.
+//Copyright (c) 2001-2024 Aspose Pty Ltd. All Rights Reserved.
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 
 // C# preprocessor directive: #if INTERNAL
 
+// C# INACTIVE CODE:
+// [assembly: AssemblyProduct("Aspose.Page")]
+// [assembly: AssemblyTitle("Aspose.Page")]
 
 // C# preprocessor directive: #else
 
@@ -17,7 +20,24 @@
 
 // C# INACTIVE CODE:
 // [assembly: AssemblyProduct("Aspose.Page")]
+
+// C# preprocessor directive: #if ASPOSE_PDF_PYTHON
+
+// C# INACTIVE CODE:
+// [assembly: AssemblyTitle("Aspose.Page for Python via .NET")]
+
+// C# preprocessor directive: #elif ASPOSE_PDF_DRAWING
+
+// C# INACTIVE CODE:
+// [assembly: AssemblyTitle("Aspose.Page via Drawing")]
+
+// C# preprocessor directive: #else
+
+// C# INACTIVE CODE:
 // [assembly: AssemblyTitle("Aspose.Page")]
+
+// C# preprocessor directive: #endif
+
 
 // C# preprocessor directive: #else
 
@@ -30,16 +50,12 @@
 
 // C# preprocessor directive: #else
 
-// C# INACTIVE CODE:
-// [assembly: AssemblyProduct("Aspose.Page")]
-// [assembly: AssemblyTitle("Aspose.Page")]
 
 // C# preprocessor directive: #endif
 
 
 // C# preprocessor directive: #endif
 
-//[assembly: Obfuscation(Feature = "encrypt symbol names with password babushka_varila_kashu", Exclude = false)]
 //[assembly: Obfuscation(Feature = "treat warning EF-4008 as error")]
 //[assembly: Obfuscation(Feature = "Apply to type  Aspose.Rendering.Pdf* when internal and enum: renaming", Exclude = true, ApplyToMembers = true)]
 
@@ -62,14 +78,39 @@
 // C# preprocessor directive: #endif
 
 
-// C# preprocessor directive: #if NETSTANDARD2_0 || NETSTANDARD2_1 || NET5_0
+// C# preprocessor directive: #if NETSTANDARD2_0 || NETSTANDARD2_1 || NET5_0 || NET6_0 || NET7_0
+
+
+// C# preprocessor directive: #if ASPOSE_PDF_DRAWING
+
+// C# INACTIVE CODE:
+// [assembly: Obfuscation(Feature = "embed Aspose.Drawing.dll", Exclude = false)]
+
+// C# preprocessor directive: #endif
 
 // C# INACTIVE CODE:
 // [assembly: Obfuscation(Feature = "merge with [internalization=full] Aspose.Foundation.dll", Exclude = false)]
 // [assembly: Obfuscation(Feature = "merge with [internalization=full] Aspose.Font.dll", Exclude = false)]
 // [assembly: Obfuscation(Feature = "merge with [internalization=full] Aspose.Icc.dll", Exclude = false)]
 // [assembly: Obfuscation(Feature = @"merge with Aspose.Page.Public.dll", Exclude = false)]
+
+// C# preprocessor directive: #if PYTHON
+
+// C# INACTIVE CODE:
+// [assembly: Obfuscation(Feature = @"ilmerge custom parameters: /internalize:$(SolutionDir)..\..\build\config\internalize_exclude_python.txt /log:$(SolutionDir)..\..\build-out\bin\merge_obfuscate_core.log", Exclude = false)]
+
+// C# preprocessor directive: #elif ASPOSE_PDF_DRAWING
+
+// C# INACTIVE CODE:
+// [assembly: Obfuscation(Feature = @"ilmerge custom parameters: /internalize:$(SolutionDir)..\..\build\config\internalize_exclude_drawing.txt /log:$(SolutionDir)..\..\build-out\bin\merge_obfuscate_core.log", Exclude = false)]
+
+// C# preprocessor directive: #else
+
+// C# INACTIVE CODE:
 // [assembly: Obfuscation(Feature = @"ilmerge custom parameters: /internalize:$(SolutionDir)..\..\build\config\internalize_exclude.txt /log:$(SolutionDir)..\..\build-out\bin\merge_obfuscate_core.log", Exclude = false)]
+
+// C# preprocessor directive: #endif
+
 
 // C# preprocessor directive: #else
 
@@ -88,7 +129,7 @@
 // C# preprocessor directive: #endif
 
 
-// C# preprocessor directive: #if UNIT_TEST && !NETSTANDARD2_0 && !NETSTANDARD2_1 && !NET5_0
+// C# preprocessor directive: #if UNIT_TEST && !NETSTANDARD2_0 && !NETSTANDARD2_1 && !NET5_0 && !NET6_0 && !NET7_0
 
 // C# INACTIVE CODE:
 // [assembly: Obfuscation(Feature = "merge with [internalization=none] Aspose.EPS.Tests.dll", Exclude = false)]

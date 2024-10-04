@@ -1,4 +1,5 @@
 ﻿#pragma once
+// Copyright (c) 2001-2024 Aspose Pty Ltd. All Rights Reserved.
 
 #include <system/shared_ptr.h>
 
@@ -13,11 +14,15 @@ namespace XPS
 {
 namespace XpsModel
 {
+enum class RegistrationType;
 class XpsContentElement;
 class XpsContext;
 class XpsElement;
+class XpsGlyphs;
 class XpsHyperlinkTarget;
 class XpsOutlineEntry;
+template <typename> class XpsProperty;
+class XpsPropertyValueManager;
 } // namespace XpsModel
 } // namespace XPS
 } // namespace Page
@@ -50,7 +55,10 @@ class ASPOSE_PAGE_SHARED_CLASS XpsHyperlinkElement : public Aspose::Page::XPS::X
     ASPOSE_PAGE_SHARED_RTTI_INFO_DECL();
     
     friend class Aspose::Page::XPS::XpsModel::XpsContentElement;
+    friend class Aspose::Page::XPS::XpsModel::XpsPropertyValueManager;
+    friend class Aspose::Page::XPS::XpsModel::XpsGlyphs;
     friend class Aspose::Page::XPS::XpsModel::XpsOutlineEntry;
+    template<typename FT0> friend class Aspose::Page::XPS::XpsModel::XpsProperty;
     
 public:
 
@@ -65,19 +73,16 @@ public:
     
 protected:
 
-    XpsHyperlinkElement(System::SharedPtr<XpsContext> context);
+    ASPOSE_PAGE_SHARED_API Aspose::Page::XPS::XpsModel::RegistrationType get_RegistrationType() override;
+    
+    XpsHyperlinkElement(System::SharedPtr<XpsContext> context, XpsElementType elementType = System::Default<XpsElementType>());
     XpsHyperlinkElement(System::SharedPtr<XpsContext> context, System::SharedPtr<XpsHyperlinkTarget> outlineTarget);
     
     ASPOSE_PAGE_SHARED_API void Initialize(System::SharedPtr<System::Xml::XmlElement> element) override;
-    ASPOSE_PAGE_SHARED_API void ForceRegisterForPreprocessing(bool add = true) override;
+    ASPOSE_PAGE_SHARED_API void NotifyDescendants(bool isAdd = true) override;
     void RegisterLinks(System::SharedPtr<XpsHyperlinkTarget> linkTarget);
     
     virtual ASPOSE_PAGE_SHARED_API ~XpsHyperlinkElement();
-    
-    #ifdef ASPOSE_GET_SHARED_MEMBERS
-    ASPOSE_PAGE_SHARED_API System::Object::shared_members_type GetSharedMembers() const override;
-    #endif
-    
     
 private:
 

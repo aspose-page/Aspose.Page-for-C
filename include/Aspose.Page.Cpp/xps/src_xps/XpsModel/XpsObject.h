@@ -1,4 +1,5 @@
 ﻿#pragma once
+// Copyright (c) 2001-2024 Aspose Pty Ltd. All Rights Reserved.
 
 #include <system/string.h>
 #include <system/enum_helpers.h>
@@ -24,6 +25,7 @@ class XpsCanvas;
 class XpsContentElement;
 class XpsContext;
 class XpsElement;
+class XpsEvent;
 class XpsGlyphs;
 class XpsGradientStop;
 class XpsMatrix;
@@ -118,19 +120,26 @@ public:
 protected:
 
     System::WeakPtr<XpsContext> _context;
-    static int32_t _cnt;
     
     int32_t get_Id() const;
+    /// <summary>
+    /// Raw value of a property, i.e. the string attribute value
+    /// </summary>
+    System::String get_RawValue() const;
+    /// <summary>
+    /// Raw value of a property, i.e. the string attribute value
+    /// </summary>
+    void set_RawValue(System::String value);
+    virtual ASPOSE_PAGE_SHARED_API Aspose::Page::XPS::XpsModel::RegistrationType get_RegistrationType();
     void set_xKey(System::String value);
     System::SharedPtr<System::Collections::Generic::List<System::SharedPtr<XpsObject>>> get_Owners();
     
     XpsObject(System::SharedPtr<XpsContext> context);
     
     virtual void Initialize(System::SharedPtr<System::Xml::XmlElement> element) = 0;
-    virtual ASPOSE_PAGE_SHARED_API void ForceRegisterForPreprocessing(bool add = true);
-    virtual ASPOSE_PAGE_SHARED_API void RegisterForPreprocessing(System::SharedPtr<XpsElement> element, RegistrationType regType, bool add = true);
-    virtual ASPOSE_PAGE_SHARED_API void ForceRegisterForPreprocessingPV(bool add = true);
-    virtual ASPOSE_PAGE_SHARED_API void RegisterForPreprocessingPV(System::SharedPtr<XpsElement> element, RegistrationType regType, bool add = true);
+    virtual ASPOSE_PAGE_SHARED_API void Load();
+    virtual ASPOSE_PAGE_SHARED_API void NotifyDescendants(bool isAdd = true);
+    virtual ASPOSE_PAGE_SHARED_API void NotifyRoot(System::SharedPtr<XpsEvent> evt);
     virtual System::SharedPtr<XpsObject> Clone(bool deep, System::SharedPtr<XpsContext> context) = 0;
     virtual ASPOSE_PAGE_SHARED_API void CopyPropertyValues(System::SharedPtr<XpsObject> obj);
     virtual ASPOSE_PAGE_SHARED_API void ClonePropertyValues(System::SharedPtr<XpsObject> obj);
@@ -138,15 +147,12 @@ protected:
     virtual void Accept(System::SharedPtr<XpsDocumentVisitor> visitor) = 0;
     virtual ASPOSE_PAGE_SHARED_API void AcceptProperties(System::SharedPtr<XpsDocumentVisitor> visitor);
     virtual ASPOSE_PAGE_SHARED_API void Dispose();
-    #ifdef ASPOSE_GET_SHARED_MEMBERS
-    ASPOSE_PAGE_SHARED_API System::Object::shared_members_type GetSharedMembers() const override;
-    #endif
-    
     
 private:
 
     bool _isDisposed;
     System::DynamicWeakPtr<System::Collections::Generic::List<System::SharedPtr<XpsObject>>, System::SmartPtrMode::Shared, 0> _owners;
+    System::String _rawValue;
     int32_t _id;
     System::String _xKey;
     

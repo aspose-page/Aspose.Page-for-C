@@ -1,9 +1,5 @@
 ﻿#pragma once
-// Copyright (c) 2001-2022 Aspose Pty Ltd. All Rights Reserved.
-
-#include <system/string.h>
-#include <system/enum_helpers.h>
-#include <cstdint>
+// Copyright (c) 2001-2024 Aspose Pty Ltd. All Rights Reserved.
 
 #include "Aspose.Page.Cpp/xps/src_xps/XpsModel/XpsContentElement.h"
 #include "Aspose.Page.Cpp/aspose_page_api_defs.h"
@@ -37,6 +33,7 @@ class GlyphsToPdfTests;
 class XpsDocumentVisitor;
 namespace XpsModel
 {
+enum class RegistrationType;
 template <typename> class XpsArray;
 class XpsBrush;
 class XpsContentElement;
@@ -47,6 +44,7 @@ class XpsGlyphMapping;
 class XpsGlyphsClusterMap;
 class XpsObject;
 template <typename> class XpsProperty;
+class XpsPropertyValueManager;
 enum class XpsStyleSimulations;
 class XpsTreeLoader;
 } // namespace XpsModel
@@ -66,6 +64,10 @@ namespace Drawing
 {
 enum class FontStyle;
 } // namespace Drawing
+namespace Text
+{
+class StringBuilder;
+} // namespace Text
 namespace Xml
 {
 class XmlElement;
@@ -100,6 +102,7 @@ class ASPOSE_PAGE_SHARED_CLASS XpsGlyphs final : public Aspose::Page::XPS::XpsMo
     friend class Aspose::Page::XPS::Presentation::Xps::XpsSerializer;
     friend class Aspose::Page::XPS::Presentation::Xps::XpsSerializationContext;
     template<typename FT0> friend class Aspose::Page::XPS::XpsModel::XpsArray;
+    friend class Aspose::Page::XPS::XpsModel::XpsPropertyValueManager;
     friend class Aspose::Page::XPS::XpsModel::XpsTreeLoader;
     friend class Aspose::Page::XPS::XpsModel::XpsElement;
     template<typename FT0> friend class Aspose::Page::XPS::XpsModel::XpsProperty;
@@ -206,12 +209,14 @@ public:
     
 protected:
 
+    ASPOSE_PAGE_SHARED_API Aspose::Page::XPS::XpsModel::RegistrationType get_RegistrationType() override;
     /// <summary>
     /// Returns font resource for the TrueType font used to typeset elements text.
     /// </summary>
     ASPOSE_PAGE_SHARED_API void set_Font(System::SharedPtr<XpsFont> value);
     System::String get_FontUri() const;
     void set_FontUri(System::String value);
+    System::String get_RawIndices() const;
     
     XpsGlyphs(System::SharedPtr<XpsContext> context, System::String fontFamily, float fontRenderingEmSize, System::Drawing::FontStyle fontStyle, float originX, float originY, System::String unicodeString);
     
@@ -221,9 +226,9 @@ protected:
     
     MEMBER_FUNCTION_MAKE_OBJECT_DECLARATION(XpsGlyphs, CODEPORTING_ARGS(System::SharedPtr<XpsContext> context, System::SharedPtr<XpsFont> font, float fontRenderingEmSize, float originX, float originY, System::String unicodeString));
     
-    XpsGlyphs(System::SharedPtr<System::Xml::XmlElement> element, System::SharedPtr<XpsElement> parent);
+    XpsGlyphs(System::SharedPtr<System::Xml::XmlElement> element, System::SharedPtr<XpsElement> parent, int32_t elementId = -1);
     
-    MEMBER_FUNCTION_MAKE_OBJECT_DECLARATION(XpsGlyphs, CODEPORTING_ARGS(System::SharedPtr<System::Xml::XmlElement> element, System::SharedPtr<XpsElement> parent));
+    MEMBER_FUNCTION_MAKE_OBJECT_DECLARATION(XpsGlyphs, CODEPORTING_ARGS(System::SharedPtr<System::Xml::XmlElement> element, System::SharedPtr<XpsElement> parent, int32_t elementId = -1));
     
     XpsGlyphs(System::SharedPtr<XpsContext> context);
     
@@ -231,8 +236,7 @@ protected:
     ASPOSE_PAGE_SHARED_API void Initialize(System::SharedPtr<System::Xml::XmlElement> element) override;
     ASPOSE_PAGE_SHARED_API void Accept(System::SharedPtr<XpsDocumentVisitor> visitor) override;
     ASPOSE_PAGE_SHARED_API void AcceptProperties(System::SharedPtr<XpsDocumentVisitor> visitor) override;
-    ASPOSE_PAGE_SHARED_API void ForcePropertyValueReferencesUpdate(System::SharedPtr<XpsElement> parent, bool add = true) override;
-    ASPOSE_PAGE_SHARED_API void ForceRegisterForPreprocessing(bool add = true) override;
+    ASPOSE_PAGE_SHARED_API void NotifyDescendants(bool isAdd = true) override;
     void InitIndices(System::String indices);
     System::String IndicesToString();
     ASPOSE_PAGE_SHARED_API System::SharedPtr<XpsElement> Clone(bool deep, System::SharedPtr<XpsContext> context, System::SharedPtr<XpsElement> parent, int32_t index) override;
@@ -242,11 +246,6 @@ protected:
     ASPOSE_PAGE_SHARED_API void Dispose() override;
     
     virtual ASPOSE_PAGE_SHARED_API ~XpsGlyphs();
-    
-    #ifdef ASPOSE_GET_SHARED_MEMBERS
-    ASPOSE_PAGE_SHARED_API System::Object::shared_members_type GetSharedMembers() const override;
-    #endif
-    
     
 private:
 
@@ -259,6 +258,7 @@ private:
     float _originY;
     bool _isSideways;
     System::SharedPtr<System::Collections::Generic::SortedList<int32_t, System::SharedPtr<XpsGlyphMapping>>> _indices;
+    System::String _rawIndices;
     System::String _unicodeString;
     XpsStyleSimulations _styleSymulations;
     
@@ -304,11 +304,8 @@ public:
     
 protected:
 
+    System::SharedPtr<System::Text::StringBuilder> ToSb();
     static System::SharedPtr<XpsGlyphMapping> Create(System::String indices);
-    #ifdef ASPOSE_GET_SHARED_MEMBERS
-    ASPOSE_PAGE_SHARED_API System::Object::shared_members_type GetSharedMembers() const override;
-    #endif
-    
     
 private:
 
@@ -318,6 +315,7 @@ private:
     float _vOffset;
     
     System::String ToString_NonConst();
+    static System::String FloatToStr2Decimals(float val);
     
 };
 

@@ -1,7 +1,5 @@
 ﻿#pragma once
-// Copyright (c) 2001-2022 Aspose Pty Ltd. All Rights Reserved.
-
-#include <system/enum_helpers.h>
+// Copyright (c) 2001-2024 Aspose Pty Ltd. All Rights Reserved.
 
 #include "Aspose.Page.Cpp/xps/src_xps/XpsModel/XpsBrushes/XpsTilingBrush.h"
 #include "Aspose.Page.Cpp/aspose_page_api_defs.h"
@@ -15,12 +13,12 @@ namespace XPS
 class XpsDocumentVisitor;
 namespace XpsModel
 {
-enum class RegistrationType;
 template <typename> class XpsArray;
 class XpsBrush;
 class XpsContentElement;
 class XpsContext;
 class XpsElement;
+class XpsEvent;
 class XpsObject;
 template <typename> class XpsProperty;
 class XpsPropertyValueManager;
@@ -102,19 +100,14 @@ protected:
     ASPOSE_PAGE_SHARED_API void Accept(System::SharedPtr<XpsDocumentVisitor> visitor) override;
     ASPOSE_PAGE_SHARED_API void AcceptProperties(System::SharedPtr<XpsDocumentVisitor> visitor) override;
     ASPOSE_PAGE_SHARED_API void Validate() override;
-    ASPOSE_PAGE_SHARED_API void ForceRegisterForPreprocessingPV(bool add = true) override;
-    ASPOSE_PAGE_SHARED_API void RegisterForPreprocessingPV(System::SharedPtr<XpsElement> element, RegistrationType regType, bool add = true) override;
+    ASPOSE_PAGE_SHARED_API void NotifyDescendants(bool isAdd = true) override;
+    ASPOSE_PAGE_SHARED_API void NotifyRoot(System::SharedPtr<XpsEvent> evt) override;
     ASPOSE_PAGE_SHARED_API System::SharedPtr<XpsObject> Clone(bool deep, System::SharedPtr<XpsContext> context) override;
     ASPOSE_PAGE_SHARED_API void CopyPropertyValues(System::SharedPtr<XpsObject> obj) override;
     ASPOSE_PAGE_SHARED_API void ClonePropertyValues(System::SharedPtr<XpsObject> obj) override;
     ASPOSE_PAGE_SHARED_API void Dispose() override;
     
     virtual ASPOSE_PAGE_SHARED_API ~XpsVisualBrush();
-    
-    #ifdef ASPOSE_GET_SHARED_MEMBERS
-    ASPOSE_PAGE_SHARED_API System::Object::shared_members_type GetSharedMembers() const override;
-    #endif
-    
     
 private:
 

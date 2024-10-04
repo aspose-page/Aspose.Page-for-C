@@ -1,5 +1,17 @@
 ﻿#pragma once
-// Copyright (c) 2001-2022 Aspose Pty Ltd. All Rights Reserved.
+// Copyright (c) 2001-2024 Aspose Pty Ltd. All Rights Reserved.
+
+// C# preprocessor directive: #if ASPOSE_PDF_DRAWING
+
+// C# INACTIVE CODE:
+// using Aspose.Page.Drawing;
+// using FontStyle = Aspose.Page.Drawing.FontStyle;
+
+// C# preprocessor directive: #else
+
+
+// C# preprocessor directive: #endif
+
 
 #include <system/idisposable.h>
 #include <system/constraints.h>
@@ -21,6 +33,13 @@ class OpcPackage;
 namespace Page
 {
 class Device;
+namespace EPS
+{
+namespace Device
+{
+class PsSaveOptions;
+} // namespace Device
+} // namespace EPS
 namespace LicenseManagement
 {
 class VentureLicense;
@@ -28,9 +47,22 @@ class VentureLicense;
 class SaveOptions;
 namespace XPS
 {
+class DocumentUtils;
 class LoadOptions;
 namespace Presentation
 {
+namespace Aps
+{
+class ApsConverter;
+} // namespace Aps
+namespace Image
+{
+class ImageSaveOptions;
+} // namespace Image
+namespace Pdf
+{
+class PdfSaveOptions;
+} // namespace Pdf
 namespace Xps
 {
 class XpsSerializer;
@@ -41,7 +73,11 @@ class XpsPresenter;
 namespace Tests
 {
 class DocumentOperationsTests;
+class GlyphsToApsTests;
 class GlyphsToImageTests;
+class MeteredTests;
+class MeteredToImagePluginsTests;
+class MeteredToPdfPluginsTests;
 class PageOperationsTests;
 class SavingAsImageTests;
 class XpsBaseTest;
@@ -58,6 +94,7 @@ namespace XpsMetadata
 class DocumentPrintTicket;
 class JobPrintTicket;
 class PagePrintTicket;
+class PrintTicket;
 } // namespace XpsMetadata
 namespace XpsModel
 {
@@ -92,6 +129,14 @@ class FixedDocumentSequence;
 } // namespace XpsPackageParts
 } // namespace XPS
 } // namespace Page
+namespace Pdf
+{
+class XpsConverter;
+} // namespace Pdf
+namespace TeX
+{
+class PageConversions;
+} // namespace TeX
 } // namespace Aspose
 namespace System
 {
@@ -123,6 +168,13 @@ namespace Page {
 
 namespace XPS {
 
+enum class DocumentOrigin
+{
+    XPS,
+    APS,
+    EMPTY
+};
+
 /// <summary>
 /// The <b>Aspose.Page.XPS</b> is a root namespace for all classes that deal with XPS document.
 /// </summary>
@@ -151,6 +203,7 @@ class ASPOSE_PAGE_SHARED_CLASS XpsDocument final : public Aspose::Page::Document
     
     friend class Aspose::Page::XPS::Presentation::XpsPresenter;
     friend class Aspose::Page::XPS::Presentation::XpsBasePresenter;
+    friend class Aspose::Page::XPS::Presentation::Aps::ApsConverter;
     friend class Aspose::Page::XPS::Presentation::Xps::XpsSerializer;
     friend class Aspose::Page::XPS::Util::XpsLicenseUtils;
     friend class Aspose::Page::XPS::Tests::DocumentOperationsTests;
@@ -161,9 +214,19 @@ class ASPOSE_PAGE_SHARED_CLASS XpsDocument final : public Aspose::Page::Document
     friend class Aspose::Page::XPS::Tests::XpsDocumentTests;
     friend class Aspose::Page::XPS::Tests::SavingAsImageTests;
     friend class Aspose::Page::XPS::Tests::GlyphsToImageTests;
+    friend class Aspose::Page::XPS::Tests::GlyphsToApsTests;
+    friend class Aspose::Page::XPS::Tests::MeteredTests;
+    friend class Aspose::Page::XPS::Tests::MeteredToPdfPluginsTests;
+    friend class Aspose::Page::XPS::Tests::MeteredToImagePluginsTests;
+    friend class Aspose::Pdf::XpsConverter;
+    friend class Aspose::TeX::PageConversions;
     
 public:
 
+    /// <summary>
+    /// Gets the object that provides utilities beyond the formal XPS manipulation API.
+    /// </summary>
+    ASPOSE_PAGE_SHARED_API System::SharedPtr<DocumentUtils> get_Utils() const;
     /// <summary>
     /// Gets the active document number.
     /// </summary>
@@ -245,18 +308,62 @@ public:
     /// <param name="stream">Stream XPS document to be saved into.</param>
     ASPOSE_PAGE_SHARED_API void Save(System::SharedPtr<System::IO::Stream> stream);
     /// <summary>
-    /// Saves the document using the <see cref="Device"></see> instance.
+    /// Saves the document in PDF format.
     /// </summary>
-    /// <param name="device">The <see cref="Device"></see> instance.</param>
-    /// <param name="options">Document saving options.</param>
-    ASPOSE_PAGE_SHARED_API void Save(System::SharedPtr<Device> device, System::SharedPtr<SaveOptions> options) override;
+    /// <param name="outPdfFilePath">An output PDF file path.</param>
+    /// <param name="options">Options for saving the document in PDF format.</param>
+    ASPOSE_PAGE_SHARED_API void SaveAsPdf(System::String outPdfFilePath, System::SharedPtr<Presentation::Pdf::PdfSaveOptions> options);
     /// <summary>
-    /// Merging XPS documents using the <see cref="Device"></see> instance.
+    /// Saves the document in PDF format.
+    /// </summary>
+    /// <param name="stream">The stream to write the output PDF file to.</param>
+    /// <param name="options">Options for saving the document in PDF format.</param>
+    ASPOSE_PAGE_SHARED_API void SaveAsPdf(System::SharedPtr<System::IO::Stream> stream, System::SharedPtr<Presentation::Pdf::PdfSaveOptions> options);
+    /// <summary>
+    /// Saves the document in a bitmap image format.
+    /// </summary>
+    /// <param name="options">Options for saving the document in a bitmap image format.</param>
+    /// <returns>The resulting images byte arrays. The first dimension is for inner documents
+    /// and the second one is for pages within inner documents.</returns>
+    ASPOSE_PAGE_SHARED_API System::ArrayPtr<System::ArrayPtr<System::ArrayPtr<uint8_t>>> SaveAsImage(System::SharedPtr<Presentation::Image::ImageSaveOptions> options);
+    /// <summary>
+    /// Saves the document in PS format.
+    /// </summary>
+    /// <param name="outPsFilePath">An output PS file path.</param>
+    /// <param name="options">Options for saving the document in PS format.</param>
+    ASPOSE_PAGE_SHARED_API void SaveAsPs(System::String outPsFilePath, System::SharedPtr<EPS::Device::PsSaveOptions> options);
+    /// <summary>
+    /// Saves the document in PS format.
+    /// </summary>
+    /// <param name="stream">The stream to write the output PS file to.</param>
+    /// <param name="options">Options for saving the document in PS format.</param>
+    ASPOSE_PAGE_SHARED_API void SaveAsPs(System::SharedPtr<System::IO::Stream> stream, System::SharedPtr<EPS::Device::PsSaveOptions> options);
+    /// <summary>
+    /// Merging XPS documents to PDF using the <see cref="Device"></see> instance.
     /// </summary>
     /// <param name="filesForMerge"> XPS files for merging with this document to an output device. </param>
-    /// <param name="device">The <see cref="Device"></see> instance.</param>
+    /// <param name="outPdfFilePath"> An output PDF file path. </param>
     /// <param name="options">Document saving options.</param>
-    ASPOSE_PAGE_SHARED_API void Merge(System::ArrayPtr<System::String> filesForMerge, System::SharedPtr<Device> device, System::SharedPtr<SaveOptions> options);
+    ASPOSE_PAGE_SHARED_API void MergeToPdf(System::ArrayPtr<System::String> filesForMerge, System::String outPdfFilePath, System::SharedPtr<Presentation::Pdf::PdfSaveOptions> options);
+    /// <summary>
+    /// Merging XPS documents to PDF using the <see cref="Device"></see> instance.
+    /// </summary>
+    /// <param name="filesForMerge"> XPS files for merging with this document to an output device. </param>
+    /// <param name="pdfStream"> An output PDF stream. </param>
+    /// <param name="options">Document saving options.</param>
+    ASPOSE_PAGE_SHARED_API void MergeToPdf(System::ArrayPtr<System::String> filesForMerge, System::SharedPtr<System::IO::Stream> pdfStream, System::SharedPtr<Presentation::Pdf::PdfSaveOptions> options);
+    /// <summary>
+    /// Merging several XPS files to one XPS document.
+    /// </summary>
+    /// <param name="filesForMerge"> XPS files for merging with this document. </param>
+    /// <param name="outXpsFilePath"> An output Xps file path. </param>
+    ASPOSE_PAGE_SHARED_API void Merge(System::ArrayPtr<System::String> filesForMerge, System::String outXpsFilePath);
+    /// <summary>
+    /// Merging several XPS files to one XPS document.
+    /// </summary>
+    /// <param name="filesForMerge"> XPS files for merging with this document. </param>
+    /// <param name="outStream">The output stream where to save merged XPS documents.</param>
+    ASPOSE_PAGE_SHARED_API void Merge(System::ArrayPtr<System::String> filesForMerge, System::SharedPtr<System::IO::Stream> outStream);
     /// <summary>
     /// Returns the print ticket of the document indexed by <paramref name="documentIndex"></paramref>.
     /// </summary>
@@ -286,7 +393,7 @@ public:
     /// <param name="printTicket">The print ticket to link.</param>
     ASPOSE_PAGE_SHARED_API void SetPagePrintTicket(int32_t documentIndex, int32_t pageIndex, System::SharedPtr<XpsMetadata::PagePrintTicket> printTicket);
     /// <summary>
-    /// Adds a content element (Canvas, Path or Glyphs)
+    /// Adds a content element (Canvas, Path, or Glyphs).
     /// </summary>
     /// <typeparam name="T">The type of the element.</typeparam>
     /// <param name="element">Element to be added.</param>
@@ -302,8 +409,7 @@ public:
     }
     
     /// <summary>
-    /// Inserts an element (Canvas, Path or Glyphs) to the active page
-    /// at <paramref name="index"></paramref> position.
+    /// Inserts an element (Canvas, Path, or Glyphs) to the active page at <paramref name="index"></paramref> position.
     /// </summary>
     /// <typeparam name="T">The type of the element.</typeparam>
     /// <param name="index">Position at which an <paramref name="element"></paramref> should be inserted.</param>
@@ -547,6 +653,12 @@ public:
     /// <returns>New affine transformation matrix.</returns>
     ASPOSE_PAGE_SHARED_API System::SharedPtr<XpsModel::XpsMatrix> CreateMatrix(float m11, float m12, float m21, float m22, float m31, float m32);
     /// <summary>
+    /// Creates a new path geometry specified with abbreviated form.
+    /// </summary>
+    /// <param name="abbreviatedGeometry">Abbreviated form of path geometry.</param>
+    /// <returns>New path geometry.</returns>
+    ASPOSE_PAGE_SHARED_API System::SharedPtr<XpsModel::XpsPathGeometry> CreatePathGeometry(System::String abbreviatedGeometry);
+    /// <summary>
     /// Creates a new path geometry.
     /// </summary>
     /// <returns>New path geometry.</returns>.
@@ -558,20 +670,14 @@ public:
     /// <returns>New path geometry.</returns>
     ASPOSE_PAGE_SHARED_API System::SharedPtr<XpsModel::XpsPathGeometry> CreatePathGeometry(System::SharedPtr<System::Collections::Generic::List<System::SharedPtr<XpsModel::XpsPathFigure>>> pathFigures);
     /// <summary>
-    /// Creates a new path geometry specified with abbreviated form.
-    /// </summary>
-    /// <param name="abbreviatedGeometry">Abbreviated form of path geometry.</param>
-    /// <returns>New path geometry.</returns>
-    ASPOSE_PAGE_SHARED_API System::SharedPtr<XpsModel::XpsPathGeometry> CreatePathGeometry(System::String abbreviatedGeometry);
-    /// <summary>
     /// Creates a new path figure.
     /// </summary>
     /// <param name="startPoint">The starting point for the first segment of the path figure.</param>
     /// <param name="isClosed">Specifies whether the path is closed. If set to true, the stroke is drawn
-    /// "closed," that is, the last point in the last segment of the path figure is connected with
-    /// the point specified in the StartPoint attribute, otherwise the stroke is drawn "open," and
+    /// "closed", that is, the last point in the last segment of the path figure is connected with
+    /// the point specified in the StartPoint attribute, otherwise the stroke is drawn "open", and
     /// the last point is not connected to the start point. Only applicable if the path figure is
-    /// used in a {Path} element that specifies a stroke.</param>
+    /// used in a Path element that specifies a stroke.</param>
     /// <returns>New path figure.</returns>
     ASPOSE_PAGE_SHARED_API System::SharedPtr<XpsModel::XpsPathFigure> CreatePathFigure(System::Drawing::PointF startPoint, bool isClosed = false);
     /// <summary>
@@ -580,10 +686,10 @@ public:
     /// <param name="startPoint">The starting point for the first segment of the path figure.</param>
     /// <param name="segments">List of path segments.</param>
     /// <param name="isClosed">Specifies whether the path is closed. If set to true, the stroke is drawn
-    /// "closed," that is, the last point in the last segment of the path figure is connected with
-    /// the point specified in the StartPoint attribute, otherwise the stroke is drawn "open," and
+    /// "closed", that is, the last point in the last segment of the path figure is connected with
+    /// the point specified in the StartPoint attribute, otherwise the stroke is drawn "open", and
     /// the last point is not connected to the start point. Only applicable if the path figure is
-    /// used in a {Path} element that specifies a stroke.</param>
+    /// used in a Path element that specifies a stroke.</param>
     /// <returns>New path figure.</returns>
     ASPOSE_PAGE_SHARED_API System::SharedPtr<XpsModel::XpsPathFigure> CreatePathFigure(System::Drawing::PointF startPoint, System::SharedPtr<System::Collections::Generic::List<System::SharedPtr<XpsModel::XpsPathSegment>>> segments, bool isClosed = false);
     /// <summary>
@@ -813,27 +919,36 @@ public:
     
 protected:
 
-    System::SharedPtr<XpsPackageParts::FixedDocumentSequence> _fixedDocumentSequence;
-    
     System::SharedPtr<XpsPackageParts::FixedDocument> get_ActiveDocumentInternal();
     System::SharedPtr<XpsModel::XpsContext> get_Context() const;
     
     ASPOSE_PAGE_SHARED_API void SetVentureLicense(System::SharedPtr<Aspose::Page::LicenseManagement::VentureLicense> license) override;
     ASPOSE_PAGE_SHARED_API System::SharedPtr<Aspose::Page::LicenseManagement::VentureLicense> GetVentureLicense() override;
-    void PrepareSaving(System::SharedPtr<Device> device);
+    /// @deprecated Save is deprecated beginning from 24.3, please use SaveAsPdf or SaveAsImage instead. In 24.6 this method will be hidden False
+    /// <summary>
+    /// Saves the document using the <see cref="Device"></see> instance.
+    /// </summary>
+    /// <param name="device">The <see cref="Device"></see> instance.</param>
+    /// <param name="options">Document saving options.</param>
+    ASPOSE_PAGE_SHARED_API void Save(System::SharedPtr<Device> device, System::SharedPtr<SaveOptions> options) override;
+    void PrepareSaving(System::SharedPtr<Device> device, System::SharedPtr<SaveOptions> options);
     void SerializeDocumentSequence(System::SharedPtr<Aspose::OpcPackaging::OpcPackage> package);
+    void AddEvaluationWatermarkInternal();
+    System::SharedPtr<XpsMetadata::PrintTicket> GetJobPrintTicketInternal();
+    System::SharedPtr<XpsMetadata::PrintTicket> GetDocumentPrintTicketInternal(int32_t documentIndex);
+    System::SharedPtr<XpsMetadata::PrintTicket> GetPagePrintTicketInternal(int32_t documentIndex, int32_t pageIndex);
     
     virtual ASPOSE_PAGE_SHARED_API ~XpsDocument();
     
-    #ifdef ASPOSE_GET_SHARED_MEMBERS
-    ASPOSE_PAGE_SHARED_API System::Object::shared_members_type GetSharedMembers() const override;
-    #endif
-    
-    
 private:
 
+    static const bool OldStyleConversion;
+    System::SharedPtr<XpsPackageParts::FixedDocumentSequence> _fixedDocumentSequence;
     System::SharedPtr<Aspose::OpcPackaging::OpcPackage> _package;
     System::SharedPtr<XpsModel::XpsContext> _context;
+    System::SharedPtr<DocumentUtils> _utils;
+    DocumentOrigin _origin;
+    int64_t _meteredLength;
     System::SharedPtr<System::Collections::Generic::Dictionary<System::SharedPtr<XpsModel::XpsPage>, System::SharedPtr<XpsModel::XpsGlyphs>>> _watermarks;
     bool _isDisposed;
     
@@ -844,7 +959,11 @@ private:
     System::SharedPtr<XpsModel::XpsPage> SelectActivePageInternal();
     bool BackupIfExists(System::String sourcePath, System::String backupPath);
     void Restore(System::String backupPath, System::String sourcePath);
-    void AddEvaluationWatermarkInternal();
+    void SaveAsPdfInternal(System::SharedPtr<System::IO::Stream> stream, System::SharedPtr<Presentation::Pdf::PdfSaveOptions> options);
+    System::ArrayPtr<System::ArrayPtr<System::ArrayPtr<uint8_t>>> SaveAsImageInternal(System::SharedPtr<Presentation::Image::ImageSaveOptions> options, int64_t& meteredLength);
+    int32_t GetOutputPageCount(System::ArrayPtr<int32_t> pageNumbers);
+    int64_t SaveInternal(System::SharedPtr<Device> device, System::SharedPtr<SaveOptions> options);
+    void MergeInternal(System::ArrayPtr<System::String> filesForMerge);
     void AddEvaluationWatermarksInternal();
     void AddEvaluationWatermarks();
     System::SharedPtr<XpsPackageParts::FixedDocument> AddDocumentInternal(System::SharedPtr<XpsPackageParts::FixedDocument> fixedDocument, bool activate);
