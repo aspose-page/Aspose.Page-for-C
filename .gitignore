@@ -9,3 +9,4 @@ Debug/
 *.ldb
 x64/
 Codeporting.*/
+*.lic
